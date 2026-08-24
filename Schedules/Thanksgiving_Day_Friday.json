@@ -1,0 +1,17 @@
+  {
+    "id": "839bab19-62af-416d-bbbe-c0d6285652b4",
+    "name": "Thanksgiving-FridayAfter",
+    "version": 2,
+    "dateCreated": "2024-07-31T14:00:38.410Z",
+    "dateModified": "2024-07-31T14:02:22.316Z",
+    "modifiedBy": "d4ba1845-a1e3-4467-9d99-27281875d9d7",
+    "createdBy": "d4ba1845-a1e3-4467-9d99-27281875d9d7",
+    "state": "active",
+    "modifiedByApp": "public-api-v2/8289 (i-0b52b4c3cfd48eda9)",
+    "createdByApp": "public-api-v2/8289 (i-056a8b2eb6ed9bddc)",
+    "start": "2024-11-29T09:00:00.000",
+    "end": "2024-11-29T17:00:00.000",
+    "rrule": "FREQ=YEARLY;INTERVAL=1;BYMONTH=11;BYMONTHDAY=23,24,25,26,27,28,29;BYDAY=FR;BYSETPOS=1",
+    "referencedType": "IVRConfig",
+    "selfUri": "/api/v2/architect/schedules/839bab19-62af-416d-bbbe-c0d6285652b4"
+  }

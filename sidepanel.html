@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="module" src="sidepanel.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS Bulk Tools</title>
+<!-- download Roboto font from goodgle-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet", href="./CSS/sidepanel.css" >
+</head>
+<body>
+
+<div class="customerName">
+    <h2>Pro Serve Support Tools</h2>
+    <h1><span id="OrgName"></span></h1>
+</div>
+<button class="collapsible">Org Info</button>
+    <div class="content">
+    <div class="info">
+        <p><strong>OrgID:</strong><span name="custInfo" id="OrgId"></span></p>
+    </div> 
+    <div class="info">
+        <strong>Token:</strong> <span name="custInfo" id="token">N/A</span>
+    </div>
+    <div class="info">
+        <strong>Region:</strong> <span name="custInfo" id="region">N/A</span>
+    </div>
+    </div>
+<p></p><!-- Add a p tag between sections to create seperation -->    
+<button class="collapsible">Quick Nav</button>
+    <div class="content">
+        <p>    
+            <div class="btnContainer">          
+                <button id="people" name="qbtn" title="Go to user admin">People</button>
+                <button id="queues" name="qbtn" title="Go to Queues admin">Queues</button>
+                <button id="dataTables" name="qbtn"title="Go to Data Tables">Data Tables</button>
+                <!-- Add tab_ to open in new tab, add full_ if providing a full URL -->
+                <button id="sites" name="qbtn" title="Go to Sites">Sites</button>
+                <button id="tab_architect" name="qbtn" title="Go to Architect">Architect</button>
+                <button id="full_apiExp" name="qbtn" title="Go to API Explorer">API Exp</button>
+            </div>
+        </p>
+    </div>
+</div>
+ <p></p><!-- Add a p tag between sections to create seperation -->
+ <button class="collapsible">Export Functions</button>
+    <div class="content">
+        <p>    
+            <div class="btnContainer">
+            <button id="userList" name="funcBtn" title="Exportable list of all users">Users</button>
+                <span class="tooltiptext">Create an exportable list of all Users</span> 
+            <button id="phoneList" name="funcBtn" title="Exportable list of all phones">Phones</button>
+                <span class="tooltiptext">Create an exportable list of all WebRTC phones</span>
+            <button id="queueList" name="funcBtn" title="Exportable list of all queues">Queues</button>
+                <span class="tooltiptext">Create an exportable list of all Queues</span>
+            <button id="queueMemberList" name="funcBtn" title="Export Queue Members">Q Members</button>
+                <span class="tooltiptext">Create an exportable list of the mebers of a single queue</span>
+            <button id="exportRoles" name="funcBtn" title="Export Roles">Roles</button>
+                <span class="tooltiptext">Create an exportable list of the roles in the Org</span>
+            <button id="exportSkills" name="funcBtn" title="Export Skills">Skills</button>
+                <span class="tooltiptext">Create an exportable list of the skills in the Org</span>
+            <button id="exportPrompts" name="funcBtn" title="Export Prompts">Prompts</button>
+                <span class="tooltiptext">Create an exportable list of the user prompts in the Org</span>
+            </div>
+        </p>
+    </div>
+</div>
+
+<button class="collapsible">Bulk Changes</button>
+    <div class="content">
+    <p>
+        <div class="btnContainer">
+            <button id="bulkPhoneBuild" name="funcBtn" title="Select a template phone and build WebRTC phones for users">Bulk Phone Build</button>
+                <span class="tooltiptext">Bulk build WebRTC Phones</span>
+            <button id="passwordReset" name="funcBtn" title="Set a password, and select multiple people to reset">Bulk PWD Reset</button>
+                <span class="tooltiptext">Bulk reset user passwords</span> 
+            <button id="bulkAssignAutoAnswer" name="funcBtn" title="Set autoanswer setting in bulk">Bulk Auto Answer</button>
+                <span class="tooltiptext">Bulk set users auto answer setting</span>
+        </div>
+    </p>
+    </div>
+</div>
+
+<button class="collapsible">Quick Actions</button>
+    <div class="content">
+    <p>
+        <div class="btnContainer">
+            <button id="masterAdmin" name="funcBtn" title="Creates a Full Master Admin Role with all permissions">Master Admin</button>
+                <span class="tooltiptext">Create a role with all permissions</span>
+            <button id="loadSchedules" name="funcBtn" title="Creates all Standard US Holidays">US Holidays</button>
+                <span class="tooltiptext">Creates standard US Holidays</span>
+            <button id="exportAll" name="funcBtn" title="Exports All Resources">Export All</button>
+            <span class="tooltiptext">Exports All Resources</span>
+        </div>
+    </p>
+    </div>
+</div>
+
+
+</body>
+</html>

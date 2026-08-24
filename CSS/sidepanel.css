@@ -1,0 +1,100 @@
+
+.collapsible {
+  background-color: #ff451A;
+  color: white;
+  cursor: pointer;
+  padding: 0 18px;
+  width: 90%;
+  border: 1px;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  z-index: -1;
+  border: 1px;
+  border-radius: 3px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  margin-right: 5px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  z-index: 1;
+}
+.customerName{
+    text-align: center;
+    background-color: #583E5C;
+    color: white;
+  }
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    text-align: "center";
+    padding: 10px;
+  }
+  .btnContainer{
+    display: grid;
+    gap: 5px 6px;
+    grid-template-columns: auto auto auto;
+    margin-right: 35px;
+    z-index: 2;
+  }
+  body {
+    background-color:rgb(238, 232, 232);
+    font-family: "Roboto" serif;
+    width: 400px;
+  }
+  button {
+    color: #fdfdfd;
+    background-color: #2a60c8;
+    border: 1px solid #2455a3;
+    border-radius: 2px;
+    align-items: center;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .info {
+    margin: 1px 0;
+    z-index: 1;
+  }
+   .logo {
+    height: 7%;
+    width: 7%;
+    padding: 10px;
+    z-index: 1;
+  } 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    z-index: 3;
+    }
+      
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100;
+    top: -50px;
+    left: 105%;
+    }
+
+button:hover + .tooltiptext {
+    visibility: visible;
+    z-index: 101;
+    }

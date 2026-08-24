@@ -1,0 +1,212 @@
+body {
+    background-color:rgb(238, 232, 232);
+    width: 80%;
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+.marginContainer{
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.headerContainer{
+  display: inline-flex;
+  padding: 6px;
+}
+.headerContainer > .logoContainer{
+  display: inline-flex;
+  padding: 10px;
+  vertical-align: middle;
+  justify-content: center;
+}
+.headerContainer > .PageTitleContainer{
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 40px;
+  font-weight: bold;
+}
+.footerContainer{
+  display: inline-flexbox;
+} 
+.plus{
+  font-size: 30px;
+  margin: 5px;
+  font-weight: bold;
+}
+#logOutput{
+  font-size:20px;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+.exportButton {
+  width: 35%;
+  height: 35px;
+  display: block;
+  padding: 10px;
+}
+button {
+  height: 35px;
+  color: #fdfdfd;
+  background-color: #2a60c8;
+  border: 1px solid #2455a3;
+  align-items: center;
+  box-shadow: none;
+  cursor: pointer;
+  width: auto;
+  min-width: 70px;
+  font-size: 14;
+  line-height: 1.6;
+  border-radius: 2px;
+  z-index: 1;
+  margin-left: 15px;
+}
+select {
+  height: 35px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 5px;
+}
+.info {
+  margin: 10px 0;
+}
+p#qHeader {
+  margin-left: 20px;
+  font-size: 25px;
+}
+table{
+        border-collapse: collapse;
+        table-layout: auto;
+        font-weight: normal;
+        font-size: 12px;
+        margin-left: 10px;
+}
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:hover {background-color: #ddd;}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 8px;
+    font-size: larger;
+    text-align: center;
+    background-color: #ff451A;
+    color: white;
+  }
+#promptName td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: Medium;
+    color: black;
+    background-color: lightgray;
+    font-weight: bold;
+  }
+#resource th {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: small;
+    color: black;
+    background-color: darkgrey;
+    font-weight: bold;
+  }
+.checkbox {
+    float: left;
+    width: 100%;
+    vertical-align: middle;
+    padding-left: 48%;
+  }
+.jsonBox {
+    width: auto;
+    min-height: 30rem;
+    line-height: 1.2;
+    background-color: lightgray;
+}
+#success {
+    color: greenyellow;
+    background-color: darkgray;
+}
+#error {
+    color: red;
+    background-color: darkgray;
+}
+#bodyDiv {
+  display: inline-grid;
+  margin: 8px;
+  width: 100%;
+  column-gap: 10px;
+  grid-template-columns: auto auto;
+}
+#selectBox {
+  display: inline-grid;
+  border-width: 1px;
+  border-style: solid;
+  height: 300px;
+  grid-template-columns: 100%;
+  grid-auto-rows: 40px;
+  overflow: scroll;
+}
+#displayBox {
+  display: inline-grid;
+  border-width: 1px;
+  border-style: solid;
+  height: 300px;
+  grid-template-columns: 100%;
+  grid-auto-rows: 40px;
+  overflow: scroll;
+  }
+#selectSecond>select {
+  height: 35px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 5px;
+  flex-grow: 1;
+  display: inline-flex;
+}
+#selectText, #selectSecond {
+    display: flex;
+    max-height: 35px;
+    border-width: 1px;
+    border-style: solid;
+    flex: 1;
+    align-items: center;
+    justify-content: right;
+    padding-right: 5px;
+}
+#selectBox>#itemSelector {
+  display: inline-grid;
+  height: 40px;
+  width: auto;
+  grid-template-columns: auto;
+  grid-auto-rows: 40px;
+  overflow: hidden;
+  margin: 3px;
+  font-size: 14px;
+  font-weight: normal;
+}
+#displayBox>#itemSelector{
+  display: inline-grid;
+  height: 40px;
+  width: auto;
+  grid-template-columns: 70% auto;
+  grid-auto-rows: 40px;
+  overflow: hidden;
+  margin: 3px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.smallBox {
+  max-width:35px;
+  height:35px;
+  display:inline-flex;
+  overflow: scroll;
+}
+div#boxLables {
+  display: inline-grid;
+}
