@@ -39,9 +39,10 @@ async function exportPromptsAndResources (table, prompts, columns){
 			newHeaders.forEach(function(header){
 				let td = document.createElement('td');
 				if (header ==='Resources' || !resource[header]){
-					td.innerText = '';
+					td.innerText = prompt.name;
 				}else{
 					td.innerText = resource[header];
+					
 				};
 				r.appendChild(td);
 			})

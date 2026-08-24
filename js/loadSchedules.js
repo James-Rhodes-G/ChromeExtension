@@ -1,6 +1,5 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, 
-    createHeaderWCheckbox, createRow, createRowWCheckbox, makeTableRowsClickable, makeSelectAllListener} from "./utils.js";
 
+import * as utils from './utils.js';
 
 //// List of schedule json files in the Schedule folder
 const scheduleList = {
@@ -26,9 +25,9 @@ async function scheduleSelect(){
     //// provide header for direction
     document.getElementById('logOutput').innerHTML="<h2> Select schedules to load</h2>"
     var table=document.createElement("table");
-    createHeaderWCheckbox(table, ["Schedule Name"]);
+    utils.createHeaderWCheckbox(table, ["Schedule Name"]);
     Object.keys(scheduleList).forEach(function (schedule) {
-        createRowWCheckbox(table, [schedule], [scheduleList[schedule]]);
+        utils.createRowWCheckbox(table, [schedule], [scheduleList[schedule]]);
     });
     document.getElementById('logOutput').appendChild(table);
     document.getElementById("logOutput").innerHTML += '<p><button id=schedule type="button"> Load Schedules </button></p>';
@@ -43,7 +42,7 @@ async function scheduleSelect(){
         });
     });
     //// Make all table rows clickable
-    makeTableRowsClickable();
+    utils.makeTableRowsClickable();
 
     await eventPromise
 }
@@ -52,7 +51,7 @@ async function scheduleSelect(){
 //// call POST with file contents
 async function postSchedule (body){
     const apiToCall = "/api/v2/architect/schedules"
-    const response = await postAPI(apiToCall, body);
+    const response = await utils.postAPI(apiToCall, body);
     return response
 }
 
@@ -62,10 +61,9 @@ async function logScheduleResponse(status, response){
     if (table === null){
         table = document.createElement("table");
         Object.assign(table, {id:"schedule_import"});
-        const headerColumns = ["scheduleName", "scheduleId", "status"];
-        createHeader(table, headerColumns);
+        utils.createHeader(table, ["scheduleName", "scheduleId", "status"]);
     }
-    createRow(table, [response.name, response.id, status]);  
+    utils.createRow(table, [response.name, response.id, status]);  
     document.getElementById('logOutput').appendChild(table);
 }
 
@@ -90,7 +88,7 @@ export async function loadSchedules(){
             .then((res) => {return res.json()})
         Object.assign(loadSchedule, data);
         //// make POST call
-        const scheduleResponse = await postSchedule(loadSchedule)
+        const scheduleResponse = await utils.postSchedule(loadSchedule)
             .then((res) => {return res});
         if (scheduleResponse.ok){
             var jsonScheduleResponse = await scheduleResponse.json();

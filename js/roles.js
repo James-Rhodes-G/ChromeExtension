@@ -1,6 +1,10 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, createRow} from "./utils.js";
+import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, createRow, makeSelectAllListener,
+    makeTableRowsClickable } from "./utils.js";
 import { getUsers } from "./users.js";
 import { userSelectLoop } from "./passwordReset.js";
+import * as utils from './utils.js';
+
+//import { jsonViewer } from "../jsonViewer/jquery.json-viewer.js";
 
 //get permissions one page at a time
 async function getPermissions(pageSize=99, pageNumber=1) {
@@ -60,7 +64,18 @@ async function createBody(body, pageData){
     return body;
 };
 
-
+// create body for assigning roles and divisions
+async function createBulkRoleApiBody(division, users) {
+    const body = {};
+    const userIds = []
+    Object.assign(body,{divisionIds:[division]})
+    users.forEach( user => {
+        userIds.push(user.defaultValue);
+    })
+    Object.assign(body, {subjectIds:userIds});
+    console.log(body);
+    return body;
+}
 
 //// create the new master admin role
 ////  Build the new role using the body from above
@@ -84,19 +99,22 @@ export async function createMasterAdmin(){
         });
     console.log("Completed Admin Post")
     console.log(data.status);
-    
+    const jsonData = await data.json();
     const element = document.getElementById("logOutput");
     const newField = document.createElement('div');
-    newField.className='jsonBox';
+    newField.id='jsonBox';
     if (data.message){
         element.innerHTML = element.innerHTML + `<p><h3 id="error"> ${data.message} </p>`;
     } else {
         element.innerHTML = element.innerHTML + `<p><h3 id="success"> Role Creation Successful</h3></p>`;
     }
-
-    var formattedJson = JSON.stringify(data, "", 5);
-    newField.innerText=formattedJson;
+    console.log(jsonData);
     element.appendChild(newField);
+    jQuery(document).ready(function() {
+        jQuery("#jsonBox").jsonViewer(jsonData, {withQuotes: true, rootCollapsable: true, collapsed:true});
+    });
+    
+    
 }
 
 
@@ -118,7 +136,8 @@ async function getDivisions(pageSize=99,pageNumber=1){
 
 //// log output from role api call
 async function logRoleOutput(table, data){
-    data['entities'].forEach(function (role){
+    const alphaData = await alphaSortByName(data.entities);
+    alphaData.forEach(function (role){
         createRow(table, [role.name, role.id, role.userCount, role.default] )
     })
 }
@@ -150,6 +169,7 @@ export async function bulkAssignRoles() {
     var dropBoxOptions=[]
     do{
         var resp = await getDivisions(pageSize,pageNumber);
+        dropBoxOptions.push({value:"*",text:"All"});
         resp.entities = await alphaSortByName(resp.entities);
         resp.entities.forEach( async function (division) {
             dropBoxOptions.push({value:division.id, text:division.name});
@@ -195,16 +215,60 @@ export async function bulkAssignRoles() {
         pageNumber++
     }while (resp.selfUri != resp.lastUri);
 
+    const btnUsers = document.getElementById('selectButton');
+    //// Add listener for user click a button
+    const eventPromise = new Promise((resolve) => {
+        btnUsers.addEventListener('click', () => {
+            if (document.querySelectorAll('input[type="checkbox"]:checked')){
+                    resolve(); 
+                };
+            });
+        });
+    
+    ////  Event Listener for Select All Checkbox
+    makeSelectAllListener();
+    //// Make rows clickable
+    makeTableRowsClickable();
 
-    //// collect users checked and add the role (might need to validate that we don't overwrite existing roles)
-    //// chrome-extension://odcfnnmldbhpenhpidiebnmnpdocdebi/log.html?func=bulkAssignRoles
+    //// Wait for user
+    await eventPromise;
+    //// collect selected users
+    var users = document.querySelectorAll('input[type="checkbox"]:checked');
+    element.innerHTML = ''; /// Clear the page
+    var table = document.createElement("table");
+    element.appendChild(table);
+    //// provide export button
+    const exportBtn  = document.getElementById("exportButton")
+    exportBtn.style.display = 'block';
+    //// hide done button
+    btnUsers.style.display = 'none';
+    Object.assign(table, {id:"bulk_user_role_assign"});
+    createHeader(table, ['userName', 'roleName', 'divisionName', 'status']);
+    console.log(users);
+    rolesAndDivs.forEach(  async function(entry) {
+        let role = entry.roleId;
+        let body = await createBulkRoleApiBody(entry.divId, users)
+        let apiToCall = `/api/v2/authorization/roles/${role}`;
+        const response = await otherPostApi(apiToCall, body);
+        if (response.ok){
+            users.forEach(user => {
+                createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                        entry.roleName, entry.divName, 'success']);
+            })
+        }else{
+            users.forEach(user => {
+                createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                        entry.roleName, entry.divName, response.message]);
+            })
+        };
+    })
 }
 
-async function createRoleBody(){
+async function createRoleBody(leftLabel, rightLabel){
     const bodyDiv=document.createElement('div');
     Object.assign(bodyDiv, {id:"bodyDiv", className:"bodyDiv"})
-    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:'Available Roles'}));
-    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:'Selected Roles'}));
+    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:leftLabel}));
+    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:rightLabel}));
     bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'selectBox'}));
     bodyDiv.appendChild( Object.assign(document.createElement("div"), {id:'displayBox'}));
     document.getElementById('logOutput').appendChild(bodyDiv);

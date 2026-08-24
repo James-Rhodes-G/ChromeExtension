@@ -1,11 +1,13 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader } from "./utils.js";
-import { tableToCSV } from "./exportTable.js";
+
+import * as utils from "./utils.js";
 import { exportUsers } from "./passwordReset.js";
 import { exportQueues, getQueues, getMembersOfQueue } from "./queues.js";
 import { exportPrompts } from "./prompts.js";
 import { exportPhones } from "./phones.js";
 import { exportSkills } from "./skills.js";
 import { exportRoles } from "./roles.js";
+import { exportUserRoles } from "./users.js";
+import { exportGroups, getGroups, getMembersOfGroups } from "./groups.js";
 
 
 
@@ -56,6 +58,23 @@ async function exportAllQueuesMembers(){
     while (response.lastUri != response.selfUri);
 
 }
+async function exportAllGroupMembers(){
+    var pageNumber=1
+    var pageSize = 99
+    //// Loop through pages and write them to a table on the log page
+    do {
+        var response = await getGroups(pageSize,pageNumber);
+        for(let q=0; q < response.entities.length; q++){
+            console.log('increment: ', q,' of ', response.entities.length-1);
+            var qMembers = await getMembersOfGroups(response.entities[q].name,response.entities[q].id)
+            await exportCurrentTable();
+            await clop();
+        }
+        pageNumber ++;
+    }
+    while (response.lastUri != response.selfUri);
+
+}
 
 
 export async function exportAll(){
@@ -65,7 +84,10 @@ export async function exportAll(){
                         exportPrompts, exportCurrentTable, clop,
                         exportSkills, exportCurrentTable, clop,
                         exportRoles, exportCurrentTable, clop,
-                        exportAllQueuesMembers]
+                        exportUserRoles, exportCurrentTable, clop,
+                        exportGroups, exportCurrentTable, clop,
+                        exportAllQueuesMembers,
+                        exportAllGroupMembers]
 
     for( let i=0; i < funcToCall.length; i++){
         console.log(`calling function: ${funcToCall[i]}`);

@@ -47,6 +47,25 @@
     margin-right: 35px;
     z-index: 2;
   }
+  .outbound_CLID{
+    justify-content: right;
+    display: grid;
+    gap: 5px 6px;
+    grid-template-columns: auto auto;
+    margin-right: 35px;
+    z-index: 2;
+  }
+  .outbound_CLID .btn_label{
+    text-align: right;
+  }
+  #callSpoof, #printConversationData{
+    margin: auto;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: auto;
+    margin-right: 35px;
+    z-index: 2;
+  }
   body {
     background-color:rgb(238, 232, 232);
     font-family: "Roboto" serif;

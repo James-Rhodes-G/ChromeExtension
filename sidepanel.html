@@ -50,19 +50,26 @@
         <p>    
             <div class="btnContainer">
             <button id="userList" name="funcBtn" title="Exportable list of all users">Users</button>
-                <span class="tooltiptext">Create an exportable list of all Users</span> 
-            <button id="phoneList" name="funcBtn" title="Exportable list of all phones">Phones</button>
-                <span class="tooltiptext">Create an exportable list of all WebRTC phones</span>
+                <span class="tooltiptext">Create an exportable list of all Users</span>
+            <button id="userRoles" name="funcBtn" title="Exportable list of all users roles">User Roles</button>
+                <span class="tooltiptext">Create an exportable list of all Users Roles</span>
+            <button id="exportRoles" name="funcBtn" title="Export Roles">Roles</button>
+                <span class="tooltiptext">Create an exportable list of the roles in the Org</span>            
             <button id="queueList" name="funcBtn" title="Exportable list of all queues">Queues</button>
                 <span class="tooltiptext">Create an exportable list of all Queues</span>
             <button id="queueMemberList" name="funcBtn" title="Export Queue Members">Q Members</button>
                 <span class="tooltiptext">Create an exportable list of the mebers of a single queue</span>
-            <button id="exportRoles" name="funcBtn" title="Export Roles">Roles</button>
-                <span class="tooltiptext">Create an exportable list of the roles in the Org</span>
             <button id="exportSkills" name="funcBtn" title="Export Skills">Skills</button>
                 <span class="tooltiptext">Create an exportable list of the skills in the Org</span>
+            <button id="exportGroups" name="funcBtn" title="Exportable list of all groups">Groups</button>
+                <span class="tooltiptext">Create an exportable list of all Groups</span>
+            <button id="exportGroupUsers" name="funcBtn" title="Exportable list members of Groups">Group Members</button>
+                <span class="tooltiptext">Create an exportable list of all Group Members</span>
+            <button id="phoneList" name="funcBtn" title="Exportable list of all phones">Phones</button>
+                <span class="tooltiptext">Create an exportable list of all WebRTC phones</span>
             <button id="exportPrompts" name="funcBtn" title="Export Prompts">Prompts</button>
                 <span class="tooltiptext">Create an exportable list of the user prompts in the Org</span>
+            
             </div>
         </p>
     </div>
@@ -78,7 +85,14 @@
                 <span class="tooltiptext">Bulk reset user passwords</span> 
             <button id="bulkAssignAutoAnswer" name="funcBtn" title="Set autoanswer setting in bulk">Bulk Auto Answer</button>
                 <span class="tooltiptext">Bulk set users auto answer setting</span>
-        </div>
+            <button id="bulkRoleAssign" name="funcBtn" title="Bulk Role/Div assign">Bulk Role Assign</button>
+                <span class="tooltiptext">Bulk set Role and Division to multiple users</span>
+            <button id="bulkAssignSkills" name="funcBtn" title="Bulk Skill and Proficiency assign">Bulk Skill Assign</button>
+                <span class="tooltiptext">Bulk set Skills and Proficiency to multiple users</span>
+            <button id="bulkSelectUserLogoff" name="funcBtn" title="Bulk User Logoff">Bulk User Logoff</button>
+                <span class="tooltiptext">Logoff multiple users at the same time</span>
+        
+            </div>
     </p>
     </div>
 </div>
@@ -98,6 +112,58 @@
     </div>
 </div>
 
+<button class="collapsible">Call Spoofing</button>
+    <div class="content">
+    <p>
+        <div class="btnContainer">
+            <form autocomplete="on" >
+            <div class="outbound_CLID">
+                <div class="btn_label">
+                    <label for="outClid">Out CLID:</label>
+                </div>
+                <input type="text" id="outClid" name="outClid" autocomplete="outClid">
+                <div class="btn_label">
+                    <label for="outCnam">Out CNAM:</label>
+                </div>
+                <input type="text" id="outCnam" name="outCnam" autocomplete="outCnam">
+                <div class="btn_label">
+                    <label for="outDial">Number To Dial:</label>
+                </div>
+                <input type="text" id="outDial" name="outDial" autocomplete="outDial">
+            </div>
+            </form>
+
+        </div>
+        <div class="btnContainer">
+            <p></p>
+                <button id="callSpoof" name="funcBtn" title="Spoofing Calling Line Id">Call Spoof</button>
+                <span class="tooltiptext">Spoof for Calling Line ID</span>
+        </div>
+    </p>
+    </div>
+</div>
+<button class="collapsible">Conversation Data</button>
+    <div class="content">
+    <p>
+        <div class="btnContainer">
+            <form autocomplete="on" >
+            <div class="outbound_CLID">
+                <div class="btn_label">
+                    <label for="convData">Conversation ID:</label>
+                </div>
+                <input type="text" id="convData" name="convData" autocomplete="convData">
+            </div>
+            </form>
+
+        </div>
+        <div class="btnContainer">
+            <p></p>
+                <button id="printConversationData" name="funcBtn" title="Print Conversation JSON">Conv Data</button>
+                <span class="tooltiptext">Print Conversation JSON</span>
+        </div>
+    </p>
+    </div>
+</div>
 
 </body>
 </html>

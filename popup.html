@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PS Bulk Tools</title>
+  <!-- download Roboto font from goodgle-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    .customerName{
+      text-align: center;
+      
+    }
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: x-large;
+    }
+    .btnContainer{
+      display: flex;
+      align-items: center;
+      size-adjust: 80%;
+      text-size-adjust: auto;
+    }
+    body {
+      background-color:rgb(238, 232, 232);
+      font-family: "Roboto" serif;
+      width: 400px;
+    }
+    button {
+      width: 35%;
+      height: 35px;
+    }
+    .info {
+      margin: 10px 0;
+    }
+     .logo {
+      height: 7%;
+      width: 7%;
+      padding: 10px;
+    } 
+
+  </style>
+
+</head>
+<body>
+  
+  <div class="container">
+    <img class='logo' src="./ExtensionLogo/adaptive-g-orange_48.png">
+    <h3>Genesys PS Tools</h3>
+  </div>
+  <div class="customerName">
+    <h1><span id="OrgName"></span></h1>
+  </div>
+    <p><strong>OrgID:</strong><span id="OrgId"></span></p>
+  <div class="info">
+    <strong>Token:</strong> <span id="token">N/A</span>
+  </div>
+  <div class="info">
+    <strong>Region:</strong> <span id="region">N/A</span>
+  </div>
+    <div class="btnContainer">
+      <button id="userList" title="Exportable list of all users">User List</button>
+      <button id="phoneList" title="Exportable list of all phones">Phone List</button>
+      <button id="bulkPhoneBuild" title="Select a template phone and build WebRTC phones for users">Bulk Phone Build</button>
+      <button id="pwdReset" title="Set a password, and select multiple people to reset">Bulk PWD Reset</button>        
+    </div>
+    <div class=""btnContainer">
+      <button id="masterAdmin" title="Creates a Full Master Admin Role with all permissions">Master Admin</button>
+      <!-- <button id="loadSchedules" title="Loads Standard US Holiday Schedules">Load US Schedules</button>          -->
+    </div>
+
+      <script type="module" src="popup.js"></script>
+      <script type="module" src="./js/log.js"></script>
+  </div>
+</body>
+</html>

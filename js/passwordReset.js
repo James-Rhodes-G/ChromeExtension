@@ -1,10 +1,9 @@
 //bulk password reset
 // sets all passwords to the same password
 // 
-import { getAPI, postAPI, patchAPI, sendLogMessage,  otherPostApi, createHeader, createRow, createRowWCheckbox,
-        makeTableRowsClickable, makeSelectAllListener} from "./utils.js";
-import { getUsers } from "./users.js";
 
+import { getUsers } from "./users.js";
+import * as utils from './utils.js';
 
 
 
@@ -15,7 +14,7 @@ async function pwdLoop(user, status, code) {
     if (table === null ) {
         table = document.createElement("table");
         Object.assign(table, {id:"passwordReset"});
-        createHeader( table, ["User", "UserName","Status", "Code"])
+        utils.createHeader( table, ["User", "UserName","Status", "Code"])
     };
         const newRow = table.insertRow();
         const cell1 = newRow.insertCell();
@@ -45,16 +44,16 @@ async function userLoop(table, users, idField) {
             var columnHeaders = ['User', 'UserName','User GUID','State','AutoAnswer']
             break;
         case 'userList':
-            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills']
+            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
             break;
         default:
-            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills']
+            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
             break;
         }
     const element = document.getElementById("logOutput");
     var table_page = document.querySelector('table');
     if (table_page === null ) {
-        createHeader(table, columnHeaders)
+        utils.createHeader(table, columnHeaders);
     };
 
     users['entities'].forEach(user => {
@@ -74,7 +73,7 @@ async function userLoop(table, users, idField) {
             ]
         }
 
-        createRow(table, rowColumns )
+        utils.createRow(table, rowColumns )
         });
     element.appendChild(table);
 }
@@ -110,7 +109,7 @@ export async function userSelectLoop(users) {
         element.appendChild(table);
     };
     users['entities'].forEach(user => {
-        createRowWCheckbox(table, [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id);
+        utils.createRowWCheckbox(table, [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id);
         });
 
     element.appendChild(table);
@@ -146,10 +145,10 @@ export async function runPwdReset(newPwd) {
             });
 
          ////  Event Listener for Select All Checkbox
-        makeSelectAllListener();
+        utils.makeSelectAllListener();
 
         //// make all table rows clickable setting the checkbox
-        makeTableRowsClickable();
+        utils.makeTableRowsClickable();
  
         //// Wait for user
         await eventPromise;
@@ -164,7 +163,7 @@ export async function runPwdReset(newPwd) {
             usersNeedingReset.forEach( async user =>  {
                 console.log(`resetting userId: ${user.value}`);
                 var apiToCall = `/api/v2/users/${user.value}/password`
-                var pwdReset = await otherPostApi(apiToCall, body);
+                var pwdReset = await utils.otherPostApi(apiToCall, body);
                 const userInfo = {};
                 userInfo.name = table.rows[user.name].cells[1].textContent;
                 userInfo.username = table.rows[user.name].cells[2].textContent;
@@ -238,9 +237,9 @@ export async function bulkAssignAutoAnswer(){
         });
 
      ////  Event Listener for Select All Checkbox
-    makeSelectAllListener();
+    utils.makeSelectAllListener();
 
-    makeTableRowsClickable();
+    utils.makeTableRowsClickable();
    
 
 

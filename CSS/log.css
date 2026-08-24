@@ -38,11 +38,11 @@ body {
   margin: 5px;
   font-weight: bold;
 }
-#logOutput{
+/* #logOutput{
   font-size:20px;
   font-weight: bolder;
   margin-left: 10px;
-}
+} */
 .exportButton {
   width: 35%;
   height: 35px;
@@ -122,12 +122,12 @@ table th {
     vertical-align: middle;
     padding-left: 48%;
   }
-.jsonBox {
+/* .jsonBox {
     width: auto;
     min-height: 30rem;
     line-height: 1.2;
     background-color: lightgray;
-}
+} */
 #success {
     color: greenyellow;
     background-color: darkgray;

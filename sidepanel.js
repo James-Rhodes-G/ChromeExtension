@@ -1,5 +1,6 @@
 
 import { tempAlert, openTabNextToCurrent } from "./js/utils.js";
+import { callSpoof } from "./js/callSpoof.js";
 
 
 const quickNavBtn = {"people":"/directory/#/admin/directory/peopleV3", "queues":"/directory/#/admin/admin/organization/_queuesV2",
@@ -47,7 +48,10 @@ var b;
 for (b = 0; b < qbnBtns.length; b++) { 
     const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText);
     qbnBtns[b].addEventListener("click", function(){
-        textCopy(objButton);
+        let cx = event.clientX;
+        let cy = event.clientY;
+        textCopy(objButton, cx,cy);
+
     });
 }
     getOrgInfo();
@@ -73,18 +77,29 @@ async function quickNav(btnPress){
 
 //// Handle Function Button Clicks
 async function funcButtons(btnPress){
-    await chrome.runtime.sendMessage([btnPress.id], (response) =>{
+    if (btnPress.id == 'callSpoof'){
+            const inputBoxes = document.getElementsByTagName("input");
+            callSpoof(inputBoxes);
+    } else if (btnPress.id =='printConversationData'){
+        const inputBoxes = document.getElementsByTagName("input").convData.value;
+        await chrome.runtime.sendMessage([btnPress.id, inputBoxes], (response) => {
+            console.log(response);
+        });
+    }else {
+            await chrome.runtime.sendMessage([btnPress.id], (response) =>{
         console.log(response);    
         });
+    }
+
+
 }
 
-function textCopy(fieldName){
+function textCopy(fieldName, cx, cy){
     var copyText = document.getElementById(fieldName.id)
      // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.innerText);
-
     // Alert the copied text
-    tempAlert("Copied to the Clipboard",3000);
+    tempAlert(`Copied to the Clipboard`,3000,cx,cy);
 }
 
 //// Create Button Objects

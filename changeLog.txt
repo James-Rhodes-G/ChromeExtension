@@ -1,0 +1,11 @@
+ 1) added User to Role export to sidepanel
+ 2) added bulk user role and division assignment to sidepanel
+ 3) added bulk user skill and proficiency assignment to sidepanel
+ 4) add bulk user loggoff to sidepanel
+ 5) add User logoff button to people page
+ 6) cleaned up individual imports from the utilities scripts
+ 7) added Group export
+ 8) added Group Member Export
+ 9) add call spoof section
+10) updated temp alert to appear under the mouse when clicking on a copy field
+11) added flow reload button (disabled until flow reload programming is complete)

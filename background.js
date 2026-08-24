@@ -4,6 +4,7 @@
 
 import { getAPI , openTabNextToCurrent } from "./js/utils.js";
 import { tableToCSV } from "./js/exportTable.js";
+import { callSpoof } from "./js/callSpoof.js";
 
 
 //// Set Sidepanel options:
@@ -76,11 +77,11 @@ async function testRequest(request) {
       let userList_Tab = await openTabNextToCurrent('./log.html?func=userList');
       console.log(userList_Tab);
       break;
-
-    case "exportUserRoles":
-      let exportUserRoles_Tab = await openTabNextToCurrent('./log.html?func=exportUserRoles');
-      console.log(exportUserRoles_Tab);
-      break;      
+    
+    case "userRoles":
+      let userRoles_Tab = await openTabNextToCurrent('./log.html?func=userRoles');
+      console.log(userRoles_Tab);
+      break;
     
     case "phoneList":
       let phoneList_tab = await openTabNextToCurrent('./log.html?func=phoneList')
@@ -107,6 +108,26 @@ async function testRequest(request) {
       console.log(bulkAssignAutoAnswer_tab);
       break;
 
+    case "bulkRoleAssign":
+      let bulkRoleAssign_tab = await openTabNextToCurrent('./log.html?func=bulkAssignRoles')
+      console.log(bulkRoleAssign_tab);
+      break;
+
+    case "bulkAssignSkills":
+      let bulkAssignSkills_tab = await openTabNextToCurrent('./log.html?func=bulkAssignSkills')
+      console.log(bulkAssignSkills_tab);
+      break;
+
+    case "bulkSelectUserLogoff":
+      let bulkSelectUserLogoff_tab = await openTabNextToCurrent('./log.html?func=bulkSelectUserLogoff')
+      console.log(bulkSelectUserLogoff_tab);
+      break;
+
+    case "userLogoff":
+      let userLogoff_tab = await openTabNextToCurrent('./log.html?func=userLogoff')
+      console.log(userLogoff_tab);
+      break;
+      
     case "masterAdmin":
       let createMasterAdmin_tab = await openTabNextToCurrent('./log.html?func=createMasterAdmin')
       console.log(createMasterAdmin_tab);
@@ -131,15 +152,31 @@ async function testRequest(request) {
       let exportPrompts_tab = await openTabNextToCurrent('./log.html?func=exportPrompts')
       console.log(exportPrompts_tab);
       break;
+    
+    case "exportGroups":
+        let exportGroups_tab = await openTabNextToCurrent('./log.html?func=exportGroups')
+        console.log(exportGroups_tab);
+        break;
+        
+    case "exportGroupUsers":
+        let exportGroupUsers_tab = await openTabNextToCurrent('./log.html?func=exportGroupUsers')
+        console.log(exportGroupUsers_tab);
+        break;
 
     case "exportAll":
       let exportAll_tab = await openTabNextToCurrent('./log.html?func=exportAll')
       console.log(exportAll_tab);
       break;
+  
+    case "printConversationData":
+      let printConversationData_tab = await openTabNextToCurrent(`./log.html?func=printConversationData&id=${request[1]}`)
+      console.log(printConversationData_tab);
+      break;
       
     case "exportToCSV":
       tableToCSV();
       break;
+    
     
     case "disco":
       let discoInteractions_tab = await openTabNextToCurrent('./log.html?func=disco')

@@ -1,5 +1,5 @@
-import { getAuthInfo } from "./utils.js";
 
+import * as utils from './utils.js';
 
 export async function tableToCSV() {
 
@@ -19,7 +19,9 @@ export async function tableToCSV() {
 
             // Get the text data of each cell
             // of a row and push it to csvrow
-            csvrow.push((cols[j].innerHTML).replaceAll('<br>','|',));
+            let columnData = (cols[j].innerHTML).replaceAll(",","");
+            columnData = (columnData).replaceAll('"','');
+            csvrow.push(columnData.replaceAll('<br>','|',));
         }
 
         // Combine each column value with comma
@@ -45,7 +47,7 @@ async function generateFileName(){
         var process = urlParams.get('func');
         console.log(process)        
     }
-    const data = await getAuthInfo();
+    const data = await utils.getAuthInfo();
     return [ data.orgName, process]
 
 }

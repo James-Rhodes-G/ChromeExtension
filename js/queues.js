@@ -1,10 +1,10 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, createRow, createRowWCheckbox, makeSelectAllListener} from "./utils.js";
 
+import * as utils from './utils.js';
 
 //// Get a list of queues
 export async function getQueues(pageSize=99, pageNumber=1) {
     const apiToCall = `/api/v2/routing/queues?pageSize=${pageSize}&pageNumber=${pageNumber}`;
-    const response = await getAPI(apiToCall);
+    const response = await utils.getAPI(apiToCall);
     return (response);
 }
 
@@ -15,10 +15,10 @@ async function queueDataToTable (data) {
     if (table === null ) {
         table = document.createElement("table");
         Object.assign(table, {id:"queue_export"});
-        createHeader(table,['queueName', 'division','memberCount', 'call_AlertTimeout','call_serviceLevel%', 'call_SLDuration_sec'])
+        utils.createHeader(table,['queueName', 'division','memberCount', 'call_AlertTimeout','call_serviceLevel%', 'call_SLDuration_sec'])
     };
     data['entities'].forEach(queue => {
-        createRow(table, [
+        utils.createRow(table, [
             queue.name,
             queue.division.name,
             queue.memberCount,
@@ -79,7 +79,7 @@ export async function getMembersOfQueue(queueName, queueId){
     //// Loop through pages and write them to a table on the log page
     do {
         const apiToCall = `/api/v2/routing/queues/${queueId}/members?expand=skills&pageNumber=${pageNumber}&pageSize=${pageSize}`
-        var response = await getAPI(apiToCall);
+        var response = await utils.getAPI(apiToCall);
         await queueMemberDataToTable(queueName, response); 
         pageNumber ++;
     }
@@ -99,10 +99,10 @@ async function queueMemberDataToTable(queueName, data){
         qh.innerText= queueName;
         table = document.createElement("table");
         Object.assign(table,{id:`queueMembers_${queueName}`});
-        createHeader(table,['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber']);
+        utils.createHeader(table,['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber']);
     };
     data['entities'].forEach(user => {
-        createRow(table, [
+        utils.createRow(table, [
             user.name,
             user.user.division.name,
             user.user.department,

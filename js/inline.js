@@ -5,10 +5,13 @@ import { createMasterAdmin, exportRoles, bulkAssignRoles } from "./roles.js";
 import { tableToCSV } from "./exportTable.js";
 import { exportQueues, exportQueueUsers } from "./queues.js";
 import { loadSchedules } from "./loadSchedules.js";
-import { exportSkills } from "./skills.js";
+import { exportSkills, bulkAssignSkills } from "./skills.js";
 import { exportPrompts } from "./prompts.js";
 import { exportAll } from "./bulkExport.js";
 import { disconnectInteractions } from "./disconnect.js";
+import { exportUserRoles, bulkSelectUserLogoff, userLogoff} from "./users.js";
+import { exportGroups, exportGroupUsers } from "./groups.js";
+import { printConversationData } from "./conversation.js";
 
 document.getElementById("exportButton").addEventListener('click', function () {
   tableToCSV();
@@ -70,6 +73,11 @@ document.getElementById("exportButton").addEventListener('click', function () {
         console.log('bulkAssignRoles');
         bulkAssignRoles();
         break;
+      
+      case 'bulkAssignSkills':
+        console.log("bulk assign skills");
+        bulkAssignSkills();
+        break;
         
       case 'exportAll':
         console.log('exportAll');
@@ -79,6 +87,11 @@ document.getElementById("exportButton").addEventListener('click', function () {
       case 'queueMemberList':
         console.log('queueMemberList');
         exportQueueUsers();
+        break;
+
+      case 'exportGroupUsers':
+        console.log('exportGroupUsers');
+        exportGroupUsers();
         break;
 
       case 'createMasterAdmin':
@@ -106,11 +119,36 @@ document.getElementById("exportButton").addEventListener('click', function () {
         exportPrompts();
         break;
 
+      case 'exportGroups':
+        console.log('exportGroups');
+        exportGroups();
+        break;
+
       case 'disco':
         console.log("disco interactions");
         disconnectInteractions();
         break;
       
+      case 'userRoles':
+        console.log("export user roles");
+        exportUserRoles();
+        break;
+
+      case 'bulkSelectUserLogoff':
+        console.log("bulk user logoff");
+        bulkSelectUserLogoff();
+        break;
+      
+      case 'userLogoff':
+        console.log("user logoff");
+        userLogoff();
+        break;
+
+      case 'printConversationData':
+        console.log("printing conversation data");
+        printConversationData(urlParams.get('id'));
+        break;
+
       default:
         console.log("no match");
 

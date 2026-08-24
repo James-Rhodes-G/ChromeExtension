@@ -142,6 +142,16 @@ export async function otherPostApi(urlToCall, inbody){
     return data;
 }
 
+export async function deleteAPI(urlToCall) {
+    console.log(`calling ${urlToCall}`);
+    const authData = await(getAuthInfo());
+    const apiUrl = `${authData.region}${urlToCall}`;
+    const response = await fetch(apiUrl,{
+        method: 'DELETE',
+        headers: {'Authorization' : `Bearer ${authData.pc_auth}`}
+    })
+    return await response;
+}
 
 export async function openTabNextToCurrent(url) {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true})
@@ -164,9 +174,9 @@ export async function getAuthInfo() {
 }
 
 //// Display a message to the user
-export function tempAlert(msg,duration){
+export function tempAlert(msg,duration,cx,cy){
     var el = document.createElement("div");
-    el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
+    el.setAttribute("style",`position:absolute;top:${cy}px;left:${cx}px;background-color:white;`);
     el.innerHTML = msg;
     setTimeout(function(){
         el.parentNode.removeChild(el);
@@ -190,7 +200,10 @@ export function createRow(table, rowColumns){
     const tableRow = table.insertRow();
     rowColumns.forEach( rowData => {
         const td = document.createElement("td");
-        td.innerHTML = rowData;
+        if (!rowData){
+            rowData='';
+        }
+        td.innerHTML = rowData.toString().replaceAll(",","");
         tableRow.appendChild(td);
     })
     table.appendChild(tableRow);
@@ -272,4 +285,89 @@ export async function makeSelectAllListener(){
             checkbox.checked = this.checked;
         }, this);
     });
+}
+
+//// make a boxes for bulk role and skill assignment
+export async function createBulkSelectBody(leftLabel, rightLabel){
+    const bodyDiv=document.createElement('div');
+    Object.assign(bodyDiv, {id:"bodyDiv", className:"bodyDiv"})
+    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:leftLabel}));
+    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'boxLables', innerText:rightLabel}));
+    bodyDiv.appendChild(Object.assign(document.createElement("div"), {id:'selectBox'}));
+    bodyDiv.appendChild( Object.assign(document.createElement("div"), {id:'displayBox'}));
+    document.getElementById('logOutput').appendChild(bodyDiv);
+    let footerDiv=document.getElementsByClassName("FooterContainer");
+    footerDiv[0].appendChild(Object.assign(document.createElement("button"), {id:'selectButton', innerText:"Done"}));
+}
+
+//// create the select box for each item in the above boxes
+export function createDropBoxSelectBox(dropBoxOptions, container) {
+    const dropBox = document.createElement('select');
+    dropBoxOptions.forEach(i => {
+        let dbOption = document.createElement('option');
+            dbOption.value = i.value;
+            dbOption.text = i.text;
+           dropBox.appendChild(dbOption);
+    });
+    container.appendChild(dropBox)
+    return container
+}
+
+////populate the above dropboxes
+//// Create the items to move between the selection boxes
+export function createBulkItemSelector(itemName, itemText, dropBoxOptions){
+    const itemSelector = document.createElement('div');
+    Object.assign(itemSelector, {id:'itemSelector', title: itemText });
+    itemSelector.appendChild(Object.assign(document.createElement('div'),{id:"selectText", innerText:itemName, title:itemText}));
+    let newDiv = Object.assign(document.createElement('div'),{id:"selectSecond", className:'smallbox'})
+    newDiv = createDropBoxSelectBox(dropBoxOptions, newDiv);
+    itemSelector.appendChild(newDiv);
+    let selectBox = document.getElementById('selectBox')
+    selectBox.appendChild(itemSelector);
+}
+
+//// listener to the above box allowing items to move between
+//// and making a drop down box appear when the items move to the right
+export async function addListenerToSelectItems(){
+    const rightSideBox = document.getElementById('displayBox');
+    const leftSideBox = document.getElementById('selectBox');
+    const selectItems=document.querySelectorAll('#selectText');
+    selectItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (event.target.parentNode.parentNode.id === "selectBox"){
+                //console.log(event)
+                rightSideBox.appendChild(event.target.parentNode);
+            } else {
+                leftSideBox.appendChild(event.target.parentNode);
+            }
+        });
+    }); 
+}
+
+//// returns selected items from above in and array of objects
+export function getSelectedRoles(){
+    let selectedRoles =[];
+    const updateItems = document.querySelectorAll('#displayBox>#itemSelector');
+    updateItems.forEach( item => {
+        //console.log(item.childNodes[1].childNodes[0].selectedOptions[0].innerText," : ",
+        //    item.childNodes[1].childNodes[0].selectedOptions[0].value)
+        selectedRoles.push({itemName:item.childNodes[0].innerText,
+            itemId:item.childNodes[0].title,
+            dropName:item.childNodes[1].childNodes[0].selectedOptions[0].innerText,
+            dropId:item.childNodes[1].childNodes[0].selectedOptions[0].value})
+        });
+    return selectedRoles;
+};
+//// alphabetical sorting 
+export async function alphaSortByName(resp){
+    resp.sort((a,b) => { 
+        if (a.name.toUpperCase() < b.name.toUpperCase()){
+            return -1;
+        }else if(a.name.toUpperCase() > b.name.toUpperCase()){
+            return 1;
+        }else{
+            return 0;
+        }
+    })
+    return resp;
 }
