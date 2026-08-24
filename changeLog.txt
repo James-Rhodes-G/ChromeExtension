@@ -1,3 +1,6 @@
+  ***** v0.0.0.6 *****
+ 1) 
+
   ***** v0.0.0.5 *****
  1) Made the Quick Nav Section stay open when the sidepanel opens
  2) Restored Disconnect functionality

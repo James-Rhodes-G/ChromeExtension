@@ -42,15 +42,17 @@ function getCheckBoxes(){
 }
 
 async function disconnectInteractions(){
-  let interactions = getCheckBoxes();
+  //let interactions = getCheckBoxes();
+  let iframe = Array.from(document.querySelectorAll('iframe')).find(el => el.title ==="Analytics UI")
+  let interactions = iframe.contentWindow.document.querySelectorAll('input[type="checkbox"]:checked')
     let conversationIds=[];
     interactions.forEach( interaction => {
-        let interactionId = interaction.offsetParent.className.slice(-36);
-        if(interactionId.includes('dt-row')){
+        if(interaction.className.includes('dt-row-select-all')){
           // eliminatates the Select All row
         }else{
+          let interactionId = interaction.parentNode.parentElement.slice(-36);
           console.log(interactionId);
-          conversationIds.push(interaction.offsetParent.className.slice(-36));
+          conversationIds.push(interactionId);
         }
       })
       //// Write to localstorage so we can reterive it from the log page
@@ -108,9 +110,9 @@ function observeNewElement(selector, callback) {
         const newElement = mutation.addedNodes[0];
         //console.log(newElement);
           try {
-            if (newElement.type == "checkbox") {
+            if (selector == "analytics") {
                 enableButton(newElement,'Disco');
-              } else if (newElement.id.includes("directory-people-index")){
+              } else if (selector == "people"){
                 enableButton(newElement, 'Logoff');
               }
             } catch {
@@ -149,7 +151,7 @@ function classifyURL(tab){
   console.log('analytics listener loaded');
   const tab = window.location.href;
   let pageClassification = classifyURL(tab);
-  //console.log(pageClassification,tab);
+  console.log(pageClassification,tab);
   switch(pageClassification) {
     case 'analytics':
       console.log(pageClassification);
