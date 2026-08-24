@@ -1,0 +1,13 @@
+import { JSX } from '../../../stencil-public-runtime';
+import { GuxButtonAccent } from '../gux-button/gux-button.types';
+/**
+ * @slot - button, input[type="button"] or input[type="submit"] element
+ */
+export declare class GuxButtonSlot {
+    root: HTMLElement;
+    accent: GuxButtonAccent;
+    iconOnly: boolean;
+    private validateSlotContent;
+    componentWillLoad(): void;
+    render(): JSX.Element;
+}

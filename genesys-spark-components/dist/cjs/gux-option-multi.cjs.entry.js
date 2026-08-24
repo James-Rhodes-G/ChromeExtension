@@ -1,0 +1,85 @@
+'use strict';
+
+var index = require('./index-BLhHoh_r.js');
+var getClosestElement = require('./get-closest-element-CfyZl7i7.js');
+var randomHtmlId = require('./random-html-id-DH9-ntZu.js');
+var index$1 = require('./index-QInGO-Pu.js');
+var hasSlot = require('./has-slot-BFTyqu_U.js');
+
+const removeCustomElementInstructions = ", unselecting this custom option will remove it from the list";
+var translationResources = {
+	removeCustomElementInstructions: removeCustomElementInstructions
+};
+
+const guxOptionMultiCss = ":host{box-sizing:border-box;display:flex;flex-direction:row;flex-wrap:nowrap;gap:var(--gse-ui-menu-option-gap);align-content:stretch;align-items:center;min-block-size:var(--gse-ui-menu-option-height);padding:var(--gse-ui-menu-option-padding);font-family:var(--gse-ui-menu-option-label-default-text-fontFamily);font-size:var(--gse-ui-menu-option-label-default-text-fontSize);font-weight:var(--gse-ui-menu-option-label-default-text-fontWeight);line-height:var(--gse-ui-menu-option-label-default-text-lineHeight);color:var(--gse-ui-menu-option-label-foregroundColor);word-wrap:break-word;cursor:pointer}:host .gux-option-wrapper{inline-size:100%;min-inline-size:0}:host .gux-checkbox-container{position:relative;display:inline-block;min-inline-size:var(--gse-ui-menu-option-startIcon-width);max-inline-size:var(--gse-ui-menu-option-startIcon-width);block-size:var(--gse-ui-menu-option-startIcon-height);content:\"\"}:host .gux-checkbox-container>path{fill:var(--gse-ui-menu-option-checkbox-unchecked-default-foregroundColor)}:host:host(.gux-disabled){opacity:var(--gse-ui-menu-option-disabled-opacity);pointer-events:none;cursor:default}:host:host(:active:not(:disabled)){font-family:var(--gse-ui-menu-option-label-active-text-fontFamily);font-size:var(--gse-ui-menu-option-label-active-text-fontSize);font-weight:var(--gse-ui-menu-option-label-active-text-fontWeight);line-height:var(--gse-ui-menu-option-label-active-text-lineHeight)}:host:host(.gux-selected){font-family:var(--gse-ui-menu-option-label-active-text-fontFamily);font-size:var(--gse-ui-menu-option-label-active-text-fontSize);font-weight:var(--gse-ui-menu-option-label-active-text-fontWeight);line-height:var(--gse-ui-menu-option-label-active-text-lineHeight);background-color:var(--gse-ui-menu-option-selected-backgroundColor)}:host:host(.gux-selected) .gux-checkbox-container>path{fill:var(--gse-ui-menu-option-checkbox-checked-default-foregroundColor)}:host:host(.gux-active){outline:var(--gse-ui-menu-option-focus-border-width) var(--gse-ui-menu-option-focus-border-style) var(--gse-ui-menu-option-focus-border-color);outline-offset:-2px;border-radius:var(--gse-semantic-focusOutline-sm-borderRadius)}:host:host(.gux-show-subtext){place-content:stretch flex-start;block-size:auto}:host:host(.gux-show-subtext) .gux-option-wrapper{display:flex;flex-direction:column}:host:host(.gux-show-subtext) slot[name=subtext]::slotted(*){font-weight:var(--gse-ui-menu-option-label-default-text-fontWeight);color:var(--gse-ui-menu-groupedMenu-subtext-foregroundColor)}:host:host(:hover:not([disabled])){background-color:var(--gse-ui-menu-option-hover-backgroundColor)}:host:host(:hover:not([disabled])):host(.gux-selected) .gux-checkbox-container>path{fill:var(--gse-ui-menu-option-checkbox-checked-hover-foregroundColor)}:host:host(:hover:not([disabled])):host(:not(.gux-selected)) .gux-checkbox-container>path{fill:var(--gse-ui-menu-option-checkbox-unchecked-hover-foregroundColor)}:host:host(.gux-filtered){display:none}:host .gux-screenreader{position:absolute;top:auto;left:-10000px;width:1px;height:1px;overflow:hidden}";
+
+const GuxOptionMulti = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.guxremovecustomoption = index.createEvent(this, "guxremovecustomoption", 7);
+        this.internalselectcustomoption = index.createEvent(this, "internalselectcustomoption", 7);
+        this.active = false;
+        this.selected = false;
+        this.disabled = false;
+        this.filtered = false;
+        this.custom = false;
+        this.hasSubtext = false;
+    }
+    emitRemoveCustomOption() {
+        if (!this.selected && this.custom) {
+            this.guxremovecustomoption.emit();
+        }
+    }
+    handleActive(active) {
+        var _a, _b;
+        if (active) {
+            void ((_a = this.truncateElement) === null || _a === void 0 ? void 0 : _a.setShowTooltip());
+        }
+        else {
+            void ((_b = this.truncateElement) === null || _b === void 0 ? void 0 : _b.setHideTooltip());
+        }
+    }
+    async componentWillLoad() {
+        this.i18n = await index$1.buildI18nForComponent(this.root, translationResources);
+        this.root.id = this.root.id || randomHtmlId.randomHTMLId('gux-option-multi');
+        if (this.custom) {
+            this.internalselectcustomoption.emit(this.value);
+        }
+        this.onSubtextChange();
+    }
+    onSubtextChange() {
+        this.hasSubtext = hasSlot.hasSlot(this.root, 'subtext');
+    }
+    hasDisabledParent() {
+        const parentListbox = getClosestElement.getClosestElement('gux-listbox-multi', this.root);
+        return parentListbox === null || parentListbox === void 0 ? void 0 : parentListbox.disabled;
+    }
+    // SVGs must be in DOM for tokenization to work
+    renderSVGCheckbox() {
+        return this.selected
+            ? (index.h("svg", { class: "gux-checkbox-container", xmlns: "http://www.w3.org/2000/svg", viewBox: "1 1 13 13" }, index.h("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M4 1H11C11.7956 1 12.5587 1.31607 13.1213 1.87868C13.6839 2.44129 14 3.20435 14 4V11C14 11.7956 13.6839 12.5587 13.1213 13.1213C12.5587 13.6839 11.7956 14 11 14H4C3.20435 14 2.44129 13.6839 1.87868 13.1213C1.31607 12.5587 1 11.7956 1 11V4C1 3.20435 1.31607 2.44129 1.87868 1.87868C2.44129 1.31607 3.20435 1 4 1ZM5.57018 10.4198C5.7051 10.5547 5.87599 10.6177 6.04689 10.6177C6.22678 10.6177 6.39767 10.5457 6.52359 10.4198L11.7944 5.14905C12.0552 4.88821 12.0552 4.45647 11.7944 4.19563C11.5335 3.93479 11.1018 3.93479 10.841 4.19563L6.04689 8.9897L4.14905 7.08286C3.88821 6.82202 3.45647 6.82202 3.19563 7.08286C2.93479 7.3437 2.93479 7.77544 3.19563 8.03628L5.57018 10.4198Z" })))
+            : (index.h("svg", { class: "gux-checkbox-container", xmlns: "http://www.w3.org/2000/svg", viewBox: "1 1 13 13" }, index.h("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M11 2.5H4C3.17157 2.5 2.5 3.17157 2.5 4V11C2.5 11.8284 3.17157 12.5 4 12.5H11C11.8284 12.5 12.5 11.8284 12.5 11V4C12.5 3.17157 11.8284 2.5 11 2.5ZM4 1C2.34315 1 1 2.34315 1 4V11C1 12.6569 2.34315 14 4 14H11C12.6569 14 14 12.6569 14 11V4C14 2.34315 12.6569 1 11 1H4Z" })));
+    }
+    renderCustomOptionInstructions() {
+        if (this.custom) {
+            return (index.h("span", { class: "gux-screenreader" }, this.i18n('removeCustomElementInstructions')));
+        }
+    }
+    render() {
+        return (index.h(index.Host, { key: '2325e784623a05a6198fbc59ce712d6873392a2e', role: "option", class: {
+                'gux-active': this.active,
+                'gux-disabled': this.disabled || this.hasDisabledParent(),
+                'gux-filtered': this.filtered,
+                'gux-selected': this.selected,
+                'gux-show-subtext': this.hasSubtext
+            }, "aria-selected": this.selected.toString(), "aria-disabled": this.disabled.toString() }, this.renderSVGCheckbox(), index.h("div", { key: 'c9ad4deb95e260d63d0e374ce65b3ef0b6f4431b', class: "gux-option-wrapper" }, index.h("gux-truncate", { key: 'b53c8fd041a7571a76febd5a854c259ae393ebe4', "tooltip-placement": "right", ref: el => (this.truncateElement = el) }, index.h("slot", { key: '268f2160228d379739fcbe337daeb9c58fd757b6' })), index.h("slot", { key: '902f3a78b3c378f000e2a6ad8a5406e1b54a5ecd', onSlotchange: () => this.onSubtextChange(), name: "subtext" })), this.renderCustomOptionInstructions()));
+    }
+    get root() { return index.getElement(this); }
+    static get watchers() { return {
+        "selected": ["emitRemoveCustomOption"],
+        "active": ["handleActive"]
+    }; }
+};
+GuxOptionMulti.style = guxOptionMultiCss;
+
+exports.gux_option_multi = GuxOptionMulti;

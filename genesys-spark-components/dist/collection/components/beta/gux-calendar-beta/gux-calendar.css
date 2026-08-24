@@ -1,0 +1,70 @@
+.gux-calendar-beta.gux-disabled {
+  pointer-events: none;
+  opacity: var(--gse-ui-calendarMenu-disabled-opacity);
+}
+
+.gux-calendar-beta {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--gse-ui-calendarMenu-month-defaultText-fontFamily);
+  font-size: var(--gse-ui-calendarMenu-month-defaultText-fontSize);
+  background: var(--gse-ui-calendarMenu-backgroundColor);
+  border-radius: 8px;
+  box-shadow: var(--gse-ui-calendarMenu-boxShadow);
+}
+.gux-calendar-beta .gux-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  block-size: var(--gse-ui-calendarMenu-month-single-header-height);
+  padding: var(--gse-ui-calendarMenu-header-padding);
+  font-style: normal;
+  font-weight: var(--gse-ui-calendarMenu-month-currentText-fontWeight);
+  color: var(--gse-ui-calendarMenu-header-foregroundColor);
+  text-align: center;
+  background-color: var(--gse-ui-calendarMenu-header-backgroundColor);
+  border-radius: var(--gse-ui-calendarMenu-single-header-borderRadius);
+}
+.gux-calendar-beta .gux-header .gux-header-month-and-year {
+  inline-size: var(--gse-ui-calendarMenu-month-single-header-textWidth);
+  font-family: var(--gse-ui-calendarMenu-month-headerText-fontFamily);
+  font-size: var(--gse-ui-calendarMenu-month-headerText-fontSize);
+  line-height: var(--gse-ui-calendarMenu-month-headerText-lineHeight);
+  color: var(--gse-ui-calendarMenu-month-selected-foregroundColor);
+}
+.gux-calendar-beta .gux-header .gux-left,
+.gux-calendar-beta .gux-header .gux-right {
+  block-size: 100%;
+  color: var(--gse-ui-calendarMenu-header-foregroundColor);
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
+}
+.gux-calendar-beta .gux-header .gux-left:focus-visible,
+.gux-calendar-beta .gux-header .gux-right:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+.gux-calendar-beta .gux-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gse-ui-calendarMenu-dateBody-gap);
+  padding: var(--gse-ui-calendarMenu-dateBody-padding);
+  color: var(--gse-ui-calendarMenu-date-default-foregroundColor);
+  background-color: var(--gse-ui-calendarMenu-backgroundColor);
+  border-radius: var(--gse-ui-calendarMenu-single-body-borderRadius);
+}
+.gux-calendar-beta .gux-week-days {
+  font-family: var(--gse-ui-calendarMenu-day-headerText-fontFamily);
+  font-size: var(--gse-ui-calendarMenu-day-headerText-fontSize);
+  font-weight: var(--gse-ui-calendarMenu-day-headerText-fontWeight);
+  color: var(--gse-ui-calendarMenu-month-default-foregroundColor);
+  text-align: center;
+}
+.gux-calendar-beta .gux-week-days .gux-week-day {
+  display: inline-block;
+  inline-size: var(--gse-ui-calendarMenu-day-range-height);
+  block-size: var(--gse-ui-calendarMenu-day-range-width);
+}

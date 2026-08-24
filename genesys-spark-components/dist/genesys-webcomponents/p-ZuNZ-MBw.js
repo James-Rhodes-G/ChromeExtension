@@ -1,0 +1,1 @@
+function e(){return!!document.cookie.split("; ").find((e=>e.startsWith("spark-enable-regional-dates")))||!!window.GUX_OPTIONS_enableRegionalDates}export{e as u}

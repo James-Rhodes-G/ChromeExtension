@@ -1,0 +1,29 @@
+.gux-container {
+  inline-size: 320px;
+  min-inline-size: 320px;
+  padding: var(--gse-ui-dataTableItems-editColumn-editColumnContent-padding);
+}
+.gux-container .gux-search gux-content-search {
+  inline-size: 100%;
+}
+.gux-container .gux-search gux-content-search input[type=search]::-webkit-search-decoration,
+.gux-container .gux-search gux-content-search input[type=search]::-webkit-search-cancel-button,
+.gux-container .gux-search gux-content-search input[type=search]::-webkit-search-results-button,
+.gux-container .gux-search gux-content-search input[type=search]::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
+}
+.gux-container .gux-select {
+  padding: var(--gse-ui-dataTableItems-editColumn-editColumnContent-padding);
+  margin-inline-start: 24px;
+}
+
+.gux-sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}

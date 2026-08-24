@@ -1,0 +1,68 @@
+:host {
+  display: inline-block;
+  block-size: fit-content;
+  border-radius: var(--gse-ui-badge-borderRadius);
+}
+
+.gux-badge {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gse-ui-badge-gap);
+  align-items: center;
+  justify-content: center;
+  block-size: var(--gse-ui-badge-height);
+  padding: var(--gse-ui-badge-padding);
+  font-family: var(--gse-ui-badge-text-fontFamily);
+  font-size: var(--gse-ui-badge-text-fontSize);
+  font-weight: var(--gse-ui-badge-text-fontWeight);
+  line-height: var(--gse-ui-badge-text-lineHeight);
+  border-radius: var(--gse-ui-badge-borderRadius);
+}
+.gux-badge gux-tooltip-title {
+  white-space: nowrap;
+}
+.gux-badge .gux-sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+.gux-badge.gux-info {
+  color: var(--gse-ui-badge-info-regular-foregroundColor);
+  background-color: var(--gse-ui-badge-info-regular-backgroundColor);
+}
+.gux-badge.gux-info.gux-bold {
+  color: var(--gse-ui-badge-info-bold-foregroundColor);
+  background-color: var(--gse-ui-badge-info-bold-backgroundColor);
+}
+.gux-badge.gux-error {
+  color: var(--gse-ui-badge-error-regular-foregroundColor);
+  background-color: var(--gse-ui-badge-error-regular-backgroundColor);
+}
+.gux-badge.gux-error.gux-bold {
+  color: var(--gse-ui-badge-error-bold-foregroundColor);
+  background-color: var(--gse-ui-badge-error-bold-backgroundColor);
+}
+.gux-badge.gux-warning {
+  color: var(--gse-ui-badge-warning-regular-foregroundColor);
+  background-color: var(--gse-ui-badge-warning-regular-backgroundColor);
+}
+.gux-badge.gux-warning.gux-bold {
+  color: var(--gse-ui-badge-warning-bold-foregroundColor);
+  background-color: var(--gse-ui-badge-warning-bold-backgroundColor);
+}
+.gux-badge.gux-success {
+  color: var(--gse-ui-badge-success-regular-foregroundColor);
+  background-color: var(--gse-ui-badge-success-regular-backgroundColor);
+}
+.gux-badge.gux-success.gux-bold {
+  color: var(--gse-ui-badge-success-bold-foregroundColor);
+  background-color: var(--gse-ui-badge-success-bold-backgroundColor);
+}
+.gux-badge.gux-inherit {
+  color: inherit;
+  background-color: inherit;
+}

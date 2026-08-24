@@ -1,0 +1,170 @@
+:host {
+  box-sizing: border-box;
+  color: var(--gse-ui-formControl-input-populatedColor);
+}
+
+.gux-dropdown-container {
+  position: relative;
+}
+
+.gux-error.gux-target-container-collapsed .gux-field-button, .gux-error.gux-target-container-expanded {
+  border: var(--gse-ui-formControl-input-error-border-width) var(--gse-ui-formControl-input-error-border-style) var(--gse-ui-formControl-input-error-border-color);
+}
+
+.gux-disabled.gux-target-container-collapsed .gux-field-button, .gux-disabled.gux-target-container-expanded {
+  user-select: none;
+  border: var(--gse-ui-formControl-input-disabled-border-width) var(--gse-ui-formControl-input-disabled-border-style) var(--gse-ui-formControl-input-disabled-border-color);
+}
+
+.gux-field,
+.gux-target-container-expanded {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch center;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--gse-ui-formControl-input-textfield-height);
+  font-family: var(--gse-ui-formControl-input-contentText-fontFamily);
+  font-size: var(--gse-ui-formControl-input-contentText-fontSize);
+  font-weight: var(--gse-ui-formControl-input-contentText-fontWeight);
+  line-height: var(--gse-ui-formControl-input-contentText-lineHeight);
+  cursor: pointer;
+  background-color: var(--gse-ui-formControl-input-backgroundColor);
+}
+
+.gux-target-container-expanded,
+.gux-target-container-collapsed .gux-field {
+  padding: var(--gse-ui-formControl-input-padding);
+}
+
+.gux-target-container-collapsed .gux-field-button:hover,
+.gux-target-container-expanded:hover {
+  border: var(--gse-ui-formControl-input-hover-border-width) var(--gse-ui-formControl-input-hover-border-style) var(--gse-ui-formControl-input-hover-border-color);
+}
+
+.gux-field.gux-input-field {
+  block-size: var(--gse-ui-formControl-input-contentText-lineHeight);
+}
+.gux-field .gux-field-content {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  min-inline-size: 0;
+  block-size: var(--gse-ui-formControl-input-contentText-lineHeight);
+}
+.gux-field .gux-field-content .gux-filter,
+.gux-field .gux-field-content .gux-selected-option,
+.gux-field .gux-field-content .gux-placeholder {
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gux-field .gux-field-content .gux-filter .gux-sr-only:not(:focus):not(:active),
+.gux-field .gux-field-content .gux-selected-option .gux-sr-only:not(:focus):not(:active),
+.gux-field .gux-field-content .gux-placeholder .gux-sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+.gux-field .gux-field-content .gux-filter {
+  position: relative;
+  block-size: 100%;
+  padding-inline-start: 0;
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-input {
+  all: unset;
+  inline-size: 100%;
+  color: transparent;
+  caret-color: var(--gse-ui-formControl-input-populatedColor);
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-display {
+  white-space: pre;
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-display .gux-filter-text {
+  color: var(--gse-ui-formControl-input-populatedColor);
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-display .gux-filter-suggestion {
+  color: var(--gse-ui-formControl-input-suggestionColor);
+}
+.gux-field .gux-field-content .gux-filter .gux-filter-input,
+.gux-field .gux-field-content .gux-filter .gux-filter-display {
+  position: absolute;
+}
+.gux-field .gux-field-content .gux-placeholder {
+  color: var(--gse-ui-formControl-input-placeholderColor);
+}
+.gux-field .gux-expand-icon {
+  flex: 0 0 auto;
+  align-self: auto;
+  order: 0;
+  padding-inline-start: var(--gse-ui-dropdown-gap);
+  color: var(--gse-ui-formControl-input-inputIcon-iconEndColor);
+}
+
+.gux-target-container-expanded {
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+.gux-target-container-expanded:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+.gux-target-container-expanded:focus-within:has(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+.gux-target-container-expanded .gux-filter-input {
+  background-color: inherit;
+  border: none;
+}
+.gux-target-container-expanded .gux-filter-input:focus {
+  outline: none;
+  border: none;
+}
+.gux-target-container-expanded .gux-field-button {
+  inline-size: auto;
+  block-size: var(--gse-ui-formControl-input-contentText-lineHeight);
+  margin: 0;
+  outline: none;
+  background: inherit;
+  border: none;
+  box-shadow: none;
+}
+.gux-target-container-expanded .gux-field-button:focus {
+  outline: none;
+}
+
+.gux-target-container-collapsed .gux-field-button {
+  border: var(--gse-ui-formControl-input-default-border-width) var(--gse-ui-formControl-input-default-border-style) var(--gse-ui-formControl-input-default-border-color);
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+.gux-target-container-collapsed .gux-field-button:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+.gux-target-container-collapsed .gux-field-button:focus-within:has(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+
+.gux-listbox-container {
+  box-sizing: border-box;
+  margin: 0;
+}

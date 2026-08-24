@@ -8,13 +8,14 @@ document.getElementById("export").addEventListener('click', function () {
 })
 
 // Get the button:
+console.log('button listener');
 let floatButtons = document.querySelectorAll("#floatBtn");
 floatButtons.forEach(button => {
   button.addEventListener('click', function (event) {
     if (event.target.className == 'top'){
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      document.body.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }else {
-      document.documentElement.scrollTop = document.documentElement.scrollHeight;
+      document.body.scrollTop = document.body.scrollHeight;
     }
     
   });
@@ -22,9 +23,12 @@ floatButtons.forEach(button => {
 
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+console.log('scroll listener');
+//window.onscroll = function() {scrollFunction()};
+document.body.addEventListener('scroll', () => {scrollFunction()} )
 
 function scrollFunction() {
+  //console.log(document.body.scrollTop);
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     floatButtons.forEach(button => {
       button.style.display = "block";
@@ -124,7 +128,6 @@ function scrollFunction() {
         module.exportGroupUsers();
         break;
 
-
       case 'createMasterAdmin':
         console.log('createMasterAdmin');
         var module = await import ('./roles.js');
@@ -207,6 +210,12 @@ function scrollFunction() {
         console.log('dropTesting');
         var module = await import ('./dropTest.js');
         module.dropTest (urlParams);
+        break;
+      
+      case 'flowExecution':
+        console.log('flowExecution');
+        var module = await import ('./flowExecution.js');
+        module.flowExecution (urlParams);
         break;
 
       // SEE NOTES IN accelerator.js  

@@ -1,0 +1,43 @@
+'use strict';
+
+var index = require('./index-BLhHoh_r.js');
+var usage = require('./usage-v50bi18B.js');
+var logError = require('./log-error-nWO_o1C3.js');
+
+const guxButtonSlotCss = ":host{display:inline-block;pointer-events:none}::slotted(input[type=button]),::slotted(input[type=submit]),::slotted(button){font-family:var(--gse-ui-button-text-fontFamily);font-size:var(--gse-ui-button-text-fontSize);font-weight:var(--gse-ui-button-text-fontWeight);line-height:var(--gse-ui-button-text-lineHeight);inline-size:100%;min-inline-size:var(--gse-ui-button-iconOnly-width);block-size:var(--gse-ui-button-default-height);padding:var(--gse-ui-button-default-padding);overflow:hidden;text-overflow:ellipsis;color:var(--gse-ui-button-secondary-default-foregroundColor);white-space:nowrap;pointer-events:auto;cursor:pointer;background-color:var(--gse-ui-button-secondary-default-backgroundColor);border:none;border-radius:var(--gse-ui-button-borderRadius)}:host([icon-only]) ::slotted(input[type=button]),:host([icon-only]) ::slotted(input[type=submit]),:host([icon-only]) ::slotted(button){padding:var(--gse-ui-button-default-paddingIconOnly)}::slotted(input[type=button][disabled]),::slotted(input[type=submit][disabled]),::slotted(button[disabled]){cursor:default;opacity:var(--gse-ui-button-disabled-opacity)}::slotted(input[type=button]:focus),::slotted(input[type=submit]:focus),::slotted(button:focus){outline:none}::slotted(input[type=button]:focus-visible:enabled),::slotted(input[type=submit]:focus-visible:enabled),::slotted(button:focus-visible:enabled){outline:var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);outline-offset:var(--gse-semantic-focusOutline-offset)}::slotted(input[type=button]:hover:enabled),::slotted(input[type=submit]:hover:enabled),::slotted(button:hover:enabled){color:var(--gse-ui-button-secondary-hover-foregroundColor);background-color:var(--gse-ui-button-secondary-hover-backgroundColor)}::slotted(input[type=button]:active:enabled),::slotted(input[type=submit]:active:enabled),::slotted(button:active:enabled){color:var(--gse-ui-button-secondary-active-foregroundColor);background-color:var(--gse-ui-button-secondary-active-backgroundColor)}:host([accent=primary]) ::slotted(input[type=button]),:host([accent=primary]) ::slotted(input[type=submit]),:host([accent=primary]) ::slotted(button){color:var(--gse-ui-button-primary-default-foregroundColor);background-color:var(--gse-ui-button-primary-default-backgroundColor)}:host([accent=primary]) ::slotted(input[type=button]:hover:enabled),:host([accent=primary]) ::slotted(input[type=submit]:hover:enabled),:host([accent=primary]) ::slotted(button:hover:enabled){color:var(--gse-ui-button-primary-hover-foregroundColor);background-color:var(--gse-ui-button-primary-hover-backgroundColor)}:host([accent=primary]) ::slotted(input[type=button]:active:enabled),:host([accent=primary]) ::slotted(input[type=submit]:active:enabled),:host([accent=primary]) ::slotted(button:active:enabled){color:var(--gse-ui-button-primary-active-foregroundColor);background-color:var(--gse-ui-button-primary-active-backgroundColor)}:host([accent=tertiary]) ::slotted(input[type=button]),:host([accent=tertiary]) ::slotted(input[type=submit]),:host([accent=tertiary]) ::slotted(button){color:var(--gse-ui-button-tertiary-default-foregroundColor);background-color:var(--gse-ui-button-tertiary-default-backgroundColor);border-color:var(--gse-ui-button-tertiary-default-border-color);border-style:var(--gse-ui-button-tertiary-default-border-style);border-width:var(--gse-ui-button-tertiary-default-border-width)}:host([accent=tertiary]) ::slotted(input[type=button]:hover:enabled),:host([accent=tertiary]) ::slotted(input[type=submit]:hover:enabled),:host([accent=tertiary]) ::slotted(button:hover:enabled){color:var(--gse-ui-button-tertiary-hover-foregroundColor);background-color:var(--gse-ui-button-tertiary-hover-backgroundColor)}:host([accent=tertiary]) ::slotted(input[type=button]:active:enabled),:host([accent=tertiary]) ::slotted(input[type=submit]:active:enabled),:host([accent=tertiary]) ::slotted(button:active:enabled){color:var(--gse-ui-button-tertiary-active-foregroundColor);background-color:var(--gse-ui-button-tertiary-active-backgroundColor)}:host([accent=ghost]) ::slotted(input[type=button]),:host([accent=ghost]) ::slotted(input[type=submit]),:host([accent=ghost]) ::slotted(button){color:var(--gse-ui-button-ghost-default-foregroundColor);background-color:var(--gse-ui-button-ghost-default-backgroundColor)}:host([accent=ghost]) ::slotted(input[type=button]:hover:enabled),:host([accent=ghost]) ::slotted(input[type=submit]:hover:enabled),:host([accent=ghost]) ::slotted(button:hover:enabled){color:var(--gse-ui-button-ghost-hover-foregroundColor);background-color:var(--gse-ui-button-ghost-hover-backgroundColor)}:host([accent=ghost]) ::slotted(input[type=button]:active:enabled),:host([accent=ghost]) ::slotted(input[type=submit]:active:enabled),:host([accent=ghost]) ::slotted(button:active:enabled){color:var(--gse-ui-button-ghost-active-foregroundColor);background-color:var(--gse-ui-button-ghost-active-backgroundColor)}:host([accent=danger]) ::slotted(input[type=button]),:host([accent=danger]) ::slotted(input[type=submit]),:host([accent=danger]) ::slotted(button){color:var(--gse-ui-button-danger-default-foregroundColor);background-color:var(--gse-ui-button-danger-default-backgroundColor)}:host([accent=danger]) ::slotted(input[type=button]:hover:enabled),:host([accent=danger]) ::slotted(input[type=submit]:hover:enabled),:host([accent=danger]) ::slotted(button:hover:enabled){color:var(--gse-ui-button-danger-hover-foregroundColor);background-color:var(--gse-ui-button-danger-hover-backgroundColor)}:host([accent=danger]) ::slotted(input[type=button]:active:enabled),:host([accent=danger]) ::slotted(input[type=submit]:active:enabled),:host([accent=danger]) ::slotted(button:active:enabled){color:var(--gse-ui-button-danger-active-foregroundColor);background-color:var(--gse-ui-button-danger-active-backgroundColor)}:host([accent=inline]){min-inline-size:initial}:host([accent=inline]) ::slotted(input[type=button]),:host([accent=inline]) ::slotted(input[type=submit]),:host([accent=inline]) ::slotted(button){block-size:initial;padding:0;color:var(--gse-ui-links-default-foregroundColor);background:none;border:none}:host([accent=inline]) ::slotted(input[type=button][disabled]),:host([accent=inline]) ::slotted(input[type=submit][disabled]),:host([accent=inline]) ::slotted(button[disabled]){color:var(--gse-ui-links-disabled-foregroundColor)}:host([accent=inline]) ::slotted(input[type=button]:hover:enabled),:host([accent=inline]) ::slotted(input[type=submit]:hover:enabled),:host([accent=inline]) ::slotted(button:hover:enabled){color:var(--gse-ui-links-hover-foregroundColor);text-decoration:underline;background:none}:host([accent=inline]) ::slotted(input[type=button]:active:enabled),:host([accent=inline]) ::slotted(input[type=submit]:active:enabled),:host([accent=inline]) ::slotted(button:active:enabled){color:var(--gse-ui-links-active-foregroundColor);text-decoration:underline;background:none}";
+
+const GuxButtonSlot = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.accent = 'secondary';
+    }
+    validateSlotContent() {
+        let slottedElement = this.root.children[0];
+        let slottedTagName = slottedElement.tagName;
+        if (slottedTagName === 'SLOT') {
+            slottedElement = slottedElement.assignedNodes()[0];
+            slottedTagName = slottedElement.tagName;
+        }
+        if (slottedTagName === 'BUTTON') {
+            return;
+        }
+        else if (slottedTagName === 'INPUT') {
+            const slottedType = slottedElement.getAttribute('type');
+            if (slottedType === 'button' || slottedType === 'submit') {
+                return;
+            }
+        }
+        logError.logError(this.root, 'You must slot a button, input[type="button"] or input[type="submit"] element.');
+    }
+    componentWillLoad() {
+        usage.trackComponent(this.root);
+        this.validateSlotContent();
+    }
+    render() {
+        return (index.h(index.Host, { key: '2f0d21a41e3f692f1f5f64a096e69c2c39feac8f', accent: this.accent, "icon-only": this.iconOnly }, index.h("slot", { key: '1f7173b22404bc2e7e56cd25873dac40d1c803a6' })));
+    }
+    get root() { return index.getElement(this); }
+};
+GuxButtonSlot.style = guxButtonSlotCss;
+
+exports.gux_button_slot = GuxButtonSlot;

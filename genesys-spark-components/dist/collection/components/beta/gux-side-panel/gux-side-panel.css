@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  inline-size: fit-content;
+  block-size: 100%;
+}
+
+:host([size=large]) {
+  max-inline-size: 50%;
+}
+
+.gux-side-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  inline-size: calc(100vw - var(--gse-ui-sidePanel-shoud-minWidth));
+  block-size: inherit;
+  background-color: var(--gse-ui-sidePanel-backgroundColor);
+  box-shadow: var(--gse-ui-sidePanel-boxShadow);
+}
+.gux-side-panel.gux-side-panel-small {
+  max-inline-size: var(--gse-ui-sidePanel-widthSize-sm);
+}
+.gux-side-panel.gux-side-panel-medium {
+  max-inline-size: var(--gse-ui-sidePanel-widthSize-md);
+}
+.gux-side-panel.gux-side-panel-large {
+  max-inline-size: var(--gse-ui-sidePanel-widthSize-lg);
+}
+.gux-side-panel > header {
+  position: relative;
+  padding: var(--gse-ui-sidePanel-header-padding);
+  border-block-end: var(--gse-ui-sidePanel-divider-width) var(--gse-ui-sidePanel-divider-style) var(--gse-ui-sidePanel-divider-color);
+}
+.gux-side-panel .gux-side-panel-description {
+  margin: var(--gse-ui-sidePanel-description-padding) !important;
+}
+.gux-side-panel .gux-side-panel-content {
+  flex: 1 1 100%;
+  padding: var(--gse-ui-sidePanel-body-padding);
+  overflow-y: auto;
+  font-family: var(--gse-ui-sidePanel-description-text-fontFamily);
+  font-size: var(--gse-ui-sidePanel-description-text-fontSize);
+  font-weight: var(--gse-ui-sidePanel-description-text-fontWeight);
+  line-height: var(--gse-ui-sidePanel-description-text-lineHeight);
+  color: var(--gse-ui-sidePanel-descriptionColor);
+}
+.gux-side-panel > footer {
+  flex: 0 0 auto;
+  padding: var(--gse-ui-sidePanel-footer-padding);
+  border-block-start: var(--gse-ui-sidePanel-divider-width) var(--gse-ui-sidePanel-divider-style) var(--gse-ui-sidePanel-divider-color);
+}
+
+/* Take another look at this */
+.gux-side-panel-description ::slotted(*) {
+  margin: 0;
+  font-family: var(--gse-ui-sidePanel-description-text-fontFamily) !important;
+  font-size: var(--gse-ui-sidePanel-description-text-fontSize) !important;
+  font-weight: var(--gse-ui-sidePanel-description-text-fontWeight) !important;
+  line-height: var(--gse-ui-sidePanel-description-text-lineHeight) !important;
+  color: var(--gse-ui-sidePanel-descriptionColor) !important;
+}

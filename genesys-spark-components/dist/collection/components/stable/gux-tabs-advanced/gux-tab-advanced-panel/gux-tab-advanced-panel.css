@@ -1,0 +1,7 @@
+gux-tab-advanced-panel .gux-tabpanel:focus {
+  outline: none;
+}
+gux-tab-advanced-panel .gux-tabpanel:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}

@@ -1,0 +1,36 @@
+:host {
+  box-sizing: border-box;
+  display: block;
+  max-block-size: var(--gse-ui-menu-maxHeight);
+  padding: var(--gse-ui-menu-padding);
+  margin: 0;
+  overflow: visible auto;
+  outline: none;
+  background: var(--gse-ui-menu-backgroundColor);
+  border: var(--gse-ui-menu-border-width) var(--gse-ui-menu-border-style) var(--gse-ui-menu-border-color);
+  border-radius: var(--gse-ui-menu-borderRadius);
+}
+
+:host(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-ui-color-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+
+.gux-message-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  place-content: stretch center;
+  align-items: center;
+  text-align: center;
+}
+.gux-message-container .gux-no-matches {
+  box-sizing: border-box;
+  block-size: var(--gse-ui-menu-option-height);
+  padding-block: var(--gse-ui-dropdown-gap);
+  font-family: var(--gse-ui-menu-option-label-active-text-fontFamily);
+  font-size: var(--gse-ui-menu-option-label-active-text-fontSize);
+  font-weight: var(--gse-ui-menu-option-label-active-text-fontWeight);
+  line-height: var(--gse-ui-menu-option-label-active-text-lineHeight);
+  color: var(--gse-ui-menu-option-label-foregroundColor);
+}

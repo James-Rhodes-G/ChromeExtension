@@ -1,0 +1,29 @@
+:host {
+  display: inline-block;
+}
+
+div[role=progressbar] .gux-svg-container {
+  display: block;
+  inline-size: var(--gse-ui-progressAndLoading-spinner-large);
+  block-size: var(--gse-ui-progressAndLoading-spinner-large);
+}
+div[role=progressbar] .gux-svg-container .gux-dynamic-circle {
+  fill: none;
+  stroke: var(--gse-ui-progressAndLoading-spinner-foreground);
+  stroke-width: 4;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+div[role=progressbar] .gux-svg-container .gux-static-circle {
+  fill: none;
+  stroke: var(--gse-ui-progressAndLoading-spinner-base);
+  stroke-width: 4;
+}
+div[role=progressbar] .gux-svg-container .gux-percentage {
+  font-family: var(--gse-ui-progressAndLoading-spinner-text-fontFamily);
+  font-size: var(--gse-ui-progressAndLoading-spinner-text-fontSize);
+  font-weight: var(--gse-ui-progressAndLoading-spinner-text-fontWeight);
+  line-height: var(--gse-ui-progressAndLoading-spinner-text-lineHeight);
+  text-anchor: middle;
+  fill: var(--gse-ui-progressAndLoading-textColor);
+}

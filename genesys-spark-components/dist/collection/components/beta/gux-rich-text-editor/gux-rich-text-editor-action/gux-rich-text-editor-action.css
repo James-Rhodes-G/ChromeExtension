@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+gux-button-slot {
+  inline-size: var(--gse-ui-button-iconOnly-width);
+  block-size: var(--gse-ui-button-default-height);
+}
+gux-button-slot button.gux-is-pressed {
+  color: var(--gse-ui-button-ghost-active-foregroundColor);
+  background-color: var(--gse-ui-button-ghost-active-backgroundColor);
+}

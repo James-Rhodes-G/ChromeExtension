@@ -1,0 +1,16 @@
+:host {
+  block-size: calc(100% - var(--gse-ui-tabs-set-horizontal-height)var(--gse-ui-tabs-set-divider-horizontal-height)var(--gse-ui-tabs-set-horizontal-marginBottom));
+}
+
+:host(:not([hidden])) {
+  flex: 1 1 auto;
+}
+
+:host(:focus) {
+  outline: none;
+}
+
+:host(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}

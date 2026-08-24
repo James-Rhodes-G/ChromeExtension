@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.gux-cta-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-ctaGroup-gap);
+  justify-content: start;
+}
+.gux-cta-group.gux-end-align {
+  flex-direction: row-reverse;
+  justify-content: end;
+}
+.gux-cta-group ::slotted(gux-button) {
+  flex: 0 1 auto;
+  min-inline-size: 0;
+}

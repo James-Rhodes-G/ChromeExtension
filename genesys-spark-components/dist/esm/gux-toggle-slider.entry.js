@@ -1,0 +1,33 @@
+import { r as registerInstance, h } from './index-xFL2agjT.js';
+
+const guxToggleSliderCss = "gux-toggle-slider{display:flex;align-items:center;padding:2px;outline:none}gux-toggle-slider .gux-toggle-slider{position:relative;display:inline-block;flex:0 1 auto;align-self:auto;order:0;inline-size:var(--gse-ui-toggle-track-width);block-size:var(--gse-ui-toggle-track-height);cursor:pointer;border-radius:var(--gse-ui-toggle-track-borderRadius)}gux-toggle-slider .gux-toggle-slider.gux-error .gux-slider{background-color:var(--gse-ui-toggle-track-error-off-backgroundColor)}gux-toggle-slider .gux-toggle-slider.gux-error .gux-slider .gux-switch{border:var(--gse-ui-toggle-handle-error-border-width) var(--gse-ui-toggle-handle-error-border-style) var(--gse-ui-toggle-handle-error-border-color)}gux-toggle-slider .gux-toggle-slider.gux-error.gux-checked .gux-slider{background-color:var(--gse-ui-toggle-track-error-on-backgroundColor)}gux-toggle-slider .gux-toggle-slider.gux-disabled{pointer-events:none;cursor:default;background-color:var(--gse-ui-toggle-track-disabled-off-backgroundColor);opacity:var(--gse-ui-toggle-disabled-opacity)}gux-toggle-slider .gux-toggle-slider:focus-visible{outline:var(--gse-ui-toggle-focus-border-width) var(--gse-ui-toggle-focus-border-style) var(--gse-ui-toggle-focus-border-color);outline-offset:var(--gse-ui-toggle-focus-offset);border-radius:var(--gse-ui-toggle-focus-borderRadius)}gux-toggle-slider .gux-toggle-slider .gux-slider{position:absolute;inset:0;background-color:var(--gse-ui-toggle-track-enabled-off-backgroundColor);border-radius:calc(var(--gse-ui-toggle-track-height) / 2);transition:background-color 0.2s ease}gux-toggle-slider .gux-toggle-slider .gux-slider:hover{background-color:var(--gse-ui-toggle-track-hover-off-backgroundColor)}gux-toggle-slider .gux-toggle-slider .gux-slider .gux-switch{position:absolute;inset-block-end:calc((var(--gse-ui-toggle-track-height) - var(--gse-ui-toggle-handle-width)) / 2);inset-inline-start:calc((var(--gse-ui-toggle-track-height) - var(--gse-ui-toggle-handle-width)) / 2);inline-size:calc(var(--gse-ui-toggle-handle-width) - 4px);block-size:calc(var(--gse-ui-toggle-handle-height) - 4px);color:var(--gse-ui-toggle-handle-foregroundColor);content:\"\";background-color:var(--gse-ui-toggle-handle-backgroundColor);border:var(--gse-ui-toggle-handle-enabled-border-width) var(--gse-ui-toggle-handle-enabled-border-style) var(--gse-ui-toggle-handle-enabled-border-color);border-radius:var(--gse-ui-toggle-handle-borderRadius);transition:0.2s}gux-toggle-slider .gux-toggle-slider .gux-slider .gux-switch gux-icon{position:absolute;inset:0;inline-size:calc(var(--gse-ui-toggle-handle-width) - 6px);block-size:calc(var(--gse-ui-toggle-handle-width) - 6px);margin:auto;color:var(--gse-ui-toggle-handle-backgroundColor);transition:color 0.2s linear}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider{background-color:var(--gse-ui-toggle-track-enabled-on-backgroundColor)}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider.gux-disabled{background-color:var(--gse-ui-toggle-track-disabled-on-backgroundColor)}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider.gux-disabled .gux-switch{border:var(--gse-ui-toggle-handle-disabled-border-width) var(--gse-ui-toggle-handle-disabled-border-style) var(--gse-ui-toggle-handle-disabled-border-color)}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider:hover{background-color:var(--gse-ui-toggle-track-hover-on-backgroundColor)}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider:hover .gux-switch{border:var(--gse-ui-toggle-handle-hover-border-width) var(--gse-ui-toggle-handle-hover-border-style) var(--gse-ui-toggle-handle-hover-border-color)}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider .gux-switch{transform:translateX(calc(var(--gse-ui-toggle-track-width) - var(--gse-ui-toggle-track-height)))}gux-toggle-slider .gux-toggle-slider.gux-checked .gux-slider .gux-switch gux-icon{color:var(--gse-ui-toggle-handle-foregroundColor);opacity:1;transition:opacity 0.1s linear;transition-delay:0.1s}";
+
+const GuxToggleSlider = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.checked = false;
+        this.disabled = false;
+        this.guxAriaLabel = '';
+        this.labelId = '';
+        this.errorId = '';
+    }
+    componentDidLoad() {
+        var _a, _b;
+        (_a = this.checkboxElement) === null || _a === void 0 ? void 0 : _a.setAttribute('aria-label', this.guxAriaLabel);
+        if (this.errorId) {
+            (_b = this.checkboxElement) === null || _b === void 0 ? void 0 : _b.setAttribute('aria-describedby', this.errorId);
+        }
+    }
+    render() {
+        const isError = this.errorId.length > 0;
+        return (h("div", { key: '7e904fec179d33abf50e85c085f01804216b109f', class: {
+                'gux-toggle-slider': true,
+                'gux-checked': this.checked,
+                'gux-disabled': this.disabled,
+                'gux-error': isError
+            }, role: "checkbox", "aria-checked": this.checked.toString(), "aria-disabled": this.disabled.toString(), tabindex: this.disabled ? '' : '0', ref: el => (this.checkboxElement = el) }, h("div", { key: '39b8300d64847239ab4efb0e70e72ee3fc338c33', class: "gux-slider" }, h("div", { key: '4a5cfb7661b17e4c4e391f666eec375284437ca7', class: "gux-switch" }, !isError && (h("gux-icon", { key: '2abaa66145b5c7e8eb203b8f17c15fe9ba426f58', "icon-name": "fa/check-solid", decorative: true }))))));
+    }
+};
+GuxToggleSlider.style = guxToggleSliderCss;
+
+export { GuxToggleSlider as gux_toggle_slider };

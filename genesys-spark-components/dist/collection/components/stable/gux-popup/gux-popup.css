@@ -1,0 +1,26 @@
+.gux-target-container.gux-disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.gux-popup-container {
+  position: fixed;
+  z-index: var(--gse-semantic-zIndex-popup);
+  visibility: hidden;
+  inline-size: max-content;
+  background-color: var(--gse-ui-menu-backgroundColor);
+}
+.gux-popup-container.gux-expanded {
+  visibility: visible;
+}
+
+.gux-sr-only-clip:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}

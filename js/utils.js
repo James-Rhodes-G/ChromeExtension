@@ -1,58 +1,7 @@
+import { getDivisions } from "./roles.js";
 
 // Get using URL Endpoints NO SDK
 
-// export async function getAPI(urlToCall) {
-//     console.log(`calling ${urlToCall}`);
-//     const authData = await(getAuthInfo());
-//     const apiUrl = `${authData.region}${urlToCall}`;
-//     const data = await fetch(apiUrl,{
-//         method: 'GET',
-//         headers: {'Authorization' : `Bearer ${authData.pc_auth}`}
-//     })
-//     //return await data.json();
-//     .then(response => {
-//         if (response.status === 429) {
-//         // Handle the 429 error
-//         const retryAfter = response.headers.get('Retry-After');
-
-//         if (retryAfter) {
-//             // Retry the request after the specified time
-//             const retryTime = parseInt(retryAfter, 10) * 1000; // Convert to milliseconds
-//             console.log(`Retrying in ${retryTime}ms...`);
-
-//             return new Promise(resolve => setTimeout(() => {
-//                 resolve(fetch(apiUrl, {
-//                     method: 'GET',
-//                     headers: {
-//                         'Content-Type': 'application/json',
-//                         'Authorization' : `Bearer ${authData.pc_auth}`
-//                     },
-//                 }));
-//             }, retryTime));
-//         } else {
-//             // Handle the 429 error without a Retry-After header
-//             console.error('Too Many Requests. Retry-After header not found.');
-//             // You might want to implement a backoff strategy here
-//         }
-//         // } else if (!response.ok) {
-//         // // Handle other errors
-//         // throw new Error(`HTTP error! status: ${response.status}`);
-//         } else {
-//         return response.json();
-//         }
-//     })
-//     .then(data => {
-//         // Do something with the data
-//         console.log(data);
-//         return data;
-//     })
-//     .catch(error => {
-//         // Handle any errors that occurred during the fetch
-//         console.error('Fetch error:', error);
-//         return response;
-//     });
-//     return data;
-// }
 
 export async function getAPI(url, maxRetries = 3) {
     let retries = 0;
@@ -203,7 +152,7 @@ export async function otherPostApi(urlToCall, inbody){
     })
     .then(data => {
         // Do something with the data
-        //console.log(data);
+        console.log(data);
         return data;
     })
     .catch(error => {
@@ -256,19 +205,46 @@ export function tempAlert(msg,duration,cx,cy){
     document.body.appendChild(el);
 }
 
+//// Create GUX table
+export function createGuxTable(tableId){
+    let guxDiv = document.createElement("gux-table");
+    Object.assign(guxDiv, {'resizable-columns':'', compact:'true', 'empty-message':'--'});
+    guxDiv.setAttribute('resizable-columns','');
+    const table = document.createElement("table");
+    Object.assign(table, {slot:"data", id:tableId});
+    return [guxDiv,table];
+}
+
+//// Create GUX table with Selectable Rows
+export function createGuxTableWithSelect(tableId){
+    let guxDiv = document.createElement("gux-table");
+    Object.assign(guxDiv, {'resizable-columns':'', compact:'true', 'empty-message':'--', 'selectable-rows':'true'});
+    guxDiv.setAttribute('resizable-columns','');
+    const table = document.createElement("table");
+    Object.assign(table, {slot:"data", id:tableId});
+    return [guxDiv,table];
+}
+
 //// Create a header row for a table
 export function createHeader(table, headerColumns){
-    const headerRow = table.insertRow();
+    const tHead = table.createTHead();
+    const headerRow = tHead.insertRow();
     headerColumns.forEach( header => {
         const th = document.createElement("th");
+        Object.assign(th,{"data-column-name":"${header}"})
         th.textContent = header;
         headerRow.appendChild(th);
     })
-    table.appendChild(headerRow);
+    table.appendChild(tHead);
 };
 
 //// Create a row for a table
-export function createRow(table, rowColumns){
+export function createRow(tableIn, rowColumns){
+    if (tableIn.tBodies.length == 0){
+        var table = tableIn.createTBody();
+    }else{
+        var table = tableIn.tBodies[0];
+    }
     const tableRow = table.insertRow();
     rowColumns.forEach( rowData => {
         const td = document.createElement("td");
@@ -280,6 +256,42 @@ export function createRow(table, rowColumns){
     })
     table.appendChild(tableRow);
 }
+
+//// Create a row with a radio button
+export function createRowWRadio(tableIn, rowColumns, value, id=''){
+      if (tableIn.tBodies.length == 0){
+        var table = tableIn.createTBody();
+    }else{
+        var table = tableIn.tBodies[0];
+    }
+    const tableRow = table.insertRow();
+    const radioTD = document.createElement('td');
+    const rowRadio = document.createElement("gux-form-field-radio");
+    Object.assign(rowRadio, {"label-position":"screenreader"});
+    const rowRadioBtn = document.createElement('input');
+    Object.assign(rowRadioBtn, {id:"phoneSelect", name:"radio", type:"radio", slot:"input",value:value});
+    const rowRadioBtnLabel = document.createElement('label');
+    Object.assign(rowRadioBtnLabel,{slot:"label"});
+    rowRadio.appendChild(rowRadioBtn)
+    rowRadio.appendChild(rowRadioBtnLabel);
+    tableRow.appendChild(radioTD).appendChild(rowRadio);
+    rowColumns.forEach( rowData => {
+        const td = document.createElement("td");
+        if (!rowData){
+            td.innerHTML = '';
+        } else if (typeof(rowData)==='object'){
+            td.appendChild(rowData);
+            tableRow.appendChild(td);
+        } else {
+            td.innerHTML = rowData.toString().replaceAll(",","");
+        }
+        tableRow.appendChild(td);
+    })
+    table.appendChild(tableRow);
+}
+
+
+
 
 //// Create a row with a checkbox for table
 export function createRowWCheckbox(table, rowColumns, value, id=''){
@@ -396,7 +408,8 @@ export async function countCheckBoxes() {
 //// make SelectAll Listener
 export async function makeSelectAllListener(){
     ////  Event Listener for Select All Checkbox
-    document.getElementById('selectAll').addEventListener('change', function () {
+    //document.getElementById('selectAll').addEventListener('change', function () {
+    document.querySelector('[id^="selectAll"]').addEventListener('change', function (){
         let checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(function (checkbox){
             checkbox.checked = this.checked;
@@ -415,19 +428,21 @@ export async function createBulkSelectBody(leftLabel, rightLabel){
     bodyDiv.appendChild( Object.assign(document.createElement("div"), {id:'displayBox'}));
     document.getElementById('logOutput').appendChild(bodyDiv);
     let footerDiv=document.getElementsByClassName("FooterContainer");
-    footerDiv[0].appendChild(Object.assign(document.createElement("button"), {id:'selectButton', innerText:"Done"}));
+    footerDiv[0].appendChild(Object.assign(document.createElement("gux-button"), {accent:'primary',id:'selectButton', innerText:"Done"}));
 }
 
 //// create the select box for each item in the above boxes
-export function createDropBoxSelectBox(dropBoxOptions, container) {
-    const dropBox = document.createElement('select');
+export function createDropBoxSelectBox(dropBoxOptions, container, placeHolderMessage='') {
+    const dropDown = document.createElement('gux-dropdown');
+    Object.assign(dropDown,{"filter-type":"starts-with", placeholder:placeHolderMessage})
+    const dropBox = document.createElement('gux-listbox');
     dropBoxOptions.forEach(i => {
-        let dbOption = document.createElement('option');
+        let dbOption = document.createElement('gux-option');
             dbOption.value = i.value;
-            dbOption.text = i.text;
-           dropBox.appendChild(dbOption);
+            dbOption.innerText = i.text;
+            dropBox.appendChild(dbOption);
     });
-    container.appendChild(dropBox)
+    container.appendChild(dropDown).appendChild(dropBox)
     return container
 }
 
@@ -469,10 +484,10 @@ export function getSelectedRoles(){
     updateItems.forEach( item => {
         //console.log(item.childNodes[1].childNodes[0].selectedOptions[0].innerText," : ",
         //    item.childNodes[1].childNodes[0].selectedOptions[0].value)
-        selectedRoles.push({itemName:item.childNodes[0].innerText,
-            itemId:item.childNodes[0].title,
-            dropName:item.childNodes[1].childNodes[0].selectedOptions[0].innerText,
-            dropId:item.childNodes[1].childNodes[0].selectedOptions[0].value})
+        selectedRoles.push({itemName:item.firstChild.textContent,
+            itemId:item.firstChild.title,
+            dropName:item.childNodes[1].firstChild.firstChild.querySelector('[aria-selected="true"]').textContent,
+            dropId:item.childNodes[1].firstChild.firstChild.querySelector('[aria-selected="true"]').value})
         });
     return selectedRoles;
 };
@@ -532,27 +547,68 @@ export async function showNextPageButton(){
     return(btn);
 }
 
+export async function createDivisionSelectBox(container) {
+        //// get divisons
+        var pageSize = 99
+        var pageNumber = 0;
+        //var dropBoxOptions=[]
+        const dropDown = document.createElement('gux-dropdown');
+        Object.assign(dropDown, {"filter-type":"starts-with", placeholder:"Select a Division"});
+        const dropBox = document.createElement('gux-listbox');
+    do{
+        const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
+        var resp = await getAPI(apiToCall);
+        resp.entities = await alphaSortByName(resp.entities);
+        resp.entities.forEach( async function (division) {
+            // let dbOption = document.createElement('option');
+            let dbOption = document.createElement('gux-option');
+            Object.assign(dbOption,{className:"gux-active"})
+            dbOption.value = division.id;
+            dbOption.innerText = division.name;
+           dropBox.appendChild(dbOption);
+        })
+        pageNumber ++
+    } while (resp.selfUri != resp.lastUri);
+    container.appendChild(dropDown).appendChild(dropBox)
+    //return container
+}
+
 export async function createDivisionDropdown(container) {
         //// get divisons
         var pageSize=100;
         var pageNumber=1;
         var dropBoxOptions=[]
-        const dropBox = document.createElement('select');
+        const dropDown = document.createElement('gux-dropdown');
+        Object.assign(dropDown, {"filter-type":"starts-with", placeholder:"Select a Division"});
+        const dropBox = document.createElement('gux-listbox');
         dropBoxOptions.push({value:"*",text:"All"});
         do{
             const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
             var resp = await getAPI(apiToCall);
             resp.entities = await alphaSortByName(resp.entities);
             resp.entities.forEach( async function (division) {
-                let dbOption = document.createElement('option');
+                // let dbOption = document.createElement('option');
+                let dbOption = document.createElement('gux-option');
                 dbOption.value = division.id;
-                dbOption.text = division.name;
+                dbOption.innerText = division.name;
                dropBox.appendChild(dbOption);
             })
             pageNumber ++
         } while (resp.selfUri != resp.lastUri);
-        container.appendChild(dropBox);
+        container.appendChild(dropDown).appendChild(dropBox);
     return dropBoxOptions;
+}
+
+
+export async function awaitModalResponse(){
+    let modalButtons = document.querySelectorAll('[id^="modal"]');
+    modalButtons.forEach(mBtn => {
+        return new Promise(resolve => {
+            mBtn.addEventListener('click', () =>{
+            resolve(event.target.id)
+            })
+        })
+    })
 }
 
 // function createDivisionSelectBox(dropBoxOptions, container) {

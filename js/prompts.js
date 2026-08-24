@@ -18,42 +18,38 @@ async function logPromptOutput(table, data){
 }
 
 async function exportPromptsAndResources (table, prompts, columns){
-	let newHeaders=['Resources','id','uploadStatus','ttsString', 'mediaUri'];
+	let newHeaders=['','','Resources','uploadStatus','ttsString', 'mediaUri'];
 	prompts.entities.forEach(function (prompt){
-		let r = table.insertRow();
-        r.setAttribute('id','promptName');
-		columns.forEach(function (column){
-			let td = document.createElement('td');
-			td.innerText=prompt[column];
-			r.appendChild(td);
-		})
-		table.appendChild(r);
-		r = table.insertRow();
-        r.setAttribute('id','resource')
-		newHeaders.forEach(function (header){
-			let th = document.createElement('th');
-			th.innerText = header ;
-			r.appendChild(th);
-		})
-		table.appendChild(r);
+		let newTable = utils.createGuxTable(prompt.name);
+		table = newTable[1];
+		document.getElementById('logOutput').appendChild(newTable[0]).appendChild(newTable[1]);
+		// console.log(columns);
+		utils.createHeader(table,columns);
+		utils.createRow(table, [prompt.name, prompt.description])
+		utils.createHeader(table, newHeaders);
 		prompt.resources.forEach(function (resource){
-			r = table.insertRow();
+			let body = []
+			//console.log(prompt);
 			newHeaders.forEach(function(header){
-				let td = document.createElement('td');
-				if (header ==='Resources' ){
-					td.innerText = prompt.name;
+				if (header ===''){
+					body.push('');
+				}
+				else if (header ==='Resources' ){
+					body.push(resource.id);
 				}else if (header ==='mediaUri') {
 					if (resource[header]){
-						td.innerHTML = `<a id="recording" className="${prompt.name}_${resource.id}" href="${resource[header]}" target="_blank"> Listen</a>`
+						body.push(`<a id="recording" className="${prompt.name}_${resource.id}" href="${resource[header]}" target="_blank"> Listen</a>`)
 					} else{
-						td.innerText='';
+						body.push('');
 					};
 				}else if (resource[header]){
-					td.innerText = resource[header];
-				};
-				r.appendChild(td);
+					body.push(resource[header]);
+				}else {
+					body.push('N/A');
+				};				
 			})
-			table.appendChild(r);
+			//console.log(body);
+			utils.createRow(table, body);
 		})	
 	})
 }
@@ -63,26 +59,24 @@ async function exportPromptsAndResources (table, prompts, columns){
 export async function exportPrompts(){
     var pageNumber=1
     var pageSize = 99
-    //// get a list of user roles
-    const table = document.createElement('table');
-    Object.assign(table, {id:"prompt_export"});
-    document.getElementById('logOutput').appendChild(table);
-    utils.createHeader(table, ['promptName', 'promptDescription']);
+    //// get a list of user prompts
+	//const table = utils.createGuxTable("prompt_export");
+	//document.getElementById('logOutput').appendChild(table[0]).appendChild(table[1]);
+    //utils.createHeader(table[1], ['promptName', 'promptDescription']);
     let columns=["name", "description"];
 	utils.loadingMessage("Prompts");
     do{
         var resp = await getPrompts(pageSize,pageNumber);
         //await logPromptOutput(table, resp);
-        await exportPromptsAndResources(table, resp, columns);
+        await exportPromptsAndResources('', resp, columns);
         pageNumber ++
     } while (resp.selfUri != resp.lastUri);
 	//// Add export button
 	utils.loadingMessageClear("Prompts");
 	const exportBtn  = document.getElementById("exportButton");
     exportBtn.style.display = 'block';
-	const btn = document.createElement('button');
-	btn.id='downloadPrompts';
-	btn.innerText='Download Prompts';
+	const btn = document.createElement('gux-button');
+	Object.assign(btn,{accent:'primary',id:'downloadPrompts',innerText:'Download Prompts'})
 	btn.addEventListener('click', promptDownload );
 	exportBtn.appendChild(btn);
 	

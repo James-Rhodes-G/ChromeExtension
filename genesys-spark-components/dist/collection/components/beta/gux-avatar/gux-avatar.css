@@ -1,0 +1,249 @@
+:host {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+}
+:host abbr {
+  text-decoration: none;
+}
+
+::slotted(img) {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.gux-avatar {
+  position: relative;
+  inline-size: var(--gse-ui-avatar-large-size);
+  block-size: var(--gse-ui-avatar-large-size);
+  overflow: hidden;
+  border-radius: 50%;
+}
+.gux-avatar .gux-content {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: calc(100% - var(--gse-ui-avatar-large-presenceRing-width) * 2);
+  block-size: calc(100% - var(--gse-ui-avatar-large-presenceRing-width) * 2);
+  margin: var(--gse-ui-avatar-large-presenceRing-width);
+  overflow: hidden;
+  font-family: var(--gse-ui-avatar-large-initials-fontFamily);
+  font-size: var(--gse-ui-avatar-large-initials-fontSize);
+  font-weight: var(--gse-ui-avatar-large-initials-fontWeight);
+  line-height: var(--gse-ui-avatar-small-initials-lineHeight);
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  text-transform: uppercase;
+  background-color: var(--gse-ui-avatar-media-initialsBackground-default);
+  border: var(--gse-ui-avatar-content-large-border-width) var(--gse-ui-avatar-content-default-border-style) var(--gse-ui-avatar-content-default-border-color);
+  border-radius: 50%;
+}
+.gux-avatar.gux-medium {
+  inline-size: var(--gse-ui-avatar-medium-size);
+  block-size: var(--gse-ui-avatar-medium-size);
+}
+.gux-avatar.gux-medium .gux-content {
+  inline-size: calc(100% - var(--gse-ui-avatar-medium-presenceRing-width) * 2);
+  block-size: calc(100% - var(--gse-ui-avatar-medium-presenceRing-width) * 2);
+  margin: var(--gse-ui-avatar-medium-presenceRing-width);
+  font-size: var(--gse-ui-avatar-medium-initials-fontSize);
+  font-weight: var(--gse-ui-avatar-medium-initials-fontWeight);
+}
+.gux-avatar.gux-medium .gux-content, .gux-avatar.gux-small .gux-content, .gux-avatar.gux-xsmall .gux-content {
+  border-width: var(--gse-ui-avatar-content-default-border-width);
+}
+.gux-avatar.gux-small {
+  inline-size: var(--gse-ui-avatar-small-size);
+  block-size: var(--gse-ui-avatar-small-size);
+}
+.gux-avatar.gux-small .gux-content {
+  inline-size: calc(100% - var(--gse-ui-avatar-small-presenceRing-width) * 2);
+  block-size: calc(100% - var(--gse-ui-avatar-small-presenceRing-width) * 2);
+  margin: var(--gse-ui-avatar-small-presenceRing-width);
+  font-size: var(--gse-ui-avatar-small-initials-fontSize);
+  font-weight: var(--gse-ui-avatar-small-initials-fontWeight);
+}
+.gux-avatar.gux-xsmall {
+  inline-size: var(--gse-ui-avatar-xsmall-size);
+  block-size: var(--gse-ui-avatar-xsmall-size);
+}
+.gux-avatar.gux-xsmall .gux-content {
+  inline-size: calc(100% - var(--gse-ui-avatar-xsmall-presenceRing-width) * 2);
+  block-size: calc(100% - var(--gse-ui-avatar-xsmall-presenceRing-width) * 2);
+  margin: var(--gse-ui-avatar-xsmall-presenceRing-width);
+  font-size: var(--gse-ui-avatar-xsmall-initials-fontSize);
+  font-weight: var(--gse-ui-avatar-xsmall-initials-fontWeight);
+}
+.gux-avatar.gux-accent-1 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent1);
+}
+.gux-avatar.gux-accent-2 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent2);
+}
+.gux-avatar.gux-accent-3 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent3);
+}
+.gux-avatar.gux-accent-4 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent4);
+}
+.gux-avatar.gux-accent-5 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent5);
+}
+.gux-avatar.gux-accent-6 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent6);
+}
+.gux-avatar.gux-accent-7 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent7);
+}
+.gux-avatar.gux-accent-8 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent8);
+}
+.gux-avatar.gux-accent-9 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent9);
+}
+.gux-avatar.gux-accent-10 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent10);
+}
+.gux-avatar.gux-accent-11 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent11);
+}
+.gux-avatar.gux-accent-12 .gux-content {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent12);
+}
+.gux-avatar.gux-accent-inherit .gux-content {
+  color: inherit;
+  background-color: inherit;
+}
+.gux-avatar.gux-ring.gux-available {
+  background: var(--gse-ui-avatar-presenceRing-available);
+}
+.gux-avatar.gux-ring.gux-away, .gux-avatar.gux-ring.gux-break, .gux-avatar.gux-ring.gux-meal, .gux-avatar.gux-ring.gux-training {
+  background: var(--gse-ui-avatar-presenceRing-away);
+}
+.gux-avatar.gux-ring.gux-busy, .gux-avatar.gux-ring.gux-meeting {
+  background: var(--gse-ui-avatar-presenceRing-busy);
+}
+.gux-avatar.gux-ring.gux-offline {
+  background: var(--gse-ui-avatar-presenceRing-offline);
+}
+.gux-avatar.gux-ring.gux-out-of-office {
+  background: var(--gse-ui-avatar-presenceRing-outOfOffice);
+}
+.gux-avatar.gux-ring.gux-on-queue {
+  background: var(--gse-ui-avatar-presenceRing-onQueue);
+}
+
+.gux-avatar-integration-badge {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  z-index: var(--gse-semantic-zIndex-showFocus);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gux-avatar-badge {
+  position: absolute;
+  inset-block-start: calc(var(--gse-ui-avatar-content-large-border-width) * -1);
+  inset-inline-end: calc(var(--gse-ui-avatar-content-large-border-width) * -1);
+  z-index: var(--gse-semantic-zIndex-showFocus);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--gse-ui-avatar-large-badge-size);
+  block-size: var(--gse-ui-avatar-large-badge-size);
+  border-color: var(--gse-ui-avatar-content-default-border-color);
+  border-style: var(--gse-ui-avatar-content-default-border-style);
+  border-width: var(--gse-ui-avatar-content-large-border-width);
+  border-radius: 50%;
+}
+.gux-avatar-badge.gux-medium {
+  inset-block-start: calc(var(--gse-ui-avatar-content-default-border-width) * -1);
+  inset-inline-end: calc(var(--gse-ui-avatar-content-default-border-width) * -1);
+  inline-size: var(--gse-ui-avatar-medium-badge-size);
+  block-size: var(--gse-ui-avatar-medium-badge-size);
+  border-width: var(--gse-ui-avatar-content-default-border-width);
+}
+.gux-avatar-badge.gux-small, .gux-avatar-badge.gux-xsmall {
+  inset-block-start: calc(var(--gse-ui-avatar-content-default-border-width) * -1);
+  inset-inline-end: calc(var(--gse-ui-avatar-content-default-border-width) * -1);
+  inline-size: var(--gse-ui-avatar-small-badge-size);
+  block-size: var(--gse-ui-avatar-small-badge-size);
+  border-width: var(--gse-ui-avatar-content-default-border-width);
+}
+.gux-avatar-badge.gux-small gux-icon, .gux-avatar-badge.gux-xsmall gux-icon {
+  display: none;
+}
+.gux-avatar-badge.gux-available {
+  background-color: var(--gse-semantic-background-container-elevated-default);
+}
+.gux-avatar-badge.gux-available.gux-small, .gux-avatar-badge.gux-available.gux-xsmall {
+  background-color: var(--gse-ui-avatar-badge-available-color);
+}
+.gux-avatar-badge.gux-available gux-icon {
+  color: var(--gse-ui-avatar-badge-available-color);
+}
+.gux-avatar-badge.gux-away, .gux-avatar-badge.gux-break, .gux-avatar-badge.gux-meal, .gux-avatar-badge.gux-training {
+  background-color: var(--gse-ui-avatar-badge-away-color);
+}
+.gux-avatar-badge.gux-away gux-icon, .gux-avatar-badge.gux-break gux-icon, .gux-avatar-badge.gux-meal gux-icon, .gux-avatar-badge.gux-training gux-icon {
+  margin: var(--gse-ui-avatar-badge-away-icon-margin);
+  color: var(--gse-ui-avatar-badge-foregroundDark-color);
+}
+.gux-avatar-badge.gux-busy, .gux-avatar-badge.gux-meeting {
+  background-color: var(--gse-ui-avatar-badge-busy-color);
+}
+.gux-avatar-badge.gux-busy gux-icon, .gux-avatar-badge.gux-meeting gux-icon {
+  margin: var(--gse-ui-avatar-badge-busy-icon-margin);
+  color: var(--gse-ui-avatar-badge-foregroundDefault-color);
+}
+.gux-avatar-badge.gux-notifications {
+  background-color: var(--gse-ui-avatar-badge-notification-color);
+}
+.gux-avatar-badge.gux-notifications gux-icon {
+  margin: var(--gse-ui-avatar-badge-notifications-icon-margin);
+  color: var(--gse-ui-avatar-badge-foregroundDefault-color);
+}
+.gux-avatar-badge.gux-offline {
+  background-color: var(--gse-semantic-background-container-elevated-default);
+}
+.gux-avatar-badge.gux-offline.gux-small, .gux-avatar-badge.gux-offline.gux-xsmall {
+  background-color: var(--gse-ui-avatar-badge-offline-color);
+}
+.gux-avatar-badge.gux-offline gux-icon {
+  color: var(--gse-ui-avatar-badge-offline-color);
+}
+.gux-avatar-badge.gux-out-of-office {
+  background-color: var(--gse-semantic-background-container-elevated-default);
+}
+.gux-avatar-badge.gux-out-of-office.gux-small, .gux-avatar-badge.gux-out-of-office.gux-xsmall {
+  background-color: var(--gse-ui-avatar-badge-outOfOffice);
+}
+.gux-avatar-badge.gux-out-of-office gux-icon {
+  color: var(--gse-ui-avatar-badge-outOfOffice);
+}
+.gux-avatar-badge.gux-on-queue {
+  background-color: var(--gse-ui-avatar-badge-onQueue-color);
+}
+.gux-avatar-badge.gux-on-queue gux-icon {
+  margin: var(--gse-ui-avatar-badge-queue-icon-margin);
+  color: var(--gse-ui-avatar-badge-foregroundDefault-color);
+}
+.gux-avatar-badge gux-icon {
+  inline-size: 100%;
+  block-size: 100%;
+}

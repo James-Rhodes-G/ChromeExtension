@@ -1,0 +1,1 @@
+import{h as s}from"./p-xFL2agjT.js";const a=({show:a},o)=>s("div",{class:{"gux-form-field-help":!0,"gux-show":a}},s("div",{class:"gux-message"},o)),o=({show:a},o)=>s("div",{role:"alert",class:{"gux-form-field-error":!0,"gux-show":a}},s("gux-icon",{"icon-name":"fa/hexagon-exclamation-solid",decorative:!0,size:"small"}),s("div",{class:"gux-message"},o));export{o as G,a}

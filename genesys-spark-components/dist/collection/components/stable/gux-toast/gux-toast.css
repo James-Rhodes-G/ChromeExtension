@@ -1,0 +1,114 @@
+.gux-toast {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-toast-gap);
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  inline-size: var(--gse-ui-toast-wrappingWidth);
+  padding: var(--gse-ui-toast-margin);
+  margin-block-end: var(--gse-ui-toast-stacking-gap);
+  border-radius: var(--gse-ui-toast-borderRadius);
+  box-shadow: var(--gse-ui-toast-boxShadow);
+}
+.gux-toast .gux-icon ::slotted(gux-icon) {
+  inline-size: var(--gse-ui-toast-icon) !important;
+  block-size: var(--gse-ui-toast-icon) !important;
+}
+.gux-toast .gux-icon gux-icon {
+  inline-size: var(--gse-ui-toast-icon) !important;
+  block-size: var(--gse-ui-toast-icon) !important;
+}
+.gux-toast .gux-icon.gux-icon-error {
+  color: var(--gse-ui-toast-error-iconColor);
+}
+.gux-toast .gux-icon.gux-icon-warning {
+  color: var(--gse-ui-toast-warning-iconColor);
+}
+.gux-toast .gux-icon.gux-icon-success {
+  color: var(--gse-ui-toast-success-iconColor);
+}
+.gux-toast .gux-icon.gux-icon-info {
+  color: var(--gse-ui-toast-info-iconColor);
+}
+.gux-toast .gux-icon.gux-icon-action {
+  color: var(--gse-ui-toast-action-iconColor);
+}
+.gux-toast .gux-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-toast-gapButton);
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  align-self: auto;
+  order: 0;
+}
+.gux-toast .gux-content .gux-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gse-ui-toast-gapText);
+}
+.gux-toast .gux-content .gux-message .gux-message-title {
+  font-family: var(--gse-ui-toast-heading-fontFamily);
+  font-size: var(--gse-ui-toast-heading-fontSize);
+  font-weight: var(--gse-ui-toast-heading-fontWeight);
+  line-height: var(--gse-ui-toast-heading-lineHeight);
+}
+.gux-toast .gux-content .gux-message .gux-message-body {
+  font-family: var(--gse-ui-toast-text-fontFamily);
+  font-size: var(--gse-ui-toast-text-fontSize);
+  line-height: var(--gse-ui-toast-text-lineHeight);
+  word-break: break-all;
+}
+.gux-toast .gux-content .gux-buttons-bar {
+  inline-size: 100%;
+}
+.gux-toast.gux-toast-success {
+  background-color: var(--gse-ui-toast-success-backgroundColor);
+}
+.gux-toast.gux-toast-success .gux-message {
+  color: var(--gse-ui-toast-success-foregroundColor);
+}
+.gux-toast.gux-toast-warning {
+  background-color: var(--gse-ui-toast-warning-backgroundColor);
+}
+.gux-toast.gux-toast-warning .gux-message {
+  color: var(--gse-ui-toast-warning-foregroundColor);
+}
+.gux-toast.gux-toast-error {
+  background-color: var(--gse-ui-toast-error-backgroundColor);
+}
+.gux-toast.gux-toast-error .gux-message {
+  color: var(--gse-ui-toast-error-foregroundColor);
+}
+.gux-toast.gux-toast-info {
+  background-color: var(--gse-ui-toast-info-backgroundColor);
+}
+.gux-toast.gux-toast-info .gux-message {
+  color: var(--gse-ui-toast-info-foregroundColor);
+}
+.gux-toast.gux-toast-action {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: var(--gse-ui-icon-medium-size) 1fr var(--gse-ui-button-dismiss-medium-width);
+  background-color: var(--gse-ui-toast-action-backgroundColor);
+}
+.gux-toast.gux-toast-action .gux-content {
+  grid-row: 1/2;
+  grid-column: 2/4;
+}
+.gux-toast.gux-toast-action .gux-icon {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.gux-toast.gux-toast-action gux-dismiss-button {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+.gux-toast.gux-toast-action .gux-message {
+  inline-size: var(--gse-ui-toast-messageWidth);
+  color: var(--gse-ui-toast-action-foregroundColor);
+}

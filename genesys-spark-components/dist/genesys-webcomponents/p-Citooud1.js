@@ -1,0 +1,1 @@
+import{d as e}from"./p-C_pVuars.js";function t(){return{name:"overflowDetection",async fn(t){const n=await e(t,{boundary:"clippingAncestors",elementContext:"reference"});return t.placement.includes("bottom")&&n.bottom>0?{y:t.y-n.bottom}:t.placement.includes("top")&&n.top>0?{y:t.y+n.top}:{}}}}export{t as o}

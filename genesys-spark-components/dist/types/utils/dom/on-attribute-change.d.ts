@@ -1,0 +1,4 @@
+export declare function onHiddenChange(element: HTMLElement | HTMLSelectElement, callback: (hidden: boolean) => void): MutationObserver;
+export declare function onDisabledChange(element: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLGuxDropdownElement | HTMLGuxTimePickerElement | HTMLGuxPhoneInputBetaElement | HTMLGuxTimeZonePickerBetaElement, callback: (disabled: boolean) => void): MutationObserver;
+export declare function onRequiredChange(element: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLGuxDropdownElement | HTMLGuxDropdownMultiElement | HTMLGuxTimePickerElement | HTMLGuxPhoneInputBetaElement | HTMLGuxTimeZonePickerBetaElement, callback: (disabled: boolean) => void): MutationObserver;
+export declare function onMultipleChange(element: HTMLInputElement, callback: (multiple: boolean) => void): MutationObserver;

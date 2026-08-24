@@ -1,0 +1,161 @@
+:host {
+  display: block;
+  inline-size: fit-content;
+}
+
+.gux-datepicker {
+  display: flex;
+}
+.gux-datepicker.gux-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.gux-datepicker.gux-disabled .gux-datepicker-field .gux-datepicker-field-input {
+  opacity: var(--gse-ui-datePicker-disabled-opacity);
+}
+.gux-datepicker .gux-datepicker-field {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: flex-start flex-start;
+  align-items: center;
+  inline-size: 100%;
+}
+.gux-datepicker .gux-datepicker-field ~ .gux-datepicker-field {
+  margin-inline-start: var(--gse-ui-datePicker-range-gap);
+}
+.gux-datepicker .gux-datepicker-field.gux-above {
+  flex-direction: column;
+  align-items: self-start;
+}
+.gux-datepicker .gux-datepicker-field.gux-above .gux-datepicker-field-input {
+  margin-block-start: 0;
+}
+.gux-datepicker .gux-datepicker-field.gux-above .gux-datepicker-field-label {
+  margin-inline-end: 0;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-label {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+  margin-inline-end: var(--gse-ui-formControl-helper-gap);
+  font-family: var(--gse-ui-formControl-label-textBold-fontFamily);
+  font-size: var(--gse-ui-formControl-label-textBold-fontSize);
+  font-weight: var(--gse-ui-formControl-label-textBold-fontWeight);
+  line-height: var(--gse-ui-formControl-label-textBold-lineHeight);
+  color: var(--gse-ui-formControl-label-labelColor);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-formControl-input-gap);
+  place-content: stretch center;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--gse-ui-formControl-input-textfield-height);
+  padding: var(--gse-ui-formControl-input-padding);
+  color: var(--gse-ui-formControl-input-populatedColor);
+  white-space: nowrap;
+  background-color: var(--gse-ui-formControl-input-backgroundColor);
+  background-image: none;
+  border: var(--gse-ui-formControl-input-default-border-width) var(--gse-ui-formControl-input-default-border-style) var(--gse-ui-formControl-input-default-border-color);
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input:hover {
+  border: var(--gse-ui-formControl-input-hover-border-width) var(--gse-ui-formControl-input-hover-border-style) var(--gse-ui-formControl-input-hover-border-color);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input:focus-within {
+  outline: var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-focusRing-borderRadius);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input.gux-active {
+  outline: var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-focusRing-borderRadius);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input input {
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 0;
+  inline-size: calc(var(--gse-ui-calendarMenu-day-input-width) - var(--gse-ui-icon-small-size));
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--gse-ui-formControl-input-contentText-fontFamily);
+  font-size: var(--gse-ui-formControl-input-contentText-fontSize);
+  font-weight: var(--gse-ui-formControl-input-contentText-fontWeight);
+  line-height: var(--gse-ui-formControl-input-contentText-lineHeight);
+  color: var(--gse-ui-formControl-input-populatedColor);
+  outline: none;
+  background-color: var(--gse-ui-formControl-input-backgroundColor);
+  border: none;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input input::placeholder {
+  color: var(--gse-ui-formControl-input-placeholderColor);
+  opacity: 1;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input input::-webkit-search-cancel-button, .gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input input::-webkit-search-results-button, .gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  align-self: auto;
+  justify-content: center;
+  order: 0;
+  padding: 0;
+  color: var(--gse-ui-formControl-input-inputIcon-iconEndColor);
+  outline: none;
+  background: transparent;
+  border: none;
+  border-radius: var(--gse-ui-actionButton-borderRadius);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button:focus-within {
+  outline: var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-focusRing-borderRadius);
+  outline-offset: var(--gse-ui-datePicker-focusCalendar-gap);
+  border: none;
+  border-radius: var(--gse-ui-calendarMenu-month-calendarButton-focusBorderRadius);
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button:not(:disabled):focus-visible, .gux-datepicker .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button:not(:disabled):hover {
+  color: var(--gse-ui-datePicker-iconHover);
+  cursor: pointer;
+}
+.gux-datepicker .gux-datepicker-field .gux-datepicker-field-input gux-calendar {
+  position: fixed;
+  z-index: var(--gse-semantic-zIndex-popup);
+  display: none;
+}
+.gux-datepicker.gux-active .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button {
+  color: var(--gse-ui-formControl-input-inputIcon-iconEndColor);
+}
+.gux-datepicker.gux-active .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button:not(:disabled):focus-visible, .gux-datepicker.gux-active .gux-datepicker-field .gux-datepicker-field-input .gux-datepicker-field-text-input button:not(:disabled):hover {
+  color: var(--gse-ui-formControl-input-inputIcon-iconEndColor);
+}
+.gux-datepicker.gux-active .gux-datepicker-field .gux-datepicker-field-input gux-calendar {
+  display: block;
+}
+
+.gux-sr-only {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

@@ -13,18 +13,24 @@
     <link rel="shortcut icon" href="https://dhqbrvplips7x.cloudfront.net/directory/11.40.0-3/assets/images/ico/favicon.png" crossorigin="anonymous">
     
     <!-- CSS -->
-    <link href="./css/spark.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/log.css" >
+    <!-- <link href="./css/spark.min.css" rel="stylesheet"> -->
+    <link href="genesys-spark-components/dist/genesys-webcomponents/genesys-webcomponents.css" rel="stylesheet">
+    <link href="https://app.inindca.com/webfonts/urbanist.css" rel="stylesheet">
+    <link href="https://app.inindca.com/webfonts/noto-sans.css" rel="stylesheet">
+    <link href="https://dhqbrvplips7x.cloudfront.net/directory/11.62.0-3/assets/web-directory-3f52347ee0c30eca03700c06bb7e83cd.css" rel="stylesheet">
+    <link href="CSS/sidepanel.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./CSS/log.css" > -->
     <link rel="stylesheet" href="../jsonViewer/jquery.json-viewer.css">
     <link rel="stylesheet" href="../src/dropzone.css">
 
     <!-- JS -->
+    <script type="module" src="genesys-spark-components/dist/genesys-webcomponents/genesys-webcomponents.esm.js"></script>
     <script src="../jsonViewer/jquery.js"></script>
     <script src="../jsonViewer/jquery.json-viewer.js"></script>
     <script src="../src/jszip.js"></script>
     <script src="../src/dropzone-min.js"></script>
     <script type="module" src="./js/inline.js"></script>
-     <script src="./js/spark.min.js"></script>    
+     <!-- <script src="./js/spark.min.js"></script>     -->
     <!-- <script type="module" src="./js/log.js"></script> -->
 
     <title>Logging - PS Tool</title>
@@ -34,7 +40,7 @@
       <!-- Top row to display Logo and Title -->
       <div class="row flush">
         <!-- Left Gutter -->
-        <div class="col of-1">
+        <div class="col-sm-1">
           <div class="logoContainer right">
             <a class="brand">
               <img class="center" src="./ExtensionLogo/adaptive-g-orange_32.png" alt="Genesys Logo">
@@ -42,57 +48,69 @@
           </div>
         </div>
         <!-- Center of Page -->
-         <div class="col of-10">
+         <div class="col-sm-10">
           <h1 class="heavy herotype middle">Genesys PS Tools</h1>
          </div>
         <!-- Right Gutter -->
-         <div class="col of-1">
+         <div class="col-sm-1">
 
          </div>
       </div>
       <!-- Middle row to display Tables and informaiton -->
       <div class="row flush">
         <!-- Left Gutter -->
-        <div class="col of-1">
+        <div class="col-sm-1">
           <div class="plus"></div>
         </div>
         <!-- Center of Page -->
-        <div class="col of-10">
+        <div class="col-sm-10">
           <h2 class=" heavy hero">Log Entries</h2>
          </div>
         <!-- Right Gutter -->
-         <div class="col of-1">
-          <button id="floatBtn" class="top" title="Go to top">Top</button>
+         <div class="col-sm-1">
+          <gux-button id="floatBtn" class="top" accent="tertiary" title="Go to top">Top</button>
          </div>
       </div>
       <div class="row flush">
         <!-- Left Gutter Row 3 -->
-        <div class="col of-1">
+        <div class="col-sm-1">
         </div>
         <!-- Center Row 3 -->
-        <div class="col of-10">
+        <div class="col-sm-10">
+          <div>
+              <gux-modal id="example1" size="small">
+                <div slot="title">Modal Title</div>
+                <div slot="content">This contains the modal content.</div>
+                <gux-cta-group slot="footer" align="end">
+                  <gux-button id="modalOk" slot="primary">Ok</gux-button>
+                  <gux-button id="modalStop" slot="secondary">Stop</gux-button>
+                </gux-cta-group>
+                </gux-modal>
+          </div>
           <div id="logOutput"></div>
+          <div><gux-button id="floatBtn" class="bottom" accent="tertiary" title="Go to top">Bottom</button></div>
+          
         </div>
         <!-- Right Gutter Row 3 -->
-        <div class="col of-1">
+        <div class="col-sm-1">
           <div class="" id="rightGutter"></div>
-          <button id="floatBtn" class="bottom" title="Go to top">Bottom</button>
+          <gux-button id="floatBtn" class="bottom" accent="tertiary" title="Go to top">Bottom</button>
         </div>
       </div>
       <!-- Bottom row for buttons etc -->
       <div class="row">
         <!-- Left Gutter -->
-        <div class="col of-1">
+        <div class="col-sm-1">
         </div>
         <!-- Center of Page -->
-        <div class="col of-10">
+        <div class="col-sm-10">
           <div class="FooterContainer">
             <div class="exportButton" id="exportButton" style="display:none">
-              <button class="btn blue flat push-10" id="export" type="button">Export</button></div>
+              <gux-button accent="secondary" id="export" type="button">Export</button></div>
           </div>
          </div>
         <!-- Right Gutter -->
-         <div class="col of-1">
+         <div class="col-sm-1">
          </div>
       </div>
 

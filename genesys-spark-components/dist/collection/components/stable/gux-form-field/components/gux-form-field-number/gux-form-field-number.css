@@ -1,0 +1,201 @@
+/* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable-next-line selector-class-pattern */
+.gux-form-field-container {
+  display: flex;
+  flex-direction: column;
+}
+.gux-form-field-container.gux-beside {
+  flex-direction: row;
+}
+
+.gux-form-field-error {
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-formControl-helper-gap);
+  place-content: stretch flex-start;
+  padding: var(--gse-ui-formControl-helper-errorPadding);
+  font-family: var(--gse-ui-formControl-helper-helperText-fontFamily);
+  font-size: var(--gse-ui-formControl-helper-helperText-fontSize);
+  line-height: var(--gse-ui-formControl-helper-helperText-lineHeight);
+  color: var(--gse-ui-formControl-helper-errorColor);
+}
+.gux-form-field-error.gux-show {
+  display: flex;
+}
+.gux-form-field-error gux-icon {
+  flex: 0 1 auto;
+  order: 0;
+  color: var(--gse-ui-formControl-helper-errorColor);
+}
+.gux-form-field-error .gux-message {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+
+.gux-form-field-label {
+  display: inline-flex;
+  flex: 1 0 auto;
+}
+.gux-form-field-label ::slotted(label) {
+  min-inline-size: 0;
+}
+.gux-form-field-label ::slotted(gux-label-info-beta) {
+  padding-inline-start: var(--gse-ui-formControl-formField-gap);
+}
+.gux-form-field-label.gux-beside {
+  position: relative;
+  inset-block-start: var(--gse-ui-formControl-input-top);
+  inline-size: fit-content;
+  min-inline-size: var(--gse-ui-formControl-input-textfield-minWidth);
+  max-inline-size: fit-content;
+  margin-inline-end: var(--gse-ui-formControl-group-gapItems);
+}
+.gux-form-field-label.gux-above {
+  padding-block-end: var(--gse-ui-formControl-formField-gap);
+}
+.gux-form-field-label.gux-screenreader {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.gux-form-field-help {
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-block-start: var(--gse-ui-formControl-formField-gap);
+  font-family: var(--gse-ui-formControl-helper-helperText-fontFamily);
+  font-size: var(--gse-ui-formControl-helper-helperText-fontSize);
+  line-height: var(--gse-ui-formControl-helper-helperText-lineHeight);
+  color: var(--gse-ui-formControl-helper-defaultColor);
+}
+.gux-form-field-help.gux-show {
+  display: flex;
+}
+.gux-form-field-help .gux-message {
+  flex: 0 1 auto;
+  align-self: none;
+  order: 0;
+}
+
+:host {
+  display: block;
+}
+
+::slotted(label) {
+  font-family: var(--gse-ui-formControl-label-textBold-fontFamily);
+  font-size: var(--gse-ui-formControl-label-textBold-fontSize);
+  font-weight: var(--gse-ui-formControl-label-textBold-fontWeight);
+  line-height: var(--gse-ui-formControl-label-textBold-lineHeight);
+  color: var(--gse-ui-formControl-label-labelColor);
+}
+
+::slotted(input) {
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 0;
+  inline-size: 100%;
+  padding-block-end: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--gse-ui-formControl-input-contentText-fontFamily);
+  font-size: var(--gse-ui-formControl-input-contentText-fontSize);
+  font-weight: var(--gse-ui-formControl-input-contentText-fontWeight);
+  line-height: var(--gse-ui-formControl-input-contentText-lineHeight);
+  color: var(--gse-ui-formControl-input-populatedColor);
+  text-align: end;
+  outline: none;
+  background-color: var(--gse-ui-formControl-input-backgroundColor);
+  border: none;
+}
+::slotted(input)::placeholder {
+  color: var(--gse-ui-formControl-input-placeholderColor);
+  opacity: 1;
+}
+
+.gux-input-and-error-container {
+  flex-grow: 1;
+}
+.gux-input-and-error-container .gux-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: center;
+  inline-size: 100%;
+}
+.gux-input-and-error-container .gux-input .gux-input-container {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-formControl-input-gap);
+  place-content: stretch center;
+  align-items: center;
+  align-self: auto;
+  order: 0;
+  inline-size: 100%;
+  block-size: var(--gse-ui-formControl-input-textfield-height);
+  padding: var(--gse-ui-formControl-input-padding);
+  font-family: var(--gse-ui-formControl-input-contentText-fontFamily);
+  font-size: var(--gse-ui-formControl-input-contentText-fontSize);
+  line-height: var(--gse-ui-formControl-input-contentText-lineHeight);
+  color: var(--gse-ui-formControl-input-populatedColor);
+  cursor: text;
+  background-color: var(--gse-ui-formControl-input-backgroundColor);
+  background-image: none;
+  border: var(--gse-ui-formControl-input-default-border-width) var(--gse-ui-formControl-input-default-border-style) var(--gse-ui-formControl-input-default-border-color);
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+.gux-input-and-error-container .gux-input .gux-input-container.gux-disabled {
+  cursor: default;
+  opacity: var(--gse-ui-formControl-input-disabled-opacity);
+}
+.gux-input-and-error-container .gux-input .gux-input-container:focus-within {
+  outline: var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-focusRing-borderRadius);
+}
+.gux-input-and-error-container .gux-input.gux-input-error .gux-input-container {
+  border-color: var(--gse-ui-formControl-input-error-border-color);
+}
+
+.gux-step-buttons-container {
+  flex: 0 1 14px;
+  align-self: auto;
+  order: 0;
+  margin-inline-start: var(--gse-ui-formControl-spinButton-gap);
+}
+.gux-step-buttons-container .gux-step-button {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  align-self: auto;
+  justify-content: center;
+  order: 0;
+  padding: 0;
+  color: var(--gse-ui-formControl-input-inputIcon-defaultColor);
+  background: transparent;
+  border: var(--gse-ui-formControl-input-default-border-width) var(--gse-ui-formControl-input-default-border-style) transparent;
+}
+.gux-step-buttons-container .gux-step-button:not(:disabled):focus-visible, .gux-step-buttons-container .gux-step-button:not(:disabled):hover {
+  cursor: pointer;
+  border: var(--gse-ui-formControl-input-hover-border-width) var(--gse-ui-formControl-input-hover-border-style) var(--gse-ui-formControl-input-hover-border-color);
+}
+.gux-step-buttons-container .gux-step-button gux-icon {
+  flex: 0 0 auto;
+  inline-size: 14px;
+  block-size: 14px;
+}

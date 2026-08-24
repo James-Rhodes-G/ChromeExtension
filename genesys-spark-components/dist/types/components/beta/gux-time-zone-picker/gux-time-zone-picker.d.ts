@@ -1,0 +1,30 @@
+import { JSX } from '../../../stencil-public-runtime';
+export declare class GuxTimeZonePickerBeta {
+    private i18n;
+    private root;
+    value: string;
+    workspaceDefault: string;
+    localDefault: string;
+    customDefault: string;
+    customDefaultLabel: string;
+    hasError: boolean;
+    disabled: boolean;
+    required: boolean;
+    private searchString;
+    private timeZoneOptionElements;
+    private timeZoneList;
+    private filteredZoneList;
+    on(event: CustomEvent): void;
+    componentWillLoad(): Promise<void>;
+    componentDidLoad(): void;
+    private filterTimeZoneList;
+    private getTimeZoneOption;
+    private getFormattedTimeZoneOption;
+    private getTimeZoneOptionsList;
+    private getDefaultZones;
+    private getDefaultZoneList;
+    private renderTimeZones;
+    private renderDefaultsList;
+    private renderAllTimeZoneOptionsList;
+    render(): JSX.Element;
+}

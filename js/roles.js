@@ -88,6 +88,10 @@ async function postMasterAdmin(body){
 
 export async function createMasterAdmin(){
     console.log("Creating Master Admin Role")
+    document.getElementById('example1').showModal()
+
+    await utils.awaitModalResponse();
+    console.log('we should be waiting');
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'none';
     const body = await getAllPermissions();
@@ -127,7 +131,7 @@ async function getRoles(pageSize=99,pageNumber=1){
 }
 
 //// make get call to get divisions
-async function getDivisions(pageSize=99,pageNumber=1){
+export async function getDivisions(pageSize=99,pageNumber=1){
     const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
     const response = utils.getAPI(apiToCall);
     return response;
@@ -151,15 +155,16 @@ export async function exportRoles(){
     var pageNumber=1
     var pageSize = 99
     //// get a list of user roles
-    const table = document.createElement('table');
-    Object.assign(table, {id:"role_export"});
-    document.getElementById('logOutput').appendChild(table);
-    utils.createHeader(table, ['roleName', 'roleId','userCount', 'Genesys_default']);
+    const table = utils.createGuxTable("role_export");
+    // const table = document.createElement('table');
+    // Object.assign(table, {id:"role_export"});
+    document.getElementById('logOutput').appendChild(table[0]).appendChild(table[1]);
+    utils.createHeader(table[1], ['roleName', 'roleId','userCount', 'Genesys_default']);
     utils.loadingMessage("Roles")
     do{
         var resp = await getRoles(pageSize,pageNumber);
         console.log(resp);
-        await logRoleOutput(table, resp);
+        await logRoleOutput(table[1], resp);
         pageNumber ++
     } while (resp.selfUri != resp.lastUri)
     const exportBtn  = document.getElementById("exportButton")
@@ -242,15 +247,17 @@ export async function bulkAssignRoles() {
     //// collect selected users
     var users = document.querySelectorAll('input[type="checkbox"]:checked');
     element.innerHTML = ''; /// Clear the page
-    var table = document.createElement("table");
-    element.appendChild(table);
+    //var table = document.createElement("table");
+    var table = utils.createGuxTable("bulk_user_role_assign");
+    //Object.assign(table, {id:"bulk_user_role_assign"});
+
     //// provide export button
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
     //// hide done button
     btnUsers.style.display = 'none';
-    Object.assign(table, {id:"bulk_user_role_assign"});
-    utils.createHeader(table, ['userName', 'roleName', 'divisionName', 'status']);
+    element.appendChild(table[0]).appendChild(table[1]);
+    utils.createHeader(table[1], ['userName', 'roleName', 'divisionName', 'status']);
     console.log(users);
     rolesAndDivs.forEach(  async function(entry) {
         let role = entry.roleId;
@@ -259,12 +266,12 @@ export async function bulkAssignRoles() {
         const response = await utils.otherPostApi(apiToCall, body);
         if (response.ok){
             users.forEach(user => {
-                utils.createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table[1], [ user.parentNode.parentElement.cells[1].innerText,
                         entry.roleName, entry.divName, 'success']);
             })
         }else{
             users.forEach(user => {
-                utils.createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table[1], [ user.parentNode.parentElement.cells[1].innerText,
                         entry.roleName, entry.divName, response.message]);
             })
         };
@@ -280,7 +287,7 @@ async function createRoleBody(leftLabel, rightLabel){
     bodyDiv.appendChild( Object.assign(document.createElement("div"), {id:'displayBox'}));
     document.getElementById('logOutput').appendChild(bodyDiv);
     let footerDiv=document.getElementsByClassName("FooterContainer");
-    footerDiv[0].appendChild(Object.assign(document.createElement("button"), {id:'selectButton', innerText:"Done"}));
+    footerDiv[0].appendChild(Object.assign(document.createElement("gux-button"), {accent:'primary',id:'selectButton', innerText:"Done"}));
 }
 
 //// Create the items to move between the selection boxes
@@ -296,14 +303,16 @@ function createBulkItemSelector(itemName, itemText, dropBoxOptions){
 }
 
 function createDivisionSelectBox(dropBoxOptions, container) {
-    const dropBox = document.createElement('select');
+    const dropDown = document.createElement('gux-dropdown');
+    Object.assign(dropDown, {"filter-type":"starts-with", placeholder:"Select a Division"});
+    const dropBox = document.createElement('gux-listbox');
     dropBoxOptions.forEach(i => {
-        let dbOption = document.createElement('option');
+        let dbOption = document.createElement('gux-option');
             dbOption.value = i.value;
-            dbOption.text = i.text;
+            dbOption.innerText = i.text;
            dropBox.appendChild(dbOption);
     });
-    container.appendChild(dropBox)
+    container.appendChild(dropDown).appendChild(dropBox)
     return container
 }
 
@@ -331,11 +340,12 @@ function getSelectedRoles(){
     updateItems.forEach( item => {
         //console.log(item.childNodes[1].childNodes[0].selectedOptions[0].innerText," : ",
         //    item.childNodes[1].childNodes[0].selectedOptions[0].value)
-        selectedRoles.push({roleName:item.childNodes[0].innerText,
-            roleId:item.childNodes[0].title,
-            divName:item.childNodes[1].childNodes[0].selectedOptions[0].innerText,
-            divId:item.childNodes[1].childNodes[0].selectedOptions[0].value})
+        selectedRoles.push({roleName:item.firstChild.textContent,
+            roleId:item.firstChild.title,
+            divName:item.childNodes[1].firstChild.firstChild.querySelector('[aria-selected="true"]').textContent,
+            divId:item.childNodes[1].firstChild.firstChild.querySelector('[aria-selected="true"]').value
         });
+    });
     return selectedRoles;
 };
 

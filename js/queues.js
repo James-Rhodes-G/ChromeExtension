@@ -12,16 +12,12 @@ export async function getQueues(pageSize=99, pageNumber=1) {
 async function queueDataToTable (data) {
     const authData  = await utils.getAuthInfo();
     const region  = authData.region.replace('api','apps')
-    console.log(region);
-    const element = document.getElementById("logOutput");
-    var table = document.querySelector('table');
-    if (table === null ) {
-        table = document.createElement("table");
-        Object.assign(table, {id:"queue_export"});
-        utils.createHeader(table,['queueName', 'division','memberCount', 'call_AlertTimeout','call_serviceLevel%', 'call_SLDuration_sec'])
-    };
+    const element = document.getElementById("logOutput"); 
+    const table = utils.createGuxTable("queue_export");
+    element.appendChild(table[0]).appendChild(table[1]);
+    utils.createHeader(table[1],['queueName', 'division','memberCount', 'call_AlertTimeout','call_serviceLevel%', 'call_SLDuration_sec'])
     data['entities'].forEach(queue => {
-        utils.createRow(table, [
+        utils.createRow(table[1], [
             `<a href=${region}/directory/#/admin/organization/queues/${queue.id} target="_blank">${queue.name}</a>`,
             queue.division.name,
             queue.memberCount,
@@ -30,36 +26,38 @@ async function queueDataToTable (data) {
             (queue.mediaSettings.call.serviceLevel.durationMs / 1000)
         ])
         });
-    element.appendChild(table);
 }
 
 //// Get queues and put them in a drop down list
 async function getQueuesDropDown(){
     var pageNumber=1
-    var pageSize = 99
+    var pageSize = 2
     console.log("extracting queues");
     //// Loop through pages and write them to a table on the log page
     const element = document.getElementById('logOutput');
     const qHeader = document.createElement("p");
     Object.assign(qHeader, {id:'qHeader'});
-    let dropDownBox = document.createElement('select');
+    var queueList=[];
     do {
         var response = await getQueues(pageSize,pageNumber);
         //// append results to the dropdown box
+        var queueItem={};
         response.entities.forEach( queue => {
-            const option = document.createElement("option");
-            option.value = queue.id;
-            option.text = queue.name;
-            dropDownBox.appendChild(option);
+            queueItem[queue.id]= Object.assign({},{value:queue.id,text:queue.name})
+            queueList.push(queueItem[queue.id]);
         })
         pageNumber ++;
     }
     while (response.lastUri != response.selfUri);
-    element.appendChild(dropDownBox);
-    let button = document.createElement("button")
-    Object.assign(button, {class:"button",
-    name: "queueMembers", id:"button", textContent: "Go"})
-    element.appendChild(button);
+    let leftDiv = document.createElement('div');
+    leftDiv.classList.add('col-sm-6');
+    element.appendChild(leftDiv)
+    utils.createDropBoxSelectBox(queueList, leftDiv, 'Select Queue');
+    let button = document.createElement("gux-button")
+    Object.assign(button, {accent: "secondary", class:"button",
+        name: "queueMembers", id:"button", textContent: "Go"});
+    element.insertAdjacentElement("beforeend",button)
+    //element.appendChild(button);
     element.insertAdjacentElement("beforeend", qHeader);
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
@@ -70,7 +68,7 @@ async function getQueuesDropDown(){
         if (table){
             table.remove();
         }
-        getMembersOfQueue(dropDownBox[dropDownBox.selectedIndex].text, dropDownBox.value);
+        getMembersOfQueue(document.querySelector('[aria-selected="true"]').textContent, document.querySelector('[aria-selected="true"]').value);
     })
 }
 
@@ -102,23 +100,25 @@ async function queueMemberDataToTable(queueName, queueId, data){
             qh = document.createElement("p");
             Object.assign(qh, {id:'qHeader'});
         }
+        
         qh.innerHTML= `<a href=${region}/directory/#/admin/organization/queues/${queueId}/members target="_blank">${queueName}</a>`,queueName;
-        table = document.createElement("table");
-        Object.assign(table,{id:`queueMembers_${queueName}`});
-        utils.createHeader(table,['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber']);
+        table = utils.createGuxTable({id:`queueMembers_${queueName}`})
+        qh.appendChild(table[0]).appendChild(table[1]);
+        utils.createHeader(table[1],['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber', 'memberBy']);
     };
     data['entities'].forEach(user => {
-        utils.createRow(table, [
+        utils.createRow(table[1], [
             user.name,
             user.user.division.name,
             user.user.department,
             `<a href=${region}/directory/#/admin/directory/peopleV2/${user.user.id} target="_blank">${user.user.id}</a>`,
             user.user.state,
             user.user.acdAutoAnswer,
-            user.ringNumber
+            user.ringNumber,
+            user.memberBy
         ])
         });
-    page.appendChild(table);
+    //page.appendChild(table);
     return
 }
 

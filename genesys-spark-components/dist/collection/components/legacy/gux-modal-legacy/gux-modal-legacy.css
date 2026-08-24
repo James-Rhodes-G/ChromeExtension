@@ -1,0 +1,95 @@
+/*
+ * Typography styles and mixins.
+ */
+/* Headings */
+/* Body Copy */
+/* Anchor */
+::slotted(button:active:enabled) {
+  color: var(--gse-ui-links-active-foregroundColor);
+  text-decoration: underline;
+  background: none;
+}
+
+slot[name=left-align-buttons]::slotted(:not(button, gux-button)) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gse-ui-modal-buttonBar-gap);
+  align-content: flex-start;
+  align-items: center;
+}
+
+:host .gux-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--gse-semantic-zIndex-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gse-semantic-foreground-container-highEmphasis);
+  background: var(--gse-ui-modal-shroudColor);
+}
+:host .gux-modal .gux-modal-container {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--gse-ui-modal-padding) 0;
+  background: var(--gse-ui-modal-backgroundColor);
+  border: 1px solid var(--gse-semantic-border-container-edges-default);
+  border-radius: var(--gse-ui-modal-borderRadius);
+  box-shadow: var(--gse-ui-modal-boxShadow);
+}
+:host .gux-modal .gux-modal-container.gux-small {
+  width: var(--gse-ui-modal-small-width);
+  max-height: min(368px, 100vh - 2 * 24px);
+}
+:host .gux-modal .gux-modal-container.gux-medium {
+  width: var(--gse-ui-modal-medium-width);
+  max-height: min(640px, 100vh - 2 * 24px);
+}
+:host .gux-modal .gux-modal-container.gux-large {
+  width: var(--gse-ui-modal-large-width);
+  max-height: min(640px, 100vh - 2 * 24px);
+}
+:host .gux-modal .gux-modal-container.gux-dynamic {
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+}
+:host .gux-modal .gux-modal-container.gux-dynamic .gux-modal-content {
+  max-height: none;
+}
+:host .gux-modal .gux-modal-container .gux-modal-header {
+  padding: 0 var(--gse-ui-modal-padding);
+  margin: 0;
+  font-family: var(--gse-ui-modal-heading-fontFamily);
+  font-size: var(--gse-ui-modal-heading-fontSize);
+  font-weight: var(--gse-ui-modal-heading-fontWeight);
+  line-height: var(--gse-ui-modal-heading-fontFamily);
+  color: var(--gse-ui-modal-headerColor);
+  font-family: var(--gse-semantic-heading-xl-bold-fontFamily), var(--gse-semantic-theme-fontFamily-headings), sans-serif;
+  font-size: var(--gse-semantic-heading-xl-bold-fontSize);
+  line-height: var(--gse-semantic-heading-xl-bold-lineHeight);
+  font-weight: var(--gse-semantic-heading-xl-bold-fontWeight);
+}
+:host .gux-modal .gux-modal-container .gux-modal-content {
+  max-height: 432px;
+  padding: 0 var(--gse-ui-modal-padding);
+  margin-top: var(--gse-ui-modal-gap);
+  margin-bottom: var(--gse-ui-modal-gap);
+  overflow-y: auto;
+}
+:host .gux-modal .gux-modal-container .gux-modal-content.gux-no-buttons {
+  margin-bottom: 0;
+}
+:host .gux-modal .gux-modal-container .gux-button-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--gse-ui-modal-padding);
+}
+@media (max-width: 416px) {
+  :host .gux-modal .gux-modal-container.gux-small, :host .gux-modal .gux-modal-container.gux-medium, :host .gux-modal .gux-modal-container.gux-large {
+    width: 100%;
+    height: 100%;
+  }
+}

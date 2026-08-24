@@ -1,0 +1,1 @@
+function n(n,r){return function n(t){if(!t||t===document||t===window)return null;t.assignedSlot&&(t=t.assignedSlot);return t.closest(r)||n(t.getRootNode().host)}(n)}export{n as g}

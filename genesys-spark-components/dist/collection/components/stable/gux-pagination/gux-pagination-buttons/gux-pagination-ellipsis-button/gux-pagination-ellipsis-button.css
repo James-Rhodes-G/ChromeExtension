@@ -1,0 +1,15 @@
+gux-button gux-icon {
+  padding-block-start: 4px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* Works for Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

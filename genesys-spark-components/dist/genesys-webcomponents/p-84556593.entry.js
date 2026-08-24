@@ -1,0 +1,1 @@
+import{r,h as a}from"./p-xFL2agjT.js";const s=class{constructor(a){r(this,a)}render(){return a("slot",{key:"56c49bed555146e613a36878aba8247a8c5724fc"})}};export{s as gux_form_beta}

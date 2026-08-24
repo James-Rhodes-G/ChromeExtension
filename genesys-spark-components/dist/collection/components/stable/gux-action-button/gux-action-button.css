@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.gux-action-button-container {
+  min-inline-size: 128px;
+}
+.gux-action-button-container > * {
+  vertical-align: middle;
+}
+.gux-action-button-container .gux-action-button {
+  inline-size: calc(100% - 33px);
+  margin-inline-end: 1px;
+}
+.gux-action-button-container .gux-action-button button {
+  inline-size: 100%;
+  max-inline-size: none;
+  text-align: center;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.gux-action-button-container .gux-action-button button:focus-visible:enabled {
+  position: relative;
+}
+.gux-action-button-container .gux-dropdown-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--gse-ui-button-iconOnly-width);
+  padding: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+.gux-action-button-container .gux-list-container {
+  max-inline-size: 220px;
+  max-block-size: var(--gse-ui-menu-maxHeight);
+  margin: 0;
+  overflow-y: auto;
+  background: var(--gse-ui-menu-backgroundColor);
+  border-color: var(--gse-ui-menu-border-color);
+  border-style: var(--gse-ui-menu-border-style);
+  border-width: var(--gse-ui-menu-border-width);
+  border-radius: var(--gse-ui-menu-borderRadius);
+  box-shadow: var(--gse-ui-menu-boxShadow);
+}

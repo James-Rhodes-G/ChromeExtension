@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  inline-size: fit-content;
+}
+
+.gux-card {
+  box-sizing: border-box;
+  padding: var(--gse-ui-card-padding);
+  background-color: var(--gse-ui-card-backgroundColor);
+  border: var(--gse-ui-card-default-border-width) var(--gse-ui-card-default-border-style) var(--gse-ui-card-default-border-color);
+  border-radius: var(--gse-ui-card-borderRadius);
+}
+.gux-card.gux-bordered {
+  border: var(--gse-ui-card-default-border-width) var(--gse-ui-card-default-border-style) var(--gse-ui-card-default-border-color);
+}
+.gux-card.gux-raised {
+  border: var(--gse-ui-card-raised-border-width) var(--gse-ui-card-raised-border-style) var(--gse-ui-card-raised-border-color);
+  box-shadow: var(--gse-ui-card-raised-boxShadow);
+}
+.gux-card.gux-borderless {
+  border: var(--gse-ui-card-borderless-border-width) var(--gse-ui-card-borderless-border-style) var(--gse-ui-card-borderless-border-color);
+}

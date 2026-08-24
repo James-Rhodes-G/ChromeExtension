@@ -88,7 +88,7 @@ async function getUtterances(flowName, flowId){
 
 async function displayUtterances(flowName, flowId, resp){
     const page = document.getElementById("logOutput");
-    var table = document.querySelector('tBody');
+    var table = document.querySelector('gux-table');
     const authData  = await utils.getAuthInfo();
     const region  = authData.region.replace('api','apps')
     if (table === null ) {
@@ -100,10 +100,9 @@ async function displayUtterances(flowName, flowId, resp){
         }
         qh.innerHTML= `<a href=${region}/architect/#/inboundcall/flows/${flowId}/latest target="_blank">${flowName}</a>`;
         page.appendChild(qh);
-        var tableDiv = document.createElement("table");
-        Object.assign(tableDiv,{id:`botUtterance_${flowName}`});
-        table = tableDiv.createTBody();
-        utils.createHeader(table,['conversationId','sessionId','dateCompleted',
+        table = utils.createGuxTable(`botUtterance_${flowName}`)
+        page.appendChild(table[0]).appendChild(table[1]);
+        utils.createHeader(table[1],['conversationId','sessionId','dateCompleted',
                                     'userInput', 'botPrompt', 'actionNumber', 'actionType','askActionResult']);
     };
     resp['entities'].forEach(utterance => {
@@ -116,7 +115,7 @@ async function displayUtterances(flowName, flowId, resp){
             var actionNumber = utterance.askAction.actionNumber;
             var actionType = utterance.askAction.actionType;
         }
-        utils.createRow(table, [
+        utils.createRow(table[1], [
             `<a href=${region}/directory/#/analytics/interactions/${utterance.conversation.id}/admin target="_blank">
                 ${utterance.conversation.id}</a>`,
             `<a href=/log.html?func=utterances&sessionId=${utterance.sessionId}&flowId=${flowId}&flowName=${flowName} target="_blank">
@@ -131,7 +130,6 @@ async function displayUtterances(flowName, flowId, resp){
                 ${utterance.askActionResult}</a>`
         ])
         });
-    page.appendChild(tableDiv);
     utils.displayExportButton();
     if (resp.nextUri){
         utils.showNextPageButton();
@@ -154,7 +152,7 @@ async function displayUtterances(flowName, flowId, resp){
 
 async function displayIntentHealth(flowName, flowId, resp){
     const page = document.getElementById("logOutput");
-    var table = document.querySelector('tBody');
+    var table = document.querySelector('gux-table');
     const authData  = await utils.getAuthInfo();
     const region  = authData.region.replace('api','apps')
     if (table === null ) {
@@ -165,28 +163,26 @@ async function displayIntentHealth(flowName, flowId, resp){
         }
         qh.innerText= flowName;
         page.appendChild(qh);
-        var tableDiv = document.createElement("table");
-        Object.assign(tableDiv,{id:`intentHealth_${flowName}`});
-        table = tableDiv.createTBody();
-        utils.createHeader(table,['intentId','name','languageHealth']);
+        var tableDiv = utils.createGuxTable(`intentHealth_${flowName}`);
+        page.appendChild(tableDiv[0]).appendChild(tableDiv[1])
+        utils.createHeader(tableDiv[1],['intentId','name','languageHealth']);
     };
     resp['intents'].forEach(intent => {
         let lH='';
         var keys = Object.keys(intent.languageHealth);
         keys.forEach( key =>{lH +=`${key}:${JSON.stringify(intent.languageHealth[key])}<br>`});
-        utils.createRow(table, [
+        utils.createRow(tableDiv[1], [
             intent.id,
             intent.name,
             lH
         ])
         });
-    page.appendChild(tableDiv);
     utils.displayExportButton()
     if (resp.nextUri){
         utils.showNextPageButton();
         var btn = document.getElementById('nextPage')
         btn.addEventListener('click',async function handleNextPage(){
-            var table =  document.querySelector('table');
+            var table =  document.querySelector('gux-table');
             if (table){
                 table.remove();
             }
@@ -206,7 +202,7 @@ export async function utterances(urlParams=''){
         let dropDownBox = document.querySelector("select");
         button.addEventListener("click", function () {
             //// remove existing table, allows the users to quickly select additional bots
-            var table = document.querySelector('table');
+            var table = document.querySelector('gux-table');
             if (table){
                 table.remove();
             }
@@ -234,7 +230,7 @@ export async function intentHealth(urlParams){
         let dropDownBox = document.querySelector("select");
         button.addEventListener("click", function () {
             //// remove existing table, allows the users to quickly select additional bots
-            var table = document.querySelector('table');
+            var table = document.querySelector('gux-table');
             if (table){
                 table.remove();
             }

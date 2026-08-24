@@ -1,0 +1,1730 @@
+.gux-flag-ad {
+  display: inline-block;
+  background-position: 0px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ae {
+  display: inline-block;
+  background-position: -24px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-af {
+  display: inline-block;
+  background-position: 0px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ag {
+  display: inline-block;
+  background-position: -24px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ai {
+  display: inline-block;
+  background-position: -48px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-al {
+  display: inline-block;
+  background-position: -48px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-am {
+  display: inline-block;
+  background-position: 0px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ao {
+  display: inline-block;
+  background-position: -24px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ar {
+  display: inline-block;
+  background-position: -48px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-as {
+  display: inline-block;
+  background-position: -72px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-at {
+  display: inline-block;
+  background-position: -72px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-au {
+  display: inline-block;
+  background-position: -72px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-aw {
+  display: inline-block;
+  background-position: 0px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ax {
+  display: inline-block;
+  background-position: -24px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-az {
+  display: inline-block;
+  background-position: -48px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ba {
+  display: inline-block;
+  background-position: -72px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bb {
+  display: inline-block;
+  background-position: -96px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bd {
+  display: inline-block;
+  background-position: -96px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-be {
+  display: inline-block;
+  background-position: -96px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bf {
+  display: inline-block;
+  background-position: -96px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bg {
+  display: inline-block;
+  background-position: 0px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bh {
+  display: inline-block;
+  background-position: -24px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bi {
+  display: inline-block;
+  background-position: -48px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bj {
+  display: inline-block;
+  background-position: -72px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bl {
+  display: inline-block;
+  background-position: -96px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bm {
+  display: inline-block;
+  background-position: -120px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bn {
+  display: inline-block;
+  background-position: -120px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bo {
+  display: inline-block;
+  background-position: -120px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bq {
+  display: inline-block;
+  background-position: -120px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-br {
+  display: inline-block;
+  background-position: -120px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bs {
+  display: inline-block;
+  background-position: 0px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bt {
+  display: inline-block;
+  background-position: -24px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bv {
+  display: inline-block;
+  background-position: -48px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bw {
+  display: inline-block;
+  background-position: -72px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-by {
+  display: inline-block;
+  background-position: -96px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-bz {
+  display: inline-block;
+  background-position: -120px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ca {
+  display: inline-block;
+  background-position: -144px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cc {
+  display: inline-block;
+  background-position: -144px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cd {
+  display: inline-block;
+  background-position: -144px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cf {
+  display: inline-block;
+  background-position: -144px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cg {
+  display: inline-block;
+  background-position: -144px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ch {
+  display: inline-block;
+  background-position: -144px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ci {
+  display: inline-block;
+  background-position: 0px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ck {
+  display: inline-block;
+  background-position: -24px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cl {
+  display: inline-block;
+  background-position: -48px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cm {
+  display: inline-block;
+  background-position: -72px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cn {
+  display: inline-block;
+  background-position: -96px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-co {
+  display: inline-block;
+  background-position: -120px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cr {
+  display: inline-block;
+  background-position: -144px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cu {
+  display: inline-block;
+  background-position: -168px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cv {
+  display: inline-block;
+  background-position: -168px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cw {
+  display: inline-block;
+  background-position: -168px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cx {
+  display: inline-block;
+  background-position: -168px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cy {
+  display: inline-block;
+  background-position: -168px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-cz {
+  display: inline-block;
+  background-position: -168px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-de {
+  display: inline-block;
+  background-position: -168px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-dj {
+  display: inline-block;
+  background-position: 0px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-dk {
+  display: inline-block;
+  background-position: -24px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-dm {
+  display: inline-block;
+  background-position: -48px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-do {
+  display: inline-block;
+  background-position: -72px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-dz {
+  display: inline-block;
+  background-position: -96px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ec {
+  display: inline-block;
+  background-position: -120px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ee {
+  display: inline-block;
+  background-position: -144px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-eg {
+  display: inline-block;
+  background-position: -168px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-eh {
+  display: inline-block;
+  background-position: -192px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-er {
+  display: inline-block;
+  background-position: -192px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-es {
+  display: inline-block;
+  background-position: -192px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-et {
+  display: inline-block;
+  background-position: -192px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fi {
+  display: inline-block;
+  background-position: -192px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fj {
+  display: inline-block;
+  background-position: -192px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fk {
+  display: inline-block;
+  background-position: -192px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fm {
+  display: inline-block;
+  background-position: -192px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fo {
+  display: inline-block;
+  background-position: 0px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-fr {
+  display: inline-block;
+  background-position: -24px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ga {
+  display: inline-block;
+  background-position: -48px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gb {
+  display: inline-block;
+  background-position: -72px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gd {
+  display: inline-block;
+  background-position: -96px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ge {
+  display: inline-block;
+  background-position: -120px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gf {
+  display: inline-block;
+  background-position: -144px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gg {
+  display: inline-block;
+  background-position: -168px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gh {
+  display: inline-block;
+  background-position: -192px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gi {
+  display: inline-block;
+  background-position: -216px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gl {
+  display: inline-block;
+  background-position: -216px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gm {
+  display: inline-block;
+  background-position: -216px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gn {
+  display: inline-block;
+  background-position: -216px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gp {
+  display: inline-block;
+  background-position: -216px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gq {
+  display: inline-block;
+  background-position: -216px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gr {
+  display: inline-block;
+  background-position: -216px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gs {
+  display: inline-block;
+  background-position: -216px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gt {
+  display: inline-block;
+  background-position: -216px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gu {
+  display: inline-block;
+  background-position: 0px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gw {
+  display: inline-block;
+  background-position: -24px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-gy {
+  display: inline-block;
+  background-position: -48px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-hk {
+  display: inline-block;
+  background-position: -72px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-hn {
+  display: inline-block;
+  background-position: -96px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-hr {
+  display: inline-block;
+  background-position: -120px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ht {
+  display: inline-block;
+  background-position: -144px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-hu {
+  display: inline-block;
+  background-position: -168px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-id {
+  display: inline-block;
+  background-position: -192px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ie {
+  display: inline-block;
+  background-position: -216px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-il {
+  display: inline-block;
+  background-position: -240px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-im {
+  display: inline-block;
+  background-position: -240px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-in {
+  display: inline-block;
+  background-position: -240px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-io {
+  display: inline-block;
+  background-position: -240px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-iq {
+  display: inline-block;
+  background-position: -240px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ir {
+  display: inline-block;
+  background-position: -240px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-is {
+  display: inline-block;
+  background-position: -240px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-it {
+  display: inline-block;
+  background-position: -240px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-je {
+  display: inline-block;
+  background-position: -240px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-jm {
+  display: inline-block;
+  background-position: -240px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-jo {
+  display: inline-block;
+  background-position: 0px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-jp {
+  display: inline-block;
+  background-position: -24px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ke {
+  display: inline-block;
+  background-position: -48px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kg {
+  display: inline-block;
+  background-position: -72px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kh {
+  display: inline-block;
+  background-position: -96px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ki {
+  display: inline-block;
+  background-position: -120px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-km {
+  display: inline-block;
+  background-position: -144px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kn {
+  display: inline-block;
+  background-position: -168px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kp {
+  display: inline-block;
+  background-position: -192px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kr {
+  display: inline-block;
+  background-position: -216px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kw {
+  display: inline-block;
+  background-position: -240px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ky {
+  display: inline-block;
+  background-position: -264px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-kz {
+  display: inline-block;
+  background-position: -264px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-la {
+  display: inline-block;
+  background-position: -264px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lb {
+  display: inline-block;
+  background-position: -264px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lc {
+  display: inline-block;
+  background-position: -264px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-li {
+  display: inline-block;
+  background-position: -264px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lk {
+  display: inline-block;
+  background-position: -264px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lr {
+  display: inline-block;
+  background-position: -264px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ls {
+  display: inline-block;
+  background-position: -264px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lt {
+  display: inline-block;
+  background-position: -264px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lu {
+  display: inline-block;
+  background-position: -264px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-lv {
+  display: inline-block;
+  background-position: 0px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ly {
+  display: inline-block;
+  background-position: -24px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ma {
+  display: inline-block;
+  background-position: -48px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mc {
+  display: inline-block;
+  background-position: -72px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-md {
+  display: inline-block;
+  background-position: -96px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-me {
+  display: inline-block;
+  background-position: -120px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mf {
+  display: inline-block;
+  background-position: -144px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mg {
+  display: inline-block;
+  background-position: -168px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mh {
+  display: inline-block;
+  background-position: -192px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mk {
+  display: inline-block;
+  background-position: -216px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ml {
+  display: inline-block;
+  background-position: -240px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mm {
+  display: inline-block;
+  background-position: -264px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mn {
+  display: inline-block;
+  background-position: -288px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mo {
+  display: inline-block;
+  background-position: -288px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mp {
+  display: inline-block;
+  background-position: -288px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mq {
+  display: inline-block;
+  background-position: -288px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mr {
+  display: inline-block;
+  background-position: -288px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ms {
+  display: inline-block;
+  background-position: -288px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mt {
+  display: inline-block;
+  background-position: -288px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mu {
+  display: inline-block;
+  background-position: -288px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mv {
+  display: inline-block;
+  background-position: -288px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mw {
+  display: inline-block;
+  background-position: -288px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mx {
+  display: inline-block;
+  background-position: -288px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-my {
+  display: inline-block;
+  background-position: -288px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-mz {
+  display: inline-block;
+  background-position: 0px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-na {
+  display: inline-block;
+  background-position: -24px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nc {
+  display: inline-block;
+  background-position: -48px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ne {
+  display: inline-block;
+  background-position: -72px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nf {
+  display: inline-block;
+  background-position: -96px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ng {
+  display: inline-block;
+  background-position: -120px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ni {
+  display: inline-block;
+  background-position: -144px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nl {
+  display: inline-block;
+  background-position: -168px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-no {
+  display: inline-block;
+  background-position: -192px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-np {
+  display: inline-block;
+  background-position: -216px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nr {
+  display: inline-block;
+  background-position: -240px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nu {
+  display: inline-block;
+  background-position: -264px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-nz {
+  display: inline-block;
+  background-position: -288px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-om {
+  display: inline-block;
+  background-position: -312px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pa {
+  display: inline-block;
+  background-position: -312px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pe {
+  display: inline-block;
+  background-position: -312px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pf {
+  display: inline-block;
+  background-position: -312px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pg {
+  display: inline-block;
+  background-position: -312px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ph {
+  display: inline-block;
+  background-position: -312px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pk {
+  display: inline-block;
+  background-position: -312px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pl {
+  display: inline-block;
+  background-position: -312px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pm {
+  display: inline-block;
+  background-position: -312px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pn {
+  display: inline-block;
+  background-position: -312px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pr {
+  display: inline-block;
+  background-position: -312px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ps {
+  display: inline-block;
+  background-position: -312px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pt {
+  display: inline-block;
+  background-position: -312px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-pw {
+  display: inline-block;
+  background-position: 0px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-py {
+  display: inline-block;
+  background-position: -24px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-qa {
+  display: inline-block;
+  background-position: -48px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-re {
+  display: inline-block;
+  background-position: -72px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ro {
+  display: inline-block;
+  background-position: -96px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-rs {
+  display: inline-block;
+  background-position: -120px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ru {
+  display: inline-block;
+  background-position: -144px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-rw {
+  display: inline-block;
+  background-position: -168px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sa {
+  display: inline-block;
+  background-position: -192px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sb {
+  display: inline-block;
+  background-position: -216px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sc {
+  display: inline-block;
+  background-position: -240px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sd {
+  display: inline-block;
+  background-position: -264px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-se {
+  display: inline-block;
+  background-position: -288px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sg {
+  display: inline-block;
+  background-position: -312px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sh {
+  display: inline-block;
+  background-position: -336px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-si {
+  display: inline-block;
+  background-position: -336px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sj {
+  display: inline-block;
+  background-position: -336px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sk {
+  display: inline-block;
+  background-position: -336px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sl {
+  display: inline-block;
+  background-position: -336px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sm {
+  display: inline-block;
+  background-position: -336px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sn {
+  display: inline-block;
+  background-position: -336px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-so {
+  display: inline-block;
+  background-position: -336px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sr {
+  display: inline-block;
+  background-position: -336px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ss {
+  display: inline-block;
+  background-position: -336px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-st {
+  display: inline-block;
+  background-position: -336px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sv {
+  display: inline-block;
+  background-position: -336px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sx {
+  display: inline-block;
+  background-position: -336px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sy {
+  display: inline-block;
+  background-position: -336px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-sz {
+  display: inline-block;
+  background-position: 0px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tc {
+  display: inline-block;
+  background-position: -24px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-td {
+  display: inline-block;
+  background-position: -48px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tg {
+  display: inline-block;
+  background-position: -72px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-th {
+  display: inline-block;
+  background-position: -96px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tj {
+  display: inline-block;
+  background-position: -120px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tk {
+  display: inline-block;
+  background-position: -144px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tl {
+  display: inline-block;
+  background-position: -168px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tm {
+  display: inline-block;
+  background-position: -192px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tn {
+  display: inline-block;
+  background-position: -216px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-to {
+  display: inline-block;
+  background-position: -240px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tr {
+  display: inline-block;
+  background-position: -264px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tt {
+  display: inline-block;
+  background-position: -288px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tv {
+  display: inline-block;
+  background-position: -312px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tw {
+  display: inline-block;
+  background-position: -336px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-tz {
+  display: inline-block;
+  background-position: -360px 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ua {
+  display: inline-block;
+  background-position: -360px -24px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ug {
+  display: inline-block;
+  background-position: -360px -48px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-us {
+  display: inline-block;
+  background-position: -360px -72px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-uy {
+  display: inline-block;
+  background-position: -360px -96px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-uz {
+  display: inline-block;
+  background-position: -360px -120px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-va {
+  display: inline-block;
+  background-position: -360px -144px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-vc {
+  display: inline-block;
+  background-position: -360px -168px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ve {
+  display: inline-block;
+  background-position: -360px -192px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-vg {
+  display: inline-block;
+  background-position: -360px -216px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-vi {
+  display: inline-block;
+  background-position: -360px -240px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-vn {
+  display: inline-block;
+  background-position: -360px -264px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-vu {
+  display: inline-block;
+  background-position: -360px -288px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-wf {
+  display: inline-block;
+  background-position: -360px -312px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ws {
+  display: inline-block;
+  background-position: -360px -336px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-xk {
+  display: inline-block;
+  background-position: 0px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-ye {
+  display: inline-block;
+  background-position: -24px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-yt {
+  display: inline-block;
+  background-position: -48px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-za {
+  display: inline-block;
+  background-position: -72px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-zm {
+  display: inline-block;
+  background-position: -96px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+.gux-flag-zw {
+  display: inline-block;
+  background-position: -120px -360px;
+  width: 24px;
+  height: 24px;
+}
+
+:host {
+  display: inline-block;
+  inline-size: fit-content;
+  block-size: fit-content;
+  line-height: 0;
+  vertical-align: bottom;
+  transform: scale(0.6666666667);
+}

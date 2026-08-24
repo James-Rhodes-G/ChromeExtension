@@ -1,0 +1,15 @@
+.gux-icon-tooltip {
+  inline-size: fit-content;
+  padding: 0;
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--gse-ui-formControl-label-tooltipTrigger-borderRadius);
+}
+.gux-icon-tooltip gux-tooltip {
+  padding-inline-start: 0;
+}
+.gux-icon-tooltip gux-icon {
+  vertical-align: bottom;
+  color: var(--gse-ui-formControl-label-tooltipTrigger-color);
+}

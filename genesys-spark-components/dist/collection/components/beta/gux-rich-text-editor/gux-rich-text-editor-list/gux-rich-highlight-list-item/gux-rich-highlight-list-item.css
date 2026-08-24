@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  border-radius: var(--gse-ui-button-borderRadius);
+}
+
+.gux-highlight {
+  inline-size: var(--gse-ui-rte-colorSwatch-width);
+  block-size: var(--gse-ui-rte-colorSwatch-height);
+  border-radius: var(--gse-ui-button-borderRadius);
+}
+.gux-highlight button {
+  all: unset;
+  inline-size: 100%;
+  block-size: 100%;
+  cursor: pointer;
+}
+.gux-highlight button:focus-visible {
+  outline: var(--gse-semantic-focusOutline-sm-borderWidth) solid var(--gse-semantic-border-focus);
+  border-radius: var(--gse-semantic-focusOutline-sm-borderRadius);
+}
+.gux-highlight.gux-orange {
+  background-color: var(--gse-ui-rte-colorSwatch-orange-default);
+}
+.gux-highlight.gux-coral {
+  background-color: var(--gse-ui-rte-colorSwatch-coral-default);
+}
+.gux-highlight.gux-pear {
+  background-color: var(--gse-ui-rte-colorSwatch-pear-default);
+}
+.gux-highlight.gux-raspberry {
+  background-color: var(--gse-ui-rte-colorSwatch-raspberry-default);
+}
+.gux-highlight.gux-mango {
+  background-color: var(--gse-ui-rte-colorSwatch-mango-default);
+}
+.gux-highlight.gux-blue {
+  background-color: var(--gse-ui-rte-colorSwatch-azure-default);
+}
+.gux-highlight.gux-mineral {
+  background-color: var(--gse-ui-rte-colorSwatch-mineral-default);
+}
+.gux-highlight.gux-island {
+  background-color: var(--gse-ui-rte-colorSwatch-island-default);
+}
+.gux-highlight.gux-inherit {
+  color: inherit;
+  background-color: inherit;
+}

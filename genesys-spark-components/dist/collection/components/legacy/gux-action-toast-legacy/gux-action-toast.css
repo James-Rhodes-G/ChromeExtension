@@ -1,0 +1,113 @@
+/*
+ * Typography styles and mixins.
+ */
+/* Headings */
+/* Body Copy */
+/* Anchor */
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  place-content: stretch flex-start;
+  align-items: stretch;
+  width: 270px;
+  padding: 20px 24px;
+  margin-bottom: 4px;
+  color: var(--gse-ui-toast-success-foregroundColor);
+  background: var(--gse-ui-toast-success-backgroundColor);
+  border: 1px solid var(--gse-ui-card-default-border-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(32, 41, 55, 0.24);
+}
+
+.gux-header {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch flex-start;
+  align-items: center;
+  align-self: auto;
+  order: 0;
+  font-family: var(--gse-semantic-heading-lg-bold-fontFamily), var(--gse-semantic-theme-fontFamily-headings), sans-serif;
+  font-size: var(--gse-semantic-heading-lg-bold-fontSize);
+  line-height: var(--gse-semantic-heading-lg-bold-lineHeight);
+  font-weight: var(--gse-semantic-heading-lg-bold-fontWeight);
+}
+.gux-header .gux-icon {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+  color: var(--gse-core-colorLegacy-secondary-aquaGreen);
+}
+.gux-header .gux-icon ::slotted(gux-icon) {
+  width: 32px !important;
+  height: 32px !important;
+}
+.gux-header .gux-title {
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 0;
+  margin: 0 0 0 8px;
+}
+
+.gux-message {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+  margin: 16px 0;
+  font-family: var(--gse-semantic-body-sm-regular-fontFamily), var(--gse-semantic-theme-fontFamily-body), sans-serif;
+  font-size: var(--gse-semantic-body-sm-regular-fontSize);
+  line-height: var(--gse-semantic-body-sm-regular-lineHeight);
+  font-weight: var(--gse-semantic-body-sm-regular-fontWeight);
+}
+.gux-message ::slotted(dl) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.gux-action-buttons {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch space-between;
+  align-items: flex-start;
+  align-self: auto;
+  order: 0;
+}
+.gux-action-buttons .gux-negative-button {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+.gux-action-buttons .gux-positive-button {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+
+.gux-action-buttons {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch space-between;
+  align-items: flex-start;
+  align-self: auto;
+  order: 0;
+}
+.gux-action-buttons .gux-negative-button {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+.gux-action-buttons .gux-positive-button {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}

@@ -3,7 +3,7 @@
 <html>
     <head>
     <meta charset="utf-8">
-        <style>gux-tooltip-title{overflow:hidden}gux-tooltip{font-weight:normal;line-height:normal;text-align:start;overflow-wrap:break-word;white-space:normal}.gux-overflow-hidden .gux-title-container ::slotted(span){overflow:hidden;text-overflow:ellipsis}.gux-overflow-hidden .gux-title-container>*{overflow:hidden;text-overflow:ellipsis}.gux-title-container{display:flex;pointer-events:none}.gux-tooltip-icon-decorative .gux-title-container{position:relative;margin-inline-start:20px}.gux-tooltip-icon-decorative .gux-title-container gux-icon,.gux-tooltip-icon-decorative .gux-title-container ::slotted(gux-icon){position:absolute;inset-block-start:1px;inset-inline-start:-20px;flex-shrink:0;inline-size:16px;block-size:16px}.gux-icon-only{line-height:0px}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style>gux-tabs[orientation=vertical]>gux-tab-list gux-tab{box-sizing:border-box;border-inline-end:var(--gse-ui-tabs-item-divider-vertical-width) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab{display:flex;justify-content:flex-end;inline-size:var(--gse-ui-tabs-set-vertical-width);block-size:var(--gse-ui-tabs-item-vertical-fixedHeight);padding:var(--gse-ui-tabs-item-vertical-padding);border-inline-end:var(--gse-ui-tabs-item-indicator-vertical-width) solid transparent}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab.gux-active{border-inline-end-color:var(--gse-ui-tabs-item-indicator-activeColor)}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab:hover:not(.gux-active):not(.gux-disabled){border-inline-end-color:var(--gse-ui-tabs-item-indicator-hoverColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab{box-sizing:border-box;max-inline-size:160px;block-size:var(--gse-ui-tabs-item-horizontal-fixedHeight);padding:var(--gse-ui-tabs-item-horizontal-padding);border-block-end:var(--gse-ui-tabs-item-indicator-horizontal-height) solid transparent}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab.gux-active{border-block-end-color:var(--gse-ui-tabs-item-indicator-activeColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab:hover:not(.gux-active):not(.gux-disabled){border-block-end-color:var(--gse-ui-tabs-item-indicator-hoverColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab gux-tooltip-title{margin:auto}gux-tabs[alignment=center]>gux-tab-list .gux-scrollable-section{justify-content:center}gux-tabs[alignment=full-width]>gux-tab-list .gux-scrollable-section{flex-grow:1}gux-tabs[alignment=full-width]>gux-tab-list gux-tab{inline-size:100%;max-inline-size:100%}gux-tabs[alignment=full-width]>gux-tab-list gux-tab .gux-tab{inline-size:100%;max-inline-size:100%}gux-tab{display:flex}gux-tab .gux-tab{display:flex;align-items:center;block-size:var(--gse-ui-tabs-item-height);font-family:var(--gse-ui-tabs-item-itemText-fontFamily);font-size:var(--gse-ui-tabs-item-itemText-fontSize);font-weight:var(--gse-ui-tabs-item-itemText-fontWeight);line-height:var(--gse-ui-tabs-item-itemText-lineHeight);color:var(--gse-ui-tabs-item-itemTextColor);cursor:pointer;background-color:transparent;border:none}gux-tab .gux-tab.gux-disabled{cursor:default}gux-tab .gux-tab.gux-disabled gux-tooltip-title{opacity:var(--gse-ui-tabs-item-disableOpacity)}gux-tab .gux-tab:focus-visible{outline:var(--gse-ui-tabs-focusRing-border-width) var(--gse-ui-tabs-focusRing-border-style) var(--gse-ui-tabs-focusRing-border-color);outline-offset:calc(var(--gse-ui-tabs-focusRing-border-width) * -1);border-radius:var(--gse-ui-tabs-focusRing-borderRadius)}gux-tab .gux-tab gux-tooltip-title{white-space:nowrap}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style>gux-tabs[orientation=vertical]{block-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container{display:flex;flex-direction:column;inline-size:var(--gse-ui-tabs-set-vertical-width);block-size:100%;margin-inline-end:var(--gse-ui-tabs-set-vertical-marginRight);border-inline-end:var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scroll-button-container{inline-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scroll-button-container button{inline-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scrollable-section{flex-direction:column;block-size:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scrollable-section::-webkit-scrollbar{inline-size:0;block-size:0}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab-container{block-size:var(--gse-ui-tabs-set-horizontal-height);margin-block-end:var(--gse-ui-tabs-set-horizontal-marginBottom);border-block-end:var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-scrollable-section{overflow-x:auto}gux-tabs .gux-tab-container{box-sizing:content-box;display:flex;inline-size:100%;overflow:hidden;background-color:transparent}gux-tabs .gux-scrollable-section{display:flex;flex:1 1 auto;scroll-behavior:smooth;scrollbar-width:none}gux-tabs .gux-scrollable-section::-webkit-scrollbar{block-size:0}gux-tabs .gux-scroll-button-container{display:flex;align-items:center;justify-content:center;background-color:var(--gse-ui-advancedTabs-set-backgroundColor);border-radius:var(--gse-ui-button-borderRadius)}gux-tabs .gux-scroll-button-container gux-button-slot{inline-size:100%;block-size:100%}gux-tabs .gux-scroll-button-container button{display:flex;align-items:center;justify-content:center;block-size:100%}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style data-styles="">slot-fb{display:contents}slot-fb[hidden]{display:none}gux-accordion,gux-accordion-section,gux-action-button,gux-action-toast-legacy,gux-advanced-dropdown-legacy,gux-all-row-select,gux-announce-beta,gux-avatar-beta,gux-avatar-change-photo-beta,gux-avatar-focusable-beta,gux-avatar-group-add-item-beta,gux-avatar-group-beta,gux-avatar-group-item-beta,gux-avatar-overflow-beta,gux-avatar-overflow-item-beta,gux-badge,gux-blank-state,gux-breadcrumb-item,gux-breadcrumbs,gux-button,gux-button-multi,gux-button-slot,gux-calendar,gux-calendar-beta,gux-card,gux-column-manager,gux-column-manager-item,gux-content-search,gux-context-menu,gux-copy-to-clipboard,gux-create-option,gux-cta-group,gux-date-beta,gux-date-time-beta,gux-datepicker,gux-disclosure-button-legacy,gux-dismiss-button,gux-dropdown,gux-dropdown-multi,gux-dropdown-multi-tag,gux-dropdown-option,gux-file-list-item,gux-flag-icon-beta,gux-flyout-menu,gux-form-beta,gux-form-description,gux-form-field-checkbox,gux-form-field-checkbox-group-beta,gux-form-field-color,gux-form-field-dropdown,gux-form-field-file,gux-form-field-file-beta,gux-form-field-input-clear-button,gux-form-field-label-indicator,gux-form-field-number,gux-form-field-phone,gux-form-field-radio,gux-form-field-radio-group-beta,gux-form-field-range,gux-form-field-search,gux-form-field-select,gux-form-field-text-like,gux-form-field-textarea,gux-form-field-time-picker,gux-form-field-time-zone-picker,gux-form-fieldset-heading,gux-form-footer,gux-form-heading,gux-icon,gux-icon-tooltip-beta,gux-inline-alert,gux-label-info-beta,gux-link-beta,gux-list,gux-list-divider,gux-list-item,gux-listbox,gux-listbox-multi,gux-loading-message,gux-menu,gux-menu-option,gux-modal,gux-modal-legacy,gux-modal-side-panel-beta,gux-month-calendar,gux-month-list,gux-month-list-item,gux-month-picker-beta,gux-notification-toast-legacy,gux-option,gux-option-group-beta,gux-option-icon,gux-option-multi,gux-page-loading-spinner,gux-pagination,gux-pagination-buttons,gux-pagination-buttons-legacy,gux-pagination-cursor,gux-pagination-ellipsis-button,gux-pagination-item-counts,gux-pagination-item-counts-legacy,gux-pagination-items-per-page,gux-pagination-items-per-page-legacy,gux-pagination-legacy,gux-phone-input-beta,gux-popover,gux-popover-beta,gux-popover-list,gux-popover-list-beta,gux-popup,gux-radial-loading,gux-radial-progress,gux-rating,gux-rich-highlight-list-item,gux-rich-style-list-item,gux-rich-text-editor-action,gux-rich-text-editor-action-group,gux-rich-text-editor-action-link,gux-rich-text-editor-action-rich-style,gux-rich-text-editor-action-text-highlight,gux-rich-text-editor-beta,gux-rich-text-editor-list,gux-rich-text-editor-menu,gux-rich-text-editor-sub-list,gux-row-select,gux-screen-reader-beta,gux-segmented-control-beta,gux-segmented-control-item,gux-selector-card-beta,gux-selector-cards-beta,gux-side-panel-beta,gux-side-panel-heading,gux-simple-toast-legacy,gux-skip-navigation-item,gux-skip-navigation-list,gux-sort-control,gux-submenu,gux-switch-item,gux-switch-legacy,gux-tab,gux-tab-advanced,gux-tab-advanced-list,gux-tab-advanced-panel,gux-tab-list,gux-tab-panel,gux-table,gux-table-select-menu,gux-table-toolbar,gux-table-toolbar-action,gux-table-toolbar-custom-action,gux-table-toolbar-menu-button,gux-tabs,gux-tabs-advanced,gux-tag,gux-text-highlight,gux-time-beta,gux-time-picker,gux-time-zone-beta,gux-time-zone-picker-beta,gux-toast,gux-toggle,gux-toggle-slider,gux-tooltip,gux-tooltip-base-beta,gux-tooltip-beta,gux-tooltip-title,gux-truncate{visibility:hidden}[hydrated]{visibility:inherit}</style><style data-styles="">audio-player-v3,countdown-timer,genesys-normalized-message,stop-watch,audio-player-waveform,progress-underlay,audio-player-timeline,fixed-duration,entity-image,entity-hover-card,entity-contact-group,presence-label,entity-location,logoff-link,presence-selector-dropdown,queue-toggle-switch,station-disassociate-link,entity-favorite,person-activity{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <!-- <style>gux-tooltip-title{overflow:hidden}gux-tooltip{font-weight:normal;line-height:normal;text-align:start;overflow-wrap:break-word;white-space:normal}.gux-overflow-hidden .gux-title-container ::slotted(span){overflow:hidden;text-overflow:ellipsis}.gux-overflow-hidden .gux-title-container>*{overflow:hidden;text-overflow:ellipsis}.gux-title-container{display:flex;pointer-events:none}.gux-tooltip-icon-decorative .gux-title-container{position:relative;margin-inline-start:20px}.gux-tooltip-icon-decorative .gux-title-container gux-icon,.gux-tooltip-icon-decorative .gux-title-container ::slotted(gux-icon){position:absolute;inset-block-start:1px;inset-inline-start:-20px;flex-shrink:0;inline-size:16px;block-size:16px}.gux-icon-only{line-height:0px}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style>gux-tabs[orientation=vertical]>gux-tab-list gux-tab{box-sizing:border-box;border-inline-end:var(--gse-ui-tabs-item-divider-vertical-width) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab{display:flex;justify-content:flex-end;inline-size:var(--gse-ui-tabs-set-vertical-width);block-size:var(--gse-ui-tabs-item-vertical-fixedHeight);padding:var(--gse-ui-tabs-item-vertical-padding);border-inline-end:var(--gse-ui-tabs-item-indicator-vertical-width) solid transparent}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab.gux-active{border-inline-end-color:var(--gse-ui-tabs-item-indicator-activeColor)}gux-tabs[orientation=vertical]>gux-tab-list gux-tab .gux-tab:hover:not(.gux-active):not(.gux-disabled){border-inline-end-color:var(--gse-ui-tabs-item-indicator-hoverColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab{box-sizing:border-box;max-inline-size:160px;block-size:var(--gse-ui-tabs-item-horizontal-fixedHeight);padding:var(--gse-ui-tabs-item-horizontal-padding);border-block-end:var(--gse-ui-tabs-item-indicator-horizontal-height) solid transparent}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab.gux-active{border-block-end-color:var(--gse-ui-tabs-item-indicator-activeColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab:hover:not(.gux-active):not(.gux-disabled){border-block-end-color:var(--gse-ui-tabs-item-indicator-hoverColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab gux-tooltip-title{margin:auto}gux-tabs[alignment=center]>gux-tab-list .gux-scrollable-section{justify-content:center}gux-tabs[alignment=full-width]>gux-tab-list .gux-scrollable-section{flex-grow:1}gux-tabs[alignment=full-width]>gux-tab-list gux-tab{inline-size:100%;max-inline-size:100%}gux-tabs[alignment=full-width]>gux-tab-list gux-tab .gux-tab{inline-size:100%;max-inline-size:100%}gux-tab{display:flex}gux-tab .gux-tab{display:flex;align-items:center;block-size:var(--gse-ui-tabs-item-height);font-family:var(--gse-ui-tabs-item-itemText-fontFamily);font-size:var(--gse-ui-tabs-item-itemText-fontSize);font-weight:var(--gse-ui-tabs-item-itemText-fontWeight);line-height:var(--gse-ui-tabs-item-itemText-lineHeight);color:var(--gse-ui-tabs-item-itemTextColor);cursor:pointer;background-color:transparent;border:none}gux-tab .gux-tab.gux-disabled{cursor:default}gux-tab .gux-tab.gux-disabled gux-tooltip-title{opacity:var(--gse-ui-tabs-item-disableOpacity)}gux-tab .gux-tab:focus-visible{outline:var(--gse-ui-tabs-focusRing-border-width) var(--gse-ui-tabs-focusRing-border-style) var(--gse-ui-tabs-focusRing-border-color);outline-offset:calc(var(--gse-ui-tabs-focusRing-border-width) * -1);border-radius:var(--gse-ui-tabs-focusRing-borderRadius)}gux-tab .gux-tab gux-tooltip-title{white-space:nowrap}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style>gux-tabs[orientation=vertical]{block-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container{display:flex;flex-direction:column;inline-size:var(--gse-ui-tabs-set-vertical-width);block-size:100%;margin-inline-end:var(--gse-ui-tabs-set-vertical-marginRight);border-inline-end:var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scroll-button-container{inline-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scroll-button-container button{inline-size:100%}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scrollable-section{flex-direction:column;block-size:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}gux-tabs[orientation=vertical]>gux-tab-list .gux-tab-container .gux-scrollable-section::-webkit-scrollbar{inline-size:0;block-size:0}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-tab-container{block-size:var(--gse-ui-tabs-set-horizontal-height);margin-block-end:var(--gse-ui-tabs-set-horizontal-marginBottom);border-block-end:var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor)}gux-tabs:not([orientation=vertical])>gux-tab-list .gux-scrollable-section{overflow-x:auto}gux-tabs .gux-tab-container{box-sizing:content-box;display:flex;inline-size:100%;overflow:hidden;background-color:transparent}gux-tabs .gux-scrollable-section{display:flex;flex:1 1 auto;scroll-behavior:smooth;scrollbar-width:none}gux-tabs .gux-scrollable-section::-webkit-scrollbar{block-size:0}gux-tabs .gux-scroll-button-container{display:flex;align-items:center;justify-content:center;background-color:var(--gse-ui-advancedTabs-set-backgroundColor);border-radius:var(--gse-ui-button-borderRadius)}gux-tabs .gux-scroll-button-container gux-button-slot{inline-size:100%;block-size:100%}gux-tabs .gux-scroll-button-container button{display:flex;align-items:center;justify-content:center;block-size:100%}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style data-styles="">slot-fb{display:contents}slot-fb[hidden]{display:none}gux-accordion,gux-accordion-section,gux-action-button,gux-action-toast-legacy,gux-advanced-dropdown-legacy,gux-all-row-select,gux-announce-beta,gux-avatar-beta,gux-avatar-change-photo-beta,gux-avatar-focusable-beta,gux-avatar-group-add-item-beta,gux-avatar-group-beta,gux-avatar-group-item-beta,gux-avatar-overflow-beta,gux-avatar-overflow-item-beta,gux-badge,gux-blank-state,gux-breadcrumb-item,gux-breadcrumbs,gux-button,gux-button-multi,gux-button-slot,gux-calendar,gux-calendar-beta,gux-card,gux-column-manager,gux-column-manager-item,gux-content-search,gux-context-menu,gux-copy-to-clipboard,gux-create-option,gux-cta-group,gux-date-beta,gux-date-time-beta,gux-datepicker,gux-disclosure-button-legacy,gux-dismiss-button,gux-dropdown,gux-dropdown-multi,gux-dropdown-multi-tag,gux-dropdown-option,gux-file-list-item,gux-flag-icon-beta,gux-flyout-menu,gux-form-beta,gux-form-description,gux-form-field-checkbox,gux-form-field-checkbox-group-beta,gux-form-field-color,gux-form-field-dropdown,gux-form-field-file,gux-form-field-file-beta,gux-form-field-input-clear-button,gux-form-field-label-indicator,gux-form-field-number,gux-form-field-phone,gux-form-field-radio,gux-form-field-radio-group-beta,gux-form-field-range,gux-form-field-search,gux-form-field-select,gux-form-field-text-like,gux-form-field-textarea,gux-form-field-time-picker,gux-form-field-time-zone-picker,gux-form-fieldset-heading,gux-form-footer,gux-form-heading,gux-icon,gux-icon-tooltip-beta,gux-inline-alert,gux-label-info-beta,gux-link-beta,gux-list,gux-list-divider,gux-list-item,gux-listbox,gux-listbox-multi,gux-loading-message,gux-menu,gux-menu-option,gux-modal,gux-modal-legacy,gux-modal-side-panel-beta,gux-month-calendar,gux-month-list,gux-month-list-item,gux-month-picker-beta,gux-notification-toast-legacy,gux-option,gux-option-group-beta,gux-option-icon,gux-option-multi,gux-page-loading-spinner,gux-pagination,gux-pagination-buttons,gux-pagination-buttons-legacy,gux-pagination-cursor,gux-pagination-ellipsis-button,gux-pagination-item-counts,gux-pagination-item-counts-legacy,gux-pagination-items-per-page,gux-pagination-items-per-page-legacy,gux-pagination-legacy,gux-phone-input-beta,gux-popover,gux-popover-beta,gux-popover-list,gux-popover-list-beta,gux-popup,gux-radial-loading,gux-radial-progress,gux-rating,gux-rich-highlight-list-item,gux-rich-style-list-item,gux-rich-text-editor-action,gux-rich-text-editor-action-group,gux-rich-text-editor-action-link,gux-rich-text-editor-action-rich-style,gux-rich-text-editor-action-text-highlight,gux-rich-text-editor-beta,gux-rich-text-editor-list,gux-rich-text-editor-menu,gux-rich-text-editor-sub-list,gux-row-select,gux-screen-reader-beta,gux-segmented-control-beta,gux-segmented-control-item,gux-selector-card-beta,gux-selector-cards-beta,gux-side-panel-beta,gux-side-panel-heading,gux-simple-toast-legacy,gux-skip-navigation-item,gux-skip-navigation-list,gux-sort-control,gux-submenu,gux-switch-item,gux-switch-legacy,gux-tab,gux-tab-advanced,gux-tab-advanced-list,gux-tab-advanced-panel,gux-tab-list,gux-tab-panel,gux-table,gux-table-select-menu,gux-table-toolbar,gux-table-toolbar-action,gux-table-toolbar-custom-action,gux-table-toolbar-menu-button,gux-tabs,gux-tabs-advanced,gux-tag,gux-text-highlight,gux-time-beta,gux-time-picker,gux-time-zone-beta,gux-time-zone-picker-beta,gux-toast,gux-toggle,gux-toggle-slider,gux-tooltip,gux-tooltip-base-beta,gux-tooltip-beta,gux-tooltip-title,gux-truncate{visibility:hidden}[hydrated]{visibility:inherit}</style><style data-styles="">audio-player-v3,countdown-timer,genesys-normalized-message,stop-watch,audio-player-waveform,progress-underlay,audio-player-timeline,fixed-duration,entity-image,entity-hover-card,entity-contact-group,presence-label,entity-location,logoff-link,presence-selector-dropdown,queue-toggle-switch,station-disassociate-link,entity-favorite,person-activity{visibility:hidden}.hydrated{visibility:inherit}</style> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <title>Options - PS Tool</title>
@@ -11,21 +11,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta charset="UTF-8"><style data-styles="">slot-fb{display:contents}slot-fb[hidden]{display:none}gux-accordion,gux-accordion-section,gux-action-button,gux-action-toast-legacy,gux-advanced-dropdown-legacy,gux-all-row-select,gux-announce-beta,gux-avatar-beta,gux-avatar-change-photo-beta,gux-avatar-focusable-beta,gux-avatar-group-add-item-beta,gux-avatar-group-beta,gux-avatar-group-item-beta,gux-avatar-overflow-beta,gux-avatar-overflow-item-beta,gux-badge,gux-blank-state,gux-breadcrumb-item,gux-breadcrumbs,gux-button,gux-button-multi,gux-button,gux-calendar,gux-calendar-beta,gux-card,gux-column-manager,gux-column-manager-item,gux-content-search,gux-context-menu,gux-copy-to-clipboard,gux-create-option,gux-cta-group,gux-date-beta,gux-date-time-beta,gux-datepicker,gux-day-beta,gux-disclosure-button-legacy,gux-dismiss-button,gux-dropdown,gux-dropdown-multi,gux-dropdown-multi-tag,gux-dropdown-option,gux-file-list-item,gux-flag-icon-beta,gux-flyout-menu,gux-form-beta,gux-form-description,gux-form-field-checkbox,gux-form-field-checkbox-group-beta,gux-form-field-color,gux-form-field-dropdown,gux-form-field-file,gux-form-field-file-beta,gux-form-field-input-clear-button,gux-form-field-label-indicator,gux-form-field-number,gux-form-field-phone,gux-form-field-radio,gux-form-field-radio-group-beta,gux-form-field-range,gux-form-field-search,gux-form-field-select,gux-form-field-text-like,gux-form-field-textarea,gux-form-field-time-picker,gux-form-field-time-zone-picker,gux-form-fieldset-heading,gux-form-footer,gux-form-heading,gux-icon,gux-icon-tooltip-beta,gux-inline-alert,gux-inline-dropdown-beta,gux-label-info-beta,gux-link-beta,gux-list,gux-list-divider,gux-list-item,gux-listbox,gux-listbox-multi,gux-loading-message,gux-menu,gux-menu-option,gux-modal,gux-modal-legacy,gux-modal-side-panel-beta,gux-month-calendar,gux-month-list,gux-month-list-item,gux-month-picker-beta,gux-notification-toast-legacy,gux-option,gux-option-group-beta,gux-option-icon,gux-option-multi,gux-option-status-beta,gux-page-loading-spinner,gux-pagination,gux-pagination-buttons,gux-pagination-buttons-legacy,gux-pagination-cursor,gux-pagination-ellipsis-button,gux-pagination-item-counts,gux-pagination-item-counts-legacy,gux-pagination-items-per-page,gux-pagination-items-per-page-legacy,gux-pagination-legacy,gux-phone-input-beta,gux-popover,gux-popover-beta,gux-popover-list,gux-popover-list-beta,gux-popup,gux-radial-loading,gux-radial-progress,gux-rating,gux-rich-highlight-list-item,gux-rich-style-list-item,gux-rich-text-editor-action,gux-rich-text-editor-action-group,gux-rich-text-editor-action-link,gux-rich-text-editor-action-rich-style,gux-rich-text-editor-action-text-highlight,gux-rich-text-editor-beta,gux-rich-text-editor-list,gux-rich-text-editor-menu,gux-rich-text-editor-sub-list,gux-row-select,gux-screen-reader-beta,gux-segmented-control-beta,gux-segmented-control-item,gux-selector-card-beta,gux-selector-cards-beta,gux-side-panel-beta,gux-side-panel-heading,gux-simple-toast-legacy,gux-skip-navigation-item,gux-skip-navigation-list,gux-sort-control,gux-status-indicator-beta,gux-step,gux-step-title,gux-stepper-beta,gux-submenu,gux-switch-item,gux-switch-legacy,gux-tab,gux-tab-advanced,gux-tab-advanced-list,gux-tab-advanced-panel,gux-tab-list,gux-tab-panel,gux-table,gux-table-select-menu,gux-table-toolbar,gux-table-toolbar-action,gux-table-toolbar-custom-action,gux-table-toolbar-menu-button,gux-tabs,gux-tabs-advanced,gux-tag,gux-text-highlight,gux-time-beta,gux-time-picker,gux-time-zone-beta,gux-time-zone-picker-beta,gux-toast,gux-toggle,gux-toggle-slider,gux-tooltip,gux-tooltip-base-beta,gux-tooltip-beta,gux-tooltip-pointer-beta,gux-tooltip-title,gux-truncate{visibility:hidden}[hydrated]{visibility:inherit}</style>
+    <style data-styles="">gux-chart-column-beta,gux-chart-donut-beta,gux-chart-line-beta,gux-chart-pie-beta,gux-chart-scatter-plot-beta,gux-visualization-beta{visibility:hidden}[hydrated]{visibility:inherit}</style>
+    <style>*{box-sizing:border-box}html,body{width:100%;height:100%;padding:0;margin:0;color:var(--gse-semantic-foreground-container-highEmphasis);background-color:var(--gse-semantic-background-container-page-default)}main{display:flex;flex-direction:column;height:100%}#top-bar{display:flex;align-items:center;align-self:stretch;justify-content:space-between;padding:var(--gse-semantic-interactive-md-padding) var(--gse-semantic-container-lg-padding);background:var(--gse-semantic-background-container-page-default);border-bottom:1px solid var(--gse-semantic-border-container-edges-default)}#top-bar nav{display:flex;gap:var(--gse-semantic-interactive-lg-gap);align-items:center;justify-content:flex-end}#top-bar #mode-switcher-section{display:block}#top-bar .divider{align-self:stretch;width:1px;border-left:1px solid var(--gse-semantic-border-container-edges-default)}#inner-content{display:flex;flex:1;flex-direction:row;overflow:hidden}iframe{flex-grow:1;padding-left:0;border:none}.components-list{display:flex;flex-shrink:0;flex-direction:column;min-width:180px;overflow-y:auto;border-right:1px solid var(--gse-semantic-border-container-edges-default)}.components-list .sticky-header{position:sticky;top:0;display:flex;flex-direction:column;background-color:var(--gse-semantic-background-container-page-default);box-shadow:0 0 var(--gse-semantic-container-md-boxShadow-blur) var(--gse-semantic-container-md-boxShadow-spread) var(--gse-semantic-container-md-boxShadow-color)}.components-list .sticky-header h2{padding:var(--gse-semantic-container-md-padding) var(--gse-semantic-container-sm-padding) 0 var(--gse-semantic-container-sm-padding);margin:0}.components-list .component-items-wrapper{display:flex;flex:1;flex-direction:column}.components-list .sticky-footer{position:sticky;bottom:0;display:flex;flex-direction:column;padding-bottom:20px;background-color:var(--gse-semantic-background-container-page-default);box-shadow:0 0 var(--gse-semantic-container-md-boxShadow-blur) var(--gse-semantic-container-md-boxShadow-spread) var(--gse-semantic-container-md-boxShadow-color)}.components-list .sticky-footer h2{align-self:stretch;padding:var(--gse-semantic-container-sm-padding) 0 var(--gse-semantic-container-sm-padding) var(--gse-semantic-container-md-padding);margin:0;font-family:var(--gse-semantic-heading-md-bold-fontFamily);font-size:var(--gse-semantic-heading-md-bold-fontSize);font-style:normal;font-weight:var(--gse-semantic-heading-md-bold-fontWeight);line-height:var(--gse-semantic-heading-md-bold-lineHeight);color:var(--gse-semantic-foreground-container-highEmphasis)}.components-list .component-search-field{padding:var(--gse-semantic-container-md-padding) var(--gse-semantic-container-sm-padding)}.components-list .hide-item{display:none}.components-list .resources-link{padding:0 16px}.components-list .component-item{padding:0 16px;font-size:12px;line-height:32px;color:var(--gse-semantic-foreground-container-midEmphasis);white-space:nowrap;text-decoration:none;border-bottom:1px solid var(--gse-semantic-border-container-edges-default)}.components-list .component-item:visited{color:var(--gse-semantic-foreground-container-midEmphasis)}.components-list .component-item.active-component{font-weight:700;color:var(--gse-semantic-foreground-container-highEmphasis);background-color:var(--gse-semantic-background-container-elevated-active)}.components-list .component-item:hover{color:var(--gse-semantic-foreground-container-highEmphasis);background-color:var(--gse-semantic-background-container-elevated-hover)}
+    /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9zdHlsZXMvY29tcG9uZW50LWxpc3Rpbmcuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxFQUNFLHFCQUFBLENBR0YsVUFFRSxVQUFBLENBQ0EsV0FBQSxDQUNBLFNBQUEsQ0FDQSxRQUFBLENBQ0EsMkRBQUEsQ0FDQSxzRUFBQSxDQUdGLEtBQ0UsWUFBQSxDQUNBLHFCQUFBLENBQ0EsV0FBQSxDQUdGLFNBQ0UsWUFBQSxDQUNBLGtCQUFBLENBQ0Esa0JBQUEsQ0FDQSw2QkFBQSxDQUNBLDJGQUFBLENBRUEsZ0VBQUEsQ0FDQSwwRUFBQSxDQUVBLGFBQ0UsWUFBQSxDQUNBLDBDQUFBLENBQ0Esa0JBQUEsQ0FDQSx3QkFBQSxDQUdGLGdDQUNFLGFBQUEsQ0FHRixrQkFDRSxrQkFBQSxDQUNBLFNBQUEsQ0FDQSx3RUFBQSxDQUlKLGVBQ0UsWUFBQSxDQUNBLE1BQUEsQ0FDQSxrQkFBQSxDQUNBLGVBQUEsQ0FHRixPQUNFLFdBQUEsQ0FDQSxjQUFBLENBQ0EsV0FBQSxDQUdGLGlCQUNFLFlBQUEsQ0FDQSxhQUFBLENBQ0EscUJBQUEsQ0FDQSxlQUFBLENBQ0EsZUFBQSxDQUNBLHlFQUFBLENBRUEsZ0NBQ0UsZUFBQSxDQUNBLEtBQUEsQ0FDQSxZQUFBLENBQ0EscUJBQUEsQ0FDQSxzRUFBQSxDQUNBLGlLQUFBLENBSUEsbUNBQ0Usb0lBQUEsQ0FHQSxRQUFBLENBSUosMENBQ0UsWUFBQSxDQUNBLE1BQUEsQ0FDQSxxQkFBQSxDQUdGLGdDQUNFLGVBQUEsQ0FDQSxRQUFBLENBQ0EsWUFBQSxDQUNBLHFCQUFBLENBQ0EsbUJBQUEsQ0FDQSxzRUFBQSxDQUNBLGlLQUFBLENBSUEsbUNBQ0Usa0JBQUEsQ0FDQSxvSUFBQSxDQUdBLFFBQUEsQ0FDQSwwREFBQSxDQUNBLHNEQUFBLENBQ0EsaUJBQUEsQ0FDQSwwREFBQSxDQUNBLDBEQUFBLENBQ0EsMkRBQUEsQ0FJSix5Q0FDRSx5RkFBQSxDQUlGLDRCQUNFLFlBQUEsQ0FHRixpQ0FDRSxjQUFBLENBR0YsaUNBQ0UsY0FBQSxDQUNBLGNBQUEsQ0FDQSxnQkFBQSxDQUNBLDBEQUFBLENBQ0Esa0JBQUEsQ0FDQSxvQkFBQSxDQUNBLDBFQUFBLENBRUEseUNBQ0UsMERBQUEsQ0FHRixrREFDRSxlQUFBLENBQ0EsMkRBQUEsQ0FDQSx5RUFBQSxDQUtGLHVDQUNFLDJEQUFBLENBQ0Esd0VBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIqIHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuaHRtbCxcbmJvZHkge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDA7XG4gIGNvbG9yOiB2YXIoLS1nc2Utc2VtYW50aWMtZm9yZWdyb3VuZC1jb250YWluZXItaGlnaEVtcGhhc2lzKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZ3NlLXNlbWFudGljLWJhY2tncm91bmQtY29udGFpbmVyLXBhZ2UtZGVmYXVsdCk7XG59XG5cbm1haW4ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbiN0b3AtYmFyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYWxpZ24tc2VsZjogc3RyZXRjaDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBwYWRkaW5nOiB2YXIoLS1nc2Utc2VtYW50aWMtaW50ZXJhY3RpdmUtbWQtcGFkZGluZylcbiAgICB2YXIoLS1nc2Utc2VtYW50aWMtY29udGFpbmVyLWxnLXBhZGRpbmcpO1xuICBiYWNrZ3JvdW5kOiB2YXIoLS1nc2Utc2VtYW50aWMtYmFja2dyb3VuZC1jb250YWluZXItcGFnZS1kZWZhdWx0KTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLWdzZS1zZW1hbnRpYy1ib3JkZXItY29udGFpbmVyLWVkZ2VzLWRlZmF1bHQpO1xuXG4gIG5hdiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBnYXA6IHZhcigtLWdzZS1zZW1hbnRpYy1pbnRlcmFjdGl2ZS1sZy1nYXApO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgfVxuXG4gICNtb2RlLXN3aXRjaGVyLXNlY3Rpb24ge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICB9XG5cbiAgLmRpdmlkZXIge1xuICAgIGFsaWduLXNlbGY6IHN0cmV0Y2g7XG4gICAgd2lkdGg6IDFweDtcbiAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkIHZhcigtLWdzZS1zZW1hbnRpYy1ib3JkZXItY29udGFpbmVyLWVkZ2VzLWRlZmF1bHQpO1xuICB9XG59XG5cbiNpbm5lci1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleDogMTtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuaWZyYW1lIHtcbiAgZmxleC1ncm93OiAxO1xuICBwYWRkaW5nLWxlZnQ6IDA7XG4gIGJvcmRlcjogbm9uZTtcbn1cblxuLmNvbXBvbmVudHMtbGlzdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtc2hyaW5rOiAwO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBtaW4td2lkdGg6IDE4MHB4O1xuICBvdmVyZmxvdy15OiBhdXRvO1xuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCB2YXIoLS1nc2Utc2VtYW50aWMtYm9yZGVyLWNvbnRhaW5lci1lZGdlcy1kZWZhdWx0KTtcblxuICAuc3RpY2t5LWhlYWRlciB7XG4gICAgcG9zaXRpb246IHN0aWNreTtcbiAgICB0b3A6IDA7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWdzZS1zZW1hbnRpYy1iYWNrZ3JvdW5kLWNvbnRhaW5lci1wYWdlLWRlZmF1bHQpO1xuICAgIGJveC1zaGFkb3c6IDAgMCB2YXIoLS1nc2Utc2VtYW50aWMtY29udGFpbmVyLW1kLWJveFNoYWRvdy1ibHVyKVxuICAgICAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1tZC1ib3hTaGFkb3ctc3ByZWFkKVxuICAgICAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1tZC1ib3hTaGFkb3ctY29sb3IpO1xuXG4gICAgaDIge1xuICAgICAgcGFkZGluZzogdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1tZC1wYWRkaW5nKVxuICAgICAgICB2YXIoLS1nc2Utc2VtYW50aWMtY29udGFpbmVyLXNtLXBhZGRpbmcpIDBcbiAgICAgICAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1zbS1wYWRkaW5nKTtcbiAgICAgIG1hcmdpbjogMDtcbiAgICB9XG4gIH1cblxuICAuY29tcG9uZW50LWl0ZW1zLXdyYXBwZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleDogMTtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB9XG5cbiAgLnN0aWNreS1mb290ZXIge1xuICAgIHBvc2l0aW9uOiBzdGlja3k7XG4gICAgYm90dG9tOiAwO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1nc2Utc2VtYW50aWMtYmFja2dyb3VuZC1jb250YWluZXItcGFnZS1kZWZhdWx0KTtcbiAgICBib3gtc2hhZG93OiAwIDAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1tZC1ib3hTaGFkb3ctYmx1cilcbiAgICAgIHZhcigtLWdzZS1zZW1hbnRpYy1jb250YWluZXItbWQtYm94U2hhZG93LXNwcmVhZClcbiAgICAgIHZhcigtLWdzZS1zZW1hbnRpYy1jb250YWluZXItbWQtYm94U2hhZG93LWNvbG9yKTtcblxuICAgIGgyIHtcbiAgICAgIGFsaWduLXNlbGY6IHN0cmV0Y2g7XG4gICAgICBwYWRkaW5nOiB2YXIoLS1nc2Utc2VtYW50aWMtY29udGFpbmVyLXNtLXBhZGRpbmcpIDBcbiAgICAgICAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1zbS1wYWRkaW5nKVxuICAgICAgICB2YXIoLS1nc2Utc2VtYW50aWMtY29udGFpbmVyLW1kLXBhZGRpbmcpO1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWdzZS1zZW1hbnRpYy1oZWFkaW5nLW1kLWJvbGQtZm9udEZhbWlseSk7XG4gICAgICBmb250LXNpemU6IHZhcigtLWdzZS1zZW1hbnRpYy1oZWFkaW5nLW1kLWJvbGQtZm9udFNpemUpO1xuICAgICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgICAgZm9udC13ZWlnaHQ6IHZhcigtLWdzZS1zZW1hbnRpYy1oZWFkaW5nLW1kLWJvbGQtZm9udFdlaWdodCk7XG4gICAgICBsaW5lLWhlaWdodDogdmFyKC0tZ3NlLXNlbWFudGljLWhlYWRpbmctbWQtYm9sZC1saW5lSGVpZ2h0KTtcbiAgICAgIGNvbG9yOiB2YXIoLS1nc2Utc2VtYW50aWMtZm9yZWdyb3VuZC1jb250YWluZXItaGlnaEVtcGhhc2lzKTtcbiAgICB9XG4gIH1cblxuICAuY29tcG9uZW50LXNlYXJjaC1maWVsZCB7XG4gICAgcGFkZGluZzogdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1tZC1wYWRkaW5nKVxuICAgICAgdmFyKC0tZ3NlLXNlbWFudGljLWNvbnRhaW5lci1zbS1wYWRkaW5nKTtcbiAgfVxuXG4gIC5oaWRlLWl0ZW0ge1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gIH1cblxuICAucmVzb3VyY2VzLWxpbmsge1xuICAgIHBhZGRpbmc6IDAgMTZweDtcbiAgfVxuXG4gIC5jb21wb25lbnQtaXRlbSB7XG4gICAgcGFkZGluZzogMCAxNnB4O1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICBsaW5lLWhlaWdodDogMzJweDtcbiAgICBjb2xvcjogdmFyKC0tZ3NlLXNlbWFudGljLWZvcmVncm91bmQtY29udGFpbmVyLW1pZEVtcGhhc2lzKTtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0tZ3NlLXNlbWFudGljLWJvcmRlci1jb250YWluZXItZWRnZXMtZGVmYXVsdCk7XG5cbiAgICAmOnZpc2l0ZWQge1xuICAgICAgY29sb3I6IHZhcigtLWdzZS1zZW1hbnRpYy1mb3JlZ3JvdW5kLWNvbnRhaW5lci1taWRFbXBoYXNpcyk7XG4gICAgfVxuXG4gICAgJi5hY3RpdmUtY29tcG9uZW50IHtcbiAgICAgIGZvbnQtd2VpZ2h0OiA3MDA7XG4gICAgICBjb2xvcjogdmFyKC0tZ3NlLXNlbWFudGljLWZvcmVncm91bmQtY29udGFpbmVyLWhpZ2hFbXBoYXNpcyk7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoXG4gICAgICAgIC0tZ3NlLXNlbWFudGljLWJhY2tncm91bmQtY29udGFpbmVyLWVsZXZhdGVkLWFjdGl2ZVxuICAgICAgKTtcbiAgICB9XG5cbiAgICAmOmhvdmVyIHtcbiAgICAgIGNvbG9yOiB2YXIoLS1nc2Utc2VtYW50aWMtZm9yZWdyb3VuZC1jb250YWluZXItaGlnaEVtcGhhc2lzKTtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWdzZS1zZW1hbnRpYy1iYWNrZ3JvdW5kLWNvbnRhaW5lci1lbGV2YXRlZC1ob3Zlcik7XG4gICAgfVxuICB9XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style>
+    <!-- JS -->
+    <script type="module" src="genesys-spark-components/dist/genesys-webcomponents/genesys-webcomponents.esm.js"></script>
+    <script src="./jsonViewer/jquery.js"></script>
+    <script type="module" src="./js/options.js"></script>
+    <!-- CSS -->
+    <link href="genesys-spark-components/dist/genesys-webcomponents/genesys-webcomponents.css" rel="stylesheet">
+    <link href="https://app.inindca.com/webfonts/urbanist.css" rel="stylesheet">
+    <link href="https://app.inindca.com/webfonts/noto-sans.css" rel="stylesheet">
+    <link href="https://dhqbrvplips7x.cloudfront.net/directory/11.62.0-3/assets/web-directory-3f52347ee0c30eca03700c06bb7e83cd.css" rel="stylesheet">
+    <link href="CSS/sidepanel.css" rel="stylesheet">
+
+
+
     <link rel="shortcut icon" href="https://dhqbrvplips7x.cloudfront.net/directory/11.58.0-2/assets/images/ico/favicon.png" crossorigin="anonymous">
 
- 
-        <script type="module" src="./js/options.js"></script>
-
-        <!-- CSS -->
-        <link href="./css/spark.min.css" rel="stylesheet">
-        
-        <!-- JS -->
-        <script src="./jsonViewer/jquery.js"></script>
-        <script src="./js/spark.min.js"></script>
+        <!-- <link href="./css/spark.min.css" rel="stylesheet"> -->
+        <!-- <script src="./js/spark.min.js"></script> -->
     </head>
     <body class="container">
-    <main role="main" id="main">
+    <div slot="content" class="container" id="container">
         <div class="row">
             <!-- Left Gutter -->
             <div class="col of-1"></div>
@@ -47,130 +57,143 @@
             <div class="col of-1"></div>
             <!-- Center of Page -->
             <div class="col of-11">
-                <form class="form tight" role="form" id="QuickNavForm">
+                
                         <div class="quickNav_Buttons">
-                            <div class="row flush">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 1 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav1_URL">
+                            <div class="row full-row">
+                                <form id="QuickNavForm" style="max-inline-size: 50%">
+                                    <fieldset>
+                                        <legend>Quick Nav Button 1</legend>
+
+                                        <gux-form-field-text-like clearable="true" label-position="beside">
+                                            <input slot="input" type="text" id="QuickNav1_URL" name="QuickNav1_URL"> 
+                                            <label slot="label" for="QuickNav1_URL">URL:</label>
+                                        </gux-form-field-text-like>
+
+                                        <gux-form-field-text-like clearable="true" label-position="beside">
+                                            <input slot="input" type="text" id="QuickNav1_Label" name="QuickNav1_Label">
+                                            <label slot="label" for="QuickNav1_Label">Label:</label>
+                                        </gux-form-field-text-like>
+                                        
+                                        <gux-form-field-checkbox>
+                                            <input slot="input" type="checkbox" id="QuickNav1_Checkbox" name="QuickNav1_radio" value="newTab">
+                                            <label slot="label" for="QuickNav1_Checkbox">New Tab</label>
+                                        </gux-form-field-checkbox>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Quick Nav Button 2</legend>
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav2_URL" name="QuickNav2_URL" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav2_URL">URL:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav1_Label">
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav2_Label" name="QuickNav2_Label" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav2_Label">Label:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav1_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
+                                        <div class="fiel-container">
+                                            <gux-form-field-checkbox>
+                                                <input slot="input" type="checkbox" id="QuickNav2_Checkbox" name="QuickNav2_radio" value="newTab">
+                                                <label slot="label" for="QuickNav2_Checkbox">New Tab</label>
+                                            </gux-form-field-checkbox>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row flush">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 2 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav2_URL">
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Quick Nav Button 3</legend>
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav3_URL" name="QuickNav3_URL" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav3_URL">URL:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav2_Label">
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav3_Label" name="QuickNav3_Label" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav3_Label">Label:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav2_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
+                                        <div class="fiel-container">
+                                            <gux-form-field-checkbox>
+                                                <input slot="input" type="checkbox" id="QuickNav3_Checkbox" name="QuickNav3_radio" value="newTab">
+                                                <label slot="label" for="QuickNav3_Checkbox">New Tab</label>
+                                            </gux-form-field-checkbox>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row flush">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 1 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav3_URL">
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Quick Nav Button 4</legend>
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav4_URL" name="QuickNav4_URL" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav4_URL">URL:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav3_Label">
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav4_Label" name="QuickNav4_Label" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav4_Label">Label:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav3_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
+                                        <div class="fiel-container">
+                                            <gux-form-field-checkbox>
+                                                <input slot="input" type="checkbox" id="QuickNav4_Checkbox" name="QuickNav4_radio" value="newTab">
+                                                <label slot="label" for="QuickNav4_Checkbox">New Tab</label>
+                                            </gux-form-field-checkbox>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row flush">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 1 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav4_URL">
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Quick Nav Button 5</legend>
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav5_URL" name="QuickNav5_URL" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav5_URL">URL:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav4_Label">
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav5_Label" name="QuickNav5_Label" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav5_Label">Label:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav4_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
+                                        <div class="fiel-container">
+                                            <gux-form-field-checkbox>
+                                                <input slot="input" type="checkbox" id="QuickNav5_Checkbox" name="QuickNav5_radio" value="newTab">
+                                                <label slot="label" for="QuickNav5_Checkbox">New Tab</label>
+                                            </gux-form-field-checkbox>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row flush">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 1 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav5_URL">
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Quick Nav Button 6</legend>
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav6_URL" name="QuickNav6_URL" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav6_URL">URL:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav5_Label">
+                                        <div class="field-container">
+                                            <gux-form-field-text-like clearable="true" label-position="beside">
+                                                <input slot="input" type="text" id="QuickNav6_Label" name="QuickNav6_Label" style="text-overflow:ellipsis; overflow: hidden;">
+                                                <label slot="label" for="QuickNav6_Label">Label:</label>
+                                            </gux-form-field-text-like>
                                         </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav5_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
+                                        <div class="fiel-container">
+                                            <gux-form-field-checkbox>
+                                                <input slot="input" type="checkbox" id="QuickNav6_Checkbox" name="QuickNav6_radio" value="newTab">
+                                                <label slot="label" for="QuickNav6_Checkbox">New Tab</label>
+                                            </gux-form-field-checkbox>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div>
-                                    <div class="input-container">
-                                        <span class="heavy">Quick Nav Button 1 <br></span>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> URL</label>
-                                            <input type="text" id="QuickNavId" name="QuickNav6_URL">
-                                        </div>
-                                        <div class="input-container tight-40">
-                                            <label for="QuickNav"> Label</label>
-                                            <input type="text" id="QuickNavLabel" name="QuickNav6_Label">
-                                        </div>
-                                        <div class="input-container tight-20">
-                                            <br><br>
-                                            <input type="checkbox" id="QuickNavRadio" name="QuickNav6_radio" value="newTab">
-                                            <label for="vehicle1"> New Tab</label> 
-                                        </div>
-                                    </div>
-                                </div>
+                                    </fieldset>
+                                    <br> 
+                                </form>     
                             </div>
                         </div>
-                </form>
+                
                 <!-- <input class="button" type="submit" value="Save"> -->
                 <input class="btn blue flat push-10" btn-saving="saving && pageIsClosing"data-t="save-button"  type="submit" value="Save">
             </div>

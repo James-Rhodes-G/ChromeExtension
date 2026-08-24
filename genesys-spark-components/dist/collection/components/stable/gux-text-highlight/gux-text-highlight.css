@@ -1,0 +1,7 @@
+span mark {
+  background-color: var(--gse-ui-search-match-firstLevel-backgroundColor);
+}
+
+.gux-dimmed mark {
+  background-color: var(--gse-ui-search-match-subsequentLevel-backgroundColor);
+}

@@ -1,0 +1,35 @@
+/*
+ * Typography styles and mixins.
+ */
+/* Headings */
+/* Body Copy */
+/* Anchor */
+:host {
+  position: relative;
+  display: block;
+}
+:host .gux-table {
+  position: relative;
+  block-size: inherit;
+}
+:host .gux-table .gux-table-container {
+  max-block-size: 100%;
+  overflow: auto;
+  scrollbar-color: var(--gse-ui-dataTableItems-scrollbar-foregroundColor);
+  scrollbar-width: thin;
+}
+:host .gux-table .gux-table-container.gux-column-resizing-hover, :host .gux-table .gux-table-container.gux-column-resizing {
+  cursor: col-resize;
+}
+:host .gux-empty-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: calc(100% - var(--gse-ui-dataTableItems-header-default-height));
+  color: var(--gse-semantic-foreground-container-lowEmphasis);
+  background: var(--gse-semantic-background-container-page-tonalSubtle);
+  font-family: var(--gse-semantic-heading-lg-bold-fontFamily), var(--gse-semantic-theme-fontFamily-headings), sans-serif;
+  font-size: var(--gse-semantic-heading-lg-bold-fontSize);
+  line-height: var(--gse-semantic-heading-lg-bold-lineHeight);
+  font-weight: var(--gse-semantic-heading-lg-bold-fontWeight);
+}

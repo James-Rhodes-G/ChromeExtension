@@ -1,0 +1,40 @@
+.gux-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: flex-start flex-start;
+  align-items: center;
+  border-block-start: var(--gse-ui-dataTableItems-header-selectedBar-height) solid transparent;
+  border-block-end: var(--gse-ui-dataTableItems-header-selectedBar-height) solid transparent;
+}
+.gux-container.gux-active {
+  border-block-end-color: var(--gse-ui-dataTableItems-header-selectedIndicatorColor);
+}
+.gux-container:focus-within {
+  border-block-end-color: var(--gse-ui-dataTableItems-header-selectedIndicatorColor);
+}
+.gux-container .gux-sort-button {
+  all: unset;
+  flex: 1 1 auto;
+  align-self: stretch;
+  order: 0;
+  cursor: pointer;
+}
+.gux-container .gux-sort-button .gux-sort-icon {
+  float: inline-end;
+  margin-block: 0;
+  margin-inline: var(--gse-ui-dataTableItems-header-gap);
+  color: var(--gse-ui-dataTableItems-header-sort-foregroundColor);
+}
+.gux-container .gux-sort-button .gux-sort-icon.gux-left {
+  float: inline-start;
+  margin-inline-start: calc(2px + var(--gse-ui-dataTableItems-header-gap));
+}
+.gux-container .gux-resize-spacer {
+  flex: 0 1 auto;
+  align-self: stretch;
+  order: 0;
+  inline-size: 2px;
+}

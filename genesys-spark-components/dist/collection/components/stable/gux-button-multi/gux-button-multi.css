@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.gux-button-multi-container .gux-dropdown-button button {
+  display: inline-flex;
+  align-items: center;
+}
+.gux-button-multi-container .gux-dropdown-button button gux-icon {
+  margin-inline-start: var(--gse-ui-button-gap);
+}
+
+.gux-list-container {
+  max-inline-size: 220px;
+  margin: 0;
+  overflow-y: auto;
+  background: var(--gse-ui-menu-backgroundColor);
+  border-color: var(--gse-ui-menu-border-color);
+  border-style: var(--gse-ui-menu-border-style);
+  border-width: var(--gse-ui-menu-border-width);
+  border-radius: var(--gse-ui-menu-borderRadius);
+  box-shadow: var(--gse-ui-menu-boxShadow);
+}

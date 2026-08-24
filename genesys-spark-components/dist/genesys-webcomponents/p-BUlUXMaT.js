@@ -1,0 +1,1 @@
+import{h as i}from"./p-xFL2agjT.js";const o=({position:o,required:e},r)=>i("div",{class:{"gux-form-field-label":!0,[`gux-${o}`]:!0,"gux-required":e}},r),e=({labelPosition:o},e)=>i("div",{class:{"gux-form-field-container":!0,[`gux-${o}`]:!0}},e);export{o as G,e as a}

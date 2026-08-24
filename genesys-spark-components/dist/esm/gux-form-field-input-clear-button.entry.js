@@ -1,0 +1,29 @@
+import { r as registerInstance, h, a as getElement } from './index-xFL2agjT.js';
+import { t as trackComponent } from './usage-D2Q7fj4V.js';
+import { b as buildI18nForComponent } from './index-Dac2qHbK.js';
+import './get-closest-element-Cd4R0amv.js';
+
+const clear = "Clear";
+var translationResources = {
+	clear: clear
+};
+
+const guxFormFieldInputClearButtonCss = "button{display:flex;padding:0;color:var(--gse-ui-formControl-input-inputClearable-inputClearableColor);background:transparent;border:none;border-radius:var(--gse-ui-formControl-input-borderRadius)}button:not(:disabled):focus-visible,button:not(:disabled):hover{color:var(--gse-ui-formControl-input-inputIcon-iconEndColor);cursor:pointer}button gux-icon{border-radius:var(--gse-ui-formControl-input-borderRadius)}button:focus{outline:none}button:focus-visible:enabled gux-icon{outline:var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);border:var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);border-radius:var(--gse-ui-formControl-focusRing-borderRadius)}";
+
+const GuxFormFieldInputClearButton = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+    }
+    async componentWillLoad() {
+        trackComponent(this.root);
+        this.i18n = await buildI18nForComponent(this.root, translationResources);
+    }
+    render() {
+        return (h("button", { key: '305675dae6c35eab394e01dc39155b2f352a8c5e', tabIndex: -1, type: "button", title: this.i18n('clear') }, h("gux-icon", { key: '35444cb25808da5079a96c9f0c12b710726b687a', "icon-name": "fa/xmark-large-regular", decorative: true, size: "small" })));
+    }
+    static get delegatesFocus() { return true; }
+    get root() { return getElement(this); }
+};
+GuxFormFieldInputClearButton.style = guxFormFieldInputClearButtonCss;
+
+export { GuxFormFieldInputClearButton as gux_form_field_input_clear_button };

@@ -1,0 +1,29 @@
+:host([disabled]),
+button[disabled] {
+  pointer-events: none;
+  user-select: none;
+}
+
+.gux-sr-only {
+  display: flex;
+}
+.gux-sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.gux-action-title {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gse-ui-button-gap);
+  align-items: center;
+}
+.gux-action-title slot[name=icon]::slotted(gux-icon) {
+  inline-size: var(--gse-ui-icon-small-size);
+  block-size: var(--gse-ui-icon-small-size);
+}

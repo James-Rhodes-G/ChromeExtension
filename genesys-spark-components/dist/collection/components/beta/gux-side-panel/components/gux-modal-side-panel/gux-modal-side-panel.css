@@ -1,0 +1,27 @@
+dialog {
+  inset-inline-start: auto;
+  block-size: 100%;
+  min-block-size: 100%;
+  padding: 0;
+  margin: unset;
+  border: none;
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out;
+}
+dialog.gux-open {
+  transform: translateX(0%);
+}
+
+dialog::backdrop {
+  background: var(--gse-ui-sidePanel-shroudColor);
+  opacity: var(--gse-ui-sidePanel-shroud-opacity);
+}
+
+slot[name=description]::slotted(*) {
+  margin: 0;
+  font-family: var(--gse-ui-sidePanel-description-text-fontFamily) !important;
+  font-size: var(--gse-ui-sidePanel-description-text-fontSize) !important;
+  font-weight: var(--gse-ui-sidePanel-description-text-fontWeight) !important;
+  line-height: var(--gse-ui-sidePanel-description-text-lineHeight) !important;
+  color: var(--gse-ui-sidePanel-descriptionColor) !important;
+}

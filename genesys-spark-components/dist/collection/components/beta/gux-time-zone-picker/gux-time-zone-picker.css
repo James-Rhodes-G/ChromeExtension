@@ -1,0 +1,19 @@
+gux-dropdown .zone-header {
+  padding-block: 8px 4px;
+  padding-inline: 12px;
+  color: #6b7585;
+  text-transform: uppercase;
+}
+gux-dropdown gux-option {
+  padding: var(--gse-ui-menu-option-padding);
+}
+gux-dropdown gux-option.gux-has-defaults {
+  block-size: auto;
+}
+gux-dropdown gux-option .gux-option-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+gux-dropdown gux-option .gux-default-zone {
+  color: #626e84;
+}

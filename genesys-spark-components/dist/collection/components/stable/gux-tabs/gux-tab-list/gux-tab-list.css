@@ -1,0 +1,71 @@
+gux-tabs[orientation=vertical] {
+  block-size: 100%;
+}
+gux-tabs[orientation=vertical] > gux-tab-list .gux-tab-container {
+  display: flex;
+  flex-direction: column;
+  inline-size: var(--gse-ui-tabs-set-vertical-width);
+  block-size: 100%;
+  margin-inline-end: var(--gse-ui-tabs-set-vertical-marginRight);
+  border-inline-end: var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor);
+}
+gux-tabs[orientation=vertical] > gux-tab-list .gux-tab-container .gux-scroll-button-container {
+  inline-size: 100%;
+}
+gux-tabs[orientation=vertical] > gux-tab-list .gux-tab-container .gux-scroll-button-container button {
+  inline-size: 100%;
+}
+gux-tabs[orientation=vertical] > gux-tab-list .gux-tab-container .gux-scrollable-section {
+  flex-direction: column;
+  block-size: 100%;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scroll-behavior: smooth;
+}
+gux-tabs[orientation=vertical] > gux-tab-list .gux-tab-container .gux-scrollable-section::-webkit-scrollbar {
+  /* WebKit */
+  inline-size: 0;
+  block-size: 0;
+}
+gux-tabs:not([orientation=vertical]) > gux-tab-list .gux-tab-container {
+  block-size: var(--gse-ui-tabs-set-horizontal-height);
+  margin-block-end: var(--gse-ui-tabs-set-horizontal-marginBottom);
+  border-block-end: var(--gse-ui-tabs-item-divider-horizontal-height) solid var(--gse-ui-tabs-item-divider-dividerColor);
+}
+gux-tabs:not([orientation=vertical]) > gux-tab-list .gux-scrollable-section {
+  overflow-x: auto;
+}
+gux-tabs .gux-tab-container {
+  box-sizing: content-box;
+  display: flex;
+  inline-size: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+gux-tabs .gux-scrollable-section {
+  display: flex;
+  flex: 1 1 auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+gux-tabs .gux-scrollable-section::-webkit-scrollbar {
+  block-size: 0;
+}
+gux-tabs .gux-scroll-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gse-ui-advancedTabs-set-backgroundColor);
+  border-radius: var(--gse-ui-button-borderRadius);
+}
+gux-tabs .gux-scroll-button-container gux-button-slot {
+  inline-size: 100%;
+  block-size: 100%;
+}
+gux-tabs .gux-scroll-button-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 100%;
+}

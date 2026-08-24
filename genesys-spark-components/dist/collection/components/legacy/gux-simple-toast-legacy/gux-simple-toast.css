@@ -1,0 +1,50 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch flex-start;
+  align-items: flex-start;
+  width: 286px;
+  margin-bottom: 4px;
+  color: var(--gse-ui-toast-success-foregroundColor);
+  background: var(--gse-ui-toast-success-backgroundColor);
+  border: 1px solid var(--gse-ui-card-default-border-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(32, 41, 55, 0.24);
+}
+
+.gux-icon {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+  padding: 8px 12px 8px 16px;
+  margin: 2px 0;
+}
+.gux-icon.gux-alert {
+  color: var(--gse-ui-toast-error-iconColor);
+}
+.gux-icon.gux-warning {
+  color: var(--gse-ui-toast-warning-iconColor);
+}
+.gux-icon.gux-positive {
+  color: var(--gse-ui-toast-success-iconColor);
+}
+.gux-icon.gux-neutral {
+  color: var(--gse-ui-toast-info-iconColor);
+}
+.gux-icon ::slotted(gux-icon) {
+  width: 16px;
+  height: 16px;
+}
+
+.gux-message {
+  flex: 1 1 auto;
+  align-self: center;
+  order: 0;
+  margin: 8px 0;
+}
+
+.gux-dismiss {
+  margin: 4px 0;
+}

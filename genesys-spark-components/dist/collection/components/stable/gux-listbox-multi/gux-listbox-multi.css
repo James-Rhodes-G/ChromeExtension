@@ -1,0 +1,31 @@
+:host {
+  box-sizing: border-box;
+  display: block;
+  max-block-size: var(--gse-ui-menu-maxHeight);
+  padding: var(--gse-ui-menu-padding);
+  overflow: hidden auto;
+  outline: none;
+  scrollbar-color: var(--gse-ui-menu-scrollbar-foregroundColor);
+  background: var(--gse-ui-menu-backgroundColor);
+  border: var(--gse-ui-menu-border-width) var(--gse-ui-menu-border-style) var(--gse-ui-menu-border-color);
+  border-radius: var(--gse-ui-menu-borderRadius);
+  box-shadow: var(--gse-ui-menu-boxShadow);
+}
+
+.gux-message-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  place-content: stretch center;
+  align-items: center;
+}
+.gux-message-container .gux-no-matches {
+  box-sizing: border-box;
+  block-size: var(--gse-ui-menu-option-height);
+  padding-block: var(--gse-ui-dropdown-gap);
+  font-family: var(--gse-ui-menu-option-label-active-text-fontFamily);
+  font-size: var(--gse-ui-menu-option-label-active-text-fontSize);
+  font-weight: var(--gse-ui-menu-option-label-active-text-fontWeight);
+  line-height: var(--gse-ui-menu-option-label-active-text-lineHeight);
+  color: var(--gse-ui-menu-option-label-foregroundColor);
+}

@@ -24,20 +24,24 @@ const defualt_btnData = {
 
 
 export async function sidePanel (){
-//// Add Listener for Collapseable Container
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-            content.style.maxHeight = null;
-            } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            } 
-        });
-        }
+
+//  REPLACED WITH GENESYS SPARK 
+// //// Add Listener for Collapseable Container
+//     var coll = document.getElementsByClassName("collapsible");
+//     var i;
+//     for (i = 0; i < coll.length; i++) {
+//         coll[i].addEventListener("click", function() {
+//             this.classList.toggle("active");
+//             var content = this.nextElementSibling;
+//             if (content.style.maxHeight){
+//             content.style.maxHeight = null;
+//             } else {
+//             content.style.maxHeight = content.scrollHeight + "px";
+//             } 
+//         });
+//         }
+
+
 //// Add listener for quick nav buttons
     let btnData = await chrome.storage.local.get("quickNav");
     if (Object.keys(btnData).length === 0){ 
@@ -73,18 +77,20 @@ export async function sidePanel (){
             funcButtons(objButton)
         });
     }
-//// Add listener for to copy Customer Text
-    var qbnBtns = document.getElementsByName("custInfo");
-    var b; 
-    for (b = 0; b < qbnBtns.length; b++) { 
-        const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText);
-        qbnBtns[b].addEventListener("click", function(){
-            let cx = event.clientX;
-            let cy = event.clientY;
-            textCopy(objButton, cx,cy);
 
-        });
-    }
+//  REPLACED WITH GENESYS-SPARK
+    // //// Add listener for to copy Customer Text
+//     var qbnBtns = document.getElementsByName("custInfo");
+//     var b; 
+//     for (b = 0; b < qbnBtns.length; b++) { 
+//         const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText);
+//         qbnBtns[b].addEventListener("click", function(){
+//             let cx = event.clientX;
+//             let cy = event.clientY;
+//             textCopy(objButton, cx,cy);
+
+//         });
+//     }
 
 //// Add listener and fill in form data for callspoof
     let fieldList = ["outClid", "outCnam", "outDial"];
@@ -126,7 +132,7 @@ async function quickNav(btnPress, newTab){
 //// Handle Function Button Clicks
 async function funcButtons(btnPress){
     if (btnPress.id == 'callSpoof'){
-            const inputBoxes = document.getElementsByTagName("input");
+            const inputBoxes = document.querySelectorAll("#outClid,#outCnam,#outDial");
             callSpoof(inputBoxes);
     } else if (btnPress.id =='printConversationData' || btnPress.id =='goToInteraction' || btnPress.id =='goToFlowExecution'){
         const inputBoxes = document.getElementsByTagName("input").convData.value;
@@ -142,13 +148,14 @@ async function funcButtons(btnPress){
 
 }
 
-function textCopy(fieldName, cx, cy){
-    var copyText = document.getElementById(fieldName.id)
-     // Copy the text inside the text field
-    navigator.clipboard.writeText(copyText.innerText);
-    // Alert the copied text
-    utils.tempAlert(`Copied to the Clipboard`,3000,cx,cy);
-}
+// REPLACED WITH GENESYS SPARK
+// function textCopy(fieldName, cx, cy){
+//     var copyText = document.getElementById(fieldName.id)
+//      // Copy the text inside the text field
+//     navigator.clipboard.writeText(copyText.innerText);
+//     // Alert the copied text
+//     utils.tempAlert(`Copied to the Clipboard`,3000,cx,cy);
+// }
 
 //// Create Button Objects
 function ButtonObjCreate (id='', text='', name=''){

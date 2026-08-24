@@ -1,0 +1,34 @@
+gux-pagination-buttons .gux-pagination-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-tablePagination-recordsetControls-gap);
+  place-content: stretch flex-end;
+  align-items: center;
+  margin-inline-start: var(--gse-ui-dataTableItems-tablePagination-recordsetControls-gap);
+}
+gux-pagination-buttons .gux-pagination-buttons-container > div {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+gux-pagination-buttons .gux-pagination-buttons-container .gux-pagination-buttons-group {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gse-ui-dataTableItems-tablePagination-recordsetControls-gap);
+  white-space: nowrap;
+}
+gux-pagination-buttons .gux-pagination-buttons-container .gux-pagination-buttons-list-container {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-tablePagination-recordsetControls-gap);
+  place-content: stretch center;
+  align-items: center;
+}
+gux-pagination-buttons .gux-pagination-buttons-container .gux-pagination-buttons-list-container .gux-pagination-buttons-list-current {
+  color: var(--gse-ui-button-ghost-active-foregroundColor);
+  background-color: var(--gse-ui-button-ghost-active-backgroundColor);
+  border-radius: var(--gse-ui-button-borderRadius);
+}

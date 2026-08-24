@@ -1,0 +1,1 @@
+function f(f){f&&f.focus()}export{f}

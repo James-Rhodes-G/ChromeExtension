@@ -1,0 +1,117 @@
+::slotted(img) {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--gse-ui-menu-option-gap);
+  align-items: center;
+  inline-size: 100%;
+  min-block-size: var(--gse-ui-menu-option-height);
+  padding: var(--gse-ui-menu-option-padding);
+  font-family: var(--gse-ui-menu-option-label-default-text-fontFamily);
+  font-size: var(--gse-ui-menu-option-label-default-text-fontSize);
+  font-weight: var(--gse-ui-menu-option-label-default-text-fontWeight);
+  line-height: var(--gse-ui-menu-option-label-default-text-lineHeight);
+  color: var(--gse-ui-menu-option-label-foregroundColor);
+  word-wrap: break-word;
+  cursor: pointer;
+  outline: none;
+  outline-offset: calc(var(--gse-ui-menu-option-focus-border-width) * -1);
+  background-color: var(--gse-ui-menu-option-default-backgroundColor);
+  border: none;
+}
+button:focus-visible {
+  outline: var(--gse-ui-menu-option-focus-border-width) var(--gse-ui-menu-option-focus-border-style) var(--gse-ui-menu-option-focus-border-color);
+  border-radius: var(--gse-semantic-focusOutline-sm-borderRadius);
+}
+button:hover {
+  background: var(--gse-ui-menu-option-hover-backgroundColor);
+}
+button:active {
+  font-family: var(--gse-ui-menu-option-label-active-text-fontFamily);
+  font-size: var(--gse-ui-menu-option-label-active-text-fontSize);
+  font-weight: var(--gse-ui-menu-option-label-active-text-fontWeight);
+  line-height: var(--gse-ui-menu-option-label-active-text-lineHeight);
+  background: var(--gse-ui-menu-option-selected-backgroundColor);
+}
+button .gux-avatar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--gse-ui-avatar-xsmall-content-size);
+  block-size: var(--gse-ui-avatar-xsmall-content-size);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  cursor: pointer;
+  background: none;
+  background-color: var(--gse-ui-avatar-media-initialsBackground-default);
+  border: none;
+  border-radius: 50%;
+}
+button .gux-avatar .gux-avatar-initials {
+  font-family: var(--gse-ui-avatar-small-initials-fontFamily);
+  font-size: var(--gse-ui-avatar-xsmall-initials-fontSize);
+  font-weight: var(--gse-ui-avatar-xsmall-initials-fontWeight);
+  line-height: var(--gse-ui-avatar-small-initials-lineHeight);
+  text-transform: uppercase;
+}
+button .gux-avatar.gux-accent-1 {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent1);
+}
+button .gux-avatar.gux-accent-2 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent2);
+}
+button .gux-avatar.gux-accent-3 {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent3);
+}
+button .gux-avatar.gux-accent-4 {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent4);
+}
+button .gux-avatar.gux-accent-5 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent5);
+}
+button .gux-avatar.gux-accent-6 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent6);
+}
+button .gux-avatar.gux-accent-7 {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent7);
+}
+button .gux-avatar.gux-accent-8 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent8);
+}
+button .gux-avatar.gux-accent-9 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent9);
+}
+button .gux-avatar.gux-accent-10 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent10);
+}
+button .gux-avatar.gux-accent-11 {
+  color: var(--gse-ui-avatar-media-initialsForeground-default);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent11);
+}
+button .gux-avatar.gux-accent-12 {
+  color: var(--gse-ui-avatar-media-initialsForeground-inverse);
+  background-color: var(--gse-ui-avatar-media-initialsBackground-accent12);
+}
+button .gux-avatar.gux-accent-inherit {
+  color: inherit;
+  background-color: inherit;
+}

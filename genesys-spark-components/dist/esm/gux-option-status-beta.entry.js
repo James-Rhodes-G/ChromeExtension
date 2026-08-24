@@ -1,0 +1,51 @@
+import { r as registerInstance, h, H as Host, a as getElement } from './index-xFL2agjT.js';
+import { r as randomHTMLId } from './random-html-id-D9jKBqIb.js';
+import { g as getClosestElement } from './get-closest-element-Cd4R0amv.js';
+
+const guxOptionStatusCss = ":host{box-sizing:border-box;display:flex;flex-direction:row;flex-wrap:nowrap;gap:var(--gse-ui-menu-option-gap);place-content:stretch center;align-items:center;block-size:var(--gse-ui-menu-option-height);padding:var(--gse-ui-menu-option-padding);font-family:var(--gse-ui-menu-option-label-default-text-fontFamily);font-size:var(--gse-ui-menu-option-label-default-text-fontSize);font-weight:var(--gse-ui-menu-option-label-default-text-fontWeight);line-height:var(--gse-ui-menu-option-label-default-text-lineHeight);color:var(--gse-ui-menu-option-label-foregroundColor);word-wrap:break-word;cursor:pointer}:host .gux-option-wrapper{inline-size:100%}:host .gux-slot-container{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}:host(.gux-disabled){pointer-events:none;cursor:default;opacity:var(--gse-ui-menu-option-disabled-opacity)}:host(.gux-selected){font-family:var(--gse-ui-menu-option-label-active-text-fontFamily);font-size:var(--gse-ui-menu-option-label-active-text-fontSize);font-weight:var(--gse-ui-menu-option-label-active-text-fontWeight);line-height:var(--gse-ui-menu-option-label-active-text-lineHeight);background:var(--gse-ui-menu-option-selected-backgroundColor)}:host(:active:not(:disabled)){font-family:var(--gse-ui-menu-option-label-active-text-fontFamily);font-size:var(--gse-ui-menu-option-label-active-text-fontSize);font-weight:var(--gse-ui-menu-option-label-active-text-fontWeight);line-height:var(--gse-ui-menu-option-label-active-text-lineHeight)}:host(.gux-active){outline:var(--gse-ui-menu-option-focus-border-width) var(--gse-ui-menu-option-focus-border-style) var(--gse-ui-menu-option-focus-border-color);outline-offset:-2px;border-radius:var(--gse-semantic-focusOutline-sm-borderRadius)}:host(.gux-show-subtext){place-content:stretch flex-start;block-size:auto}:host(.gux-show-subtext) .gux-option-wrapper{display:flex;flex-direction:column}:host(.gux-show-subtext) slot[name=subtext]::slotted(*){font-weight:var(--gse-ui-menu-option-label-default-text-fontWeight);color:var(--gse-ui-menu-groupedMenu-subtext-foregroundColor)}:host(:hover:not(:disabled)){background:var(--gse-ui-menu-option-hover-backgroundColor)}:host(.gux-filtered){display:none}:host{justify-content:flex-start}.gux-status-indicator{display:inline-flex;gap:var(--gse-ui-dataTableItems-statusIndicator-gap);align-items:center}.gux-status-icon{display:inline-flex}.gux-status-icon::before{content:\"\"}.gux-status-icon-info::before{-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6 0C7.59 0 9.12 0.629997 10.245 1.755C11.37 2.88 12 4.41 12 6C12 7.59 11.37 9.12 10.245 10.245C9.12 11.37 7.59 12 6 12C4.41 12 2.88 11.37 1.755 10.245C0.629997 9.12 0 7.59 0 6C0 4.41 0.629997 2.88 1.755 1.755C2.88 0.629997 4.41 0 6 0Z' /%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6 0C7.59 0 9.12 0.629997 10.245 1.755C11.37 2.88 12 4.41 12 6C12 7.59 11.37 9.12 10.245 10.245C9.12 11.37 7.59 12 6 12C4.41 12 2.88 11.37 1.755 10.245C0.629997 9.12 0 7.59 0 6C0 4.41 0.629997 2.88 1.755 1.755C2.88 0.629997 4.41 0 6 0Z' /%3E%3C/svg%3E\");inline-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);block-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);background:var(--gse-ui-statusGlyph-information)}.gux-status-icon-warning::before{inline-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);block-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6.16516 0.749268C6.49521 0.749268 6.80275 0.921791 6.97527 1.21434L12.0386 9.8407C12.2111 10.1332 12.2111 10.4933 12.0386 10.7783C11.8735 11.0709 11.5585 11.2509 11.2285 11.2509H1.10186C0.764303 11.2509 0.456764 11.0709 0.291738 10.7783C0.126712 10.4858 0.126712 10.1257 0.291738 9.8407L5.35504 1.21434C5.52757 0.929292 5.8276 0.749268 6.16516 0.749268Z' /%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6.16516 0.749268C6.49521 0.749268 6.80275 0.921791 6.97527 1.21434L12.0386 9.8407C12.2111 10.1332 12.2111 10.4933 12.0386 10.7783C11.8735 11.0709 11.5585 11.2509 11.2285 11.2509H1.10186C0.764303 11.2509 0.456764 11.0709 0.291738 10.7783C0.126712 10.4858 0.126712 10.1257 0.291738 9.8407L5.35504 1.21434C5.52757 0.929292 5.8276 0.749268 6.16516 0.749268Z' /%3E%3C/svg%3E\");background:var(--gse-ui-statusGlyph-neutral)}.gux-status-icon-error::before{inline-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);block-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M0.236102 6.88C-0.0787008 6.33785 -0.0787008 5.66215 0.236102 5.12L2.36477 1.38C2.67957 0.837853 3.24922 0.5 3.87133 0.5H8.12867C8.75078 0.5 9.32043 0.837853 9.63523 1.38L11.7639 5.12C12.0787 5.66215 12.0787 6.33785 11.7639 6.88L9.63523 10.62C9.32043 11.1621 8.75078 11.5 8.12867 11.5H3.87133C3.24922 11.5 2.67957 11.1621 2.36477 10.62L0.236102 6.88Z' /%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M0.236102 6.88C-0.0787008 6.33785 -0.0787008 5.66215 0.236102 5.12L2.36477 1.38C2.67957 0.837853 3.24922 0.5 3.87133 0.5H8.12867C8.75078 0.5 9.32043 0.837853 9.63523 1.38L11.7639 5.12C12.0787 5.66215 12.0787 6.33785 11.7639 6.88L9.63523 10.62C9.32043 11.1621 8.75078 11.5 8.12867 11.5H3.87133C3.24922 11.5 2.67957 11.1621 2.36477 10.62L0.236102 6.88Z' /%3E%3C/svg%3E\");background:var(--gse-ui-statusGlyph-negative)}.gux-status-icon-success::before{inline-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);block-size:var(--gse-ui-dataTableItems-statusIndicator-label-fontSize);-webkit-mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6 0C7.59 0 9.12 0.629997 10.245 1.755C11.37 2.88 12 4.41 12 6C12 7.59 11.37 9.12 10.245 10.245C9.12 11.37 7.59 12 6 12C4.41 12 2.88 11.37 1.755 10.245C0.629997 9.12 0 7.59 0 6C0 4.41 0.629997 2.88 1.755 1.755C2.88 0.629997 4.41 0 6 0Z' /%3E%3C/svg%3E\");mask-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' %3E%3Cpath d='M6 0C7.59 0 9.12 0.629997 10.245 1.755C11.37 2.88 12 4.41 12 6C12 7.59 11.37 9.12 10.245 10.245C9.12 11.37 7.59 12 6 12C4.41 12 2.88 11.37 1.755 10.245C0.629997 9.12 0 7.59 0 6C0 4.41 0.629997 2.88 1.755 1.755C2.88 0.629997 4.41 0 6 0Z' /%3E%3C/svg%3E\");background:var(--gse-ui-statusGlyph-positive)}";
+
+const GuxOptionStatus = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.active = false;
+        this.selected = false;
+        this.disabled = false;
+        this.accent = 'info';
+    }
+    handleActive(active) {
+        var _a, _b;
+        if (active) {
+            void ((_a = this.truncateElement) === null || _a === void 0 ? void 0 : _a.setShowTooltip());
+        }
+        else {
+            void ((_b = this.truncateElement) === null || _b === void 0 ? void 0 : _b.setHideTooltip());
+        }
+    }
+    componentWillLoad() {
+        this.root.id = this.root.id || randomHTMLId('gux-option-status');
+    }
+    getAriaSelected() {
+        if (this.disabled) {
+            return false;
+        }
+        return this.selected ? 'true' : 'false';
+    }
+    hasDisabledParent() {
+        const parentListbox = getClosestElement('gux-listbox', this.root);
+        return parentListbox === null || parentListbox === void 0 ? void 0 : parentListbox.disabled;
+    }
+    render() {
+        return (h(Host, { key: '63ae08c2ed117bef2f23b320fe71d20547137722', role: "option", class: {
+                'gux-active': this.active,
+                'gux-disabled': this.disabled || this.hasDisabledParent(),
+                'gux-selected': this.selected
+            }, "aria-selected": this.getAriaSelected(), "aria-disabled": this.disabled.toString() }, h("div", { key: 'be18420ee4530a1be4e0c03fa2562044c985468c', class: "gux-status-indicator" }, h("span", { key: 'b29a62bfc9b5d0d2738ee3bb22ec856b582fd924', class: `gux-status-icon gux-status-icon-${this.accent}` }), h("div", { key: '792923ae02a7142d628d489fbec528408a1d0507', class: "gux-status-indicator-text" }, h("gux-truncate", { key: '0f7c6a4d550740c3e43b5363e1e49837135a6dd1', ref: el => (this.truncateElement = el) }, h("slot", { key: '7f6f3ce673c28e939a407038e8d4fd0fc4cfce0d' }))))));
+    }
+    get root() { return getElement(this); }
+    static get watchers() { return {
+        "active": ["handleActive"]
+    }; }
+};
+GuxOptionStatus.style = guxOptionStatusCss;
+
+export { GuxOptionStatus as gux_option_status_beta };

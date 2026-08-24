@@ -1,0 +1,20 @@
+gux-table-select-menu {
+  display: inline-flex;
+  font-family: var(--gse-ui-popover-body-text-fontFamily);
+  font-size: var(--gse-ui-popover-body-text-fontSize);
+  font-weight: var(--gse-ui-popover-body-text-fontWeight);
+  line-height: var(--gse-ui-popover-body-text-lineHeight);
+}
+gux-table-select-menu .gux-select-menu-button {
+  padding: 0;
+  margin-inline-start: var(--gse-ui-dataTableItems-header-gap);
+  color: var(--gse-ui-dataTableItems-cell-chevron-foregroundColor);
+  outline: none;
+  background-color: inherit;
+  border: none;
+}
+gux-table-select-menu .gux-select-menu-button:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border-radius: 4px;
+}

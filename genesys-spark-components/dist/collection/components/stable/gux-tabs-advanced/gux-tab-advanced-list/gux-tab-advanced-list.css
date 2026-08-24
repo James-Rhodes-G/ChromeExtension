@@ -1,0 +1,55 @@
+/*
+ * Typography styles and mixins.
+ */
+/* Headings */
+/* Body Copy */
+/* Anchor */
+.gux-tab-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  inline-size: 100%;
+  background-color: var(--gse-ui-advancedTabs-set-backgroundColor);
+}
+.gux-tab-container button {
+  block-size: var(--gse-ui-button-default-height);
+  padding: var(--gse-ui-button-default-paddingIconOnly);
+  border-radius: var(--gse-ui-button-borderRadius);
+}
+.gux-tab-container [slot=add-tab] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gux-tab-container .gux-scrollable-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-block-end: var(--gse-ui-advancedTabs-item-divider-border-width) var(--gse-ui-advancedTabs-item-divider-border-style) var(--gse-ui-advancedTabs-item-divider-border-color);
+  scroll-behavior: smooth;
+}
+.gux-tab-container .gux-scrollable-section::-webkit-scrollbar {
+  block-size: 0;
+}
+.gux-tab-container .gux-scrollable-section .gux-tablist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gux-sr-only {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

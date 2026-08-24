@@ -1,0 +1,76 @@
+:host([gs-reorder-indicator=above]) .gux-container {
+  border-block-start-color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-drop-borderColor);
+}
+
+:host([gs-reorder-indicator=below]) .gux-container {
+  border-block-end-color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-drop-borderColor);
+}
+
+.gux-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-editColumn-editColumnItem-gap);
+  place-content: stretch flex-start;
+  align-items: center;
+  margin-block-end: -2px;
+  border-block-start: 2px solid transparent;
+  border-block-end: 2px solid transparent;
+}
+.gux-container.gux-drop-above {
+  border-block-start-color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-drop-borderColor);
+}
+.gux-container.gux-drop-below {
+  border-block-end-color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-drop-borderColor);
+}
+.gux-container.gux-dragging {
+  border-block-start-color: transparent;
+  border-block-end-color: transparent;
+  opacity: 0.4;
+}
+.gux-container .gux-reorder {
+  all: unset;
+  display: flex;
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+  color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-foregroundColor);
+  cursor: grab;
+  border-radius: 4px;
+}
+.gux-container .gux-reorder:active {
+  pointer-events: none;
+  cursor: grabbing !important;
+}
+.gux-container .gux-reorder:active gux-icon, .gux-container .gux-reorder:focus-visible gux-icon {
+  color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-active-foregroundColor);
+}
+.gux-container .gux-reorder:hover gux-icon {
+  color: var(--gse-ui-dataTableItems-editColumn-editColumnItem-hover-foregroundColor);
+}
+.gux-container .gux-reorder:hover, .gux-container .gux-reorder:focus-visible {
+  outline: var(--gse-semantic-focusOutline-sm-borderWidth) solid var(--gse-semantic-border-focus);
+}
+.gux-container .gux-select {
+  position: relative;
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 1;
+}
+.gux-container .gux-select gux-text-highlight {
+  position: absolute;
+  inset-block-start: 1px;
+  inset-inline-start: calc(var(--gse-ui-icon-small-size) + var(--gse-ui-checkbox-gap));
+  color: transparent;
+  pointer-events: none;
+}
+
+.gux-sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}

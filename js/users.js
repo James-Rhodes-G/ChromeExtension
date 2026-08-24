@@ -20,17 +20,18 @@ export async function logoffUsers(userId){
 //// USER LOGOFF SHOULD RUN FROM EITHER INJECTED BUTTON
 //// OR FROM USER SELECT PAGE.
 export async function bulkUserLogoff(userIds){
-        const table = document.createElement('table');
-        Object.assign(table, {id:"userLogoff"});
-        const header = utils.createHeader(table,["userID", "status"]);
-        const element = document.getElementById('logOutput').appendChild(table);;
+        const table = utils.createGuxTable("userLogoff");
+        // const table = document.createElement('table');
+        // Object.assign(table, {id:"userLogoff"});
+        const header = utils.createHeader(table[1],["userID", "status"]);
+        const element = document.getElementById('logOutput').appendChild(table[0]).appendChild(table[1]);;
         userIds.forEach( async function(user) {
             console.log(user);
             let resp = await logoffUsers(user);
             if(resp.ok){
-                utils.createRow(table, [user, resp.status]);
+                utils.createRow(table[1], [user, resp.status]);
             }else{
-                utils.createRow(table,[user, resp.status]);
+                utils.createRow(table[1],[user, resp.status]);
             };
         });
             //// show export button
@@ -52,11 +53,12 @@ export async function exportUserRoles() {
     //// Setup log output page
     let element = document.getElementById('logOutput');
     element.innerText += "User Role Export";
-    let table = document.createElement('table');
+    let table = utils.createGuxTable('userRols');
+    element.appendChild(table[0]).appendChild(table[1]);
     //// Create Table Header
     let tableHeader = ['name', 'userName', 'id', 'role:division'];
-    utils.createHeader(table, tableHeader);
-    element.appendChild(table)
+    utils.createHeader(table[1], tableHeader);
+
     ////  Get All Users (need ID's and UserNames for export)
     var pageNumber=1;
     var pageSize = 99;
@@ -79,7 +81,7 @@ export async function exportUserRoles() {
                 }
             })
             dataRow.push(userRoles)
-            utils.createRow(table, dataRow);
+            utils.createRow(table[1], dataRow);
         })
         //// Loop through Users getting their roles from getUserRoles 
         pageNumber ++;
@@ -106,7 +108,7 @@ export async function bulkSelectUserLogoff(){
         while (response.lastUri != response.selfUri);
         
         //// add button to complete selection of users needing logged off
-       element.innerHTML += '<p><button id=users type="button"> Select Users </button></p>';
+       element.innerHTML += '<p><gux-button accent="primary" id=users type="button"> Select Users </gux-button></p>';
        element.appendChild
        const btnUsers = document.getElementById('users');
     

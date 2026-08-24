@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+:host .gux-tabs {
+  display: flex;
+  block-size: 100%;
+}
+:host .gux-tabs:not(.gux-vertical) {
+  flex-direction: column;
+}
+:host .gux-panel-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 0;
+}

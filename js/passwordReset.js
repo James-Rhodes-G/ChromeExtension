@@ -12,26 +12,15 @@ async function pwdLoop(user, status, code) {
     const element = document.getElementById("logOutput");
     var table = document.querySelector('table');
     if (table === null ) {
-        table = document.createElement("table");
-        Object.assign(table, {id:"passwordReset"});
-        utils.createHeader( table, ["User", "UserName","Status", "Code"])
+        var tableCreate = utils.createGuxTable("passwordReset");
+        utils.createHeader( tableCreate[1], ["User", "UserName","Status", "Code"])
+        element.appendChild(tableCreate[0]).appendChild(tableCreate[1]);
+        table = tableCreate[1]
     };
-        const newRow = table.insertRow();
-        const cell1 = newRow.insertCell();
-        const cell2 = newRow.insertCell();
-        const cell3 = newRow.insertCell();
-        const cell4 = newRow.insertCell();
-        if (status != 204) {
-            newRow.style.backgroundColor ="yellow"
-        };
-        cell1.innerHTML = user.name;
-        cell2.innerHTML = user.username;
-        cell3.textContent = status;
-        cell4.textContent = code;
-
-        table.appendChild(newRow);
-        ;
-    element.appendChild(table);
+        let rowData = [
+            user.name, user.username, status,code
+        ]
+        utils.createRow(table,rowData)
 }
 
 
@@ -52,11 +41,11 @@ async function userLoop(table, users, idField) {
             var columnHeaders = ['User', 'UserName', 'User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
             break;
         }
-    const element = document.getElementById("logOutput");
+    // const element = document.getElementById("logOutput");
     document.querySelector('#rightGutter').innerHTML=''
     var table_page = document.querySelector('table');
     if (table_page === null ) {
-        utils.createHeader(table, columnHeaders);
+        utils.createHeader(table[1], columnHeaders);
     };
 
     users['entities'].forEach(user => {
@@ -82,9 +71,9 @@ async function userLoop(table, users, idField) {
             user.division.name,
             user.state, user.acdAutoAnswer.toString(), userSkills
             ]
-        utils.createRow(table, rowColumns )
+        utils.createRow(table[1], rowColumns )
         });
-    element.appendChild(table);
+    table[0].appendChild(table[1]);
 }
 
 //// display a list of users with checkboxes
@@ -94,35 +83,14 @@ export async function userSelectLoop(users) {
     exportBtn.style.display = 'none';
     var table = document.querySelector('table');
     if (table === null ) {
-        table = document.createElement("table");
-        const headerRow = table.insertRow(0);
-        const defaultRow = document.createElement("INPUT");
-         Object.assign(defaultRow, {
-            type: "checkbox", name:"userSelect",
-            id:"selectAll", class:"checkbox"
-         })
-        const defaultRowLabel = document.createElement('label');
-        Object.assign(  defaultRowLabel, {
-            htmlFor:'selectAll', textContent:"SelectAll"
-        })
-        const th = document.createElement("th");
-        th.appendChild(defaultRow);
-        th.appendChild(defaultRowLabel);
-        headerRow.appendChild(th);
+        table = utils.createGuxTableWithSelect('passwordReset');
         const headers = ["User", "UserName","User GUID","State", "AutoAnswer"];
-        headers.forEach( header => {
-            const th = document.createElement("th");
-            th.textContent = header;
-            headerRow.appendChild(th);
-        })
-        element.appendChild(table);
+        utils.createHeaderWCheckbox(table[1],headers);
+        element.appendChild(table[0]).appendChild(table[1]);
     };
     users['entities'].forEach(user => {
-        utils.createRowWCheckbox(table, [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id, user.name);
+        utils.createRowWCheckbox(table[1], [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id, user.name);
         });
-
-    element.appendChild(table);
-
 };
 
 export async function runPwdReset(newPwd) {
@@ -142,7 +110,7 @@ export async function runPwdReset(newPwd) {
         while (response.lastUri != response.selfUri);
         
         //// add button to complete selection of users needing phones
-       element.innerHTML += '<p><button id=users type="button"> Select Users Password Reset </button></p>';
+       element.innerHTML += '<p><gux-button accent="primary" id=users type="button" id=users type="button"> Select Users Password Reset </button></p>';
        element.appendChild
        const btnUsers = document.getElementById('users');
 
@@ -197,8 +165,8 @@ export async function exportUsers() {
         var pageNumber=1
         var pageSize = 99
         console.log("exporting users");
-        const table = document.createElement("table");
-        Object.assign(table, {id:"user_export"});
+        const table = utils.createGuxTable("user_export");
+        const element = document.getElementById("logOutput")
         utils.loadingMessage('Users');
         do {
             var response = await getUsers(pageSize,pageNumber);
@@ -207,6 +175,7 @@ export async function exportUsers() {
         }
         while (response.lastUri != response.selfUri);
         utils.loadingMessageClear('Users');
+        element.appendChild(table[0])
         const exportBtn  = document.getElementById("exportButton")
         exportBtn.style.display = 'block';
     };
@@ -238,7 +207,7 @@ export async function bulkAssignAutoAnswer(){
     while (response.lastUri != response.selfUri);
     
     //// add button to complete selection of users needing phones
-   element.innerHTML += '<p><button id=users type="button"> Select Users </button></p>';
+   element.innerHTML += '<p><gux-button accent="primary" id=users type="button"> Select Users </button></p>';
    element.appendChild
    const btnUsers = document.getElementById('users');
 
@@ -265,8 +234,10 @@ export async function bulkAssignAutoAnswer(){
     //// var users = document.querySelectorAll('input[type="checkbox"]:checked');
     var users = document.querySelectorAll('input[type="checkbox"]:checked:not([id^="selectAll"])')
     element.innerHTML = ''; /// Clear the page
-    var table = document.createElement("table");
-    Object.assign(table, {id:"user_export"});
+    var table = utils.createGuxTable("user_export");
+    element.appendChild(table[0]).appendChild(table[1]);
+    // var table = document.createElement("table");
+    // Object.assign(table, {id:"user_export"});
     //// pass in the users and set autoAnswer to true
     var bodyArray=[];
     var userUpDate={};

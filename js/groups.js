@@ -14,20 +14,19 @@ export async function exportGroups() {
     console.log("extracting groups");
     //// Loop through pages and write them to a table on the log page
     const element = document.getElementById('logOutput');
-    const table = document.createElement("table");
+    const table = utils.createGuxTable("group_export");
     const authData  = await utils.getAuthInfo();
     const region  = authData.region.replace('api','apps');
-    element.appendChild(table);
-    Object.assign(table,{id:'group_export'});
+    element.appendChild(table[0]).appendChild(table[1]);
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
-    utils.createHeader(table, ["groupName","id","memberCount","type","visibility","callsEnabled","rolesEnabled"])
+    utils.createHeader(table[1], ["groupName","id","memberCount","type","visibility","callsEnabled","rolesEnabled"])
     do {
         var response = await getGroups(pageSize,pageNumber);
         console.log(response);
         //// append results to the dropdown box
         response.entities.forEach( group => {
-            utils.createRow(table,[
+            utils.createRow(table[1],[
                 `<a href=${region}/directory/#/admin/groups/general/${group.id} target="_blank">${group.name}</a>`,
                 `<a href=${region}/directory/#/admin/groups/general/${group.id} target="_blank">${group.id}</a>`,
                 group.memberCount,
@@ -109,16 +108,16 @@ async function groupMemberDataToTable(groupName, data){
             Object.assign(qh, {id:'qHeader'});
         }
         qh.innerText= groupName;
-        table = document.createElement("table");
-        Object.assign(table,{id:`groupMembers_${groupName}`});
-        utils.createHeader(table,['id','selfUri']);
+        table = utils.createGuxTable(`groupMembers_${groupName}`);
+        qh.appendChild(table[0]).appendChild(table[1]);
+        utils.createHeader(table[1],['id','selfUri']);
     };
     data['entities'].forEach(user => {
-        utils.createRow(table, [
+        utils.createRow(table[1], [
             user.id,
             user.selfUri
         ])
         });
-    page.appendChild(table);
+
     return
 }

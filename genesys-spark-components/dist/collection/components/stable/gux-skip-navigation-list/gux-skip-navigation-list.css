@@ -1,0 +1,29 @@
+:host {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+:host(:focus-within) {
+  position: inherit;
+  top: inherit;
+  left: inherit;
+  width: inherit;
+  height: inherit;
+  overflow: inherit;
+  position: absolute;
+  inset: 0;
+}
+
+.gux-container nav {
+  inline-size: fit-content;
+  margin-block: 40px;
+  margin-inline: auto;
+}
+.gux-container nav ul {
+  padding: 0;
+  margin: 0;
+}

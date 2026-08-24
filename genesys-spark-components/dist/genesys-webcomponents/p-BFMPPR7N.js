@@ -1,0 +1,1 @@
+var e={page:"Page",totalPages:" of {totalPages, number}",firstPage:"First page",previousPage:"Previous page",nextPage:"Next page",lastPage:"Last page",pageInputLabel:"Page {currentPage, number} of {totalPages, number}",goToPage:"Go to page",pageNumber:"Page {pageNumber}",pageSelected:"Page {pageSelected} selected"};export{e as t}

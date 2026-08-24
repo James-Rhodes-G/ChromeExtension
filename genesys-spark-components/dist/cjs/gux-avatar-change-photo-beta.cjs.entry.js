@@ -1,0 +1,40 @@
+'use strict';
+
+var index = require('./index-BLhHoh_r.js');
+var logError = require('./log-error-nWO_o1C3.js');
+var index$1 = require('./index-QInGO-Pu.js');
+var usage = require('./usage-v50bi18B.js');
+require('./get-closest-element-CfyZl7i7.js');
+
+const changePhoto = "Change profile photo";
+var defaultResources = {
+	changePhoto: changePhoto
+};
+
+const guxAvatarChangePhotoCss = ":host{display:inline-block}.gux-change-photo{position:relative;padding:0;margin:0;line-height:0px;cursor:pointer;background:none;border:none;border-radius:50%}.gux-change-photo .gux-change-photo-icon{display:none}.gux-change-photo:hover,.gux-change-photo:focus-visible{cursor:pointer}.gux-change-photo:hover .gux-change-photo-icon,.gux-change-photo:focus-visible .gux-change-photo-icon{position:absolute;inset-block-start:50%;inset-inline-start:50%;z-index:var(--gse-semantic-zIndex-showFocus);display:inline-block;color:var(--gse-ui-avatar-hoverModal-foregroundColor);transform:translate(-50%, -50%)}.gux-change-photo:hover::after,.gux-change-photo:focus-visible::after{position:absolute;inset-block-start:var(--gse-ui-avatar-large-presenceRing-width);inset-inline-start:var(--gse-ui-avatar-large-presenceRing-width);inline-size:var(--gse-ui-avatar-addChangeImage-hoverModal-shroudSize);block-size:var(--gse-ui-avatar-addChangeImage-hoverModal-shroudSize);content:\"\";background-color:var(--gse-ui-avatar-hoverModal-shroudColor);border:var(--gse-ui-avatar-content-large-border-width) var(--gse-ui-avatar-content-default-border-style) var(--gse-ui-avatar-content-default-border-color);border-radius:50%;opacity:var(--gse-ui-avatar-hoverModal-opacity);transition:background-color 0.5s ease}.gux-change-photo:focus-visible{outline:var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);outline-offset:var(--gse-semantic-focusOutline-offset)}";
+
+const GuxAvatarChangePhoto = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.guxchangephoto = index.createEvent(this, "guxchangephoto", 7);
+    }
+    async componentWillLoad() {
+        this.validateSlot();
+        usage.trackComponent(this.root);
+        this.i18n = await index$1.buildI18nForComponent(this.root, defaultResources);
+    }
+    validateSlot() {
+        const slottedElement = this.root.querySelector('gux-avatar-beta');
+        if (!slottedElement) {
+            logError.logWarn(this.root, 'Slotted element must be gux-avatar-beta');
+        }
+    }
+    render() {
+        return (index.h("button", { key: 'c88a6a0323e13b6bdd7d68a955f96d8a86a89eb0', class: "gux-change-photo", onClick: () => this.guxchangephoto.emit(), "aria-label": this.i18n('changePhoto') }, index.h("gux-icon", { key: '8dc2733dfdb2bd75117ab01c9546b96bbd9e0bc5', class: "gux-change-photo-icon", "icon-name": "fa/camera-solid", size: "small", decorative: true }), index.h("slot", { key: '83bb98873748afca9e7882e399de469267244eff', name: "avatar" }), index.h("gux-tooltip-beta", { key: '35e11ed2ccc0943d67ec0e72dc3b220a81675617', placement: "top", visualOnly: true }, index.h("div", { key: '926fe5e737148d1ebf920c2687d624f201a663a7', slot: "content" }, this.i18n('changePhoto')))));
+    }
+    static get delegatesFocus() { return true; }
+    get root() { return index.getElement(this); }
+};
+GuxAvatarChangePhoto.style = guxAvatarChangePhotoCss;
+
+exports.gux_avatar_change_photo_beta = GuxAvatarChangePhoto;

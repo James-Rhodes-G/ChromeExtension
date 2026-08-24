@@ -1,0 +1,54 @@
+:host {
+  z-index: var(--gse-semantic-zIndex-popover);
+  color: var(--gse-ui-menu-option-label-foregroundColor);
+  cursor: default;
+}
+
+:host(:focus) {
+  outline: none;
+}
+
+:host(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+
+.gux-flyout-menu-content {
+  position: fixed;
+  display: none;
+  border: none;
+  border-radius: var(--gse-ui-menu-borderRadius);
+  opacity: 0;
+}
+.gux-flyout-menu-content.gux-shown {
+  display: flex;
+  animation-name: fade-in;
+  animation-duration: 100ms;
+  animation-delay: 350ms;
+  animation-fill-mode: forwards;
+}
+.gux-flyout-menu-content .gux-arrow {
+  position: absolute;
+  inline-size: var(--gse-ui-popover-anchor-width);
+  block-size: var(--gse-ui-popover-anchor-height);
+  /* 4px padding leaves some space for the shadow to bleed into */
+  padding-block-end: 4px;
+  overflow: hidden;
+}
+.gux-flyout-menu-content .gux-arrow-caret {
+  inline-size: 0;
+  block-size: 0;
+  border-block-start: calc(var(--gse-ui-popover-anchor-width) / 2) solid var(--gse-ui-popover-backgroundColor);
+  border-inline-start: calc(var(--gse-ui-popover-anchor-width) / 2) solid transparent;
+  border-inline-end: calc(var(--gse-ui-popover-anchor-width) / 2) solid transparent;
+  filter: drop-shadow(0 0 4px var(--gse-semantic-effects-boxShadow));
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,47 @@
+:host {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: center;
+  min-block-size: var(--gse-ui-menu-option-height);
+  padding: var(--gse-ui-menu-option-padding);
+  font-family: var(--gse-ui-menu-option-label-default-text-fontFamily);
+  font-size: var(--gse-ui-menu-option-label-default-text-fontSize);
+  font-weight: var(--gse-ui-menu-option-label-default-text-fontWeight);
+  line-height: var(--gse-ui-menu-option-label-default-text-lineHeight);
+  color: var(--gse-ui-menu-option-label-foregroundColor);
+  word-wrap: break-word;
+  cursor: pointer;
+}
+:host:host(.gux-disabled) {
+  pointer-events: none;
+  cursor: default;
+  opacity: var(--gse-ui-menu-option-disabled-opacity);
+}
+:host:host(.gux-active) {
+  outline: var(--gse-ui-menu-option-focus-border-width) var(--gse-ui-menu-option-focus-border-style) var(--gse-ui-menu-option-focus-border-color);
+  outline-offset: -2px;
+  border-radius: var(--gse-semantic-focusOutline-sm-borderRadius);
+}
+:host:host(.gux-hovered:not([disabled])) {
+  background: var(--gse-ui-menu-option-hover-backgroundColor);
+}
+:host:host(.gux-filtered) {
+  display: none;
+}
+:host gux-icon {
+  padding-inline-end: var(--gse-ui-menu-option-gap);
+}
+:host .gux-option {
+  display: inline-flex;
+}
+:host .gux-screenreader {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

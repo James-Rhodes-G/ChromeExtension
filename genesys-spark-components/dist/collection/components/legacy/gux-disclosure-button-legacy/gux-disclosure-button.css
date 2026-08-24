@@ -1,0 +1,44 @@
+:host {
+  height: 100%;
+  color: var(--gse-ui-tabs-item-icon-iconColor);
+}
+
+.gux-disclosure-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+}
+.gux-disclosure-button-container .gux-disclosure-button {
+  width: 16px;
+  padding: 0;
+  margin: 0;
+  color: var(--gse-ui-tabs-item-icon-iconColor);
+  background: transparent;
+  border-top: none;
+  border-right: 1px solid var(--gse-ui-tabs-item-divider-dividerColor);
+  border-bottom: none;
+  border-left: 1px solid var(--gse-ui-tabs-item-divider-dividerColor);
+}
+.gux-disclosure-button-container .gux-disclosure-button gux-icon {
+  width: 12px;
+  height: 12px;
+}
+.gux-disclosure-button-container .gux-disclosure-button:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+.gux-disclosure-button-container .gux-disclosure-panel {
+  display: none;
+  order: -1;
+  width: 100%;
+}
+.gux-disclosure-button-container .gux-disclosure-panel.gux-active {
+  display: block;
+}
+.gux-disclosure-button-container.gux-right {
+  justify-content: flex-end;
+}
+.gux-disclosure-button-container.gux-right .gux-disclosure-panel {
+  order: 1;
+}

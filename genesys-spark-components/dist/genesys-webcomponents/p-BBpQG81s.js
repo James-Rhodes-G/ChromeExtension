@@ -1,0 +1,1 @@
+function n(n,o){for(const r of n.children)if(r.matches(`[slot=${o}]`))return r;return null}export{n as g}

@@ -1,0 +1,57 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  max-block-size: var(--gse-ui-dataTableItems-tableToolbar-height);
+  visibility: hidden;
+  transition: visibility 0s 0.5s; /* Delay visibility of toolbar for 0.5s */
+}
+@keyframes show-toolbar {
+  to {
+    visibility: visible;
+  }
+}
+:host .search-filter-container {
+  min-inline-size: 260px;
+  padding-inline-end: var(--gse-ui-dataTableItems-tableToolbar-gap);
+}
+:host slot[name=search-and-filter]::slotted(*) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gse-ui-dataTableItems-tableToolbar-tableToolbarGroup-gap);
+  align-content: flex-start;
+  align-items: center;
+}
+:host .section-spacing {
+  display: flex;
+  flex-direction: row;
+  min-inline-size: 72px;
+}
+:host .gux-contextual-permanent-primary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline-start: var(--gse-ui-dataTableItems-tableToolbar-gap);
+}
+:host .gux-contextual-permanent-primary slot[name=permanent-actions]::slotted(*),
+:host .gux-contextual-permanent-primary slot[name=contextual-actions]::slotted(*) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-tableToolbar-tableToolbarGroup-gap);
+  align-content: flex-end;
+  align-items: center;
+}
+:host .gux-contextual-permanent-primary .gux-contextual-wrapper {
+  padding-inline-end: var(--gse-ui-dataTableItems-tableToolbar-gap);
+  border-inline-end: var(--gse-ui-dataTableItems-tableToolbar-divider-width) solid var(--gse-ui-dataTableItems-tableToolbar-dividerColor);
+}
+:host .gux-contextual-permanent-primary .gux-permanent-menu-primary-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-tableToolbar-tableToolbarGroup-gap);
+  margin-inline-start: var(--gse-ui-dataTableItems-tableToolbar-gap);
+}

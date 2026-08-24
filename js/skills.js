@@ -24,13 +24,13 @@ export async function exportSkills(){
     var pageNumber=1
     var pageSize = 99
     //// get a list of user roles
-    const table = document.createElement('table');
-    Object.assign(table, {id:"skill_export"});
-    document.getElementById('logOutput').appendChild(table);
-    utils.createHeader(table, ['skillName', 'skillId','skillState']);
+    let element = document.getElementById('logOutput');
+    const table = utils.createGuxTable("skill_export")
+    element.appendChild(table[0]).appendChild(table[1])
+    utils.createHeader(table[1], ['skillName', 'skillId','skillState']);
     do{
         var resp = await getSkills(pageSize,pageNumber);
-        await logSkillOutput(table, resp);
+        await logSkillOutput(table[1], resp);
         pageNumber ++
     } while (resp.selfUri != resp.lastUri)
     //// add export button    
@@ -107,15 +107,15 @@ export async function bulkAssignSkills() {
     //// collect selected users
     var users = document.querySelectorAll('input[type="checkbox"]:checked');
     element.innerHTML = ''; /// Clear the page
-    var table = document.createElement("table");
-    element.appendChild(table);
+    //// Create Table
+    var table = utils.createGuxTable("bulk_user_skill_assign")
     //// provide export button
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
     //// hide done button
     btnUsers.style.display = 'none';
-    Object.assign(table, {id:"bulk_user_skill_assign"});
-    utils.createHeader(table, ['userName', 'skill', 'proficiency', 'status']);
+    document.getElementById('logOutput').appendChild(table[0]).appendChild(table[1]);
+    utils.createHeader(table[1], ['userName', 'skill', 'proficiency', 'status']);
     ////create body for Skill assignment
     let skillBody = [];
     skillsAndProf.forEach(skill => {
@@ -127,12 +127,12 @@ export async function bulkAssignSkills() {
         const response = await utils.patchAPI(apiToCall, skillBody);
         if (response.ok){
             skillsAndProf.forEach(skill => {
-                utils.createRow(table, [ entry.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table[1], [ entry.parentNode.parentElement.cells[1].innerText,
                         skill.itemName, skill.dropId, 'success']);
             })
         }else{
             skillsAndProf.forEach(skill => {
-                utils.createRow(table, [ entry.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table[1], [ entry.parentNode.parentElement.cells[1].innerText,
                     skill.itemName, skill.dropId, response.message]);
             })
         };

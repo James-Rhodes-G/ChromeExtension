@@ -1,0 +1,31 @@
+:host {
+  display: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:host(.gux-show-menu) {
+  display: block;
+}
+
+.gux-menu-button {
+  display: flex;
+  color: var(--gse-ui-button-secondary-default-foregroundColor);
+  cursor: pointer;
+  border: none;
+}
+.gux-menu-button gux-icon {
+  align-self: center;
+}
+
+.gux-list-container {
+  inline-size: min-content;
+  margin: 0;
+  overflow-y: auto;
+  background: var(--gse-ui-menu-backgroundColor);
+  border-color: var(--gse-ui-menu-border-color);
+  border-style: var(--gse-ui-menu-border-style);
+  border-width: var(--gse-ui-menu-border-width);
+  border-radius: var(--gse-ui-menu-borderRadius);
+  box-shadow: var(--gse-ui-menu-boxShadow);
+}

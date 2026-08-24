@@ -1,0 +1,44 @@
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([disabled=false]) {
+  pointer-events: auto;
+}
+
+.gux-container {
+  box-sizing: border-box;
+  inline-size: var(--gse-ui-calendarMenu-month-monthCell-width);
+  block-size: var(--gse-ui-calendarMenu-month-monthCell-height);
+  padding-block: 10px 9px;
+  padding-inline: 5px;
+}
+.gux-container button {
+  all: unset;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  text-align: center;
+  word-wrap: break-word;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: var(--gse-ui-calendarMenu-month-borderRadius);
+}
+.gux-container button.gux-selected {
+  color: var(--gse-ui-calendarMenu-month-selected-foregroundColor);
+  background: var(--gse-ui-calendarMenu-month-selected-backgroundColor);
+}
+.gux-container button:focus-visible:not(:disabled) {
+  outline: var(--gse-ui-monthPicker-calendarStates-focus-border-width) var(--gse-ui-monthPicker-calendarStates-focus-border-style) var(--gse-ui-monthPicker-calendarStates-focus-border-color);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border-radius: var(--gse-ui-calendarMenu-month-focusBorderRadius);
+}
+.gux-container button:hover:not(:disabled) {
+  color: var(--gse-ui-calendarMenu-month-default-foregroundColor);
+  background: var(--gse-ui-calendarMenu-month-hover-backgroundColor);
+}
+.gux-container button:disabled {
+  cursor: default;
+  opacity: var(--gse-ui-calendarMenu-disabled-opacity);
+}

@@ -1,0 +1,30 @@
+:host {
+  display: inline-block;
+  min-inline-size: fit-content;
+  user-select: none;
+}
+
+:host(:host:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-sm-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  box-shadow: 0 0 0 1px var(--gse-semantic-border-focus);
+}
+
+.gux-rating-star-container {
+  display: flex;
+  gap: var(--gse-ui-rating-star-gap);
+  justify-content: space-between;
+  color: var(--gse-ui-rating-default-color);
+}
+.gux-rating-star-container.gux-disabled {
+  color: var(--gse-ui-rating-disabled-color);
+  pointer-events: none;
+  opacity: var(--gse-ui-rating-disabled-opacity);
+}
+.gux-rating-star-container gux-icon {
+  flex: 0 0 auto;
+  color: var(--gse-ui-rating-default-color);
+}
+.gux-rating-star-container gux-icon:hover:not(.gux-disabled) {
+  color: var(--gse-ui-rating-hover-color);
+}

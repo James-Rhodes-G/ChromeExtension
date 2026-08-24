@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  block-size: var(--gse-ui-dataTableItems-cell-tablePagination-height);
+  border-block-start: var(--gse-ui-dataTableItems-tablePagination-divider-width) var(--gse-ui-dataTableItems-tablePagination-divider-style) var(--gse-ui-dataTableItems-tablePagination-divider-color);
+}
+
+.gux-pagination-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  place-content: stretch space-between;
+  align-items: center;
+  padding: var(--gse-ui-dataTableItems-tablePagination-padding);
+  background-color: var(--gse-ui-dataTableItems-tablePagination-defaultBackgroundColor);
+}
+.gux-pagination-container .gux-pagination-info {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--gse-ui-dataTableItems-tablePagination-recordsetControls-gap);
+  place-content: stretch flex-start;
+  align-items: center;
+  align-self: auto;
+  order: 0;
+}
+.gux-pagination-container .gux-pagination-info > * {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+.gux-pagination-container .gux-pagination-spacer {
+  flex: 1 1 auto;
+  align-self: auto;
+  order: 0;
+}
+.gux-pagination-container .gux-pagination-change {
+  flex: 0 1 auto;
+  align-self: auto;
+  order: 0;
+}
+.gux-pagination-container .gux-pagination-change:first-child {
+  margin-inline-start: 0;
+}

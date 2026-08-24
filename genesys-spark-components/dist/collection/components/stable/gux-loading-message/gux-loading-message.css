@@ -1,0 +1,66 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  container-type: inline-size;
+}
+
+.gux-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-inline-size: var(--gse-ui-progressAndLoading-loadingState-large-width);
+  color: var(--gse-ui-progressAndLoading-textColor);
+  text-align: center;
+}
+
+@container (width > 400px) {
+  .gux-container .gux-primary-message {
+    margin-block-start: var(--gse-ui-progressAndLoading-large-gap);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-large-header-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-large-header-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-large-header-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-large-header-lineHeight);
+  }
+  .gux-container .gux-additional-guidance {
+    margin-block-start: var(--gse-ui-progressAndLoading-large-gapText);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-large-subheader-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-large-subheader-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-large-subheader-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-large-subheader-lineHeight);
+  }
+}
+@container (width > 200px) and (width <=400px) {
+  .gux-container .gux-primary-message {
+    margin-block-start: var(--gse-ui-progressAndLoading-medium-gap);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-medium-header-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-medium-header-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-medium-header-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-medium-header-lineHeight);
+  }
+  .gux-container .gux-additional-guidance {
+    margin-block-start: var(--gse-ui-progressAndLoading-medium-gapText);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-medium-subheader-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-medium-subheader-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-medium-subheader-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-medium-subheader-lineHeight);
+  }
+}
+@container (width <=200px) {
+  .gux-container .gux-primary-message {
+    margin-block-start: var(--gse-ui-progressAndLoading-small-gap);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-small-header-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-small-header-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-small-header-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-small-header-lineHeight);
+  }
+  .gux-container .gux-additional-guidance {
+    margin-block-start: var(--gse-ui-progressAndLoading-small-gapText);
+    font-family: var(--gse-ui-progressAndLoading-loadingState-small-subheader-fontFamily);
+    font-size: var(--gse-ui-progressAndLoading-loadingState-small-subheader-fontSize);
+    font-weight: var(--gse-ui-progressAndLoading-loadingState-small-subheader-fontWeight);
+    line-height: var(--gse-ui-progressAndLoading-loadingState-small-subheader-lineHeight);
+  }
+}

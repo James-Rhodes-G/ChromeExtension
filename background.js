@@ -41,6 +41,8 @@ chrome.sidePanel
 // add change Listener for tabs
   chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
           if (!tab.url) return;
+          // chrome.runtime.sendMessage({action: `toggleDisco`, data:"disable"});
+          // chrome.runtime.sendMessage({action: `toggleLogoff`, data:"disable"});
           const url = new URL(tab.url);
           if (allowedPages.includes(url.origin)) {
             await chrome.sidePanel.setOptions({
@@ -64,30 +66,6 @@ chrome.sidePanel
   testRequest(request).then(sendResponse);
   return true;
 });
-
-//  chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
-//     testRequest(request)
-//       .then((data) =>{
-//           console.log(`here is the returned data: ${data}`);
-//           sendResponse(data);
-//       })
-//     return true;
-//  })
-
-// /////// NEW TEST For MESSAGE LISTENER  ////////
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//   if (request.action === "getData") {
-//     // Simulate asynchronous work
-//     setTimeout(() => {
-//       sendResponse({ data: "Hello from the service worker!" });
-//     }, 1000); // Wait 1 second before responding
-
-//     // Return true to keep the message channel open for the async response
-//     return true;
-//   }
-//   // If not handling the message or no async work, returning nothing (or false)
-//   // will close the message channel immediately.
-// });
 
 
 
@@ -217,9 +195,9 @@ async function testRequest(request) {
       break;
     
     case "goToFlowExecution":
-      var region = await chrome.storage.local.get('region')
-      var data = await flowExecution(request[1])
-      let goToFlowExecution_tab = await openTabNextToCurrent(`${region.region.replace('api','apps')}/architect/#/flowInstance/${data.entities[0].id}`)
+      //var region = await chrome.storage.local.get('region')
+      //var data = await flowExecution(request[1])
+      let goToFlowExecution_tab = await openTabNextToCurrent(`./log.html?func=flowExecution&id=${request[1]}`)
       break;
       
     case "exportToCSV":

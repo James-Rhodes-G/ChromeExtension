@@ -1,0 +1,26 @@
+/*
+ * Typography styles and mixins.
+ */
+/* Headings */
+/* Body Copy */
+/* Anchor */
+.gux-option-group {
+  display: block;
+  flex: 1 1 auto;
+  align-self: auto;
+}
+.gux-option-group .gux-option-group-label {
+  display: block;
+  padding: var(--gse-ui-menu-groupedMenu-title-padding);
+  color: var(--gse-ui-menu-groupedMenu-title-foregroundColor);
+  font-family: var(--gse-semantic-heading-overline-fontFamily), var(--gse-semantic-theme-fontFamily-headings), sans-serif;
+  font-size: var(--gse-semantic-heading-overline-fontSize);
+  line-height: var(--gse-semantic-heading-overline-lineHeight);
+  text-transform: var(--gse-semantic-heading-overline-textCase);
+  letter-spacing: var(--gse-semantic-heading-overline-letterSpacing);
+  font-weight: var(--gse-semantic-heading-overline-fontWeight);
+}
+
+:host(.gux-filtered) {
+  display: none;
+}

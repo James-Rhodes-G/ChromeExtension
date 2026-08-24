@@ -1,134 +1,174 @@
+/* Importing the Genesys Root for variables */
+@import '../genesys-spark-components/dist/genesys-webcomponents/genesys-webcomponents.css';
 
-.collapsible {
-  background-color: #ff451A;
-  color: white;
-  cursor: pointer;
-  padding: 0 18px;
-  width: 90%;
-  border: 1px;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  z-index: -1;
-  border: 1px;
-  border-radius: 3px;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  margin-right: 5px;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-  z-index: 1;
-}
-.customerName{
-    text-align: center;
-    background-color: #583E5C;
-    color: white;
-  }
-  .container{
-    display: flex;
+.org-switch, .org-data {
+  -webkit-box-align:  center;
+  background-color: var(--nav-blue);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: block;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
-    justify-content: center;
-    font-size: x-large;
-    text-align: "center";
-    padding: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    color: var(--genesys-color-white-10);
+}
+
+.full-row {
+  width:100%;
+}
+
+.tight-30{
+  width:30%;
+}
+
+.seperatorRow{
+  min-height: 1px;
+}
+
+body{
+  overflow-y: auto;
+}
+
+fieldset {
+  display: block;
+  min-inline-size: min-content;
+  margin-inline: 2px;
+  border-width: 2px;
+  border-style: groove;
+  border-color: threedface;
+  border-image: initial;
+  padding-block: 0.35em 0.625em;
+  padding-inline: 0.75em;
+}
+
+legend {
+  display: block;
+  width: auto;
+  margin-bottom: 20px;
+  line-height: inherit;
+  border-bottom: 0px solid #e5e5e5;
+}
+
+#floatBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  /* border: none; /* Remove borders */
+  /* outline: none; /* Remove outline */
+  /* background-color: #ff451A; /* Set a background color */
+  /* color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  /* border-radius: 10px; /* Rounded corners */
+  /* font-size: 18px; /* Increase font size */
+}
+#floatBtn.top{
+  top: 20px; /* Place the button at the top of the page */
+}
+#floatBtn.bottom{
+  bottom: 20px; /* Place the button at the bottom of the page */
+}
+#floatBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.alert {
+    margin-block-end: 16px;
   }
-  .btnContainer{
-    display: grid;
-    gap: 5px 6px;
-    grid-template-columns: auto auto auto;
-    margin-right: 35px;
-    z-index: 2;
-  }
-  .outbound_CLID{
-    justify-content: right;
-    display: grid;
-    gap: 5px 6px;
+
+  #bodyDiv {
+    display: inline-grid;
+    margin: 8px;
+    width: 100%;
+    column-gap: 10px;
     grid-template-columns: auto auto;
-    margin-right: 35px;
-    z-index: 2;
   }
-  .outbound_CLID .btn_label{
-    text-align: right;
-  }
-  #callSpoof{
-    margin: auto;
-    display: grid;
-    gap: 5px;
-    grid-template-columns: auto;
-    margin-right: 5px;
-    z-index: 2;
-  }
-  
-  #printConversationData, #goToInteraction{
-    margin: auto;
-    display: grid;
-    gap: 0px;
-    grid-template-columns: auto;
-    margin-right: 0px;
-    margin-left: 0px;
-    z-index: 2;
-  }
-  body {
-    background-color:rgb(238, 232, 232);
-    font-family: "Roboto" serif;
-    width: 400px;
-  }
-  button {
-    color: #fdfdfd;
-    background-color: #2a60c8;
-    border: 1px solid #2455a3;
-    border-radius: 2px;
-    align-items: center;
-    box-shadow: none;
-    cursor: pointer;
-    z-index: 1;
-  }
-  button:disabled {
-    background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
-    color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
-    border-color: light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
-}
-  .info {
-    margin: 1px 0;
-    z-index: 1;
-  }
-   .logo {
-    height: 7%;
-    width: 7%;
-    padding: 10px;
-    z-index: 1;
-  } 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    z-index: 3;
-    }
-      
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
 
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 100;
-    top: -50px;
-    left: 105%;
+  #selectBox {
+    display: inline-grid;
+    border-width: 1px;
+    border-style: solid;
+    height: 300px;
+    grid-template-columns: 100%;
+    grid-auto-rows: 40px;
+    overflow: scroll;
+  }
+  #displayBox {
+    display: inline-grid;
+    border-width: 1px;
+    border-style: solid;
+    height: 300px;
+    grid-template-columns: 100%;
+    grid-auto-rows: 40px;
+    overflow: scroll;
     }
+  #selectSecond>select {
+    height: 35px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 5px;
+    flex-grow: 1;
+    display: inline-flex;
+  }
+  #selectText, #selectSecond {
+      display: flex;
+      max-height: 35px;
+      border-width: 1px;
+      border-style: solid;
+      flex: 1;
+      align-items: center;
+      justify-content: right;
+      padding-right: 5px;
+  }
+  #selectBox>#itemSelector {
+    display: inline-grid;
+    height: 40px;
+    width: auto;
+    grid-template-columns: auto;
+    grid-auto-rows: 40px;
+    overflow: hidden;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  #displayBox>#itemSelector{
+    display: inline-grid;
+    height: 40px;
+    width: auto;
+    grid-template-columns: 70% auto;
+    grid-auto-rows: 40px;
+    overflow: hidden;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .smallBox {
+    max-width:35px;
+    height:35px;
+    display:inline-flex;
+    overflow: scroll;
+  }
+  div#boxLables {
+    display: inline-grid;
+  }
+  div#logOutput{
+    width:95%;
+    overflow:unset;
+    overflow-wrap: break-word;
+  }
+  table {
+    table-layout:auto;
+    width: 95%;
+  }
+  td{
+    /* max-width: 200px;*/
+    overflow-wrap:break-word;
+    word-wrap: break-word;
+    white-space: normal;
 
-button:hover + .tooltiptext {
-    visibility: visible;
-    z-index: 101;
-    }
+  }

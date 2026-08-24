@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  align-items: center;
+  inline-size: fit-content;
+  padding-block: var(--gse-semantic-interactive-sm-padding);
+  padding-inline: var(--gse-semantic-interactive-sm-padding) var(--gse-semantic-interactive-md-padding);
+}
+
+:host(:focus-visible) {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-semantic-border-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+}
+
+.gux-add-item-overflow {
+  padding-inline-start: calc(var(--gse-core-spacing-4xs) + 2px);
+}

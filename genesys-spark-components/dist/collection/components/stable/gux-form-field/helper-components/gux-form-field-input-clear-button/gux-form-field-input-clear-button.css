@@ -1,0 +1,23 @@
+button {
+  display: flex;
+  padding: 0;
+  color: var(--gse-ui-formControl-input-inputClearable-inputClearableColor);
+  background: transparent;
+  border: none;
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+button:not(:disabled):focus-visible, button:not(:disabled):hover {
+  color: var(--gse-ui-formControl-input-inputIcon-iconEndColor);
+  cursor: pointer;
+}
+button gux-icon {
+  border-radius: var(--gse-ui-formControl-input-borderRadius);
+}
+button:focus {
+  outline: none;
+}
+button:focus-visible:enabled gux-icon {
+  outline: var(--gse-ui-formControl-input-focus-border-width) var(--gse-ui-formControl-input-focus-border-style) var(--gse-ui-formControl-input-focus-border-color);
+  border: var(--gse-ui-formControl-input-active-border-width) var(--gse-ui-formControl-input-active-border-style) var(--gse-ui-formControl-input-active-border-color);
+  border-radius: var(--gse-ui-formControl-focusRing-borderRadius);
+}

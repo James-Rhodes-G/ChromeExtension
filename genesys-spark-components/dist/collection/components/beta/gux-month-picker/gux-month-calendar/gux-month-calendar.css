@@ -1,0 +1,50 @@
+.gux-month-calendar {
+  flex-wrap: wrap;
+  inline-size: var(--gse-ui-calendarMenu-width);
+  box-shadow: var(--gse-ui-calendarMenu-boxShadow);
+}
+.gux-month-calendar.gux-hidden {
+  display: none;
+}
+.gux-month-calendar .gux-current-month {
+  font-family: var(--gse-ui-calendarMenu-month-currentText-fontFamily);
+  font-size: var(--gse-ui-calendarMenu-month-currentText-fontSize);
+  font-weight: var(--gse-ui-calendarMenu-month-currentText-fontWeight);
+  line-height: var(--gse-ui-calendarMenu-month-currentText-lineHeight);
+  color: var(--gse-ui-calendarMenu-month-default-foregroundColor);
+}
+.gux-month-calendar .gux-year-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  block-size: var(--gse-ui-calendarMenu-month-single-header-height);
+  padding: var(--gse-ui-calendarMenu-header-padding);
+  font-family: var(--gse-ui-calendarMenu-day-headerText-fontFamily);
+  font-size: var(--gse-ui-calendarMenu-day-headerText-fontSize);
+  font-weight: var(--gse-ui-calendarMenu-day-headerText-fontWeight);
+  line-height: var(--gse-ui-calendarMenu-day-headerText-lineHeight);
+  color: var(--gse-ui-calendarMenu-header-foregroundColor);
+  background-color: var(--gse-ui-calendarMenu-header-backgroundColor);
+  border-radius: var(--gse-ui-calendarMenu-single-header-borderRadius);
+}
+.gux-month-calendar .gux-year-header button {
+  padding: var(--gse-ui-calendarMenu-header-arrow-padding);
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
+}
+.gux-month-calendar .gux-year-header button:focus-visible {
+  outline: var(--gse-semantic-focusOutline-md-borderWidth) solid var(--gse-ui-color-focus);
+  outline-offset: var(--gse-semantic-focusOutline-offset);
+  border-radius: calc(var(--gse-semantic-focusOutline-sm-borderRadius) - var(--gse-semantic-focusOutline-offset));
+}
+.gux-month-calendar .gux-year-header button.gux-year-change:disabled {
+  cursor: default;
+  opacity: var(--gse-ui-calendarMenu-disabled-opacity);
+}
+.gux-month-calendar .gux-year-header button gux-icon {
+  pointer-events: none;
+}
