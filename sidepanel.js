@@ -2,17 +2,30 @@
 import { tempAlert, openTabNextToCurrent } from "./js/utils.js";
 import { callSpoof } from "./js/callSpoof.js";
 
-
-const quickNavBtn = {"people":"/directory/#/admin/directory/peopleV3", "queues":"/directory/#/admin/admin/organization/_queuesV2",
-            "dataTables":"/directory/#/admin/routing/datatables", "sites":"/directory/#/admin/telephony/sites", 
-            "tab_architect":"/architect/#/inboundcall/flows", "full_apiExp":"https://developer.genesys.cloud/devapps/api-explorer"
+const defualt_btnData = {
+        "quickNav": {
+            "QuickNav1_Label": "Roles",
+            "QuickNav1_URL": "/directory/#/admin/people-permissions/roles",
+            "QuickNav2_Label": "People",
+            "QuickNav2_URL": "/directory/#/admin/directory/peopleV3",
+            "QuickNav3_Label": "Queues",
+            "QuickNav3_URL": "/directory/#/admin/admin/organization/_queuesV2",
+            "QuickNav4_Label": "Data Tables",
+            "QuickNav4_URL": "/directory/#/admin/routing/datatables",
+            "QuickNav5_Label": "Architect",
+            "QuickNav5_URL": "/architect/#/inboundcall/flows",
+            "QuickNav5_radio": "newTab",
+            "QuickNav6_Label": "API Explorer",
+            "QuickNav6_URL": "https://developer.genesys.cloud/devapps/api-explorer",
+            "QuickNav6_radio": "newTab"
         }
+    }
 
-//// Add Listener for Collapseable Container
+
 export async function sidePanel (){
+//// Add Listener for Collapseable Container
     var coll = document.getElementsByClassName("collapsible");
     var i;
-//// Listener for Sidepanel Container open/collapse 
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
             this.classList.toggle("active");
@@ -25,13 +38,30 @@ export async function sidePanel (){
         });
         }
 //// Add listener for quick nav buttons
+    let btnData = await chrome.storage.local.get("quickNav");
+    if (!!btnData){ 
+        console.log("Using Button Defaults")
+        btnData = defualt_btnData;
+        chrome.storage.local.set(btnData);
+    };
     var qbnBtns = document.getElementsByName("qbtn");
     var b; 
     for (b = 0; b < qbnBtns.length; b++) { 
         const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText, qbnBtns[b].name);
-        qbnBtns[b].addEventListener("click", function(){
-            quickNav(objButton)
-        });
+        if (btnData.quickNav[qbnBtns[b].id +'_Label'] !=''){
+            qbnBtns[b].innerHTML = btnData.quickNav[qbnBtns[b].id +'_Label'];
+            qbnBtns[b].addEventListener("click", function(){
+                if(Object.keys(btnData.quickNav).includes(objButton.id+'_radio')){               
+                    quickNav(btnData.quickNav[objButton.id+'_URL'], true);
+                }else{ 
+                    quickNav(btnData.quickNav[objButton.id+'_URL'], false);
+                }
+            });
+        } else {
+            qbnBtns[b].style.display = 'none';
+            console.log('skipping '+qbnBtns[b].id )
+        }
+
     }
 //// Add listener for function buttons
     var qbnBtns = document.getElementsByName("funcBtn");
@@ -43,36 +73,55 @@ export async function sidePanel (){
         });
     }
 //// Add listener for to copy Customer Text
-var qbnBtns = document.getElementsByName("custInfo");
-var b; 
-for (b = 0; b < qbnBtns.length; b++) { 
-    const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText);
-    qbnBtns[b].addEventListener("click", function(){
-        let cx = event.clientX;
-        let cy = event.clientY;
-        textCopy(objButton, cx,cy);
+    var qbnBtns = document.getElementsByName("custInfo");
+    var b; 
+    for (b = 0; b < qbnBtns.length; b++) { 
+        const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText);
+        qbnBtns[b].addEventListener("click", function(){
+            let cx = event.clientX;
+            let cy = event.clientY;
+            textCopy(objButton, cx,cy);
 
-    });
-}
+        });
+    }
+
+//// Add listener and fill in form data for callspoof
+    let fieldList = ["outClid", "outCnam", "outDial"];
+
+    fieldList.forEach( async field => {
+        /// need to get from storage
+        let data = await chrome.storage.local.get(field);
+        if(!!data){
+            data={field:['']}
+        }
+        // create list of options in the dataList
+        createDataList(data[field], field);
+        //// need to add onChange listener to write datato storage
+        let textBox = document.getElementById(field);
+        textBox.onchange = function(){
+            console.log(event.target.value, data[field], field)
+            cleanArraySendToStorage(event.target.value, field);
+        }
+    })
+
     getOrgInfo();
 }  
 
 //// Handle Quick Navigtion Button Clicks
-async function quickNav(btnPress){
+async function quickNav(btnPress, newTab){
     const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
     let webSite = (new URL(tabs[0].url).origin);
-    const newPage = webSite + quickNavBtn[btnPress.id];
-    if (btnPress.id.includes("full_") ) {
-        await openTabNextToCurrent(quickNavBtn[btnPress.id]);
-    }else if (btnPress.id.includes("tab_")){
+    const newPage = webSite + btnPress;
+    if (btnPress.substr(0,4).toLowerCase() == 'http'){
+        //console.log(btnPress, 'New Tab');
+        await openTabNextToCurrent(btnPress);
+    }else if (newTab){
+        //console.log(newPage, 'New Tab')
         await openTabNextToCurrent(newPage); 
     }else {
-        console.log(newPage);
+        //console.log(newPage, 'Same Tab');
         chrome.tabs.update( tabs[0].id, {url:newPage});
     }
-    
-
-
 }
 
 //// Handle Function Button Clicks
@@ -135,5 +184,36 @@ async function getOrgInfo() {
     await chrome.storage.local.set({['orgName']: response.thirdPartyOrgName});        
     return response;
 };
+
+function createDataList(data, field){
+    let dataList = document.querySelector('#'+field+'List');
+    dataList.replaceChildren();
+    try {
+            data.forEach( entry => {
+        let opt = document.createElement('option');
+        opt.value = entry;
+        dataList.appendChild(opt);
+    })
+    }catch(error){
+       // console.log(error);
+    }
+
+}
+
+async function cleanArraySendToStorage(value,field){
+    let data = await chrome.storage.local.get(field);
+    var newArr
+    try{
+        newArr = data[field].splice(0,0,value);
+        newArr = [... new Set(data[field])];
+    } catch(error){
+        newArr=[value];
+    }
+    if (newArr.length >= 10){
+        newArr.pop()
+    }
+    createDataList(newArr, field);
+    await chrome.storage.local.set({[field]:newArr});
+}
 
 await sidePanel();

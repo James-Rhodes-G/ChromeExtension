@@ -1,5 +1,4 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, createRow, makeSelectAllListener,
-    makeTableRowsClickable } from "./utils.js";
+
 import { getUsers } from "./users.js";
 import { userSelectLoop } from "./passwordReset.js";
 import * as utils from './utils.js';
@@ -9,7 +8,7 @@ import * as utils from './utils.js';
 //get permissions one page at a time
 async function getPermissions(pageSize=99, pageNumber=1) {
     const apiToCall = `/api/v2/authorization/permissions?pageSize=${pageSize}&pageNumber=${pageNumber}`;
-    const permissionsList = await getAPI(apiToCall);
+    const permissionsList = await utils.getAPI(apiToCall);
     return permissionsList;
 }
 
@@ -83,7 +82,7 @@ async function createBulkRoleApiBody(division, users) {
 async function postMasterAdmin(body){
     const apiToCall='/api/v2/authorization/roles'
     const fullBody = ({name:"Full Master Admin", description:"This contains every domains ALL PERMISSIONS permission", permissions: await assignGeneralPermissions(), permissionPolicies:body});
-    const response = await otherPostApi(apiToCall, fullBody);
+    const response = await utils.otherPostApi(apiToCall, fullBody);
     return response;
 };
 
@@ -123,14 +122,14 @@ export async function createMasterAdmin(){
 //// make get call to get roles
 async function getRoles(pageSize=99,pageNumber=1){
     const apiToCall = `/api/v2/authorization/roles?pageSize=${pageSize}&pageNumber=${pageNumber}&sortBy=name&sortOrder=ascending&userCount=true`;
-    const response = getAPI(apiToCall);
+    const response = utils.getAPI(apiToCall);
     return response;
 }
 
 //// make get call to get divisions
 async function getDivisions(pageSize=99,pageNumber=1){
     const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
-    const response = getAPI(apiToCall);
+    const response = utils.getAPI(apiToCall);
     return response;
 }
 
@@ -138,7 +137,7 @@ async function getDivisions(pageSize=99,pageNumber=1){
 async function logRoleOutput(table, data){
     const alphaData = await alphaSortByName(data.entities);
     alphaData.forEach(function (role){
-        createRow(table, [role.name, role.id, role.userCount, role.default] )
+        utils.createRow(table, [role.name, role.id, role.userCount, role.default] )
     })
 }
 
@@ -150,14 +149,17 @@ export async function exportRoles(){
     const table = document.createElement('table');
     Object.assign(table, {id:"role_export"});
     document.getElementById('logOutput').appendChild(table);
-    createHeader(table, ['roleName', 'roleId','userCount', 'Genesys_default']);
+    utils.createHeader(table, ['roleName', 'roleId','userCount', 'Genesys_default']);
+    utils.loadingMessage("Roles")
     do{
         var resp = await getRoles(pageSize,pageNumber);
+        console.log(resp);
         await logRoleOutput(table, resp);
         pageNumber ++
     } while (resp.selfUri != resp.lastUri)
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
+    utils.loadingMessageClear("Roles")
 }
 
 export async function bulkAssignRoles() {
@@ -226,9 +228,9 @@ export async function bulkAssignRoles() {
         });
     
     ////  Event Listener for Select All Checkbox
-    makeSelectAllListener();
+    utils.makeSelectAllListener();
     //// Make rows clickable
-    makeTableRowsClickable();
+    utils.makeTableRowsClickable();
 
     //// Wait for user
     await eventPromise;
@@ -243,21 +245,21 @@ export async function bulkAssignRoles() {
     //// hide done button
     btnUsers.style.display = 'none';
     Object.assign(table, {id:"bulk_user_role_assign"});
-    createHeader(table, ['userName', 'roleName', 'divisionName', 'status']);
+    utils.createHeader(table, ['userName', 'roleName', 'divisionName', 'status']);
     console.log(users);
     rolesAndDivs.forEach(  async function(entry) {
         let role = entry.roleId;
         let body = await createBulkRoleApiBody(entry.divId, users)
         let apiToCall = `/api/v2/authorization/roles/${role}`;
-        const response = await otherPostApi(apiToCall, body);
+        const response = await utils.otherPostApi(apiToCall, body);
         if (response.ok){
             users.forEach(user => {
-                createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
                         entry.roleName, entry.divName, 'success']);
             })
         }else{
             users.forEach(user => {
-                createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
+                utils.createRow(table, [ user.parentNode.parentElement.cells[1].innerText,
                         entry.roleName, entry.divName, response.message]);
             })
         };

@@ -1,7 +1,7 @@
 import * as utils from "./utils.js"
 
 async function getConversationData(convId) {
-    const apiToCall= `/api/v2/analytics/conversations/details?id=${convId}`
+    const apiToCall= `/api/v2/conversations/${convId}`
     const resp = utils.getAPI(apiToCall);
     return resp
 }

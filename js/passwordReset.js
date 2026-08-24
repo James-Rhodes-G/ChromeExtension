@@ -57,9 +57,9 @@ async function userLoop(table, users, idField) {
     };
 
     users['entities'].forEach(user => {
-        console.log(user)
+        //console.log(user)
         if (user.hasOwnProperty('skills')){
-            console.log('has skills')
+            //console.log('has skills')
             let userSkills='';
             user.skills.forEach(skill =>{userSkills +=`${skill.name}:${skill.proficiency}<br>`});
             var rowColumns = [
@@ -187,13 +187,14 @@ export async function exportUsers() {
         console.log("exporting users");
         const table = document.createElement("table");
         Object.assign(table, {id:"user_export"});
+        utils.loadingMessage('Users');
         do {
             var response = await getUsers(pageSize,pageNumber);
-            console.log(response);
             await userLoop(table, response); 
             pageNumber ++;
         }
         while (response.lastUri != response.selfUri);
+        utils.loadingMessageClear('Users');
         const exportBtn  = document.getElementById("exportButton")
         exportBtn.style.display = 'block';
     };

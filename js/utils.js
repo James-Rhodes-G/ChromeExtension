@@ -1,16 +1,88 @@
 
 // Get using URL Endpoints NO SDK
 
-export async function getAPI(urlToCall) {
-    console.log(`calling ${urlToCall}`);
+// export async function getAPI(urlToCall) {
+//     console.log(`calling ${urlToCall}`);
+//     const authData = await(getAuthInfo());
+//     const apiUrl = `${authData.region}${urlToCall}`;
+//     const data = await fetch(apiUrl,{
+//         method: 'GET',
+//         headers: {'Authorization' : `Bearer ${authData.pc_auth}`}
+//     })
+//     //return await data.json();
+//     .then(response => {
+//         if (response.status === 429) {
+//         // Handle the 429 error
+//         const retryAfter = response.headers.get('Retry-After');
+
+//         if (retryAfter) {
+//             // Retry the request after the specified time
+//             const retryTime = parseInt(retryAfter, 10) * 1000; // Convert to milliseconds
+//             console.log(`Retrying in ${retryTime}ms...`);
+
+//             return new Promise(resolve => setTimeout(() => {
+//                 resolve(fetch(apiUrl, {
+//                     method: 'GET',
+//                     headers: {
+//                         'Content-Type': 'application/json',
+//                         'Authorization' : `Bearer ${authData.pc_auth}`
+//                     },
+//                 }));
+//             }, retryTime));
+//         } else {
+//             // Handle the 429 error without a Retry-After header
+//             console.error('Too Many Requests. Retry-After header not found.');
+//             // You might want to implement a backoff strategy here
+//         }
+//         // } else if (!response.ok) {
+//         // // Handle other errors
+//         // throw new Error(`HTTP error! status: ${response.status}`);
+//         } else {
+//         return response.json();
+//         }
+//     })
+//     .then(data => {
+//         // Do something with the data
+//         console.log(data);
+//         return data;
+//     })
+//     .catch(error => {
+//         // Handle any errors that occurred during the fetch
+//         console.error('Fetch error:', error);
+//         return response;
+//     });
+//     return data;
+// }
+
+export async function getAPI(url, maxRetries = 3) {
+    let retries = 0;
     const authData = await(getAuthInfo());
-    const apiUrl = `${authData.region}${urlToCall}`;
-    const response = await fetch(apiUrl,{
-        method: 'GET',
-        headers: {'Authorization' : `Bearer ${authData.pc_auth}`}
-    })
-    return await response.json();
-}
+    const apiUrl = `${authData.region}${url}`;
+    let options = {method: 'GET',
+                headers: {'Authorization' : `Bearer ${authData.pc_auth}`}
+            }
+    while (retries < maxRetries) {
+      try {
+        const response = await fetch(apiUrl, options);
+  
+        if (response.status === 429) {
+          retries++;
+          const retryAfter = response.headers.get('Retry-After') || 1;
+          console.warn(`429 error. Retrying after ${retryAfter} seconds...`);
+          await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+        } else if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          return response.json();
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+        throw error;
+      }
+    }
+  
+    throw new Error(`Max retries reached. Failed to fetch ${url}`);
+  }
 
 export async function postAPI(urlToCall, inbody) {
     const authData = await(getAuthInfo());
@@ -370,4 +442,18 @@ export async function alphaSortByName(resp){
         }
     })
     return resp;
+}
+
+export function loadingMessage(id){
+    let loadingTag =  document.getElementsByClassName("plus");
+    let loadMsg = document.createElement('p');
+    loadMsg.setAttribute('class','blink');
+    loadMsg.setAttribute('id',id);
+    loadMsg.innerText=`LOADING ${id} .... PLEASE WAIT`
+    loadingTag[0].appendChild(loadMsg);
+}
+
+export function loadingMessageClear(id){
+    let loadMsg = document.getElementById(id);
+    loadMsg.remove()
 }

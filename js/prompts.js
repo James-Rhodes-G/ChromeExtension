@@ -1,9 +1,10 @@
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader, createRow} from "./utils.js";
+
+import * as utils from './utils.js';
 
 //// get list of prompts
 async function getPrompts(pageSize=99,pageNumber=1){
     const apiToCall = `/api/v2/architect/prompts?pageSize=${pageSize}&pageNumber=${pageNumber}&sortBy=name&sortOrder=asc`;
-    const response = getAPI(apiToCall);
+    const response = utils.getAPI(apiToCall);
     return response;
 }
 
@@ -11,7 +12,7 @@ async function getPrompts(pageSize=99,pageNumber=1){
 //// display list of prompts
 async function logPromptOutput(table, data){
     data['entities'].forEach(function (prompt){
-        createRow(table, [prompt.name, prompt.description] )
+        utils.createRow(table, [prompt.name, prompt.description] )
     })
 }
 
@@ -60,15 +61,17 @@ export async function exportPrompts(){
     const table = document.createElement('table');
     Object.assign(table, {id:"prompt_export"});
     document.getElementById('logOutput').appendChild(table);
-    createHeader(table, ['promptName', 'promptDescription']);
-    let columns=["name", "description"]
+    utils.createHeader(table, ['promptName', 'promptDescription']);
+    let columns=["name", "description"];
+	utils.loadingMessage("Prompts");
     do{
         var resp = await getPrompts(pageSize,pageNumber);
         //await logPromptOutput(table, resp);
         await exportPromptsAndResources(table, resp, columns);
         pageNumber ++
-    } while (resp.selfUri != resp.lastUri)
+    } while (resp.selfUri != resp.lastUri);
 	//// Add export button
-	const exportBtn  = document.getElementById("exportButton")
+	utils.loadingMessageClear("Prompts");
+	const exportBtn  = document.getElementById("exportButton");
     exportBtn.style.display = 'block';
 }

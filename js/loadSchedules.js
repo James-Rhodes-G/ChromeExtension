@@ -88,7 +88,7 @@ export async function loadSchedules(){
             .then((res) => {return res.json()})
         Object.assign(loadSchedule, data);
         //// make POST call
-        const scheduleResponse = await utils.postSchedule(loadSchedule)
+        const scheduleResponse = await postSchedule(loadSchedule)
             .then((res) => {return res});
         if (scheduleResponse.ok){
             var jsonScheduleResponse = await scheduleResponse.json();

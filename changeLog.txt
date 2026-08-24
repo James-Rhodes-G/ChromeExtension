@@ -1,9 +1,18 @@
+  ***** v0.0.0.3 *****
+ 1) Changed Converstaion api to /api/v2/conversations/{conversationId}
+ 2) Added Options Page to allow Quick Nav Buttons to be customized.
+ 3) Added loading message to slower exports
+ 4) Added autocomplete to call spoofing
+
+ 
+ 
+ ***** v0.0.0.2 *****
  1) added User to Role export to sidepanel
  2) added bulk user role and division assignment to sidepanel
  3) added bulk user skill and proficiency assignment to sidepanel
  4) add bulk user loggoff to sidepanel
  5) add User logoff button to people page
- 6) cleaned up individual imports from the utilities scripts
+ 6) cleaned up individual imports to other JS scripts from the utilities scripts
  7) added Group export
  8) added Group Member Export
  9) add call spoof section

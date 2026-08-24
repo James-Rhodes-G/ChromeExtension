@@ -33,13 +33,13 @@
     <div class="content">
         <p>    
             <div class="btnContainer">          
-                <button id="people" name="qbtn" title="Go to user admin">People</button>
-                <button id="queues" name="qbtn" title="Go to Queues admin">Queues</button>
-                <button id="dataTables" name="qbtn"title="Go to Data Tables">Data Tables</button>
+                <button id="QuickNav1" name="qbtn"></button>
+                <button id="QuickNav2" name="qbtn"></button>
+                <button id="QuickNav3" name="qbtn"></button>
                 <!-- Add tab_ to open in new tab, add full_ if providing a full URL -->
-                <button id="sites" name="qbtn" title="Go to Sites">Sites</button>
-                <button id="tab_architect" name="qbtn" title="Go to Architect">Architect</button>
-                <button id="full_apiExp" name="qbtn" title="Go to API Explorer">API Exp</button>
+                <button id="QuickNav4" name="qbtn"></button>
+                <button id="QuickNav5" name="qbtn"></button>
+                <button id="QuickNav6" name="qbtn"></button>
             </div>
         </p>
     </div>
@@ -121,15 +121,18 @@
                 <div class="btn_label">
                     <label for="outClid">Out CLID:</label>
                 </div>
-                <input type="text" id="outClid" name="outClid" autocomplete="outClid">
+                <input type="text" id="outClid" name="outClid" list="outClidList">
+                <datalist id="outClidList"></datalist>
                 <div class="btn_label">
                     <label for="outCnam">Out CNAM:</label>
                 </div>
-                <input type="text" id="outCnam" name="outCnam" autocomplete="outCnam">
+                <input type="text" id="outCnam" name="outCnam" list="outCnamList">
+                <datalist id="outCnamList"></datalist>
                 <div class="btn_label">
                     <label for="outDial">Number To Dial:</label>
                 </div>
-                <input type="text" id="outDial" name="outDial" autocomplete="outDial">
+                <input type="text" id="outDial" name="outDial" list="outDialList">
+                <datalist id="outDialList"></datalist>
             </div>
             </form>
 

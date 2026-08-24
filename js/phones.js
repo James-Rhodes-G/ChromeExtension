@@ -1,13 +1,11 @@
 
-import { getAPI, sendLogMessage, postAPI, otherPostApi, createHeader,createRowWCheckbox,createHeaderWCheckbox,
-    makeTableRowsClickable, makeSelectAllListener  } from "./utils.js";
 import { getUsers } from "./users.js";
-
+import * as utils from './utils.js';
 
 //get phones
 async function getPhones(pageSize=99, pageNumber=1) {
     const apiToCall = `/api/v2/telephony/providers/edges/phones?name=*webrtc&expand=site&pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=name&sortOrder=asc`;
-    const phoneList = await getAPI(apiToCall);
+    const phoneList = await utils.getAPI(apiToCall);
     return phoneList;
 }
 
@@ -30,7 +28,7 @@ async function selectPhoneLoop(phones) {
         exportBtn.style.display = 'none';
         table = document.createElement("table");
         //// Create header with empty column for radio buttons
-        createHeader(table, ["","Name","id","phoneSite"])
+        utils.createHeader(table, ["","Name","id","phoneSite"])
 
         const newRow = table.insertRow();
         const defaultRow = document.createElement("INPUT");
@@ -88,7 +86,7 @@ async function usersLoop(users) {
         exportBtn.style.display = 'none';
         table = document.createElement("table");
         const headerColumns = ['name','id', 'associatedStation'];
-        createHeaderWCheckbox(table, headerColumns);
+        utils.createHeaderWCheckbox(table, headerColumns);
         element.appendChild(table);
     };
     users['entities'].forEach(user => {
@@ -99,7 +97,7 @@ async function usersLoop(users) {
                 //newRow.style.backgroundColor ="yellow";
                 rowData.push("True");
             };
-            createRowWCheckbox(table, rowData, "");
+            utils.createRowWCheckbox(table, rowData, "");
             });
     //element.appendChild(table);
 }
@@ -114,7 +112,7 @@ async function phoneLogOutput(userName, buildStatus, phoneId, status) {
         element.innerHTML += "<p><h3>Phone Build Log</h3></p>";
         table = document.createElement("table");
         Object.assign(table, {id:"phoneBuild_export"});
-        createHeader(table,["Name","status","phoneId","Success/Fail"])
+        utils.createHeader(table,["Name","status","phoneId","Success/Fail"])
         element.appendChild(table);
     };
     const tableColumns =[userName, buildStatus, phoneId, status];
@@ -139,7 +137,7 @@ async function phoneLoop(phones) {
         element.innerHTML += "<p><h3>System Phones</h3></p>";
         table = document.createElement("table");
         Object.assign(table, {id:"phone_export"});
-        createHeader(table,["Name","id","phoneSite"])
+        utils.createHeader(table,["Name","id","phoneSite"])
         element.appendChild(table);
     };
     phones['entities'].forEach(phone => {
@@ -181,10 +179,10 @@ async function phoneLoop(phones) {
         });
 
     ////  Event Listener for Select All Checkbox
-    makeSelectAllListener();
+    utils.makeSelectAllListener();
 
     //// make all table rows clickable setting the checkbox
-    makeTableRowsClickable();
+    utils.makeTableRowsClickable();
 
         await eventPromise;
         const usersNeedingPhones = document.querySelectorAll('input[type="checkbox"]:checked')
@@ -194,7 +192,7 @@ async function phoneLoop(phones) {
  //// Create New phone
  async function createPhone(body){
     let apiToCall = "/api/v2/telephony/providers/edges/phones"
-    const response = await otherPostApi(apiToCall, body);
+    const response = await utils.otherPostApi(apiToCall, body);
     return response;
  }
 
@@ -236,7 +234,7 @@ export async function bulkBuildPhones() {
             });
         });
     //// Make the table rows clickable 
-        makeTableRowsClickable();
+        utils.makeTableRowsClickable();
         
         await eventPromise;
 
@@ -255,7 +253,7 @@ export async function bulkBuildPhones() {
     //// Collect the table so we can reuse the data
     const table = document.querySelector('table');
     //// Collect our template phone so we can overwrite it for the new users
-    const templatePhone = await getAPI(`/api/v2/telephony/providers/edges/phones/${radioButton}`);
+    const templatePhone = await utils.getAPI(`/api/v2/telephony/providers/edges/phones/${radioButton}`);
     console.log("these are our users");
     let objPhone={};
     let objUser={};
@@ -292,14 +290,14 @@ export async function exportPhones() {
     var pageNumber=1
     var pageSize = 99
     console.log("exporting phones");
-    
+    utils.loadingMessage("Phones")
     do {
         var response = await getPhones(pageSize,pageNumber);
         await phoneLoop(response); 
         pageNumber ++;
     }
     while (response.lastUri != response.selfUri);
-
+    utils.loadingMessageClear("Phones")
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
 }

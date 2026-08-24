@@ -39,8 +39,10 @@ export async function bulkUserLogoff(userIds){
 
 //// Get List of Roles for Users
 async function getUsersRoles(userId) {
+    utils.loadingMessage(userId);
     const apiToCall = `/api/v2/authorization/subjects/${userId}`;
     const response = await utils.getAPI(apiToCall);
+    utils.loadingMessageClear(userId);
     return response;
     
 }
@@ -51,19 +53,15 @@ export async function exportUserRoles() {
     let element = document.getElementById('logOutput');
     element.innerText += "User Role Export";
     let table = document.createElement('table');
-    //// provide export button
-    const exportBtn  = document.getElementById("exportButton")
-    exportBtn.style.display = 'block';
     //// Create Table Header
     let tableHeader = ['name', 'userName', 'id', 'role:division'];
     utils.createHeader(table, tableHeader);
     element.appendChild(table)
     ////  Get All Users (need ID's and UserNames for export)
-    var pageNumber=1
-    var pageSize = 99
+    var pageNumber=1;
+    var pageSize = 99;
     do {
         var response = await getUsers(pageSize,pageNumber);
-        console.log(response);
         response.entities.forEach( async function (user) {
             let userRolesResp = await getUsersRoles(user.id);
             let dataRow = [user.name, user.username, user.id];
@@ -76,16 +74,16 @@ export async function exportUserRoles() {
                     userRoles.push(`${grant.role.name}:All<br>`)
                 }
             })
-            
             dataRow.push(userRoles)
-            console.log(dataRow);
             utils.createRow(table, dataRow);
-            
         })
         //// Loop through Users getting their roles from getUserRoles 
         pageNumber ++;
     }
     while (response.lastUri != response.selfUri);
+    //// provide export button
+    const exportBtn  = document.getElementById("exportButton");
+    exportBtn.style.display = 'block';
 }
 
 export async function bulkSelectUserLogoff(){
@@ -103,7 +101,7 @@ export async function bulkSelectUserLogoff(){
         }
         while (response.lastUri != response.selfUri);
         
-        //// add button to complete selection of users needing phones
+        //// add button to complete selection of users needing logged off
        element.innerHTML += '<p><button id=users type="button"> Select Users </button></p>';
        element.appendChild
        const btnUsers = document.getElementById('users');

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "PS Tools",
-    "version": "0.0.0.2",
+    "version": "0.0.0.3",
     "description": "Tools for Genesys Pro Serv Team Members",
     "permissions": [
         "activeTab",
@@ -12,6 +12,7 @@
         "webNavigation",
         "sidePanel"
     ],
+    "options_page": "options.html",
     "host_permissions": [
         "https://*.apne3.pure.cloud/*",
         "https://*.apne2.pure.cloud/*",
@@ -60,7 +61,7 @@
             "https://*.use2.us-gov-pure.cloud/*",
             "https://*.usw2.pure.cloud/*"
         ],
-          "js": ["content.js",
+          "js": ["./js/content.js",
                 "./js/analyticsListener.js"
             ],
          "run_at":"document_idle",
@@ -94,12 +95,18 @@
                 "./js/skills.js",
                 "./js/prompts.js",
                 "./js/bulkExport.js",
-                "./js/disconnect.js"
+                "./js/disconnect.js",
+                "./js/options.js"
                     ]
       }],
     "content_security_policy": {
         "extension_pages": "script-src 'self' 'wasm-unsafe-eval';",
         "sandbox":"sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';",
         "object-src": "'self'"
+    },
+    "sandbox":{
+        "pages":[
+            "chat.html"
+        ]
     }
 }
