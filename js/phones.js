@@ -97,7 +97,7 @@ async function usersLoop(users) {
                 //newRow.style.backgroundColor ="yellow";
                 rowData.push("True");
             };
-            utils.createRowWCheckbox(table, rowData, "");
+            utils.createRowWCheckbox(table, rowData, user.id, user.name);
             });
     //element.appendChild(table);
 }

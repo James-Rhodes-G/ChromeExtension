@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "PS Tools",
-    "version": "0.0.0.4",
+    "version": "0.0.0.5",
     "description": "Tools for Genesys Pro Serv Team Members",
     "permissions": [
         "activeTab",
@@ -95,7 +95,8 @@
                 "./js/prompts.js",
                 "./js/bulkExport.js",
                 "./js/disconnect.js",
-                "./js/options.js"
+                "./js/options.js",
+                "./js/flowExecution.js"
                     ]
       }],
     "content_security_policy": {

@@ -128,7 +128,7 @@ async function funcButtons(btnPress){
     if (btnPress.id == 'callSpoof'){
             const inputBoxes = document.getElementsByTagName("input");
             callSpoof(inputBoxes);
-    } else if (btnPress.id =='printConversationData' || btnPress.id =='goToInteraction'){
+    } else if (btnPress.id =='printConversationData' || btnPress.id =='goToInteraction' || btnPress.id =='goToFlowExecution'){
         const inputBoxes = document.getElementsByTagName("input").convData.value;
         await chrome.runtime.sendMessage([btnPress.id, inputBoxes], (response) => {
             console.log(response);

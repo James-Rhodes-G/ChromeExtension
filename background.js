@@ -4,10 +4,13 @@
 
 import { getAPI , openTabNextToCurrent } from "./js/utils.js";
 import { tableToCSV } from "./js/exportTable.js";
-import { callSpoof } from "./js/callSpoof.js";
+//import { callSpoof } from "./js/callSpoof.js";
 import { getDiscoInteractions } from "./js/disconnect.js";
 import { getUsersLogoff } from "./js/users.js";
-import { intentHealth, utterances } from "./js/utterance.js";
+//import { intentHealth, utterances } from "./js/utterance.js";
+import { flowExecution } from "./js/flowExecution.js";
+
+
 
 
 //// Set Sidepanel options:
@@ -181,10 +184,16 @@ async function testRequest(request) {
       break;
 
     case "goToInteraction":
-      const region = await chrome.storage.local.get('region')
+      var region = await chrome.storage.local.get('region')
       console.log(region);
       let goToInteraction_tab = await openTabNextToCurrent(`${region.region.replace('api','apps')}/directory/#/analytics/interactions/${request[1]}/admin`)
       console.log(goToInteraction_tab);
+      break;
+    
+    case "goToFlowExecution":
+      var region = await chrome.storage.local.get('region')
+      var data = await flowExecution(request[1])
+      let goToFlowExecution_tab = await openTabNextToCurrent(`${region.region.replace('api','apps')}/architect/#/flowInstance/${data.entities[0].id}`)
       break;
       
     case "exportToCSV":

@@ -96,6 +96,13 @@ div#logOutput& {
   table-layout: fixed;
   width: 100%;
 }
+div#logOutput #dropBoxTitle {
+    display: inline-flex;
+}
+.checkBoxTitle {
+    padding-left: 80px;
+    padding-right: 20px;
+}
 table{
         border-collapse: collapse;
         font-weight: normal;

@@ -1,40 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="https://dhqbrvplips7x.cloudfront.net/directory/11.58.0-2/assets/images/ico/favicon.png" crossorigin="anonymous">
+
     <!-- download Roboto font from goodgle-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="https://dhqbrvplips7x.cloudfront.net/directory/11.40.0-3/assets/images/ico/favicon.png" crossorigin="anonymous">
+    
+    <!-- CSS -->
+    <link href="./css/spark.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/log.css" >
+    <link rel="stylesheet" href="../jsonViewer/jquery.json-viewer.css">
+    <link rel="stylesheet" href="../src/dropzone.css">
+
+    <!-- JS -->
     <script src="../jsonViewer/jquery.js"></script>
     <script src="../jsonViewer/jquery.json-viewer.js"></script>
     <script src="../src/jszip.js"></script>
-    <link rel="stylesheet" href="../jsonViewer/jquery.json-viewer.css"> 
+    <script src="../src/dropzone-min.js"></script>
+    <script type="module" src="./js/inline.js"></script>
+     <script src="./js/spark.min.js"></script>    
     <!-- <script type="module" src="./js/log.js"></script> -->
-    <title>PS Tools Log Page</title>
 
-  </head>
-<body>
-  <script type="module" src="./js/inline.js"></script>
-  <div class="marginContainer">
-    <div class="headerContainer">
-      <div class="logoContainer"><img src="./ExtensionLogo/adaptive-g-orange_32.png" alt="Genesys Logo"></div>
-      <div class="PageTitleContainer">
-          <a>Genesys PS Tools</a>
+    <title>Logging - PS Tool</title>
+</head>
+  <body class="container">
+    <main role="main" id="main">
+      <!-- Top row to display Logo and Title -->
+      <div class="row flush">
+        <!-- Left Gutter -->
+        <div class="col of-1">
+          <div class="logoContainer right">
+            <a class="brand">
+              <img class="center" src="./ExtensionLogo/adaptive-g-orange_32.png" alt="Genesys Logo">
+            </a>
+          </div>
+        </div>
+        <!-- Center of Page -->
+         <div class="col of-10">
+          <h1 class="heavy herotype middle">Genesys PS Tools</h1>
+         </div>
+        <!-- Right Gutter -->
+         <div class="col of-1">
+
+         </div>
       </div>
-    </div>
-      <div class="plus">
-        Log Entries
+      <!-- Middle row to display Tables and informaiton -->
+      <div class="row flush">
+        <!-- Left Gutter -->
+        <div class="col of-1">
+          <div class="plus"></div>
+        </div>
+        <!-- Center of Page -->
+        <div class="col of-10">
+          <h2 class=" heavy hero">Log Entries</h2>
+         </div>
+        <!-- Right Gutter -->
+         <div class="col of-1">
+          <button id="floatBtn" class="top" title="Go to top">Top</button>
+         </div>
       </div>
-      <button id="floatBtn" class="top" title="Go to top">Top</button>
-      <button id="floatBtn" class="bottom" title="Go to top">Bottom</button>
-      <div id="logOutput">
-    
+      <div class="row flush">
+        <!-- Left Gutter Row 3 -->
+        <div class="col of-1">
+        </div>
+        <!-- Center Row 3 -->
+        <div class="col of-10">
+          <div id="logOutput"></div>
+        </div>
+        <!-- Right Gutter Row 3 -->
+        <div class="col of-1">
+          <div class="" id="rightGutter"></div>
+          <button id="floatBtn" class="bottom" title="Go to top">Bottom</button>
+        </div>
       </div>
-    <div class="FooterContainer">
-      <div class="exportButton" id="exportButton" style="display:none"><button id="export" type="button">Export</button></div>
-    </div>
-  </div>
-</body>
+      <!-- Bottom row for buttons etc -->
+      <div class="row">
+        <!-- Left Gutter -->
+        <div class="col of-1">
+        </div>
+        <!-- Center of Page -->
+        <div class="col of-10">
+          <div class="FooterContainer">
+            <div class="exportButton" id="exportButton" style="display:none">
+              <button class="btn blue flat push-10" id="export" type="button">Export</button></div>
+          </div>
+         </div>
+        <!-- Right Gutter -->
+         <div class="col of-1">
+         </div>
+      </div>
+
+      </div>
+    </main>
+  </body>
 </html>

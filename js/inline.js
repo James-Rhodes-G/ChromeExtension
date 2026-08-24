@@ -163,8 +163,8 @@ function scrollFunction() {
 
       case 'disco':
         console.log("disco interactions");
-        //var module = await import ('./disconnect.js');
-        //module.disconnectInteractions();
+        var module = await import ('./disconnect.js');
+        module.disconnectInteractions();
         break;
       
       case 'userRoles':
@@ -201,6 +201,12 @@ function scrollFunction() {
         console.log('intentHealth');
         var module = await import ('./utterance.js');
         module.intentHealth (urlParams);
+        break;
+      
+      case 'dropTesting':
+        console.log('dropTesting');
+        var module = await import ('./dropTest.js');
+        module.dropTest (urlParams);
         break;
 
       // SEE NOTES IN accelerator.js  

@@ -1,3 +1,15 @@
+  ***** v0.0.0.5 *****
+ 1) Made the Quick Nav Section stay open when the sidepanel opens
+ 2) Restored Disconnect functionality
+ 3) adjusted font size in json viewer
+ 4) Added Country Holidays on the Hoilday Load Page
+ 5) Moved to single Holiday Json file for supported countrires
+ 6) Applied Spark CSS to options page
+ 7) Rebuilt log.html to work better with Spark CSS
+ 8) Added Selected Item Log to Rght Gutter
+ 9) Added Button to go straight to flow execution for a conversation
+10) Removed unneeded files from directory
+
   ***** v0.0.0.4 *****
  1) Added Interaction button to take a user directly to an interaction in cloud
  2) Added bulk prompt export

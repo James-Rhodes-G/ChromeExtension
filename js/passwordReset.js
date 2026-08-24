@@ -43,7 +43,7 @@ async function userLoop(table, users, idField) {
     const region  = authData.region.replace('api','apps')
     switch(urlParams.get('func')) {
         case 'bulkAssignAutoAnswer':
-            var columnHeaders = ['User', 'UserName','contactInfo','User GUID','Division','State','AutoAnswer']
+            var columnHeaders = ['User', 'UserName','contactInfo','User GUID','Division','State','AutoAnswer','skills']
             break;
         case 'userList':
             var columnHeaders = ['User', 'UserName', 'contactInfo','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
@@ -53,42 +53,35 @@ async function userLoop(table, users, idField) {
             break;
         }
     const element = document.getElementById("logOutput");
+    document.querySelector('#rightGutter').innerHTML=''
     var table_page = document.querySelector('table');
     if (table_page === null ) {
         utils.createHeader(table, columnHeaders);
     };
 
     users['entities'].forEach(user => {
-        //console.log(user)
+        let userSkills='';
+        let contactInfo='';
         if (user.hasOwnProperty('skills')){
-            //console.log('has skills')
-            let userSkills='';
-            let contactInfo='';
             user.skills.forEach(skill =>{userSkills +=`${skill.name}:${skill.proficiency}<br>`});
-            if (user.hasOwnProperty('primaryContactInfo')){
-                user.primaryContactInfo.forEach(contact =>{
-                    if (contact.hasOwnProperty('address')){
-                        contactInfo +=`${contact.mediaType}:${contact.address}<br>`;
-                    } else {
-                        contactInfo +=`${contact.mediaType}:${contact.display}<br>`;
-                    }
-                })
+        };            
+        if (user.hasOwnProperty('primaryContactInfo')){
+            user.primaryContactInfo.forEach(contact =>{
+                if (contact.hasOwnProperty('address')){
+                    contactInfo +=`${contact.mediaType}:${contact.address}<br>`;
+                } else {
+                    contactInfo +=`${contact.mediaType}:${contact.display}<br>`;
+                }
+            })
             }
-            var rowColumns = [
-                user.name, 
-                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.username}</a>`,
-                contactInfo,
-                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.id}</a>`,
-                user.division.name,
-                user.state, user.acdAutoAnswer, userSkills
+        var rowColumns = [
+            user.name, 
+            `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.username}</a>`,
+            contactInfo,
+            `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.id}</a>`,
+            user.division.name,
+            user.state, user.acdAutoAnswer.toString(), userSkills
             ]
-        } else {
-            var rowColumns = [
-                user.name, user.username,
-                user.id, user.state, user.acdAutoAnswer
-            ]
-        }
-
         utils.createRow(table, rowColumns )
         });
     element.appendChild(table);
@@ -125,7 +118,7 @@ export async function userSelectLoop(users) {
         element.appendChild(table);
     };
     users['entities'].forEach(user => {
-        utils.createRowWCheckbox(table, [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id);
+        utils.createRowWCheckbox(table, [user.name, user.username, user.id, user.state, user.acdAutoAnswer], user.id, user.name);
         });
 
     element.appendChild(table);
@@ -269,7 +262,8 @@ export async function bulkAssignAutoAnswer(){
     await eventPromise;
     //// collect selected users
     const choice = document.getElementById('userChoice');
-    var users = document.querySelectorAll('input[type="checkbox"]:checked');
+    //// var users = document.querySelectorAll('input[type="checkbox"]:checked');
+    var users = document.querySelectorAll('input[type="checkbox"]:checked:not([id^="selectAll"])')
     element.innerHTML = ''; /// Clear the page
     var table = document.createElement("table");
     Object.assign(table, {id:"user_export"});
@@ -277,7 +271,7 @@ export async function bulkAssignAutoAnswer(){
     var bodyArray=[];
     var userUpDate={};
     var apiToCall = '/api/v2/users/bulk';
-    utils.loadingMessage('pwdReset', 'Resetting passwords');
+    utils.loadingMessage('autoAnswer', 'Setting Auto Answer');
     users.forEach(async function(user){
         userUpDate[user.value]={id:user.value, acdAutoAnswer:choice.value};
         bodyArray.push(userUpDate[user.value]);
@@ -300,7 +294,7 @@ export async function bulkAssignAutoAnswer(){
             //// Output Results
             await userLoop(table, jsonResp);
     }
-    utils.loadingMessageClear('pwdReset');
+    utils.loadingMessageClear('autoAnswer');
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
 }

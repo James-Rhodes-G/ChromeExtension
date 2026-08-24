@@ -1,6 +1,6 @@
 
 //// Add listener for save button
-var qbnBtns = document.getElementsByClassName("button")
+var qbnBtns = document.getElementsByClassName("btn")
 var b; 
 for (b = 0; b < qbnBtns.length; b++) { 
     const objButton = new ButtonObjCreate(qbnBtns[b].id, qbnBtns[b].innerText, qbnBtns[b].name);

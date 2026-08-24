@@ -282,14 +282,14 @@ export function createRow(table, rowColumns){
 }
 
 //// Create a row with a checkbox for table
-export function createRowWCheckbox(table, rowColumns, value){
+export function createRowWCheckbox(table, rowColumns, value, id=''){
     const tableRow = table.insertRow();
     const checkbox = document.createElement("INPUT");
     Object.assign(checkbox, {
        type: "checkbox", name:(table.rows.length-1),
-       id:"userSelect", value:value
+       id:id, value:value,
+       className : "checkbox"
     });
-    checkbox.setAttribute("class", "checkbox");
     const td = document.createElement("td");
     td.appendChild(checkbox);
     tableRow.appendChild(td);
@@ -305,11 +305,18 @@ export function createRowWCheckbox(table, rowColumns, value){
 export async function createHeaderWCheckbox(table, rowColumns){
     const tableRow = table.insertRow();
     const checkbox = document.createElement("INPUT");
+    //add functionality to allow the creatiion of multiple tables on the samepage
+    try {
+       var selectAllId = "selectAll_"+table.id;
+       var tableId = table.id; 
+    }catch {
+        selectAllId='selectAll';
+        tableId = ''
+    }
     Object.assign(checkbox, {
-       type: "checkbox", name:(table.rows.length-1),
-       id:"selectAll"
+       type: "checkbox", name:(table.rows.length-1), className:"checkbox",
+       id:selectAllId
     });
-    checkbox.setAttribute("class", "checkbox");
     const checkboxLabel = document.createElement('label');
     Object.assign( checkboxLabel, {
         HTMLFormElement:'selectAll', textContent:"Select All"
@@ -323,9 +330,15 @@ export async function createHeaderWCheckbox(table, rowColumns){
         await tableRow.appendChild(th);
     })
     await table.appendChild(tableRow);
-    console.log(document.getElementById('selectAll'))
-    document.getElementById('selectAll').addEventListener('change', function () {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // add selectAll listener
+    //console.log(`adding listener for ${selectAllId}`);
+    checkbox.addEventListener('change', function () {
+        console.log('box checked')
+        if (!table.id) {
+            var checkboxes = document.querySelectorAll(`input[type="checkbox"]`); 
+        }else{
+            var checkboxes = document.querySelectorAll(`table[id="${tableId}"] input[type="checkbox"]`);            
+        }
         checkboxes.forEach(function (checkbox){
             checkbox.checked = this.checked;
         }, this);
@@ -337,15 +350,47 @@ export async function createHeaderWCheckbox(table, rowColumns){
 export async function makeTableRowsClickable(){
     //// Add Event Listener for Table Rows
     //// Makes all TD's clickable for the row
-    var table = document.querySelector('table');
-    table.addEventListener('click', (event) => {
-        if (event.target.tagName === 'TD'){
-            let checkbox = event.target.parentNode.cells[0].childNodes[0];
-            if (checkbox) { 
-                checkbox.checked = !checkbox.checked
+    var tables = document.querySelectorAll('table');
+    tables.forEach( table =>{
+        table.addEventListener('click', (event) => {
+            if (event.target.tagName === 'TD'){
+                let checkbox = event.target.parentNode.cells[0].childNodes[0];
+                if (checkbox) { 
+                    checkbox.checked = !checkbox.checked
+                    countCheckBoxes();
+                }
             }
-        }
+        })
     })
+}
+
+export async function checkboxListerners() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach( checkbox => {
+        checkbox.addEventListener('change', function () {
+        countCheckBoxes();
+        })
+    });
+}
+
+export async function countCheckBoxes() {
+    var countOfBoxes = document.querySelectorAll('input[type="checkbox"]:checked:not([id^="selectAll"])');
+    try {
+        document.getElementsByClassName('checkBoxCount')[0].innerText=countOfBoxes.length
+    }catch{
+        console.log("no place to put total value")
+    }
+    try {
+        var rightGutter = document.getElementById("rightGutter");
+        rightGutter.innerHTML='<h4 class="herotype">Selected Items</h4>'
+        //console.log(countOfBoxes);
+        countOfBoxes.forEach( box => {
+            rightGutter.innerHTML += `<a>${box.id}</a><br>`
+        })
+    } catch (err){
+        console.log('no place to put the value')
+    }
+       
 }
 
 //// make SelectAll Listener
@@ -356,6 +401,7 @@ export async function makeSelectAllListener(){
         checkboxes.forEach(function (checkbox){
             checkbox.checked = this.checked;
         }, this);
+        countCheckBoxes();
     });
 }
 
