@@ -42,15 +42,16 @@ function getCheckBoxes(){
 }
 
 async function disconnectInteractions(){
-  //let interactions = getCheckBoxes();
-  let iframe = Array.from(document.querySelectorAll('iframe')).find(el => el.title ==="Analytics UI")
-  let interactions = iframe.contentWindow.document.querySelectorAll('input[type="checkbox"]:checked')
+    let interactions = getCheckBoxes();
+    console.log(interactions);
+  // let iframe = Array.from(document.querySelectorAll('iframe')).find(el => el.title ==="Analytics UI")
+  // let interactions = iframe.contentWindow.document.querySelectorAll('input[type="checkbox"]:checked')
     let conversationIds=[];
     interactions.forEach( interaction => {
         if(interaction.className.includes('dt-row-select-all')){
           // eliminatates the Select All row
         }else{
-          let interactionId = interaction.parentNode.parentElement.slice(-36);
+          let interactionId = interaction.parentNode.parentElement.className.slice(-36);
           console.log(interactionId);
           conversationIds.push(interactionId);
         }
@@ -64,6 +65,8 @@ async function disconnectInteractions(){
 }
 
 async function logoffUsers() {
+  // let iframe = Array.from(document.querySelectorAll('iframe')).find(el => el.title ==="admin")
+  // let users = iframe.contentWindow.document.querySelectorAll('input[type="checkbox"]:checked')
   let users = getCheckBoxes();
   let userIds = [];
   users.forEach( user => {
@@ -154,12 +157,12 @@ function classifyURL(tab){
   console.log(pageClassification,tab);
   switch(pageClassification) {
     case 'analytics':
-      console.log(pageClassification);
+      //console.log(pageClassification);
       var activeListener = true;
       var element = 'analytics';
       break;
     case 'people':
-      console.log(pageClassification);
+      //console.log(pageClassification);
       var activeListener = true;
       var element = 'people';
       break;

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "PS Tools",
-    "version": "0.0.0.6",
+    "version": "0.0.0.7",
     "description": "Tools for Genesys Pro Serv Team Members",
     "permissions": [
         "activeTab",
@@ -46,20 +46,36 @@
     "content_scripts": [
         {
           "matches": [
-            "https://*.apne3.pure.cloud/*",
-            "https://*.apne2.pure.cloud/*",
-            "https://*.mypurecloud.com.au/*",
-            "https://*.mypurecloud.jp/*",
-            "https://*.cac1.pure.cloud/*",
-            "https://*.mypurecloud.de/*",
-            "https://*.mypurecloud.ie/*",
-            "https://*.euw2.pure.cloud/*",
-            "https://*.euc2.pure.cloud/*",
-            "https://*.mec1.pure.cloud/*",
-            "https://*.sae1.pure.cloud/*",
-            "https://*.mypurecloud.com/*",
-            "https://*.use2.us-gov-pure.cloud/*",
-            "https://*.usw2.pure.cloud/*"
+            "https://apps.apne3.pure.cloud/*",
+            "https://apps.apne2.pure.cloud/*",
+            "https://apps.mypurecloud.com.au/*",
+            "https://apps.mypurecloud.jp/*",
+            "https://apps.cac1.pure.cloud/*",
+            "https://apps.mypurecloud.de/*",
+            "https://apps.mypurecloud.ie/*",
+            "https://apps.euw2.pure.cloud/*",
+            "https://apps.euc2.pure.cloud/*",
+            "https://apps.mec1.pure.cloud/*",
+            "https://apps.sae1.pure.cloud/*",
+            "https://apps.mypurecloud.com/*",
+            "https://apps.use2.us-gov-pure.cloud/*",
+            "https://apps.usw2.pure.cloud/*"
+        ],
+        "include_globs": [
+            "*/admin/#/directory*",
+            "*/analytics-ui/*"
+        ],
+        "excludeMatches":[
+            "*://*/*troubleshooting*",
+            "*://*/*audit-viewer-ui*",
+            "*://*/*agent-ui-settings*",
+            "*://*/*admin/#/welcome*",
+            "*://*/*collaborate-chat*",
+            "*://*/*voicemail-standalone*",
+            "*://*/*faces-standalone",
+            "*://*/*agent-home*",
+            "*://*/*volt*",
+            "*://*/*contact-center*"
         ],
           "js": ["./js/analyticsListener.js"
             ],

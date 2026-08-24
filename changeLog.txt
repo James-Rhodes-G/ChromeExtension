@@ -1,5 +1,10 @@
+  ***** v0.0.0.7 *****
+ 1) Restricted Analytics.js to only the needed iframes
+
+
+
   ***** v0.0.0.6 *****
- 1) 
+ 1) Fixed Disconnect and Logoff buttons after multi-panel update
 
   ***** v0.0.0.5 *****
  1) Made the Quick Nav Section stay open when the sidepanel opens

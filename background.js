@@ -65,6 +65,32 @@ chrome.sidePanel
   return true;
 });
 
+//  chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
+//     testRequest(request)
+//       .then((data) =>{
+//           console.log(`here is the returned data: ${data}`);
+//           sendResponse(data);
+//       })
+//     return true;
+//  })
+
+// /////// NEW TEST For MESSAGE LISTENER  ////////
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   if (request.action === "getData") {
+//     // Simulate asynchronous work
+//     setTimeout(() => {
+//       sendResponse({ data: "Hello from the service worker!" });
+//     }, 1000); // Wait 1 second before responding
+
+//     // Return true to keep the message channel open for the async response
+//     return true;
+//   }
+//   // If not handling the message or no async work, returning nothing (or false)
+//   // will close the message channel immediately.
+// });
+
+
+
 async function testRequest(request) {
   console.log(`we received:  ${request}`);
   switch(request[0]) {
