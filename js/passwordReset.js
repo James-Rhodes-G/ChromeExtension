@@ -39,15 +39,17 @@ async function pwdLoop(user, status, code) {
 async function userLoop(table, users, idField) {
     const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
     const urlParams = new URL(tabs[0].url).searchParams
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps')
     switch(urlParams.get('func')) {
         case 'bulkAssignAutoAnswer':
-            var columnHeaders = ['User', 'UserName','User GUID','State','AutoAnswer']
+            var columnHeaders = ['User', 'UserName','contactInfo','User GUID','Division','State','AutoAnswer']
             break;
         case 'userList':
-            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
+            var columnHeaders = ['User', 'UserName', 'contactInfo','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
             break;
         default:
-            var columnHeaders = ['User', 'UserName','User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
+            var columnHeaders = ['User', 'UserName', 'User GUID', 'Division','State','AutoAnswer', 'skills:proficiency']
             break;
         }
     const element = document.getElementById("logOutput");
@@ -61,12 +63,26 @@ async function userLoop(table, users, idField) {
         if (user.hasOwnProperty('skills')){
             //console.log('has skills')
             let userSkills='';
+            let contactInfo='';
             user.skills.forEach(skill =>{userSkills +=`${skill.name}:${skill.proficiency}<br>`});
+            if (user.hasOwnProperty('primaryContactInfo')){
+                user.primaryContactInfo.forEach(contact =>{
+                    if (contact.hasOwnProperty('address')){
+                        contactInfo +=`${contact.mediaType}:${contact.address}<br>`;
+                    } else {
+                        contactInfo +=`${contact.mediaType}:${contact.display}<br>`;
+                    }
+                })
+            }
             var rowColumns = [
-                user.name, user.username, user.id, user.division.name,
+                user.name, 
+                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.username}</a>`,
+                contactInfo,
+                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.id}</a>`,
+                user.division.name,
                 user.state, user.acdAutoAnswer, userSkills
             ]
-        } else{
+        } else {
             var rowColumns = [
                 user.name, user.username,
                 user.id, user.state, user.acdAutoAnswer
@@ -119,13 +135,15 @@ export async function userSelectLoop(users) {
 export async function runPwdReset(newPwd) {
     console.log("new pwd:", newPwd);
         var pageNumber=1
-        var pageSize = 99
+        var pageSize = 100
         const body = {newPassword:newPwd};
         const element = document.getElementById("logOutput");
         element.innerHTML += "<p><h3>Select users for password reset for</h3></p>";
         do {
+            utils.loadingMessage(pageNumber, `loading page number ${pageNumber}`);
             var response = await getUsers(pageSize,pageNumber);
-            await userSelectLoop(response); 
+            await userSelectLoop(response);
+            utils.loadingMessageClear(pageNumber); 
             pageNumber ++;
         }
         while (response.lastUri != response.selfUri);
@@ -161,6 +179,7 @@ export async function runPwdReset(newPwd) {
         const exportBtn  = document.getElementById("exportButton")
         exportBtn.style.display = 'block';
             usersNeedingReset.forEach( async user =>  {
+                utils.loadingMessage(user.value, `Resetting password for: ${user.value}`)
                 console.log(`resetting userId: ${user.value}`);
                 var apiToCall = `/api/v2/users/${user.value}/password`
                 var pwdReset = await utils.otherPostApi(apiToCall, body);
@@ -168,7 +187,7 @@ export async function runPwdReset(newPwd) {
                 userInfo.name = table.rows[user.name].cells[1].textContent;
                 userInfo.username = table.rows[user.name].cells[2].textContent;
                 console.log(pwdReset);
-
+                utils.loadingMessageClear(user.value);
 
                 if (pwdReset.ok){
                     await pwdLoop(userInfo, pwdReset.status, 'success');
@@ -217,8 +236,10 @@ export async function bulkAssignAutoAnswer(){
     dropDownBox.appendChild(option2);
     element.appendChild(dropDownBox);
     do {
+        utils.loadingMessage(pageNumber, `loading page number ${pageNumber}`);
         var response = await getUsers(pageSize,pageNumber);
-        await userSelectLoop(response); 
+        await userSelectLoop(response);
+        utils.loadingMessageClear(pageNumber); 
         pageNumber ++;
     }
     while (response.lastUri != response.selfUri);
@@ -256,6 +277,7 @@ export async function bulkAssignAutoAnswer(){
     var bodyArray=[];
     var userUpDate={};
     var apiToCall = '/api/v2/users/bulk';
+    utils.loadingMessage('pwdReset', 'Resetting passwords');
     users.forEach(async function(user){
         userUpDate[user.value]={id:user.value, acdAutoAnswer:choice.value};
         bodyArray.push(userUpDate[user.value]);
@@ -273,11 +295,12 @@ export async function bulkAssignAutoAnswer(){
     if (bodyArray.length>0){
             console.log('making final API call')
             //// make PATCH CALL
-            const resp = await patchAPI(apiToCall, bodyArray);
+            const resp = await utils.patchAPI(apiToCall, bodyArray);
             const jsonResp = await resp.json();
             //// Output Results
             await userLoop(table, jsonResp);
     }
+    utils.loadingMessageClear('pwdReset');
     const exportBtn  = document.getElementById("exportButton")
     exportBtn.style.display = 'block';
 }

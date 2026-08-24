@@ -1,3 +1,15 @@
+  ***** v0.0.0.4 *****
+ 1) Added Interaction button to take a user directly to an interaction in cloud
+ 2) Added bulk prompt export
+ 3) Added scroll to top/bottom buttons on log page
+ 4) Added bot flow utterance w/Next Page button
+ 5) Added bot flow intent health w/Next Page button
+ 6) improvements to inline.js to minimize the loading of scripts
+ 7) added links back to Genesys cloud where possiable
+ 8) added primary contact info to people export
+ 9) added division prefix to schedules and division selection to schedule page
+
+
   ***** v0.0.0.3 *****
  1) Changed Converstaion api to /api/v2/conversations/{conversationId}
  2) Added Options Page to allow Quick Nav Buttons to be customized.

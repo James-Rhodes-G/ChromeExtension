@@ -10,6 +10,9 @@ export async function getQueues(pageSize=99, pageNumber=1) {
 
 //// Write Queues to a table on log page
 async function queueDataToTable (data) {
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps')
+    console.log(region);
     const element = document.getElementById("logOutput");
     var table = document.querySelector('table');
     if (table === null ) {
@@ -19,7 +22,7 @@ async function queueDataToTable (data) {
     };
     data['entities'].forEach(queue => {
         utils.createRow(table, [
-            queue.name,
+            `<a href=${region}/directory/#/admin/organization/queues/${queue.id} target="_blank">${queue.name}</a>`,
             queue.division.name,
             queue.memberCount,
             queue.mediaSettings.call.alertingTimeoutSeconds,
@@ -80,23 +83,26 @@ export async function getMembersOfQueue(queueName, queueId){
     do {
         const apiToCall = `/api/v2/routing/queues/${queueId}/members?expand=skills&pageNumber=${pageNumber}&pageSize=${pageSize}`
         var response = await utils.getAPI(apiToCall);
-        await queueMemberDataToTable(queueName, response); 
+        //console.log(response);
+        await queueMemberDataToTable(queueName, queueId, response); 
         pageNumber ++;
     }
     while (response.nextUri);
     return
 }
 
-async function queueMemberDataToTable(queueName, data){
+async function queueMemberDataToTable(queueName, queueId, data){
     const page = document.getElementById("logOutput");
     var table = document.querySelector('table');
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps');
     if (table === null ) {
         let qh = document.getElementById('qHeader');
         if (qh === null){
             qh = document.createElement("p");
             Object.assign(qh, {id:'qHeader'});
         }
-        qh.innerText= queueName;
+        qh.innerHTML= `<a href=${region}/directory/#/admin/organization/queues/${queueId}/members target="_blank">${queueName}</a>`,queueName;
         table = document.createElement("table");
         Object.assign(table,{id:`queueMembers_${queueName}`});
         utils.createHeader(table,['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber']);
@@ -106,7 +112,7 @@ async function queueMemberDataToTable(queueName, data){
             user.name,
             user.user.division.name,
             user.user.department,
-            user.user.username,
+            `<a href=${region}/directory/#/admin/directory/peopleV2/${user.user.id} target="_blank">${user.user.id}</a>`,
             user.user.state,
             user.user.acdAutoAnswer,
             user.ringNumber

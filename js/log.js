@@ -1,3 +1,10 @@
+
+function Listen(URL){
+  window.open (URL, "_blank","width=300,height=200");
+}
+
+
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
     testRequest(request).then(sendResponse);
     return true;

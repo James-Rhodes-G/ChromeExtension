@@ -1,6 +1,7 @@
 
 import * as utils from './utils.js';
 
+
 export async function tableToCSV() {
 
     // Variable to store the final csv data
@@ -19,9 +20,16 @@ export async function tableToCSV() {
 
             // Get the text data of each cell
             // of a row and push it to csvrow
-            let columnData = (cols[j].innerHTML).replaceAll(",","");
-            columnData = (columnData).replaceAll('"','');
-            csvrow.push(columnData.replaceAll('<br>','|',));
+            if(cols[j].innerHTML.includes("<a")){
+                var columnData = cols[j].innerText;
+            } else {
+                var columnData = cols[j].innerHTML
+            };
+            console.log(cols[j].innerHTML === cols[j].innerText);
+            columnData = columnData.replaceAll(",","");
+            columnData = columnData.replaceAll('"','');
+            columnData = columnData.replaceAll('<br>','|',)
+            csvrow.push(columnData);
         }
 
         // Combine each column value with comma
@@ -81,4 +89,41 @@ async function downloadCSVFile(csv_data) {
     // trigger download
     temp_link.click();
     document.body.removeChild(temp_link);
+}
+
+
+async function GenerateZipDownload(prompts) {
+    const zip = new JSZip();
+    await Promise.all(Object.entries(prompts).map(async (prompt) =>{
+        const file = await fetch(prompt[1].href).then(r => r.blob());
+        zip.file(`${prompt[1].attributes.classname.value}.wav`, file); // adds the file to the zip file
+    }))
+    const zipData =  await zip.generateAsync({
+        type:"blob",
+        streamFiles: true
+    })
+         return zipData;
+}
+    
+async function DowloadZipFile(zipData, custData){
+    const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(zipData);
+      link.download = `${custData[0]}_${custData[1]}.zip`;
+      link.click();
+}
+
+export async function promptDownload(){
+    const prompts = document.querySelectorAll("#recording");
+    const custData = await generateFileName();
+    const element = document.getElementById("logOutput");
+    element.innerHTML = '';
+    const footer = document.getElementsByClassName('FooterContainer');
+    footer[0].style.display='none';
+    utils.loadingMessage('downloading prompts');
+    const currentZipFile = await GenerateZipDownload(prompts);
+    console.log(currentZipFile);
+    utils.loadingMessageClear('downloading prompts');
+    element.innerHTML='<h2>Download Complete</h2>';
+
+    DowloadZipFile(currentZipFile, custData);
 }

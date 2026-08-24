@@ -1,25 +1,44 @@
 
-import { runPwdReset, exportUsers, bulkAssignAutoAnswer } from "./passwordReset.js";
-import { exportPhones, bulkBuildPhones } from "./phones.js";
-import { createMasterAdmin, exportRoles, bulkAssignRoles } from "./roles.js";
-import { tableToCSV } from "./exportTable.js";
-import { exportQueues, exportQueueUsers } from "./queues.js";
-import { loadSchedules } from "./loadSchedules.js";
-import { exportSkills, bulkAssignSkills } from "./skills.js";
-import { exportPrompts } from "./prompts.js";
-import { exportAll } from "./bulkExport.js";
-import { disconnectInteractions } from "./disconnect.js";
-import { exportUserRoles, bulkSelectUserLogoff, userLogoff} from "./users.js";
-import { exportGroups, exportGroupUsers } from "./groups.js";
-import { printConversationData } from "./conversation.js";
 
-document.getElementById("exportButton").addEventListener('click', function () {
-  tableToCSV();
+document.getElementById("export").addEventListener('click', function () {
+  var module = import ('./exportTable.js').then( (module) => {
+    module.tableToCSV();
+  })
+        
 })
+
+// Get the button:
+let floatButtons = document.querySelectorAll("#floatBtn");
+floatButtons.forEach(button => {
+  button.addEventListener('click', function (event) {
+    if (event.target.className == 'top'){
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }else {
+      document.documentElement.scrollTop = document.documentElement.scrollHeight;
+    }
+    
+  });
+})
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    floatButtons.forEach(button => {
+      button.style.display = "block";
+    })
+  } else {
+    floatButtons.forEach(button => {
+      button.style.display = "none";
+    })
+  }
+}
 
   async function getUserInput() {
     return new Promise((resolve) => {
-      var input = "CANDELED"
+      var input = "CANCELED"
       input = prompt("Please enter something:");
       resolve(input);
     });
@@ -40,114 +59,155 @@ document.getElementById("exportButton").addEventListener('click', function () {
           exit;
         } else {
           console.log(`Pwd wil be set to ${userInput}`);
-          runPwdReset(userInput);
+          var module = await import ('./passwordReset.js');
+          module.runPwdReset(userInput);
         }
         break;  
       
       case 'userList':
         console.log('outputting users');
-        exportUsers();
+        var module = await import ('./passwordReset.js');
+        module.exportUsers();
         return;
       
       case 'phoneList':
         console.log('Phone Export');
-        exportPhones();
+        var module = await import ('./phones.js');
+        module.exportPhones();
         break;
 
       case 'queueList':
         console.log('queueList');
-        exportQueues();
+        var module = await import ('./queues.js');
+        module.exportQueues();
         break;
 
       case 'bulkPhoneBuild':
           console.log('bulkPhoneBuild');
-          bulkBuildPhones();
+          var module = await import ('./phones.js');
+        module.bulkBuildPhones();
           break;
 
       case 'bulkAssignAutoAnswer':
-        console.log('exportPrompts');
-        bulkAssignAutoAnswer();
+        console.log('Auto Answer');
+        var module = await import ('./passwordReset.js');
+        module.bulkAssignAutoAnswer();
         break;
 
       case 'bulkAssignRoles':
         console.log('bulkAssignRoles');
-        bulkAssignRoles();
+        var module = await import ('./roles.js');
+        module.bulkAssignRoles();
         break;
       
       case 'bulkAssignSkills':
         console.log("bulk assign skills");
-        bulkAssignSkills();
+        var module = await import ('./skills.js');
+        module.bulkAssignSkills();
         break;
         
       case 'exportAll':
         console.log('exportAll');
-        exportAll();
+        var module = await import ('./bulkExport.js');
+        module.exportAll();
         break;
 
       case 'queueMemberList':
         console.log('queueMemberList');
-        exportQueueUsers();
+        var module = await import ('./queues.js');
+        module.exportQueueUsers();
         break;
 
       case 'exportGroupUsers':
         console.log('exportGroupUsers');
-        exportGroupUsers();
+        var module = await import ('./groups.js');
+        module.exportGroupUsers();
         break;
+
 
       case 'createMasterAdmin':
         console.log('createMasterAdmin');
-        createMasterAdmin();
+        var module = await import ('./roles.js');
+        module.createMasterAdmin();
         break;
 
       case 'loadSchedules':
         console.log('loadSchedules');
-        loadSchedules();
+        var module = await import ('./loadSchedules.js');
+        module.loadSchedules();
         break;
       
       case 'exportRoles':
         console.log('exportRoles');
-        exportRoles();
+        var module = await import ('./roles.js');
+        module.exportRoles();
         break;
 
       case 'exportSkills':
         console.log('exportSkills');
-        exportSkills();
+        var module = await import ('./skills.js');
+        module.exportSkills();
         break;
 
       case 'exportPrompts':
         console.log('exportPrompts');
-        exportPrompts();
+        var module = await import ('./prompts.js');
+        module.exportPrompts();
         break;
 
       case 'exportGroups':
         console.log('exportGroups');
-        exportGroups();
+        var module = await import ('./groups.js');
+        module.exportGroups();
         break;
 
       case 'disco':
         console.log("disco interactions");
-        disconnectInteractions();
+        //var module = await import ('./disconnect.js');
+        //module.disconnectInteractions();
         break;
       
       case 'userRoles':
         console.log("export user roles");
-        exportUserRoles();
+        var module = await import ('./users.js');
+        module.exportUserRoles();
         break;
 
       case 'bulkSelectUserLogoff':
         console.log("bulk user logoff");
-        bulkSelectUserLogoff();
+        var module = await import ('./users.js');
+        module.bulkSelectUserLogoff();
         break;
       
       case 'userLogoff':
         console.log("user logoff");
-        userLogoff();
+        var module = await import ('./users.js');
+        module.userLogoff();
         break;
 
       case 'printConversationData':
         console.log("printing conversation data");
-        printConversationData(urlParams.get('id'));
+        var module = await import ('./conversation.js');
+        module.printConversationData(urlParams.get('id'));
         break;
+
+      case 'utterances':
+        console.log("printing utterances");
+        var module = await import ('./utterance.js');
+        module.utterances (urlParams);
+        break;
+
+      case 'intentHealth':
+        console.log('intentHealth');
+        var module = await import ('./utterance.js');
+        module.intentHealth (urlParams);
+        break;
+
+      // SEE NOTES IN accelerator.js  
+      // case 'accelerators':
+      //   console.log(urlParams);
+      //   accelerators(urlParams);
+      //   break;
 
       default:
         console.log("no match");

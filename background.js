@@ -5,6 +5,9 @@
 import { getAPI , openTabNextToCurrent } from "./js/utils.js";
 import { tableToCSV } from "./js/exportTable.js";
 import { callSpoof } from "./js/callSpoof.js";
+import { getDiscoInteractions } from "./js/disconnect.js";
+import { getUsersLogoff } from "./js/users.js";
+import { intentHealth, utterances } from "./js/utterance.js";
 
 
 //// Set Sidepanel options:
@@ -14,7 +17,7 @@ chrome.sidePanel
 
 
 
-    //// Add all Genesys Regions as usable Regions
+//// Add all Genesys Regions as usable Regions
     const allowedPages=["https://apps.apne3.pure.cloud",
         "https://apps.apne2.pure.cloud",
         "https://apps.mypurecloud.com.au",
@@ -123,6 +126,10 @@ async function testRequest(request) {
       console.log(bulkSelectUserLogoff_tab);
       break;
 
+    case "logoff":
+      getUsersLogoff();
+      break;
+
     case "userLogoff":
       let userLogoff_tab = await openTabNextToCurrent('./log.html?func=userLogoff')
       console.log(userLogoff_tab);
@@ -172,17 +179,37 @@ async function testRequest(request) {
       let printConversationData_tab = await openTabNextToCurrent(`./log.html?func=printConversationData&id=${request[1]}`)
       console.log(printConversationData_tab);
       break;
+
+    case "goToInteraction":
+      const region = await chrome.storage.local.get('region')
+      console.log(region);
+      let goToInteraction_tab = await openTabNextToCurrent(`${region.region.replace('api','apps')}/directory/#/analytics/interactions/${request[1]}/admin`)
+      console.log(goToInteraction_tab);
+      break;
       
     case "exportToCSV":
       tableToCSV();
       break;
     
-    
+    case "disconnect":
+      getDiscoInteractions();
+      break;
+
     case "disco":
       let discoInteractions_tab = await openTabNextToCurrent('./log.html?func=disco')
       console.log(discoInteractions_tab);
       break;
+
+    case "intentHealth":
+      let intentHealth_tab = await openTabNextToCurrent('./log.html?func=intentHealth')
+      console.log(intentHealth_tab);
+      break;
       
+    case "utterances":
+      let utterances_tab = await openTabNextToCurrent('./log.html?func=utterances')
+      console.log(utterances_tab);
+      break;      
+
     default:
       console.log("background is ignoring you");    
   }

@@ -1,6 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
     background-color:rgb(238, 232, 232);
-    width: 80%;
+    width: 95%;
     font-family: "Roboto", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -87,19 +90,38 @@ p#qHeader {
   margin-left: 20px;
   font-size: 25px;
 }
+div#logOutput& {
+  max-width: none;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
 table{
         border-collapse: collapse;
-        table-layout: auto;
         font-weight: normal;
         font-size: 12px;
         margin-left: 10px;
+        table-layout: auto;
+        display: table;
+        width: 100%;
 }
+
 table td, table th {
     border: 1px solid #ddd;
     padding: 8px;
+    max-width: 200px;
+    word-break: break-word;
+    width:auto;
 }
-table tr:nth-child(even){background-color: #f2f2f2;}
-table tr:hover {background-color: #ddd;}
+table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+table tr:hover {
+  background-color: #ddd;
+}
+table tr{
+  max-width: inherit;
+}
 table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -218,4 +240,26 @@ table th {
 }
 div#boxLables {
   display: inline-grid;
+}
+#floatBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #ff451A; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+#floatBtn.top{
+  top: 20px; /* Place the button at the bottom of the page */
+}
+#floatBtn.bottom{
+  bottom: 20px; /* Place the button at the bottom of the page */
+}
+#floatBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }

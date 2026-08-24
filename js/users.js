@@ -60,11 +60,15 @@ export async function exportUserRoles() {
     ////  Get All Users (need ID's and UserNames for export)
     var pageNumber=1;
     var pageSize = 99;
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps')
     do {
         var response = await getUsers(pageSize,pageNumber);
         response.entities.forEach( async function (user) {
             let userRolesResp = await getUsersRoles(user.id);
-            let dataRow = [user.name, user.username, user.id];
+            let dataRow = [user.name, 
+                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.name}</a>`,
+                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.id}</a>`];
             //// Loop through role return assembling role:division
             let userRoles = [];
             userRolesResp.grants.forEach(grant => {
@@ -134,6 +138,11 @@ export async function userLogoff() {
     const userIds = JSON.parse(storedData.userData);
     await chrome.storage.local.remove('userData');
 
-    await bulkUserLogoff(userIds)
-    
+    await bulkUserLogoff(userIds);
+}
+
+export async function getUsersLogoff(){
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const response = await chrome.tabs.sendMessage(tab.id, {action:"logoffUserIds"});
+    console.log(response)
 }

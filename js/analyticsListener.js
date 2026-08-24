@@ -1,53 +1,18 @@
 
 
 
-async function addDiscoButton(){
-
-    if (document.getElementsByClassName("dt-bulk-action-btn btn btn-primary disconnectCalls").length === 0){
-        let targetButton = await document.getElementsByClassName("dt-bulk-actions");
-        
-        //// create button to insert in to the bulkActionsBox
-        var btnCont = document.createElement("button");
-        btnCont.setAttribute("class", "dt-bulk-action-btn btn btn-primary disconnectCalls");
-        
-        //// creates the div that we place the button into and sets class and text
-        btn = document.createElement('div')
-        btn.setAttribute("class", "icon-container");
-        btn.innerText='                    Disconnect                ';
-        //// appends the div to the button
-        btnCont.appendChild(btn);
-        
-        //// get the bulk actions bar
-        
-        //// put our button in the bar
-        targetButton[0].insertAdjacentElement("afterbegin",btnCont);
-        btnCont.addEventListener("click", function(){
-           let checkBoxes = getCheckBoxes();
-           disconnectInteractions(checkBoxes);
-       })
-    } else{ }
+async function enableButton(newElement, btnType){
+  //console.log(btnType);
+      newElement.addEventListener("click", function (){
+        let checkBoxes = getCheckBoxes();
+        if (checkBoxes.length > 0){
+          chrome.runtime.sendMessage({action: `toggle${btnType}`, data:"enable"});
+        } else{
+          chrome.runtime.sendMessage({action: `toggle${btnType}`, data:"disable"});
+        }
+      })
 }
 
-async function addLogoffButton() {
-  
-    // get the button field we want
-    let btnClass = document.getElementsByClassName("primary-controls");
-    // create button element
-    let d=Object.assign(document.createElement("button"), {'className':'btn btn-default btn-sm'});
-    let bl=Object.assign(document.createElement('div'), {'className':'btn-label'});
-    let s = Object.assign(document.createElement('span'),{'innerText':'Logoff'});
-    // inject button element
-    bl.appendChild(s);
-    d.appendChild(bl);
-    btnClass[0].insertAdjacentElement('afterBegin', d); 
-    btnClass[0].addEventListener("click", function(){
-      let checkBoxes = getCheckBoxes();
-      if (checkBoxes){
-        console.log(checkBoxes)
-        logoffUsers(checkBoxes)
-      }
-    })
-  }
 
 async function addRepublishButton() {
   if (document.getElementsByClassName("republishFlowButton").length === 0) {
@@ -76,7 +41,8 @@ function getCheckBoxes(){
     return checkBoxes;
 }
 
-async function disconnectInteractions(interactions){
+async function disconnectInteractions(){
+  let interactions = getCheckBoxes();
     let conversationIds=[];
     interactions.forEach( interaction => {
         let interactionId = interaction.offsetParent.className.slice(-36);
@@ -88,13 +54,15 @@ async function disconnectInteractions(interactions){
         }
       })
       //// Write to localstorage so we can reterive it from the log page
-        await chrome.storage.local.set({'conversationData':JSON.stringify(conversationIds)});
+       await chrome.storage.local.set({'conversationData':JSON.stringify(conversationIds)});
         
-        // Send Message to background to open log tab
+      //  Send Message to background to open log tab
         chrome.runtime.sendMessage(['disco']);
+      return(conversationIds);
 }
 
-async function logoffUsers(users) {
+async function logoffUsers() {
+  let users = getCheckBoxes();
   let userIds = [];
   users.forEach( user => {
     if (!user.outerHTML.includes("pageSelected")){
@@ -127,12 +95,12 @@ function checkForCheckBoxes(ibEvents){
     bulkActionsBox = ibEvents[0].getElementsByClassName("dt-bulk-actions");
     console.log(ibEvents[1]);
     if (ibEvents[1].target.className === "dt-row-checkbox" && bulkActionsBox.length > 0){
-        addButton();
+        addDiscoButton();
     }
 }
 
 function observeNewElement(selector, callback) {
-    const targetNode = document.documentElement;
+  const targetNode = document.documentElement;
   const config = { childList: true, subtree: true };
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -140,21 +108,13 @@ function observeNewElement(selector, callback) {
         const newElement = mutation.addedNodes[0];
         //console.log(newElement);
           try {
-            if (newElement.className.includes("protect")) {
-              //console.log(newElement.className);
-                addDiscoButton();
-              }else if (newElement.id.includes("directory-people-index")){
-                //console.log('found the controls')
-                addLogoffButton();
-              }else if (newElement.className.includes('arch')){
-                if (document.querySelector("#main-view > ui-view > arch-flows-view > div > div > div.navbar-form.arch-toolbar")){
-                  console.log('found architect page')
-                  addRepublishButton();
-                }
-
+            if (newElement.type == "checkbox") {
+                enableButton(newElement,'Disco');
+              } else if (newElement.id.includes("directory-people-index")){
+                enableButton(newElement, 'Logoff');
               }
-          } catch {
-              
+            } catch {
+              //console.log('some error occured')
           }
         }
     });
@@ -162,9 +122,53 @@ function observeNewElement(selector, callback) {
   observer.observe(targetNode, config);
 }	
 
-console.log("disco listener is loaded v3")
+async function testRequest(request){
+  console.log(request);
+  switch(request.action) {
+    case "interactionIds":
+      var discoResp = await disconnectInteractions()
+      return discoResp;
+    case "logoffUserIds":
+      var discoResp = await logoffUsers()
+      return discoResp;
+  }
+}
 
-observeNewElement('div.example', (newElement) => {
-  console.log('New element added:', newElement);
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
+  testRequest(request).then(sendResponse);
+  return true;
 });
-		
+
+function classifyURL(tab){
+  if (tab.includes('analytics-ui')) return 'analytics';
+  if (tab.includes('peopleV3')) return 'people';
+  return
+
+}
+
+  console.log('analytics listener loaded');
+  const tab = window.location.href;
+  let pageClassification = classifyURL(tab);
+  //console.log(pageClassification,tab);
+  switch(pageClassification) {
+    case 'analytics':
+      console.log(pageClassification);
+      var activeListener = true;
+      var element = 'analytics';
+      break;
+    case 'people':
+      console.log(pageClassification);
+      var activeListener = true;
+      var element = 'people';
+      break;
+    default:
+      var activeListener = false;
+  }
+  if (activeListener) {
+    console.log('firing up listener')
+    observeNewElement(element, (newElement) => {
+      console.log('New element added:', newElement);
+    });
+  }else{
+
+  }

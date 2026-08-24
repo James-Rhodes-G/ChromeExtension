@@ -135,9 +135,14 @@ async function getDivisions(pageSize=99,pageNumber=1){
 
 //// log output from role api call
 async function logRoleOutput(table, data){
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps')
     const alphaData = await alphaSortByName(data.entities);
     alphaData.forEach(function (role){
-        utils.createRow(table, [role.name, role.id, role.userCount, role.default] )
+        utils.createRow(table, [
+            `<a href=${region}/directory/#/admin/people-permissions/roles/${role.id} target="_blank">${role.name}</a>`,
+            `<a href=${region}/directory/#/admin/people-permissions/roles/${role.id}  target="_blank">${role.id}</a>`,
+            role.userCount, role.default] )
     })
 }
 
@@ -166,7 +171,7 @@ export async function bulkAssignRoles() {
     var pageNumber=1
     var pageSize = 99
     //// create the structure of the page
-    createRoleBody();
+    createRoleBody("Available", "Assigned");
     //// get divisons
     var dropBoxOptions=[]
     do{

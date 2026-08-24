@@ -1,6 +1,7 @@
 
-import { tempAlert, openTabNextToCurrent } from "./js/utils.js";
+import * as utils from './js/utils.js';
 import { callSpoof } from "./js/callSpoof.js";
+//import { analyticsListener } from './js/analyticsListener.js';
 
 const defualt_btnData = {
         "quickNav": {
@@ -39,7 +40,7 @@ export async function sidePanel (){
         }
 //// Add listener for quick nav buttons
     let btnData = await chrome.storage.local.get("quickNav");
-    if (!!btnData){ 
+    if (Object.keys(btnData).length === 0){ 
         console.log("Using Button Defaults")
         btnData = defualt_btnData;
         chrome.storage.local.set(btnData);
@@ -91,9 +92,7 @@ export async function sidePanel (){
     fieldList.forEach( async field => {
         /// need to get from storage
         let data = await chrome.storage.local.get(field);
-        if(!!data){
-            data={field:['']}
-        }
+        //let dataList = document.querySelector('#'+field+'List');
         // create list of options in the dataList
         createDataList(data[field], field);
         //// need to add onChange listener to write datato storage
@@ -114,10 +113,10 @@ async function quickNav(btnPress, newTab){
     const newPage = webSite + btnPress;
     if (btnPress.substr(0,4).toLowerCase() == 'http'){
         //console.log(btnPress, 'New Tab');
-        await openTabNextToCurrent(btnPress);
+        await utils.openTabNextToCurrent(btnPress);
     }else if (newTab){
         //console.log(newPage, 'New Tab')
-        await openTabNextToCurrent(newPage); 
+        await utils.openTabNextToCurrent(newPage); 
     }else {
         //console.log(newPage, 'Same Tab');
         chrome.tabs.update( tabs[0].id, {url:newPage});
@@ -129,7 +128,7 @@ async function funcButtons(btnPress){
     if (btnPress.id == 'callSpoof'){
             const inputBoxes = document.getElementsByTagName("input");
             callSpoof(inputBoxes);
-    } else if (btnPress.id =='printConversationData'){
+    } else if (btnPress.id =='printConversationData' || btnPress.id =='goToInteraction'){
         const inputBoxes = document.getElementsByTagName("input").convData.value;
         await chrome.runtime.sendMessage([btnPress.id, inputBoxes], (response) => {
             console.log(response);
@@ -148,7 +147,7 @@ function textCopy(fieldName, cx, cy){
      // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.innerText);
     // Alert the copied text
-    tempAlert(`Copied to the Clipboard`,3000,cx,cy);
+    utils.tempAlert(`Copied to the Clipboard`,3000,cx,cy);
 }
 
 //// Create Button Objects
@@ -195,7 +194,7 @@ function createDataList(data, field){
         dataList.appendChild(opt);
     })
     }catch(error){
-       // console.log(error);
+        console.log(error);
     }
 
 }
@@ -215,5 +214,34 @@ async function cleanArraySendToStorage(value,field){
     createDataList(newArr, field);
     await chrome.storage.local.set({[field]:newArr});
 }
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
+    testRequest(request).then(sendResponse);
+    //console.log(request, sender).then(sendResponse);
+    return true;
+  });
+
+async function testRequest(request){
+    console.log(`sidepanel received:  ${request.action}, ${request.data}`);
+    switch(request.action) {
+        case "toggleDisco":
+            var btn = document.getElementById("disconnect");
+            var resp = utils.toggleButtonStatus(btn, request.data)
+            return resp;
+
+        case "toggleLogoff":
+            var btn = document.getElementById("logoff");
+            var resp = utils.toggleButtonStatus(btn, request.data)
+            return resp;
+        // case "analytics":
+        //     analyticsListener();
+        //     return;
+
+        default:
+            console.log("sidepanel is ignoring you"); 
+        }
+}
+
+
 
 await sidePanel();

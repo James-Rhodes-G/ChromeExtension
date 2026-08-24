@@ -36,13 +36,17 @@ export async function disconnectInteractions(){
     const conversationData = await chrome.storage.local.get('conversationData');
     const convIDs = JSON.parse(conversationData.conversationData);
     await chrome.storage.local.remove('conversationData');
-    
-
     if (confirm(`This action will teminate ${convIDs.length} interactions.  Are you sure?`)){
         await disconnectAllInteractions(convIDs);
     }else{
         let pageData = document.getElementById('logOutput');
         pageData.innerText += "Action Canceld By User";
     };
-    
+}
+
+
+export async function getDiscoInteractions(){
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const response = await chrome.tabs.sendMessage(tab.id, {action:"interactionIds"});
+    console.log(response)
 }

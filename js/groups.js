@@ -15,6 +15,8 @@ export async function exportGroups() {
     //// Loop through pages and write them to a table on the log page
     const element = document.getElementById('logOutput');
     const table = document.createElement("table");
+    const authData  = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps');
     element.appendChild(table);
     Object.assign(table,{id:'group_export'});
     const exportBtn  = document.getElementById("exportButton")
@@ -25,7 +27,10 @@ export async function exportGroups() {
         console.log(response);
         //// append results to the dropdown box
         response.entities.forEach( group => {
-            utils.createRow(table,[group.name,group.id,group.memberCount,
+            utils.createRow(table,[
+                `<a href=${region}/directory/#/admin/groups/general/${group.id} target="_blank">${group.name}</a>`,
+                `<a href=${region}/directory/#/admin/groups/general/${group.id} target="_blank">${group.id}</a>`,
+                group.memberCount,
                 group.type,group.visibility,group.callsEnabled,group.rolesEnabled]);
         })
         pageNumber ++;

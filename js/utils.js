@@ -457,3 +457,66 @@ export function loadingMessageClear(id){
     let loadMsg = document.getElementById(id);
     loadMsg.remove()
 }
+
+export async function toggleButtonStatus(btn, status){
+      // Check current state and toggle
+  if (status.toLowerCase()=="enable") {
+    btn.disabled = false; // Enable button
+  } else {
+    btn.disabled = true;  // Disable button
+  }
+}
+
+export async function displayExportButton(){
+    const exportBtn  = document.getElementById("exportButton")
+    exportBtn.style.display = 'inline';
+    return;
+}
+
+export async function showNextPageButton(){
+    let expBtn = document.getElementById('export');
+        expBtn.style.display='inline'; 
+        var btn = document.getElementById('nextPage')
+        if (!btn){
+            var btn = document.createElement('button');
+            btn.id='nextPage';
+            btn.innerText='Next Page';
+            expBtn.after(btn);
+        }
+    return(btn);
+}
+
+export async function createDivisionDropdown(container) {
+        //// get divisons
+        var pageSize=100;
+        var pageNumber=1;
+        var dropBoxOptions=[]
+        const dropBox = document.createElement('select');
+        dropBoxOptions.push({value:"*",text:"All"});
+        do{
+            const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
+            var resp = await getAPI(apiToCall);
+            resp.entities = await alphaSortByName(resp.entities);
+            resp.entities.forEach( async function (division) {
+                let dbOption = document.createElement('option');
+                dbOption.value = division.id;
+                dbOption.text = division.name;
+               dropBox.appendChild(dbOption);
+            })
+            pageNumber ++
+        } while (resp.selfUri != resp.lastUri);
+        container.appendChild(dropBox);
+    return dropBoxOptions;
+}
+
+// function createDivisionSelectBox(dropBoxOptions, container) {
+//     const dropBox = document.createElement('select');
+//     dropBoxOptions.forEach(i => {
+//         let dbOption = document.createElement('option');
+//             dbOption.value = i.value;
+//             dbOption.text = i.text;
+//            dropBox.appendChild(dbOption);
+//     });
+//     container.appendChild(dropBox)
+//     return container
+// }

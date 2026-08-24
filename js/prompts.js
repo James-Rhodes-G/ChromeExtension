@@ -1,5 +1,6 @@
 
 import * as utils from './utils.js';
+import { promptDownload } from './exportTable.js';
 
 //// get list of prompts
 async function getPrompts(pageSize=99,pageNumber=1){
@@ -17,7 +18,7 @@ async function logPromptOutput(table, data){
 }
 
 async function exportPromptsAndResources (table, prompts, columns){
-	let newHeaders=['Resources','id','uploadStatus','ttsString'];
+	let newHeaders=['Resources','id','uploadStatus','ttsString', 'mediaUri'];
 	prompts.entities.forEach(function (prompt){
 		let r = table.insertRow();
         r.setAttribute('id','promptName');
@@ -39,11 +40,16 @@ async function exportPromptsAndResources (table, prompts, columns){
 			r = table.insertRow();
 			newHeaders.forEach(function(header){
 				let td = document.createElement('td');
-				if (header ==='Resources' || !resource[header]){
+				if (header ==='Resources' ){
 					td.innerText = prompt.name;
-				}else{
+				}else if (header ==='mediaUri') {
+					if (resource[header]){
+						td.innerHTML = `<a id="recording" className="${prompt.name}_${resource.id}" href="${resource[header]}" target="_blank"> Listen</a>`
+					} else{
+						td.innerText='';
+					};
+				}else if (resource[header]){
 					td.innerText = resource[header];
-					
 				};
 				r.appendChild(td);
 			})
@@ -74,4 +80,10 @@ export async function exportPrompts(){
 	utils.loadingMessageClear("Prompts");
 	const exportBtn  = document.getElementById("exportButton");
     exportBtn.style.display = 'block';
+	const btn = document.createElement('button');
+	btn.id='downloadPrompts';
+	btn.innerText='Download Prompts';
+	btn.addEventListener('click', promptDownload );
+	exportBtn.appendChild(btn);
+	
 }

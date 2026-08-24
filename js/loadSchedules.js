@@ -24,6 +24,7 @@ async function scheduleSelect(){
     document.getElementById('exportButton').style.display="none";
     //// provide header for direction
     document.getElementById('logOutput').innerHTML="<h2> Select schedules to load</h2>"
+    await utils.createDivisionDropdown(document.getElementById('logOutput'));
     var table=document.createElement("table");
     utils.createHeaderWCheckbox(table, ["Schedule Name"]);
     Object.keys(scheduleList).forEach(function (schedule) {
@@ -57,13 +58,18 @@ async function postSchedule (body){
 
 //// update log output table with new schedule name and id/status
 async function logScheduleResponse(status, response){
+    const authData = await utils.getAuthInfo();
+    const region  = authData.region.replace('api','apps');
     var table = document.querySelector("table");
     if (table === null){
         table = document.createElement("table");
         Object.assign(table, {id:"schedule_import"});
         utils.createHeader(table, ["scheduleName", "scheduleId", "status"]);
     }
-    utils.createRow(table, [response.name, response.id, status]);  
+    utils.createRow(table, [
+        `<a href=${region}/directory/#/admin/routing/scheduling/schedules/${response.id} _target=blank>${response.name}</a>`,
+         `<a href=${region}/directory/#/admin/routing/scheduling/schedules/respons.id _target=blank>${response.id}</a>`,
+         status]);  
     document.getElementById('logOutput').appendChild(table);
 }
 
@@ -72,6 +78,8 @@ export async function loadSchedules(){
     //// create schedule select page and wait for user to 
     //// selecte schedules to load
     await scheduleSelect();
+    const divisionId = document.querySelector("select").selectedOptions[0].value;
+    const divisionName = document.querySelector("select").selectedOptions[0].text;
     const schedulesToLoad = document.querySelectorAll('input[type="checkbox"]:checked');
     const table = document.querySelector('table');
     document.getElementById("logOutput").innerHTML = ''; /// Clear the page
@@ -85,7 +93,9 @@ export async function loadSchedules(){
         //// load Schedule JSON
         var loadSchedule = {};
         var data = await fetch(`./Schedules/${schedule.value}`)
-            .then((res) => {return res.json()})
+            .then((res) => {return res.json()});
+        Object.assign(data, {'division': {'id': divisionId}});
+        data.name = `${divisionName} ${data.name}`;
         Object.assign(loadSchedule, data);
         //// make POST call
         const scheduleResponse = await postSchedule(loadSchedule)

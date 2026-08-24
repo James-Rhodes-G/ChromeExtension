@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./CSS/log.css" >
     <script src="../jsonViewer/jquery.js"></script>
     <script src="../jsonViewer/jquery.json-viewer.js"></script>
+    <script src="../src/jszip.js"></script>
     <link rel="stylesheet" href="../jsonViewer/jquery.json-viewer.css"> 
     <!-- <script type="module" src="./js/log.js"></script> -->
     <title>PS Tools Log Page</title>
@@ -26,11 +27,13 @@
       <div class="plus">
         Log Entries
       </div>
+      <button id="floatBtn" class="top" title="Go to top">Top</button>
+      <button id="floatBtn" class="bottom" title="Go to top">Bottom</button>
       <div id="logOutput">
     
       </div>
     <div class="FooterContainer">
-      <div class="exportButton" id="exportButton" style="display:none"><button type="button">Export</button></div>
+      <div class="exportButton" id="exportButton" style="display:none"><button id="export" type="button">Export</button></div>
     </div>
   </div>
 </body>
