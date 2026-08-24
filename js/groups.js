@@ -106,13 +106,16 @@ async function groupMemberDataToTable(groupName, data){
         if (qh === null){
             qh = document.createElement("p");
             Object.assign(qh, {id:'qHeader'});
+            page.appendChild(qh);
+        } else if (!page.contains(qh)) {
+            page.appendChild(qh);
         }
         qh.innerText= groupName;
         table = utils.createGuxTable(`groupMembers_${groupName}`);
         qh.appendChild(table[0]).appendChild(table[1]);
         utils.createHeader(table[1],['id','selfUri']);
     };
-    data['entities'].forEach(user => {
+    (data?.entities ?? []).forEach(user => {
         utils.createRow(table[1], [
             user.id,
             user.selfUri

@@ -53,7 +53,7 @@ export async function exportUserRoles() {
     //// Setup log output page
     let element = document.getElementById('logOutput');
     element.innerText += "User Role Export";
-    let table = utils.createGuxTable('userRols');
+    let table = utils.createGuxTable('userRoles');
     element.appendChild(table[0]).appendChild(table[1]);
     //// Create Table Header
     let tableHeader = ['name', 'userName', 'id', 'role:division'];
@@ -69,7 +69,7 @@ export async function exportUserRoles() {
         response.entities.forEach( async function (user) {
             let userRolesResp = await getUsersRoles(user.id);
             let dataRow = [user.name, 
-                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.name}</a>`,
+                `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.username}</a>`,
                 `<a href=${region}/directory/#/admin/directory/peopleV2/${user.id} target="_blank">${user.id}</a>`];
             //// Loop through role return assembling role:division
             let userRoles = [];

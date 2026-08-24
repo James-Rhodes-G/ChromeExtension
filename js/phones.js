@@ -129,8 +129,14 @@ async function phoneLoop(phones) {
     
        //// add button to complete selection of users needing phones
        const element = document.getElementById("logOutput");
-       element.innerHTML += '<p><gux-button accent="primary" id=users type="button"> Select Users Needing Phones </gux-button></p>';
-       element.appendChild
+       const buttonWrap = document.createElement('p');
+       const usersButton = document.createElement('gux-button');
+       usersButton.setAttribute('accent', 'primary');
+       usersButton.id = 'users';
+       usersButton.setAttribute('type', 'button');
+       usersButton.textContent = 'Select Users Needing Phones';
+       buttonWrap.appendChild(usersButton);
+       element.appendChild(buttonWrap);
        const btnUsers = document.getElementById('users');
        //// wait for user to make a selection
        const eventPromise = new Promise((resolve) => {
@@ -141,11 +147,9 @@ async function phoneLoop(phones) {
            });
         });
 
-    ////  Event Listener for Select All Checkbox
-    //utils.makeSelectAllListener();
-
     //// make all table rows clickable setting the checkbox
     utils.makeTableRowsClickable();
+    utils.checkboxListerners();
 
         await eventPromise;
         const usersNeedingPhones = document.querySelectorAll('input[type="checkbox"]:checked')

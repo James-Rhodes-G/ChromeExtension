@@ -8,20 +8,13 @@ import { exportSkills } from "./skills.js";
 import { exportRoles } from "./roles.js";
 import { exportUserRoles } from "./users.js";
 import { exportGroups, getGroups, getMembersOfGroups } from "./groups.js";
+import { collectTablesInZip, downloadZipArchive } from "./exportTable.js";
 
+let exportZip;
 
-
-//// Force export of user file
+//// Add the current table(s) to the bulk export zip
 async function exportCurrentTable(){
-    return new Promise(( resolve, reject) =>{
-        console.log('clicking button');
-        const btn = document.getElementById('exportButton');
-        btn.click();
-        setTimeout(() => {
-            resolve('export complete');
-        }, 1000);    
-    })
-
+    await collectTablesInZip(exportZip);
 }
 
 let clop = async function clearLogOutputPage(){
@@ -32,12 +25,6 @@ let clop = async function clearLogOutputPage(){
 
 async function runFunctions(funcName){
     await funcName();
-    // return new Promise((resolve, reject) =>  {
-    //     setTimeout(() =  > async function (){
-    //         funcName();
-    //         resolve('Table Loaded!');
-    //     }, 5000);
-    // });
 }
 
 
@@ -49,8 +36,16 @@ async function exportAllQueuesMembers(){
         var response = await getQueues(pageSize,pageNumber);
         for(let q=0; q < response.entities.length; q++){
             console.log('increment: ', q,' of ', response.entities.length-1);
-            var qMembers = await getMembersOfQueue(response.entities[q].name,response.entities[q].id)
-            await exportCurrentTable();
+            try {
+                await getMembersOfQueue(
+                    response.entities[q].name,
+                    response.entities[q].id,
+                    response.entities[q].memberCount
+                );
+                await exportCurrentTable();
+            } catch (error) {
+                console.warn(`Failed to export members for queue ${response.entities[q].name}:`, error);
+            }
             await clop();
         }
         pageNumber ++;
@@ -66,8 +61,12 @@ async function exportAllGroupMembers(){
         var response = await getGroups(pageSize,pageNumber);
         for(let q=0; q < response.entities.length; q++){
             console.log('increment: ', q,' of ', response.entities.length-1);
-            var qMembers = await getMembersOfGroups(response.entities[q].name,response.entities[q].id)
-            await exportCurrentTable();
+            try {
+                await getMembersOfGroups(response.entities[q].name, response.entities[q].id);
+                await exportCurrentTable();
+            } catch (error) {
+                console.warn(`Failed to export members for group ${response.entities[q].name}:`, error);
+            }
             await clop();
         }
         pageNumber ++;
@@ -78,6 +77,10 @@ async function exportAllGroupMembers(){
 
 
 export async function exportAll(){
+    exportZip = new JSZip();
+    utils.loadingMessage('Export All');
+    document.getElementById('exportButton').style.display='none';
+
     const funcToCall = [exportUsers, exportCurrentTable, clop,
                         exportPhones, exportCurrentTable, clop,
                         exportQueues, exportCurrentTable, clop,
@@ -91,10 +94,12 @@ export async function exportAll(){
 
     for( let i=0; i < funcToCall.length; i++){
         console.log(`calling function: ${funcToCall[i]}`);
-        //let resp = await funcToCall[i]();
         let resp = await runFunctions(funcToCall[i]);
-        //console.log(resp);
     }
+
+    await downloadZipArchive(exportZip);
+    utils.loadingMessageClear('Export All');
+
     let element = document.getElementById('logOutput');
     element.innerHTML += "<h1><p>Export Complete</p></h1>"
     document.getElementById('exportButton').style.display='none';

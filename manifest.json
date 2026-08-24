@@ -63,7 +63,8 @@
         ],
         "include_globs": [
             "*/admin/#/directory*",
-            "*/analytics-ui/*"
+            "*/analytics-ui/*",
+            "*/directory/#/analytics*"
         ],
         "excludeMatches":[
             "*://*/*troubleshooting*",

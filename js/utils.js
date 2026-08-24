@@ -1,5 +1,5 @@
 import { getDivisions } from "./roles.js";
-
+import { getUiState } from "./uiState.js";
 // Get using URL Endpoints NO SDK
 
 
@@ -102,7 +102,7 @@ export async function patchAPI(urlToCall, inbody){
     .catch(error => {
         // Handle any errors that occurred during the fetch
         console.error('Fetch error:', error);
-        return response;
+        throw error;
     });
     return data;
 }
@@ -158,7 +158,7 @@ export async function otherPostApi(urlToCall, inbody){
     .catch(error => {
         // Handle any errors that occurred during the fetch
         console.error('Fetch error:', error);
-        return response;
+        throw error;
     });
     return data;
 }
@@ -354,6 +354,7 @@ export async function createHeaderWCheckbox(table, rowColumns){
         checkboxes.forEach(function (checkbox){
             checkbox.checked = this.checked;
         }, this);
+        countCheckBoxes();
     });
 }
 
@@ -394,11 +395,22 @@ export async function countCheckBoxes() {
     }
     try {
         var rightGutter = document.getElementById("rightGutter");
-        rightGutter.innerHTML='<h4 class="herotype">Selected Items</h4>'
-        //console.log(countOfBoxes);
-        countOfBoxes.forEach( box => {
-            rightGutter.innerHTML += `<a>${box.id}</a><br>`
-        })
+        rightGutter.innerHTML = '';
+        const title = document.createElement('h4');
+        title.className = 'herotype';
+        title.textContent = 'Selected Items';
+        rightGutter.appendChild(title);
+
+        const list = document.createElement('div');
+        list.className = 'selected-schedule-chips';
+        countOfBoxes.forEach(box => {
+            const item = document.createElement('span');
+            item.className = 'selected-schedule-chip';
+            item.textContent = box.id;
+            item.title = box.id;
+            list.appendChild(item);
+        });
+        rightGutter.appendChild(list);
     } catch (err){
         console.log('no place to put the value')
     }
@@ -466,7 +478,7 @@ export async function addListenerToSelectItems(){
     const leftSideBox = document.getElementById('selectBox');
     const selectItems=document.querySelectorAll('#selectText');
     selectItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (event) => {
             if (event.target.parentNode.parentNode.id === "selectBox"){
                 //console.log(event)
                 rightSideBox.appendChild(event.target.parentNode);
@@ -547,31 +559,99 @@ export async function showNextPageButton(){
     return(btn);
 }
 
+// export async function createDivisionSelectBox(container) {
+//         //// get divisons
+//         var pageSize = 99
+//         var pageNumber = 0;
+//         //var dropBoxOptions=[]
+//         const dropDown = document.createElement('gux-dropdown');
+//         //Object.assign(dropDown, {"filter-type":"starts-with", placeholder:"Select a Division"});
+//         dropDown.setAttribute('filter-type', 'starts-with');
+//         dropDown.setAttribute('placeholder', 'Select a Division');
+
+//         const dropBox = document.createElement('gux-listbox');
+//     do{
+//         const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
+//         var resp = await getAPI(apiToCall);
+//         resp.entities = await alphaSortByName(resp.entities);
+//         resp.entities.forEach( async function (division) {
+//             // let dbOption = document.createElement('option');
+//             let dbOption = document.createElement('gux-option');
+//             //Object.assign(dbOption,{className:"gux-active"})
+//             dbOption.value = division.id;
+//             dbOption.textContent = division.name;
+//            dropBox.appendChild(dbOption);
+//         })
+//         pageNumber ++
+//     } while (resp.selfUri != resp.lastUri);
+//     container.appendChild(dropDown).appendChild(dropBox)
+//     //return container
+// }
+
+//GPT Version:
 export async function createDivisionSelectBox(container) {
-        //// get divisons
-        var pageSize = 99
-        var pageNumber = 0;
-        //var dropBoxOptions=[]
-        const dropDown = document.createElement('gux-dropdown');
-        Object.assign(dropDown, {"filter-type":"starts-with", placeholder:"Select a Division"});
-        const dropBox = document.createElement('gux-listbox');
-    do{
-        const apiToCall = `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
-        var resp = await getAPI(apiToCall);
-        resp.entities = await alphaSortByName(resp.entities);
-        resp.entities.forEach( async function (division) {
-            // let dbOption = document.createElement('option');
-            let dbOption = document.createElement('gux-option');
-            Object.assign(dbOption,{className:"gux-active"})
-            dbOption.value = division.id;
-            dbOption.innerText = division.name;
-           dropBox.appendChild(dbOption);
-        })
-        pageNumber ++
-    } while (resp.selfUri != resp.lastUri);
-    container.appendChild(dropDown).appendChild(dropBox)
-    //return container
+  const uiState = getUiState();
+
+  const select = document.createElement('select');
+  select.id = 'divisionSelect';
+  select.setAttribute('aria-label', 'Divisions');
+
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Select a Division';
+  select.appendChild(placeholder);
+
+  let pageNumber = 0;
+  const pageSize = 99;
+  let resp;
+
+  do {
+    const apiToCall =
+      `/api/v2/authorization/divisions?pageSize=${pageSize}&pageNumber=${pageNumber}&objectCount=true`;
+
+    resp = await getAPI(apiToCall);
+    resp.entities = await alphaSortByName(resp.entities);
+
+    resp.entities.forEach(division => {
+      uiState.divisionMap.set(division.id, division.name);
+
+      const option = document.createElement('option');
+      option.value = division.id;
+      option.textContent = division.name;
+      select.appendChild(option);
+    });
+
+    pageNumber++;
+  } while (resp.selfUri !== resp.lastUri);
+
+  const updateSelectedDivision = () => {
+    const selectedId = select.value;
+    if (!selectedId) {
+      return;
+    }
+
+    const selectedName = uiState.divisionMap.get(selectedId) || '';
+    if (!selectedName) {
+      return;
+    }
+
+    uiState.selectedDivisionId = selectedId;
+    uiState.selectedDivisionName = selectedName;
+
+    const display = document.getElementById('selectedDivisionDisplay');
+    if (display) {
+      display.textContent = `Selected division: ${uiState.selectedDivisionName}`;
+    }
+  };
+
+  select.addEventListener('change', updateSelectedDivision);
+  container.appendChild(select);
+
+  return select;
 }
+
+
+
 
 export async function createDivisionDropdown(container) {
         //// get divisons
@@ -604,7 +684,7 @@ export async function awaitModalResponse(){
     let modalButtons = document.querySelectorAll('[id^="modal"]');
     modalButtons.forEach(mBtn => {
         return new Promise(resolve => {
-            mBtn.addEventListener('click', () =>{
+            mBtn.addEventListener('click', (event) =>{
             resolve(event.target.id)
             })
         })

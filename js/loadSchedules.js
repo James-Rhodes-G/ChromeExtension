@@ -1,41 +1,7 @@
 
 import * as utils from './utils.js';
-
-    
-// async function createCountryDropdown(container) {
-//         var dropBoxOptions=[]
-//         const outterTableDiv = document.createElement('div');
-//         const dropBox = document.createElement('select');
-//         dropBox.display="inline-flex";
-//         var data = await fetch('./Schedules/Global_Holiday.json').then((data)=> {
-//             return data.json();
-//             });
-//           const keys = Object.keys(data);
-//           keys.forEach( key =>{
-//             let dbOption = document.createElement('option');
-//             dbOption.value = key;
-//             dbOption.text = key;
-//             dropBox.appendChild(dbOption);
-//             // Create table for each Country
-//             const tableDiv = document.createElement('div');
-//             var table=document.createElement("table");
-//             table.style.visibility="collapse"
-//             table.id =key;
-//             tableDiv.id =key;
-//             utils.createHeaderWCheckbox(table, [`${key} Schedule Name`,`Description`]);
-//             //populate table with schedules for that country
-//             const schedules = Object.keys(data[key]);
-//             schedules.forEach(function (schedule) {
-//                 utils.createRowWCheckbox(table, [data[key][schedule].name, data[key][schedule].description],[key+'_'+schedule]);
-//             });
-//             tableDiv.appendChild(table);
-//             outterTableDiv.appendChild(tableDiv);
-//           })
-        
-//         container.appendChild(dropBox);
-//         //container.appendChild(outterTableDiv);
-//     return outterTableDiv;
-// }  
+import { getUiState } from './uiState.js';
+     
 
 function createSelectAllListeners(){
     const boxes=document.querySelectorAll('[id^="selectAll"]')
@@ -57,17 +23,34 @@ async function scheduleSelect(){
     //// provide header for direction
     const container = document.getElementById('logOutput');
     container.innerHTML='<h3 class="heavy hero"> Select schedules to load</h3>';
-    container.innerHTML += "<h4 id=dropBoxTitle> Select Division for Schedule</h4>";
+    const divisionTitle = document.createElement("h4");
+    divisionTitle.id = "dropBoxTitle";
+    divisionTitle.textContent = "Select Division for Schedule";
+    container.appendChild(divisionTitle);
     //await utils.createDivisionDropdown(container);
     const dropDiv = document.createElement("form");
     container.appendChild(dropDiv);
-    await utils.createDivisionSelectBox(dropDiv);
-   
-    container.innerHTML += `<h3 id=dropBoxTitle class=checkBoxTitle>   Schedules Selected</h3>`;
-    container.innerHTML += `<h3 id=dropBoxTitle class=checkBoxCount> 0 </h3>`
+    const dropDownMap = await utils.createDivisionSelectBox(dropDiv);
+    //await utils.createDivisionDropdown(dropDiv);
+    const scheduleTitle = document.createElement("h3");
+    scheduleTitle.id = "dropBoxTitle";
+    scheduleTitle.className = "checkBoxTitle";
+    scheduleTitle.textContent = "Schedules Selected";
+    container.appendChild(scheduleTitle);
+    const scheduleCount = document.createElement("h3");
+    scheduleCount.id = "dropBoxTitle";
+    scheduleCount.className = "checkBoxCount";
+    scheduleCount.textContent = "0";
+    container.appendChild(scheduleCount);
     await addTabs();
-    document.getElementById("logOutput").innerHTML += '<p><gux-button accent=primary id=schedule type="button"> Load Schedules </button></p>';
-    document.getElementById("logOutput").appendChild
+    const scheduleButtonWrap = document.createElement("p");
+    const scheduleButton = document.createElement("gux-button");
+    scheduleButton.setAttribute("accent", "primary");
+    scheduleButton.id = "schedule";
+    scheduleButton.setAttribute("type", "button");
+    scheduleButton.textContent = "Load Schedules";
+    scheduleButtonWrap.appendChild(scheduleButton);
+    container.appendChild(scheduleButtonWrap);
     //// Add listener for user click a button
     const btnSched = document.getElementById('schedule');
     const eventPromise = new Promise((resolve) => {
@@ -114,8 +97,9 @@ export async function loadSchedules(){
     //// create schedule select page and wait for user to 
     //// select schedules to load
     await scheduleSelect();
-    const divisionId = document.querySelectorAll("select")[1].selectedOptions[0].value;
-    const divisionName = document.querySelectorAll("select")[1].selectedOptions[0].text;
+    const uiState = getUiState();
+    const divisionId = uiState.selectedDivisionId || '';
+    const divisionName = uiState.selectedDivisionName || '';
     const schedulesToLoad = document.querySelectorAll('input[type="checkbox"]:checked:not([id^="selectAll"])');
     document.getElementById("logOutput").innerHTML = ''; /// Clear the page
     const exportBtn  = document.getElementById("exportButton")
@@ -175,7 +159,14 @@ async function addTabs(){
         utils.createHeaderWCheckbox(guxTable[1],headers);
         const schedules = Object.keys(data[key]);
         schedules.forEach(function (schedule) {
-            utils.createRowWCheckbox(guxTable[1], [data[key][schedule].name, data[key][schedule].description],[key+'_'+schedule]);
+            const scheduleKey = `${key}_${schedule}`;
+            const scheduleLabel = `${key} - ${data[key][schedule].name}`;
+            utils.createRowWCheckbox(
+                guxTable[1],
+                [data[key][schedule].name, data[key][schedule].description],
+                scheduleKey,
+                scheduleLabel
+            );
         });
         tabList.appendChild(currentTab[key]);
         tabPanel.appendChild(guxTable[0]).appendChild(guxTable[1]);

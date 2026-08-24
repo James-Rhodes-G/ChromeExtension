@@ -73,10 +73,14 @@ async function getQueuesDropDown(){
 }
 
 //// Get a list of queue memebers and display them
-export async function getMembersOfQueue(queueName, queueId){
+export async function getMembersOfQueue(queueName, queueId, memberCount){
     var pageNumber=1
     var pageSize = 99
     console.log("exporting queue members");
+    if (memberCount === 0) {
+        await queueMemberDataToTable(queueName, queueId, { entities: [] });
+        return;
+    }
     //// Loop through pages and write them to a table on the log page
     do {
         const apiToCall = `/api/v2/routing/queues/${queueId}/members?expand=skills&pageNumber=${pageNumber}&pageSize=${pageSize}`
@@ -99,14 +103,17 @@ async function queueMemberDataToTable(queueName, queueId, data){
         if (qh === null){
             qh = document.createElement("p");
             Object.assign(qh, {id:'qHeader'});
+            page.appendChild(qh);
+        } else if (!page.contains(qh)) {
+            page.appendChild(qh);
         }
         
         qh.innerHTML= `<a href=${region}/directory/#/admin/organization/queues/${queueId}/members target="_blank">${queueName}</a>`,queueName;
-        table = utils.createGuxTable({id:`queueMembers_${queueName}`})
+        table = utils.createGuxTable(`queueMembers_${queueName}`)
         qh.appendChild(table[0]).appendChild(table[1]);
         utils.createHeader(table[1],['Name', 'division','department','userName', 'state','acdAutoAnswer', 'ringNumber', 'memberBy']);
     };
-    data['entities'].forEach(user => {
+    (data?.entities ?? []).forEach(user => {
         utils.createRow(table[1], [
             user.name,
             user.user.division.name,

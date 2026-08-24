@@ -13,6 +13,73 @@ async function enableButton(newElement, btnType){
       })
 }
 
+let autoDisableResultsSettings = false;
+let resultsSettingsControlLogged = false;
+
+async function loadResultsSettingsPreference() {
+  try {
+    const data = await chrome.storage.local.get("analyticsOptions");
+    autoDisableResultsSettings = !!(data.analyticsOptions && data.analyticsOptions.autoDisableResultsSettings);
+  } catch (error) {
+    console.log('unable to read analytics options', error);
+    autoDisableResultsSettings = false;
+  }
+}
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area !== 'local' || !changes.analyticsOptions) {
+    return;
+  }
+  const nextValue = changes.analyticsOptions.newValue || {};
+  autoDisableResultsSettings = !!nextValue.autoDisableResultsSettings;
+});
+
+function ensureResultsSettingsFalse() {
+  if (!autoDisableResultsSettings) {
+    return false;
+  }
+  try {
+    const key = 'results-settings-v2';
+    const currentValue = localStorage.getItem(key);
+    console.log('results-settings-v2 value', currentValue);
+    if (currentValue === null) {
+      return false;
+    }
+    if (currentValue !== 'false') {
+      localStorage.setItem(key, 'false');
+    }
+    return true;
+  } catch (error) {
+    console.log('unable to update results settings', error);
+    return false;
+  }
+}
+
+function logResultsSettingsControl() {
+  if (resultsSettingsControlLogged) {
+    return;
+  }
+
+  const selectors = [
+    '.result-settings-v2-toggle',
+    '#ember2120',
+    '[data-testid*="results-settings"]',
+    '[data-test*="results-settings"]',
+    '[data-qa*="results-settings"]',
+    '[id*="results-settings"]',
+    '[class*="results-settings"]'
+  ];
+
+  const match = selectors
+    .map(selector => document.querySelector(selector))
+    .find(Boolean);
+
+  if (match) {
+    resultsSettingsControlLogged = true;
+    console.log('results settings control detected', match);
+  }
+}
+
 
 async function addRepublishButton() {
   if (document.getElementsByClassName("republishFlowButton").length === 0) {
@@ -114,6 +181,7 @@ function observeNewElement(selector, callback) {
         //console.log(newElement);
           try {
             if (selector == "analytics") {
+                ensureResultsSettingsFalse();
                 enableButton(newElement,'Disco');
               } else if (selector == "people"){
                 enableButton(newElement, 'Logoff');
@@ -145,7 +213,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
 });
 
 function classifyURL(tab){
-  if (tab.includes('analytics-ui')) return 'analytics';
+  if (tab.includes('analytics-ui') || tab.includes('/analytics/') || tab.includes('#/analytics')) return 'analytics';
   if (tab.includes('peopleV3')) return 'people';
   return
 
@@ -171,6 +239,13 @@ function classifyURL(tab){
   }
   if (activeListener) {
     console.log('firing up listener')
+    loadResultsSettingsPreference();
+    const settingsInterval = setInterval(() => {
+      logResultsSettingsControl();
+      if (ensureResultsSettingsFalse()) {
+        clearInterval(settingsInterval);
+      }
+    }, 1000);
     observeNewElement(element, (newElement) => {
       console.log('New element added:', newElement);
     });
